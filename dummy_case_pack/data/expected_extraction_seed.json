@@ -1,0 +1,621 @@
+{
+  "notice": "Entirely fictional synthetic test case. Not an official government record. Do not use for real administrative, legal or enforcement decisions.",
+  "case": {
+    "demo_notice": "Entirely fictional synthetic test case. Not an official government record. Do not use for real administrative, legal or enforcement decisions.",
+    "case_id": "CASE-NVD-DR-2026-014",
+    "case_reference": "NVD-DR-2026-014",
+    "title": "Review of Emergency Water Purification Kit Procurement and Distribution - Monsoon Response 2026",
+    "category": "Relief Procurement and Distribution Review",
+    "department": "Nandivan District Relief Office (fictional)",
+    "district": "Nandivan (fictional district)",
+    "description": "A synthetic administrative review into quantity reconciliation, stock recording and beneficiary distribution of 480 emergency water purification kits ordered during a fictional monsoon response.",
+    "priority": "Medium",
+    "status": "Under Review",
+    "date_opened": "2026-08-20",
+    "assigned_officer": "Demo Investigating Officer",
+    "currency": "INR",
+    "tags": [
+      "synthetic-demo",
+      "procurement",
+      "relief-material",
+      "multilingual",
+      "ocr",
+      "contradiction-testing"
+    ],
+    "documents": [
+      {
+        "document_id": "DOC-D01",
+        "filename": "D01_Complaint_Gujarati_Scanned.pdf",
+        "mime_type": "application/pdf",
+        "document_mode": "scanned_image_pdf",
+        "expected_route": "OCR",
+        "language": "Gujarati",
+        "sha256": "c61a972ce15103d1c667e98e33dcced1dcc4345efb39153f50e74f2c3cddaf9c",
+        "size_bytes": 527178
+      },
+      {
+        "document_id": "DOC-D02",
+        "filename": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+        "mime_type": "application/pdf",
+        "document_mode": "scanned_image_pdf",
+        "expected_route": "OCR",
+        "language": "Hindi",
+        "sha256": "ec9369b56f078cfa307103cc39370f5b991ac01044ea2859d7d3b08e6a4106a7",
+        "size_bytes": 618342
+      },
+      {
+        "document_id": "DOC-D03",
+        "filename": "D03_Work_Order_English_Digital.pdf",
+        "mime_type": "application/pdf",
+        "document_mode": "digital_text_pdf",
+        "expected_route": "PDF_PARSER",
+        "language": "English",
+        "sha256": "6f6178a52152bb5026e1721ca68ea6e8add482388e874930bb058363f0d7a8b7",
+        "size_bytes": 2891
+      },
+      {
+        "document_id": "DOC-D04",
+        "filename": "D04_Stock_Register_Gujarati_Scanned.pdf",
+        "mime_type": "application/pdf",
+        "document_mode": "scanned_image_pdf",
+        "expected_route": "OCR",
+        "language": "Gujarati",
+        "sha256": "a20e6e1d6183fdce5b30a39a36cbcf767e3b7944b76d947eb06cd1df34be7615",
+        "size_bytes": 386615
+      },
+      {
+        "document_id": "DOC-D05",
+        "filename": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+        "mime_type": "application/pdf",
+        "document_mode": "digital_text_pdf",
+        "expected_route": "PDF_PARSER",
+        "language": "English",
+        "sha256": "9620e5ca8181ed5c056fd54851abc0b7d0b622e557ed620c0a2e1219735a025f",
+        "size_bytes": 2719
+      },
+      {
+        "document_id": "DOC-D06",
+        "filename": "D06_Beneficiary_Statements_Hindi_Scanned.pdf",
+        "mime_type": "application/pdf",
+        "document_mode": "scanned_image_pdf",
+        "expected_route": "OCR",
+        "language": "Hindi",
+        "sha256": "e81024dab547632a50d8a6d1c930d5ae50cdcafce13a5cfe85db774210ebf424",
+        "size_bytes": 532624
+      },
+      {
+        "document_id": "DOC-D07",
+        "filename": "D07_Supplier_Invoice_English_Digital.pdf",
+        "mime_type": "application/pdf",
+        "document_mode": "digital_text_pdf",
+        "expected_route": "PDF_PARSER",
+        "language": "English",
+        "sha256": "e857a99ad2bd8048b5ee8f83400160cf8859185d758594cced43f267c2b4fb25",
+        "size_bytes": 2596
+      }
+    ]
+  },
+  "entities": [
+    {
+      "entity_id": "ENT-001",
+      "name": "Nandivan District Relief Office",
+      "type": "Organization",
+      "fictional": true
+    },
+    {
+      "entity_id": "ENT-002",
+      "name": "BlueRiver Relief Logistics",
+      "type": "Organization",
+      "fictional": true
+    },
+    {
+      "entity_id": "ENT-003",
+      "name": "Kavita Parmar",
+      "type": "Person",
+      "fictional": true
+    },
+    {
+      "entity_id": "ENT-004",
+      "name": "A. K. Solanki",
+      "type": "Person",
+      "fictional": true
+    },
+    {
+      "entity_id": "ENT-005",
+      "name": "Devendra Solanki",
+      "type": "Person",
+      "fictional": true
+    },
+    {
+      "entity_id": "ENT-006",
+      "name": "R. Mehta",
+      "type": "Person",
+      "fictional": true
+    },
+    {
+      "entity_id": "ENT-007",
+      "name": "P. Shah",
+      "type": "Person",
+      "fictional": true
+    },
+    {
+      "entity_id": "ENT-008",
+      "name": "Ward 3",
+      "type": "Location",
+      "fictional": true
+    },
+    {
+      "entity_id": "ENT-009",
+      "name": "Ward 4",
+      "type": "Location",
+      "fictional": true
+    },
+    {
+      "entity_id": "ENT-010",
+      "name": "Ward 5",
+      "type": "Location",
+      "fictional": true
+    },
+    {
+      "entity_id": "ENT-011",
+      "name": "GJ-00-AB-0000",
+      "type": "Vehicle Identifier",
+      "fictional": true
+    },
+    {
+      "entity_id": "ENT-012",
+      "name": "Portable water purification kit",
+      "type": "Item",
+      "fictional": true
+    },
+    {
+      "entity_id": "ENT-013",
+      "name": "Nandivan District Relief Store, Sector 2",
+      "type": "Location",
+      "fictional": true
+    }
+  ],
+  "evidence_records": [
+    {
+      "evidence_id": "EVD-001",
+      "document_id": "DOC-D03",
+      "page": 1,
+      "category": "Procurement Order",
+      "excerpt": "Approved quantity: 480 kits. Unit rate: INR 1,250. Total order value: INR 600,000 (Rupees Six Lakh only), before any separately approved adjustment.",
+      "facts": {
+        "quantity": 480,
+        "unit_rate_inr": 1250,
+        "total_inr": 600000,
+        "date": "2026-08-12"
+      }
+    },
+    {
+      "evidence_id": "EVD-002",
+      "document_id": "DOC-D04",
+      "page": 1,
+      "category": "Stock Receipt Entry",
+      "excerpt": "15-08-2026 14:00 | બ્લુ રિવર રિલીફ લોજિસ્ટિક્સ; ચલણ ૮૮ | 480",
+      "facts": {
+        "recorded_received_quantity": 480,
+        "recorded_receipt_datetime": "2026-08-15T14:00:00",
+        "reference": "BRL/NDV/88"
+      }
+    },
+    {
+      "evidence_id": "EVD-003",
+      "document_id": "DOC-D05",
+      "page": 1,
+      "category": "Gate Movement",
+      "excerpt": "17:30 | GJ-00-AB-0000 | BRL/NDV/88 | 360 | Unloaded | Count recorded at gate",
+      "facts": {
+        "unloaded_quantity": 360,
+        "gate_datetime": "2026-08-16T17:30:00",
+        "vehicle": "GJ-00-AB-0000"
+      }
+    },
+    {
+      "evidence_id": "EVD-004",
+      "document_id": "DOC-D05",
+      "page": 1,
+      "category": "Gate Movement",
+      "excerpt": "19:10 | GJ-00-AB-0000 | BRL/NDV/88 | 120 | Departed | Recorded as returned to vendor depot pending vehicle brake inspection",
+      "facts": {
+        "returned_quantity": 120,
+        "departure_datetime": "2026-08-16T19:10:00"
+      }
+    },
+    {
+      "evidence_id": "EVD-005",
+      "document_id": "DOC-D07",
+      "page": 1,
+      "category": "Supplier Invoice",
+      "excerpt": "Portable water purification kit | 480 | 1,250 | 600,000",
+      "facts": {
+        "invoiced_quantity": 480,
+        "unit_rate_inr": 1250,
+        "invoice_total_inr": 600000,
+        "invoice_date": "2026-08-18"
+      }
+    },
+    {
+      "evidence_id": "EVD-006",
+      "document_id": "DOC-D01",
+      "page": 1,
+      "category": "Citizen Complaint",
+      "excerpt": "પરંતુ સ્થાનિક લાભાર્થી યાદીમાં માત્ર 240 પરિવારોના નામ છે. વોર્ડ 4 માં 60 કિટ આપવામાં આવી હોવાનું જણાવવામાં આવ્યું છે. વોર્ડ 5 માં 18-08-2026 સુધી કોઈ કિટ મળી નથી.",
+      "facts": {
+        "ward3_register_reported_quantity": 300,
+        "ward3_listed_households": 240,
+        "ward4_reported_quantity": 60,
+        "ward5_reported_quantity": 0,
+        "as_of": "2026-08-18"
+      }
+    },
+    {
+      "evidence_id": "EVD-007",
+      "document_id": "DOC-D02",
+      "page": 1,
+      "category": "Inspection Finding",
+      "excerpt": "वितरण सारांश में 18-08-2026 तक कुल 330 किट जारी दर्शाई गई हैं: वार्ड 3 में 250 और वार्ड 4 में 80।",
+      "facts": {
+        "distribution_total": 330,
+        "ward3_quantity": 250,
+        "ward4_quantity": 80,
+        "as_of": "2026-08-18"
+      }
+    },
+    {
+      "evidence_id": "EVD-008",
+      "document_id": "DOC-D02",
+      "page": 1,
+      "category": "Physical Stock Count",
+      "excerpt": "भौतिक सत्यापन के समय भंडार में 24 किट उपलब्ध पाई गईं। भंडार कर्मचारी ने बताया कि 18-08-2026 को 6 किट नमूना और परीक्षण हेतु जारी की गई थीं।",
+      "facts": {
+        "physical_stock": 24,
+        "sample_issue_quantity": 6,
+        "inspection_date": "2026-08-19"
+      }
+    },
+    {
+      "evidence_id": "EVD-009",
+      "document_id": "DOC-D02",
+      "page": 1,
+      "category": "Missing Source Record",
+      "excerpt": "निरीक्षण के समय मूल हस्ताक्षरित आपूर्ति चालान उपलब्ध नहीं कराया गया।",
+      "facts": {
+        "signed_delivery_challan_available": false
+      }
+    },
+    {
+      "evidence_id": "EVD-010",
+      "document_id": "DOC-D06",
+      "page": 1,
+      "category": "Beneficiary Statement",
+      "excerpt": "मैंने 16-08-2026 की शाम को एक जल शुद्धिकरण किट प्राप्त की। किट देने वाले व्यक्ति ने किसी सूची पर हस्ताक्षर कराए। मुझे कुल वितरण संख्या की जानकारी नहीं है।",
+      "facts": {
+        "beneficiary_code": "W4-HH-011",
+        "reported_received_quantity": 1,
+        "reported_date": "2026-08-16",
+        "ward": "Ward 4"
+      }
+    },
+    {
+      "evidence_id": "EVD-011",
+      "document_id": "DOC-D06",
+      "page": 1,
+      "category": "Beneficiary Statement",
+      "excerpt": "मुझे 17-08-2026 की सुबह एक किट मिली। वितरण के समय वाहन वहाँ नहीं था; किट स्थानीय केंद्र से दी गई थी।",
+      "facts": {
+        "beneficiary_code": "W4-HH-024",
+        "reported_received_quantity": 1,
+        "reported_date": "2026-08-17",
+        "ward": "Ward 4"
+      }
+    },
+    {
+      "evidence_id": "EVD-012",
+      "document_id": "DOC-D06",
+      "page": 1,
+      "category": "Beneficiary Statement",
+      "excerpt": "मेरे परिवार को 16-08-2026 को किट नहीं मिली। 17-08-2026 को भी केंद्र पर नाम खोजने पर सूची में नाम नहीं मिला।",
+      "facts": {
+        "beneficiary_code": "W4-HH-031",
+        "reported_received_quantity": 0,
+        "reported_date": "2026-08-17",
+        "ward": "Ward 4"
+      }
+    },
+    {
+      "evidence_id": "EVD-013",
+      "document_id": "DOC-D04",
+      "page": 1,
+      "category": "Stock Register Balance",
+      "excerpt": "18-08-2026 | નમૂના / પરીક્ષણ | 0 | 6 | 144",
+      "facts": {
+        "sample_issue_quantity": 6,
+        "recorded_closing_balance": 144,
+        "date": "2026-08-18"
+      }
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EVT-001",
+      "date": "2026-08-12",
+      "title": "Work order issued",
+      "description": "Work order NDR/WO/2026/041 approved 480 kits at INR 1,250 each, total INR 600,000.",
+      "evidence_ids": [
+        "EVD-001"
+      ],
+      "date_precision": "Exact"
+    },
+    {
+      "event_id": "EVT-002",
+      "date": "2026-08-15T14:00:00",
+      "title": "Stock register records receipt of 480 kits",
+      "description": "The stock register records 480 kits against reference BRL/NDV/88 at 14:00. This entry is not independently corroborated by a signed challan in the inspection memo.",
+      "evidence_ids": [
+        "EVD-002"
+      ],
+      "date_precision": "Exact"
+    },
+    {
+      "event_id": "EVT-003",
+      "date": "2026-08-16T17:30:00",
+      "title": "Vehicle gate entry and partial unloading",
+      "description": "The gate register records 360 kits unloaded from vehicle GJ-00-AB-0000.",
+      "evidence_ids": [
+        "EVD-003"
+      ],
+      "date_precision": "Exact"
+    },
+    {
+      "event_id": "EVT-004",
+      "date": "2026-08-16T19:10:00",
+      "title": "120 kits recorded as returned to vendor depot",
+      "description": "The same gate register records 120 kits departing with the vehicle, pending brake inspection.",
+      "evidence_ids": [
+        "EVD-004"
+      ],
+      "date_precision": "Exact"
+    },
+    {
+      "event_id": "EVT-005",
+      "date": "2026-08-17",
+      "title": "Beneficiary statements collected in Ward 4",
+      "description": "Three synthetic beneficiary statements describe mixed experiences of receiving or not receiving one kit.",
+      "evidence_ids": [
+        "EVD-010",
+        "EVD-011",
+        "EVD-012"
+      ],
+      "date_precision": "Date only"
+    },
+    {
+      "event_id": "EVT-006",
+      "date": "2026-08-18",
+      "title": "Citizen complaint submitted",
+      "description": "A Ward 3 resident alleges a mismatch between reported distribution and the beneficiary list, and no distribution in Ward 5 as of that date.",
+      "evidence_ids": [
+        "EVD-006"
+      ],
+      "date_precision": "Date only"
+    },
+    {
+      "event_id": "EVT-007",
+      "date": "2026-08-18",
+      "title": "Supplier invoice issued for 480 kits",
+      "description": "Invoice BRL/INV/2026/119 claims 480 kits for INR 600,000.",
+      "evidence_ids": [
+        "EVD-005"
+      ],
+      "date_precision": "Date only"
+    },
+    {
+      "event_id": "EVT-008",
+      "date": "2026-08-19",
+      "title": "Physical stock inspection",
+      "description": "Inspection records 354 kits physically present and 6 sample/testing issue; distribution summary reports 330 kits issued by 18 August.",
+      "evidence_ids": [
+        "EVD-007",
+        "EVD-008"
+      ],
+      "date_precision": "Date only"
+    },
+    {
+      "event_id": "EVT-009",
+      "date": "2026-08-20",
+      "title": "Inspection memo signed",
+      "description": "The inspection memo records the previous day inspection and notes that the original signed delivery challan was not produced.",
+      "evidence_ids": [
+        "EVD-009"
+      ],
+      "date_precision": "Date only"
+    }
+  ],
+  "contradictions": [
+    {
+      "contradiction_id": "CON-001",
+      "category": "Quantity and receipt date mismatch",
+      "evidence_ids": [
+        "EVD-002",
+        "EVD-003",
+        "EVD-004"
+      ],
+      "explanation": "The stock register records 480 kits received on 15 August at 14:00. The gate register records only 360 unloaded on 16 August at 17:30 and 120 departing with the vehicle at 19:10. The stock-register entry lists challan number 88, corresponding to the gate register reference BRL/NDV/88. These entries require reconciliation; the gate record may not capture an earlier or separate movement.",
+      "status": "Requires Human Review",
+      "confidence": "High (synthetic expected candidate)"
+    },
+    {
+      "contradiction_id": "CON-002",
+      "category": "Invoiced quantity versus gate-recorded unloading",
+      "evidence_ids": [
+        "EVD-001",
+        "EVD-003",
+        "EVD-004",
+        "EVD-005"
+      ],
+      "explanation": "The work order and supplier invoice each refer to 480 kits, while the gate record shows 360 unloaded and 120 returned to the vendor depot. The delivery challan is not available in the inspection record.",
+      "status": "Requires Human Review",
+      "confidence": "High (synthetic expected candidate)"
+    },
+    {
+      "contradiction_id": "CON-003",
+      "category": "Ward distribution totals differ",
+      "evidence_ids": [
+        "EVD-006",
+        "EVD-007"
+      ],
+      "explanation": "The complaint reports 300 kits in Ward 3 and 60 in Ward 4 (360 total), while the inspection memo reports 250 in Ward 3 and 80 in Ward 4 (330 total), both stated as of 18 August. Source registers and beneficiary lists are needed to determine which figures are supported.",
+      "status": "Requires Human Review",
+      "confidence": "Medium (synthetic expected candidate)"
+    },
+    {
+      "contradiction_id": "CON-004",
+      "category": "Ward 3 beneficiary-list count mismatch",
+      "evidence_ids": [
+        "EVD-006"
+      ],
+      "explanation": "The complaint states that the register reportedly shows 300 Ward 3 kits while the local beneficiary list contains only 240 household names. This is an internal mismatch reported by the complainant and requires the underlying list and register page.",
+      "status": "Requires Human Review",
+      "confidence": "Medium (synthetic expected candidate)"
+    },
+    {
+      "contradiction_id": "CON-005",
+      "category": "Recorded stock balance versus physical count",
+      "evidence_ids": [
+        "EVD-013",
+        "EVD-008"
+      ],
+      "explanation": "The stock register shows a closing balance of 144 kits on 18 August, while the inspection memo reports 24 kits physically present on 19 August. The 120-kit difference may relate to the quantity recorded as returned to the vendor depot in the gate log, but the stock adjustment and return receipt are not included.",
+      "status": "Requires Human Review",
+      "confidence": "High (synthetic expected candidate)"
+    }
+  ],
+  "claims_for_verification": [
+    {
+      "claim_id": "CLM-001",
+      "claim": "The work order authorized procurement of 480 water purification kits for INR 600,000.",
+      "supporting_evidence_ids": [
+        "EVD-001"
+      ],
+      "contradictory_evidence_ids": [],
+      "expected_status": "Supported"
+    },
+    {
+      "claim_id": "CLM-002",
+      "claim": "The supplier physically delivered all 480 kits to the district store by 16 August 2026.",
+      "supporting_evidence_ids": [
+        "EVD-002"
+      ],
+      "contradictory_evidence_ids": [
+        "EVD-003",
+        "EVD-004",
+        "EVD-009"
+      ],
+      "expected_status": "Conflicting Evidence"
+    },
+    {
+      "claim_id": "CLM-003",
+      "claim": "The gate register records 360 kits unloaded on 16 August 2026.",
+      "supporting_evidence_ids": [
+        "EVD-003"
+      ],
+      "contradictory_evidence_ids": [],
+      "expected_status": "Supported"
+    },
+    {
+      "claim_id": "CLM-004",
+      "claim": "The final beneficiary distribution total by 18 August 2026 was 360 kits.",
+      "supporting_evidence_ids": [
+        "EVD-006"
+      ],
+      "contradictory_evidence_ids": [
+        "EVD-007"
+      ],
+      "expected_status": "Conflicting Evidence"
+    },
+    {
+      "claim_id": "CLM-005",
+      "claim": "A signed supplier delivery challan confirming full receipt of 480 kits is available in the inspection file.",
+      "supporting_evidence_ids": [],
+      "contradictory_evidence_ids": [
+        "EVD-009"
+      ],
+      "expected_status": "Unsupported"
+    }
+  ],
+  "briefing_draft": {
+    "briefing_id": "BRF-NVD-DR-2026-014-V1",
+    "case_id": "CASE-NVD-DR-2026-014",
+    "version": 1,
+    "status": "Draft - Synthetic Demonstration",
+    "title": "Preliminary Evidence Review - Water Purification Kit Procurement and Distribution",
+    "sections": [
+      {
+        "heading": "Executive Summary",
+        "text": "This synthetic case concerns a work order for 480 water purification kits valued at INR 600,000. The available records contain inconsistent quantity and timing information. The work order and invoice state 480 kits; a stock-register image records 480 kits on 15 August; the gate register records 360 unloaded and 120 returned on 16 August. The inspection memo records 24 units physically present, 6 sample units issued and 330 units distributed by 18 August. These figures require reconciliation before any administrative conclusion."
+      },
+      {
+        "heading": "Documents Reviewed",
+        "text": "Seven synthetic documents: Gujarati complaint, Hindi inspection memo, English work order, Gujarati stock register, English gate movement register, Hindi beneficiary statements and English supplier invoice."
+      },
+      {
+        "heading": "Key Issues",
+        "text": "Receipt quantity and timing; invoice quantity compared with gate movement; distribution total differences; Ward 3 beneficiary list discrepancy; absence of the original signed delivery challan in the inspection file."
+      },
+      {
+        "heading": "Limitations",
+        "text": "All records are invented for software testing. The original supplier challan, complete beneficiary registers, payment voucher, store issue slips and vendor depot receipt are not included. No conclusion about wrongdoing or liability can be drawn."
+      },
+      {
+        "heading": "Recommended Verification Steps",
+        "text": "Obtain the original signed delivery challan, vendor dispatch register, vehicle trip sheet, receiving officer statement, full Ward 3 and Ward 4 beneficiary registers, sample issue voucher and payment file. Compare timestamps, quantities and signatures."
+      }
+    ]
+  },
+  "expected_pipeline_routes": [
+    {
+      "document_id": "DOC-D01",
+      "route": "OCR",
+      "language": "Gujarati",
+      "expected_translation": "Gujarati to English via IndicTrans2"
+    },
+    {
+      "document_id": "DOC-D02",
+      "route": "OCR",
+      "language": "Hindi",
+      "expected_translation": "Hindi to English via IndicTrans2"
+    },
+    {
+      "document_id": "DOC-D03",
+      "route": "PDF Parser",
+      "language": "English",
+      "expected_translation": "English bypass"
+    },
+    {
+      "document_id": "DOC-D04",
+      "route": "OCR",
+      "language": "Gujarati",
+      "expected_translation": "Gujarati to English via IndicTrans2"
+    },
+    {
+      "document_id": "DOC-D05",
+      "route": "PDF Parser",
+      "language": "English",
+      "expected_translation": "English bypass"
+    },
+    {
+      "document_id": "DOC-D06",
+      "route": "OCR",
+      "language": "Hindi",
+      "expected_translation": "Hindi to English via IndicTrans2"
+    },
+    {
+      "document_id": "DOC-D07",
+      "route": "PDF Parser",
+      "language": "English",
+      "expected_translation": "English bypass"
+    }
+  ]
+}

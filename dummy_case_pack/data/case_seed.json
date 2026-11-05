@@ -1,0 +1,95 @@
+{
+  "demo_notice": "Entirely fictional synthetic test case. Not an official government record. Do not use for real administrative, legal or enforcement decisions.",
+  "case_id": "CASE-NVD-DR-2026-014",
+  "case_reference": "NVD-DR-2026-014",
+  "title": "Review of Emergency Water Purification Kit Procurement and Distribution - Monsoon Response 2026",
+  "category": "Relief Procurement and Distribution Review",
+  "department": "Nandivan District Relief Office (fictional)",
+  "district": "Nandivan (fictional district)",
+  "description": "A synthetic administrative review into quantity reconciliation, stock recording and beneficiary distribution of 480 emergency water purification kits ordered during a fictional monsoon response.",
+  "priority": "Medium",
+  "status": "Under Review",
+  "date_opened": "2026-08-20",
+  "assigned_officer": "Demo Investigating Officer",
+  "currency": "INR",
+  "tags": [
+    "synthetic-demo",
+    "procurement",
+    "relief-material",
+    "multilingual",
+    "ocr",
+    "contradiction-testing"
+  ],
+  "documents": [
+    {
+      "document_id": "DOC-D01",
+      "filename": "D01_Complaint_Gujarati_Scanned.pdf",
+      "mime_type": "application/pdf",
+      "document_mode": "scanned_image_pdf",
+      "expected_route": "OCR",
+      "language": "Gujarati",
+      "sha256": "c61a972ce15103d1c667e98e33dcced1dcc4345efb39153f50e74f2c3cddaf9c",
+      "size_bytes": 527178
+    },
+    {
+      "document_id": "DOC-D02",
+      "filename": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+      "mime_type": "application/pdf",
+      "document_mode": "scanned_image_pdf",
+      "expected_route": "OCR",
+      "language": "Hindi",
+      "sha256": "ec9369b56f078cfa307103cc39370f5b991ac01044ea2859d7d3b08e6a4106a7",
+      "size_bytes": 618342
+    },
+    {
+      "document_id": "DOC-D03",
+      "filename": "D03_Work_Order_English_Digital.pdf",
+      "mime_type": "application/pdf",
+      "document_mode": "digital_text_pdf",
+      "expected_route": "PDF_PARSER",
+      "language": "English",
+      "sha256": "6f6178a52152bb5026e1721ca68ea6e8add482388e874930bb058363f0d7a8b7",
+      "size_bytes": 2891
+    },
+    {
+      "document_id": "DOC-D04",
+      "filename": "D04_Stock_Register_Gujarati_Scanned.pdf",
+      "mime_type": "application/pdf",
+      "document_mode": "scanned_image_pdf",
+      "expected_route": "OCR",
+      "language": "Gujarati",
+      "sha256": "a20e6e1d6183fdce5b30a39a36cbcf767e3b7944b76d947eb06cd1df34be7615",
+      "size_bytes": 386615
+    },
+    {
+      "document_id": "DOC-D05",
+      "filename": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+      "mime_type": "application/pdf",
+      "document_mode": "digital_text_pdf",
+      "expected_route": "PDF_PARSER",
+      "language": "English",
+      "sha256": "9620e5ca8181ed5c056fd54851abc0b7d0b622e557ed620c0a2e1219735a025f",
+      "size_bytes": 2719
+    },
+    {
+      "document_id": "DOC-D06",
+      "filename": "D06_Beneficiary_Statements_Hindi_Scanned.pdf",
+      "mime_type": "application/pdf",
+      "document_mode": "scanned_image_pdf",
+      "expected_route": "OCR",
+      "language": "Hindi",
+      "sha256": "e81024dab547632a50d8a6d1c930d5ae50cdcafce13a5cfe85db774210ebf424",
+      "size_bytes": 532624
+    },
+    {
+      "document_id": "DOC-D07",
+      "filename": "D07_Supplier_Invoice_English_Digital.pdf",
+      "mime_type": "application/pdf",
+      "document_mode": "digital_text_pdf",
+      "expected_route": "PDF_PARSER",
+      "language": "English",
+      "sha256": "e857a99ad2bd8048b5ee8f83400160cf8859185d758594cced43f267c2b4fb25",
+      "size_bytes": 2596
+    }
+  ]
+}

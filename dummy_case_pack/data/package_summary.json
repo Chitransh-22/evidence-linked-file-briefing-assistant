@@ -1,0 +1,12 @@
+{
+  "case_reference": "NVD-DR-2026-014",
+  "document_count": 7,
+  "scanned_pdf_count": 4,
+  "digital_pdf_count": 3,
+  "expected_evidence_count": 13,
+  "expected_entity_count": 13,
+  "expected_event_count": 9,
+  "expected_contradiction_candidates": 5,
+  "expected_claims": 5,
+  "fictional": true
+}

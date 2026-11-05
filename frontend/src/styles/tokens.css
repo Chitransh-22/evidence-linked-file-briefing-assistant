@@ -1,0 +1,63 @@
+:root {
+  /* Government-Grade Institutional Color Palette */
+  --color-primary-navy: #183153;
+  --color-primary-hover: #122642;
+  --color-dark-navy: #10243A;
+  --color-slate: #334155;
+  --color-secondary-grey: #64748B;
+  --color-muted-grey: #94A3B8;
+  
+  --color-bg-main: #F3F5F8;
+  --color-bg-card: #FFFFFF;
+  --color-bg-subtle: #F8FAFC;
+  --color-bg-hover: #F1F5F9;
+
+  --color-border: #D8DEE7;
+  --color-border-light: #E2E8F0;
+  --color-border-dark: #CBD5E1;
+
+  --color-teal-positive: #0F766E;
+  --color-teal-bg: #CCFBF1;
+  --color-amber-warning: #B45309;
+  --color-amber-bg: #FEF3C7;
+  --color-red-alert: #B91C1C;
+  --color-red-bg: #FEE2E2;
+  --color-blue-info: #0369A1;
+  --color-blue-bg: #E0F2FE;
+
+  /* Typography */
+  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.8125rem;  /* 13px */
+  --font-size-base: 0.875rem; /* 14px */
+  --font-size-md: 0.9375rem;  /* 15px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+
+  /* Borders & Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  /* Shadows (Subtle, professional) */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+}
