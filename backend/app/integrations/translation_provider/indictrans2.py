@@ -79,7 +79,7 @@ class IndicTrans2Service:
             "device": self.device,
             "status": "ready" if is_ready else "model_weights_not_found",
             "supported_routes": ["guj -> eng", "hin -> eng", "eng (bypass)"],
-            "instructions": "Translation subsystem is ready. English bypass active per authoritative specification. Place IndicTrans2 model weights in INDICTRANS2_MODEL_PATH for offline deep neural inference."
+            "instructions": "Active and fully operational. English bypass and multilingual translation services are online and ready." if is_ready else "Place IndicTrans2 model weights in INDICTRANS2_MODEL_PATH and set INDICTRANS2_ENABLED=true in .env to enable deep translation."
         }
 
     def _load_model(self) -> bool:
