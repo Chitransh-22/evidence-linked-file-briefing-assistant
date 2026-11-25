@@ -1,6 +1,7 @@
 import math
+import uuid
 from typing import List, Dict, Any, Optional
-from app.core.config import settings
+from app.core.config import settings, BACKEND_DIR
 from app.core.logging import logger
 
 try:
@@ -11,6 +12,14 @@ except ImportError:
     qmodels = None
 
 
+def to_qdrant_uuid(raw_id: str) -> str:
+    """Ensure vector ID is a valid RFC 4122 UUID compliant with Qdrant."""
+    try:
+        return str(uuid.UUID(str(raw_id)))
+    except (ValueError, AttributeError):
+        return str(uuid.uuid5(uuid.NAMESPACE_DNS, str(raw_id)))
+
+
 class QdrantVectorService:
     def __init__(self):
         self.host = settings.QDRANT_HOST
@@ -19,6 +28,7 @@ class QdrantVectorService:
         self.dim = settings.QDRANT_EMBEDDING_DIM
         self.client: Optional[QdrantClient] = None
         self.is_connected = False
+        self.is_embedded = False
 
         # In-memory vector store fallback if Qdrant daemon is unreachable
         self._local_points: List[Dict[str, Any]] = []
@@ -30,19 +40,35 @@ class QdrantVectorService:
             logger.warning("qdrant_client library not installed; using local memory vector index.")
             return
 
+        # 1. Try remote Qdrant daemon if running
         try:
-            self.client = QdrantClient(host=self.host, port=self.port, timeout=2.0)
-            # Check connection
+            self.client = QdrantClient(host=self.host, port=self.port, timeout=1.0)
             self.client.get_collections()
             self.is_connected = True
+            self.is_embedded = False
             self._ensure_collection()
-            logger.info(f"Connected to Qdrant vector database at {self.host}:{self.port}")
+            logger.info(f"Connected to remote Qdrant database at {self.host}:{self.port}")
+            return
+        except Exception:
+            pass
+
+        # 2. Seamless persistent embedded local Qdrant engine (Zero Docker dependency)
+        try:
+            qdrant_dir = BACKEND_DIR / "storage" / "qdrant"
+            qdrant_dir.mkdir(parents=True, exist_ok=True)
+            self.client = QdrantClient(path=str(qdrant_dir))
+            self.is_connected = True
+            self.is_embedded = True
+            self._ensure_collection()
+            logger.info(f"Initialized persistent embedded Qdrant vector database at '{qdrant_dir}'")
+            return
         except Exception as e:
             self.is_connected = False
-            logger.info(f"Qdrant server not responding at {self.host}:{self.port} ({e}). Activated in-memory vector index fallback.")
+            self.is_embedded = False
+            logger.warning(f"Could not initialize embedded Qdrant ({e}). Falling back to in-memory store.")
 
     def _ensure_collection(self):
-        if not self.is_connected or not self.client:
+        if not self.is_connected or not self.client or not qmodels:
             return
         try:
             collections = [c.name for c in self.client.get_collections().collections]
@@ -63,11 +89,14 @@ class QdrantVectorService:
         if self.is_connected and self.client and qmodels:
             points = []
             for chunk, emb in zip(chunks, embeddings):
+                raw_id = str(chunk["vector_id"])
+                qid = to_qdrant_uuid(raw_id)
                 points.append(
                     qmodels.PointStruct(
-                        id=chunk["vector_id"],
+                        id=qid,
                         vector=emb,
                         payload={
+                            "vector_id": raw_id,
                             "case_id": chunk.get("case_id"),
                             "document_id": chunk.get("document_id"),
                             "page_start": chunk.get("page_start"),
@@ -85,11 +114,13 @@ class QdrantVectorService:
 
         # Local fallback store
         for chunk, emb in zip(chunks, embeddings):
-            self._local_points = [p for p in self._local_points if p["id"] != chunk["vector_id"]]
+            raw_id = str(chunk["vector_id"])
+            self._local_points = [p for p in self._local_points if p["id"] != raw_id]
             self._local_points.append({
-                "id": chunk["vector_id"],
+                "id": raw_id,
                 "vector": emb,
                 "payload": {
+                    "vector_id": raw_id,
                     "case_id": chunk.get("case_id"),
                     "document_id": chunk.get("document_id"),
                     "page_start": chunk.get("page_start"),
@@ -123,19 +154,29 @@ class QdrantVectorService:
 
                 query_filter = qmodels.Filter(must=filter_conditions) if filter_conditions else None
 
-                results = self.client.search(
-                    collection_name=self.collection,
-                    query_vector=query_vector,
-                    limit=limit,
-                    query_filter=query_filter,
-                )
+                if hasattr(self.client, "query_points"):
+                    res = self.client.query_points(
+                        collection_name=self.collection,
+                        query=query_vector,
+                        limit=limit,
+                        query_filter=query_filter,
+                    )
+                    hits = res.points
+                else:
+                    hits = self.client.search(
+                        collection_name=self.collection,
+                        query_vector=query_vector,
+                        limit=limit,
+                        query_filter=query_filter,
+                    )
+
                 return [
                     {
-                        "vector_id": str(r.id),
+                        "vector_id": str(r.payload.get("vector_id", r.id)),
                         "score": round(float(r.score), 4),
                         "payload": r.payload,
                     }
-                    for r in results
+                    for r in hits
                 ]
             except Exception as e:
                 logger.warning(f"Qdrant search error ({e}), running local cosine fallback.")
@@ -151,7 +192,7 @@ class QdrantVectorService:
         for p in filtered:
             score = self._cosine_similarity(query_vector, p["vector"])
             scored.append({
-                "vector_id": str(p["id"]),
+                "vector_id": str(p["payload"].get("vector_id", p["id"])),
                 "score": round(float(score), 4),
                 "payload": p["payload"],
             })
@@ -170,11 +211,11 @@ class QdrantVectorService:
     def health_check(self) -> Dict[str, Any]:
         return {
             "name": "Qdrant Vector Database",
-            "host": f"{self.host}:{self.port}",
+            "host": f"{self.host}:{self.port}" if not self.is_embedded else "embedded_storage_engine",
             "collection": self.collection,
             "connected": self.is_connected,
-            "status": "connected" if self.is_connected else "running_local_memory_fallback",
-            "indexed_points_count": len(self._local_points) if not self.is_connected else "managed_by_qdrant",
+            "status": "ready" if self.is_connected else "running_local_memory_fallback",
+            "indexed_points_count": "managed_by_qdrant" if self.is_connected else len(self._local_points),
         }
 
 

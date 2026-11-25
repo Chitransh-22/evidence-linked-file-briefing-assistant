@@ -45,6 +45,8 @@ backend/storage/originals/*
 backend/storage/intermediate/*
 !backend/storage/intermediate/.gitkeep
 !backend/storage/intermediate/*.json
+backend/storage/qdrant/*
+!backend/storage/qdrant/.gitkeep
 tmp/
 *.log
 
