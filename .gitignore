@@ -53,3 +53,12 @@ tmp/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Large Model Weights (IndicTrans2 / HuggingFace cache)
+backend/models/**/*.bin
+backend/models/**/*.pt
+backend/models/**/*.safetensors
+backend/models/**/*.onnx
+!backend/models/**/README.md
+!backend/models/**/.gitkeep
+
