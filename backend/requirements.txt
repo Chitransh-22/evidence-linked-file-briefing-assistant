@@ -22,3 +22,5 @@ pytest>=8.0.0
 pytest-asyncio>=0.23.0
 python-dotenv>=1.0.0
 pytz>=2024.1
+deep-translator>=1.11.4
+
