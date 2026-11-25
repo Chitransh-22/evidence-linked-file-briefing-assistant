@@ -124,7 +124,7 @@ class ExportService:
         story.append(Spacer(1, 15))
 
         # Sections
-        section_data = briefing.get("section_data", {})
+        section_data = briefing.get("section_data") or briefing.get("sections") or {}
         for sec_name, content in section_data.items():
             story.append(Paragraph(sec_name.upper(), heading_style))
             story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#94A3B8"), spaceAfter=6))
@@ -187,7 +187,7 @@ class ExportService:
         table.cell(2, 0).text = f"Approved By: {briefing.get('approved_by') or 'Pending'}"
         table.cell(2, 1).text = f"Approval Date: {briefing.get('approval_date') or 'Pending'}"
 
-        section_data = briefing.get("section_data", {})
+        section_data = briefing.get("section_data") or briefing.get("sections") or {}
         for sec_name, content in section_data.items():
             doc.add_heading(sec_name, level=2)
             for line in str(content).split("\n"):

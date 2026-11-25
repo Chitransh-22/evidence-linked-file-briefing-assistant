@@ -54,7 +54,18 @@ async def list_briefings(
         has_access = await check_case_access(case_id, current_user)
         if not has_access:
             raise HTTPException(status_code=403, detail="Unauthorized")
-        query["case_id"] = case_id
+        case = await db.cases.find_one({"$or": [{"_id": case_id}, {"case_id": case_id}, {"case_reference": case_id}]})
+        if case:
+            query["case_id"] = {"$in": list(filter(None, [case["_id"], case.get("case_reference"), case.get("case_id"), case_id]))}
+        else:
+            query["case_id"] = case_id
+    elif current_user.get("role") not in [UserRole.SYSTEM_ADMINISTRATOR.value, UserRole.AUDITOR.value, UserRole.SUPERVISORY_REVIEWER.value]:
+        assigned = current_user.get("assigned_cases", [])
+        if "*" not in assigned and assigned:
+            query["$or"] = [
+                {"case_id": {"$in": assigned}},
+                {"created_by": current_user.get("username")},
+            ]
     if status_filter:
         query["status"] = status_filter
 
@@ -65,6 +76,12 @@ async def list_briefings(
 
     for b in briefings:
         b["id"] = str(b["_id"])
+        # Normalize section_data vs sections
+        if not b.get("section_data") and b.get("sections"):
+            b["section_data"] = b["sections"]
+        if not b.get("sections") and b.get("section_data"):
+            b["sections"] = b["section_data"]
+
         # Calculate claim verification breakdown
         claims = await db.claims.find({"briefing_id": b["_id"]}).to_list(100)
         total_claims = len(claims)
@@ -101,6 +118,8 @@ async def generate_briefing(
         selected_sections=req.selected_sections,
     )
     briefing["id"] = str(briefing["_id"])
+    if not briefing.get("sections") and briefing.get("section_data"):
+        briefing["sections"] = briefing["section_data"]
     return {"message": "Briefing generated successfully", "briefing": briefing}
 
 
@@ -109,20 +128,48 @@ async def get_briefing(briefing_id: str, current_user: dict = Depends(get_curren
     db = get_database()
     briefing = await db.briefings.find_one({"_id": briefing_id})
     if not briefing:
+        briefing = await db.briefings.find_one({"briefing_id": briefing_id})
+    if not briefing:
         raise HTTPException(status_code=404, detail="Briefing not found")
 
-    has_access = await check_case_access(briefing["case_id"], current_user)
-    if not has_access:
-        raise HTTPException(status_code=403, detail="Unauthorized")
+    user_role = current_user.get("role")
+    username = current_user.get("username", "")
+
+    # Role & Ownership access check:
+    # 1. System admin, auditor, or supervisory reviewer can preview/review all briefings
+    # 2. Briefing creator can always preview/review their own briefing
+    # 3. Otherwise verify case access for the briefing's case
+    can_access = False
+    if user_role in [UserRole.SYSTEM_ADMINISTRATOR.value, UserRole.AUDITOR.value, UserRole.SUPERVISORY_REVIEWER.value]:
+        can_access = True
+    elif briefing.get("created_by") == username:
+        can_access = True
+    else:
+        can_access = await check_case_access(briefing.get("case_id"), current_user)
+
+    if not can_access:
+        raise HTTPException(status_code=403, detail="Unauthorized access to this briefing")
 
     briefing["id"] = str(briefing["_id"])
 
+    # Normalize section_data vs sections for consistent review preview
+    if not briefing.get("section_data") and briefing.get("sections"):
+        briefing["section_data"] = briefing["sections"]
+    if not briefing.get("sections") and briefing.get("section_data"):
+        briefing["sections"] = briefing["section_data"]
+
     # Attach claims
-    claims = await db.claims.find({"briefing_id": briefing_id}).to_list(100)
+    claims = await db.claims.find({"briefing_id": briefing["_id"]}).to_list(100)
     for c in claims:
         c["id"] = str(c["_id"])
 
-    case = await db.cases.find_one({"_id": briefing["case_id"]})
+    case = None
+    if briefing.get("case_id"):
+        case = await db.cases.find_one({"$or": [
+            {"_id": briefing["case_id"]},
+            {"case_id": briefing["case_id"]},
+            {"case_reference": briefing.get("case_reference", briefing["case_id"])}
+        ]})
 
     return {
         "briefing": briefing,
@@ -134,7 +181,23 @@ async def get_briefing(briefing_id: str, current_user: dict = Depends(get_curren
 @router.get("/{briefing_id}/claims")
 async def get_briefing_claims(briefing_id: str, current_user: dict = Depends(get_current_user)):
     db = get_database()
-    claims = await db.claims.find({"briefing_id": briefing_id}).to_list(100)
+    briefing = await db.briefings.find_one({"_id": briefing_id})
+    if not briefing:
+        briefing = await db.briefings.find_one({"briefing_id": briefing_id})
+    if not briefing:
+        raise HTTPException(status_code=404, detail="Briefing not found")
+
+    user_role = current_user.get("role")
+    username = current_user.get("username", "")
+    can_access = (
+        user_role in [UserRole.SYSTEM_ADMINISTRATOR.value, UserRole.AUDITOR.value, UserRole.SUPERVISORY_REVIEWER.value]
+        or briefing.get("created_by") == username
+        or await check_case_access(briefing.get("case_id"), current_user)
+    )
+    if not can_access:
+        raise HTTPException(status_code=403, detail="Unauthorized")
+
+    claims = await db.claims.find({"briefing_id": briefing["_id"]}).to_list(100)
     for c in claims:
         c["id"] = str(c["_id"])
         # Attach supporting evidence details
@@ -153,7 +216,19 @@ async def update_briefing(
     db = get_database()
     briefing = await db.briefings.find_one({"_id": briefing_id})
     if not briefing:
+        briefing = await db.briefings.find_one({"briefing_id": briefing_id})
+    if not briefing:
         raise HTTPException(status_code=404, detail="Briefing not found")
+
+    user_role = current_user.get("role")
+    username = current_user.get("username", "")
+    can_access = (
+        user_role in [UserRole.SYSTEM_ADMINISTRATOR.value, UserRole.SUPERVISORY_REVIEWER.value]
+        or briefing.get("created_by") == username
+        or await check_case_access(briefing.get("case_id"), current_user)
+    )
+    if not can_access:
+        raise HTTPException(status_code=403, detail="Unauthorized")
 
     if briefing.get("status") == "Approved":
         raise HTTPException(status_code=400, detail="Approved briefings are immutable. Generate a new revision to make changes.")
@@ -163,6 +238,7 @@ async def update_briefing(
         upd["title"] = req.title
     if req.section_data is not None:
         upd["section_data"] = req.section_data
+        upd["sections"] = req.section_data
 
     # Append to change history
     history_entry = {
@@ -173,7 +249,7 @@ async def update_briefing(
     }
 
     await db.briefings.update_one(
-        {"_id": briefing_id},
+        {"_id": briefing["_id"]},
         {"$set": upd, "$push": {"change_history": history_entry}}
     )
 
@@ -181,7 +257,7 @@ async def update_briefing(
         user_id=current_user["username"],
         action="BRIEFING_EDITED",
         resource_type="briefing",
-        resource_id=briefing_id,
+        resource_id=briefing["_id"],
         outcome="SUCCESS",
         metadata={"note": req.change_note}
     )
@@ -198,28 +274,43 @@ async def regenerate_briefing_section(
     db = get_database()
     briefing = await db.briefings.find_one({"_id": briefing_id})
     if not briefing:
+        briefing = await db.briefings.find_one({"briefing_id": briefing_id})
+    if not briefing:
         raise HTTPException(status_code=404, detail="Briefing not found")
 
+    user_role = current_user.get("role")
+    username = current_user.get("username", "")
+    can_access = (
+        user_role == UserRole.SYSTEM_ADMINISTRATOR.value
+        or briefing.get("created_by") == username
+        or await check_case_access(briefing.get("case_id"), current_user)
+    )
+    if not can_access:
+        raise HTTPException(status_code=403, detail="Unauthorized")
+
     case_id = briefing["case_id"]
-    case = await db.cases.find_one({"_id": case_id})
-    docs = await db.documents.find({"case_id": case_id}).to_list(100)
-    evidence = await db.evidence_records.find({"case_id": case_id}).to_list(100)
-    events = await db.events.find({"case_id": case_id}).to_list(100)
-    contradictions = await db.contradictions.find({"case_id": case_id}).to_list(50)
-    entities = await db.entities.find({"case_id": case_id}).to_list(100)
+    case = await db.cases.find_one({"$or": [
+        {"_id": case_id},
+        {"case_id": case_id},
+        {"case_reference": briefing.get("case_reference", case_id)}
+    ]})
+    case_match_ids = list(filter(None, [case_id, case.get("_id") if case else None, case.get("case_reference") if case else None, case.get("case_id") if case else None]))
+    docs = await db.documents.find({"case_id": {"$in": case_match_ids}}).to_list(100)
+    evidence = await db.evidence_records.find({"case_id": {"$in": case_match_ids}}).to_list(100)
+    events = await db.events.find({"case_id": {"$in": case_match_ids}}).to_list(100)
+    contradictions = await db.contradictions.find({"case_id": {"$in": case_match_ids}}).to_list(50)
+    entities = await db.entities.find({"case_id": {"$in": case_match_ids}}).to_list(100)
 
     new_section_text = BriefingService._generate_section_text(
-        req.section_name, case, docs, evidence, events, contradictions, entities
+        req.section_name, case or {}, docs, evidence, events, contradictions, entities
     )
 
-    section_data = briefing.get("section_data", {})
-    section_data[req.section_name] = new_section_text
-
     await db.briefings.update_one(
-        {"_id": briefing_id},
+        {"_id": briefing["_id"]},
         {
             "$set": {
                 f"section_data.{req.section_name}": new_section_text,
+                f"sections.{req.section_name}": new_section_text,
                 "updated_at": datetime.now(timezone.utc).isoformat(),
             },
             "$push": {
@@ -236,7 +327,7 @@ async def regenerate_briefing_section(
         user_id=current_user["username"],
         action="BRIEFING_SECTION_REGENERATED",
         resource_type="briefing",
-        resource_id=briefing_id,
+        resource_id=briefing["_id"],
         outcome="SUCCESS",
         metadata={"section_name": req.section_name}
     )
@@ -415,20 +506,39 @@ async def export_briefing_pdf(briefing_id: str, current_user: dict = Depends(get
     db = get_database()
     briefing = await db.briefings.find_one({"_id": briefing_id})
     if not briefing:
+        briefing = await db.briefings.find_one({"briefing_id": briefing_id})
+    if not briefing:
         raise HTTPException(status_code=404, detail="Briefing not found")
 
-    case = await db.cases.find_one({"_id": briefing["case_id"]})
+    user_role = current_user.get("role")
+    username = current_user.get("username", "")
+    can_access = (
+        user_role in [UserRole.SYSTEM_ADMINISTRATOR.value, UserRole.AUDITOR.value, UserRole.SUPERVISORY_REVIEWER.value]
+        or briefing.get("created_by") == username
+        or await check_case_access(briefing.get("case_id"), current_user)
+    )
+    if not can_access:
+        raise HTTPException(status_code=403, detail="Unauthorized")
+
+    if not briefing.get("section_data") and briefing.get("sections"):
+        briefing["section_data"] = briefing["sections"]
+
+    case = await db.cases.find_one({"$or": [
+        {"_id": briefing.get("case_id")},
+        {"case_id": briefing.get("case_id")},
+        {"case_reference": briefing.get("case_reference", briefing.get("case_id"))}
+    ]})
     pdf_bytes = ExportService.generate_briefing_pdf(briefing, case or {})
 
     await AuditService.log_event(
         user_id=current_user["username"],
         action="BRIEFING_EXPORTED_PDF",
         resource_type="briefing",
-        resource_id=briefing_id,
+        resource_id=briefing["_id"],
         outcome="SUCCESS"
     )
 
-    filename = f"Briefing_{briefing.get('case_reference')}_v{briefing.get('version', 1)}.pdf"
+    filename = f"Briefing_{briefing.get('case_reference') or briefing.get('_id')}_v{briefing.get('version', 1)}.pdf"
     return StreamingResponse(
         io.BytesIO(pdf_bytes),
         media_type="application/pdf",
@@ -441,20 +551,39 @@ async def export_briefing_docx(briefing_id: str, current_user: dict = Depends(ge
     db = get_database()
     briefing = await db.briefings.find_one({"_id": briefing_id})
     if not briefing:
+        briefing = await db.briefings.find_one({"briefing_id": briefing_id})
+    if not briefing:
         raise HTTPException(status_code=404, detail="Briefing not found")
 
-    case = await db.cases.find_one({"_id": briefing["case_id"]})
+    user_role = current_user.get("role")
+    username = current_user.get("username", "")
+    can_access = (
+        user_role in [UserRole.SYSTEM_ADMINISTRATOR.value, UserRole.AUDITOR.value, UserRole.SUPERVISORY_REVIEWER.value]
+        or briefing.get("created_by") == username
+        or await check_case_access(briefing.get("case_id"), current_user)
+    )
+    if not can_access:
+        raise HTTPException(status_code=403, detail="Unauthorized")
+
+    if not briefing.get("section_data") and briefing.get("sections"):
+        briefing["section_data"] = briefing["sections"]
+
+    case = await db.cases.find_one({"$or": [
+        {"_id": briefing.get("case_id")},
+        {"case_id": briefing.get("case_id")},
+        {"case_reference": briefing.get("case_reference", briefing.get("case_id"))}
+    ]})
     docx_bytes = ExportService.generate_briefing_docx(briefing, case or {})
 
     await AuditService.log_event(
         user_id=current_user["username"],
         action="BRIEFING_EXPORTED_DOCX",
         resource_type="briefing",
-        resource_id=briefing_id,
+        resource_id=briefing["_id"],
         outcome="SUCCESS"
     )
 
-    filename = f"Briefing_{briefing.get('case_reference')}_v{briefing.get('version', 1)}.docx"
+    filename = f"Briefing_{briefing.get('case_reference') or briefing.get('_id')}_v{briefing.get('version', 1)}.docx"
     return StreamingResponse(
         io.BytesIO(docx_bytes),
         media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",

@@ -36,8 +36,9 @@ export function OfficerReviewPage() {
       const res = await apiClient.get(`/briefings/${briefingId}`);
       const b = res.data.briefing;
       setBriefing(b);
-      setSectionData(b.section_data || {});
-      const secKeys = Object.keys(b.section_data || {});
+      const sections = b.section_data || b.sections || {};
+      setSectionData(sections);
+      const secKeys = Object.keys(sections);
       if (secKeys.length > 0 && !activeSection) {
         setActiveSection(secKeys[0]);
       }

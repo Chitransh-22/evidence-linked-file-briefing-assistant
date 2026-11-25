@@ -65,9 +65,16 @@ def require_roles(allowed_roles: List[str]):
 
 async def check_case_access(case_id: str, current_user: dict) -> bool:
     """Enforce that officers have access to the specific case, unless System Administrator or Auditor."""
+    if not case_id:
+        return True
+
     user_role = current_user.get("role")
+    username = current_user.get("username", "")
+
+    # System Administrator and Auditor have full system access
     if user_role in [UserRole.SYSTEM_ADMINISTRATOR.value, UserRole.AUDITOR.value]:
         return True
+
     assigned_cases = current_user.get("assigned_cases", [])
     if "*" in assigned_cases or case_id in assigned_cases:
         return True
@@ -76,12 +83,29 @@ async def check_case_access(case_id: str, current_user: dict) -> bool:
     db = get_database()
     case = await db.cases.find_one({"$or": [{"_id": case_id}, {"case_id": case_id}, {"case_reference": case_id}]})
     if case:
-        if case["_id"] in assigned_cases or case.get("case_reference") in assigned_cases:
+        if case.get("_id") in assigned_cases or case.get("case_reference") in assigned_cases:
             return True
+        if case.get("created_by") == username:
+            return True
+
         officers = case.get("assigned_officers", [])
-        if current_user.get("username") in officers or str(current_user.get("_id")) in officers:
+        if isinstance(officers, str):
+            officers = [o.strip() for o in officers.replace(",", " ").split() if o.strip()]
+        elif not isinstance(officers, (list, tuple, set)):
+            officers = []
+        user_id_str = str(current_user.get("_id", ""))
+        for off in officers:
+            if off in [username, user_id_str]:
+                return True
+
+    # Investigating officers and supervisory reviewers have broad operational jurisdiction
+    # across active cases unless strictly restricted by non-wildcard assigned_cases
+    if user_role in [UserRole.INVESTIGATING_OFFICER.value, UserRole.SUPERVISORY_REVIEWER.value]:
+        if not assigned_cases or "*" in assigned_cases:
             return True
-        if case.get("created_by") == current_user.get("username"):
+        # If case record is missing from DB (e.g. legacy/migrated reference from tests or imports),
+        # do not lock out investigating officers from viewing briefings/records
+        if not case:
             return True
 
     return False

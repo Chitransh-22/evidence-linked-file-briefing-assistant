@@ -18,11 +18,21 @@ async def connect_to_mongodb():
 
     try:
         logger.info(f"Connecting to MongoDB at {settings.MONGODB_URI}...")
+        kwargs = {
+            "serverSelectionTimeoutMS": 5000,
+            "maxPoolSize": 50,
+            "minPoolSize": 5,
+        }
+        if "mongodb+srv://" in settings.MONGODB_URI or "tls=true" in settings.MONGODB_URI.lower():
+            try:
+                import certifi
+                kwargs["tlsCAFile"] = certifi.where()
+            except ImportError:
+                pass
+
         client = AsyncIOMotorClient(
             settings.MONGODB_URI,
-            serverSelectionTimeoutMS=5000,
-            maxPoolSize=50,
-            minPoolSize=5,
+            **kwargs,
         )
         _client_loop = current_loop
         database = client[settings.MONGODB_DB_NAME]
@@ -54,11 +64,21 @@ def get_database() -> AsyncIOMotorDatabase:
 
     # If loop changed or client is None/closed, reinitialize client
     if client is None or database is None or (_client_loop is not None and _client_loop != current_loop):
+        kwargs = {
+            "serverSelectionTimeoutMS": 5000,
+            "maxPoolSize": 50,
+            "minPoolSize": 5,
+        }
+        if "mongodb+srv://" in settings.MONGODB_URI or "tls=true" in settings.MONGODB_URI.lower():
+            try:
+                import certifi
+                kwargs["tlsCAFile"] = certifi.where()
+            except ImportError:
+                pass
+
         client = AsyncIOMotorClient(
             settings.MONGODB_URI,
-            serverSelectionTimeoutMS=5000,
-            maxPoolSize=50,
-            minPoolSize=5,
+            **kwargs,
         )
         _client_loop = current_loop
         database = client[settings.MONGODB_DB_NAME]

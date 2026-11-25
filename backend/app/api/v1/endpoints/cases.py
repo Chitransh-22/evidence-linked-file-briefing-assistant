@@ -74,9 +74,10 @@ async def list_cases(
     result_cases = []
     for c in cases:
         c_id = str(c["_id"])
-        doc_count = await db.documents.count_documents({"case_id": c_id})
-        evidence_count = await db.evidence_records.count_documents({"case_id": c_id})
-        briefing_count = await db.briefings.count_documents({"case_id": c_id})
+        case_keys = list(filter(None, [c_id, c.get("case_reference"), c.get("case_id")]))
+        doc_count = await db.documents.count_documents({"case_id": {"$in": case_keys}})
+        evidence_count = await db.evidence_records.count_documents({"case_id": {"$in": case_keys}})
+        briefing_count = await db.briefings.count_documents({"case_id": {"$in": case_keys}})
         result_cases.append({
             "id": c_id,
             "case_reference": c["case_reference"],
@@ -140,6 +141,10 @@ async def create_case(
     }
 
     await db.cases.insert_one(case_doc)
+    await db.users.update_many(
+        {"username": {"$in": officers}},
+        {"$addToSet": {"assigned_cases": case_id}}
+    )
 
     await AuditService.log_event(
         user_id=current_user["username"],

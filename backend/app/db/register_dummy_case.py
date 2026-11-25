@@ -364,6 +364,7 @@ async def register_dummy_case(close_conn: bool = True):
             "created_at": "2026-08-20T12:00:00Z",
             "updated_at": datetime.now(timezone.utc).isoformat(),
             "sections": briefing_sections,
+            "section_data": briefing_sections,
             "claims": [f"{briefing_id}_{c['claim_id']}" for c in claims_list],
         }
         await db.briefings.update_one({"_id": briefing_id}, {"$set": briefing_doc}, upsert=True)
