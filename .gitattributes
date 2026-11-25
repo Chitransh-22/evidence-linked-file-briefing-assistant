@@ -1,0 +1,10 @@
+# Auto-detect text files and perform LF normalization
+* text=auto
+
+# Explicit binary files - do not touch or convert line endings
+*.pdf binary
+*.zip binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pyc binary
