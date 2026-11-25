@@ -2,7 +2,7 @@ import os
 import io
 from abc import ABC, abstractmethod
 from typing import Optional
-from app.core.config import settings
+from app.core.config import settings, REPO_ROOT, BACKEND_DIR
 from app.core.logging import logger
 
 try:
@@ -40,9 +40,22 @@ class BaseStorageAdapter(ABC):
 
 class LocalStorageAdapter(BaseStorageAdapter):
     def __init__(self, base_path: str = "./storage"):
-        self.base_path = base_path
-        self.originals_dir = os.path.join(base_path, "originals")
-        self.intermediate_dir = os.path.join(base_path, "intermediate")
+        # Anchor storage canonically to backend/storage
+        if not os.path.isabs(base_path):
+            backend_storage = os.path.abspath(os.path.join(BACKEND_DIR, "storage"))
+            cwd_storage = os.path.abspath(base_path)
+            # Prefer backend/storage
+            if os.path.exists(backend_storage):
+                self.base_path = backend_storage
+            elif os.path.exists(cwd_storage):
+                self.base_path = cwd_storage
+            else:
+                self.base_path = backend_storage
+        else:
+            self.base_path = os.path.abspath(base_path)
+
+        self.originals_dir = os.path.join(self.base_path, "originals")
+        self.intermediate_dir = os.path.join(self.base_path, "intermediate")
         os.makedirs(self.originals_dir, exist_ok=True)
         os.makedirs(self.intermediate_dir, exist_ok=True)
 
@@ -54,9 +67,22 @@ class LocalStorageAdapter(BaseStorageAdapter):
         return safe_name
 
     def get_original(self, storage_key: str) -> bytes:
-        target_path = os.path.join(self.originals_dir, os.path.basename(storage_key))
+        filename = os.path.basename(storage_key)
+        target_path = os.path.join(self.originals_dir, filename)
         if not os.path.exists(target_path):
-            raise FileNotFoundError(f"Original file not found: {storage_key}")
+            # Fallback search across canonical candidates for cross-environment robustness
+            candidates = [
+                os.path.join(str(BACKEND_DIR), "storage", "originals", filename),
+                os.path.join(os.getcwd(), "storage", "originals", filename),
+                os.path.join(os.getcwd(), "backend", "storage", "originals", filename),
+                os.path.join(str(REPO_ROOT), "storage", "originals", filename),
+            ]
+            for candidate in candidates:
+                if os.path.exists(candidate):
+                    target_path = candidate
+                    break
+            else:
+                raise FileNotFoundError(f"Original file not found: {storage_key}")
         with open(target_path, "rb") as f:
             return f.read()
 
@@ -68,9 +94,21 @@ class LocalStorageAdapter(BaseStorageAdapter):
         return safe_name
 
     def get_intermediate(self, storage_key: str) -> bytes:
-        target_path = os.path.join(self.intermediate_dir, os.path.basename(storage_key))
+        filename = os.path.basename(storage_key)
+        target_path = os.path.join(self.intermediate_dir, filename)
         if not os.path.exists(target_path):
-            raise FileNotFoundError(f"Intermediate file not found: {storage_key}")
+            candidates = [
+                os.path.join(str(BACKEND_DIR), "storage", "intermediate", filename),
+                os.path.join(os.getcwd(), "storage", "intermediate", filename),
+                os.path.join(os.getcwd(), "backend", "storage", "intermediate", filename),
+                os.path.join(str(REPO_ROOT), "storage", "intermediate", filename),
+            ]
+            for candidate in candidates:
+                if os.path.exists(candidate):
+                    target_path = candidate
+                    break
+            else:
+                raise FileNotFoundError(f"Intermediate file not found: {storage_key}")
         with open(target_path, "rb") as f:
             return f.read()
 

@@ -39,6 +39,10 @@ storage/originals/*
 !storage/originals/.gitkeep
 storage/intermediate/*
 !storage/intermediate/.gitkeep
+backend/storage/originals/*
+!backend/storage/originals/.gitkeep
+backend/storage/intermediate/*
+!backend/storage/intermediate/.gitkeep
 tmp/
 *.log
 
