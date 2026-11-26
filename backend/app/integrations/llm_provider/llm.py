@@ -204,13 +204,42 @@ DOCUMENT PAGE TEXT:
         )
 
     def _normalize_date_to_iso(self, date_str: str) -> Optional[str]:
-        # Simple ISO date normalizer for DD/MM/YYYY or YYYY-MM-DD
+        MONTH_MAP = {
+            "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+            "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12
+        }
+        # 1. Alphanumeric dates: "12 August 2026", "12th Aug 2026", "August 12, 2026"
+        m_alpha = re.search(r"(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]+)\s+(\d{4})", date_str)
+        if m_alpha:
+            m_name = m_alpha.group(2)[:3].lower()
+            if m_name in MONTH_MAP:
+                d, mth, y = int(m_alpha.group(1)), MONTH_MAP[m_name], int(m_alpha.group(3))
+                if 1 <= d <= 31:
+                    return f"{y:04d}-{mth:02d}-{d:02d}"
+
+        m_alpha2 = re.search(r"([A-Za-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})", date_str)
+        if m_alpha2:
+            m_name = m_alpha2.group(1)[:3].lower()
+            if m_name in MONTH_MAP:
+                mth, d, y = MONTH_MAP[m_name], int(m_alpha2.group(2)), int(m_alpha2.group(3))
+                if 1 <= d <= 31:
+                    return f"{y:04d}-{mth:02d}-{d:02d}"
+
+        # 2. ISO format YYYY-MM-DD
         m = re.search(r"(\d{4})[/-](\d{1,2})[/-](\d{1,2})", date_str)
         if m:
-            return f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"
-        m2 = re.search(r"(\d{1,2})[/-](\d{1,2})[/-](\d{4})", date_str)
+            y, mth, d = int(m.group(1)), int(m.group(2)), int(m.group(3))
+            if 1 <= mth <= 12 and 1 <= d <= 31:
+                return f"{y:04d}-{mth:02d}-{d:02d}"
+
+        # 3. Formats DD/MM/YYYY or DD-MM-YY(YY)
+        m2 = re.search(r"(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})", date_str)
         if m2:
-            return f"{m2.group(3)}-{int(m2.group(2)):02d}-{int(m2.group(1)):02d}"
+            d, mth, raw_y = int(m2.group(1)), int(m2.group(2)), int(m2.group(3))
+            y = (2000 + raw_y) if raw_y < 100 else raw_y
+            # Validate calendar bounds (rejects OCR corruptions like day 79 or 46)
+            if 1 <= mth <= 12 and 1 <= d <= 31:
+                return f"{y:04d}-{mth:02d}-{d:02d}"
         return None
 
 

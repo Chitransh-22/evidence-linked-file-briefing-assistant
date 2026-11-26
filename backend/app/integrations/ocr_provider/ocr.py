@@ -104,9 +104,9 @@ class TesseractOCRProvider(BaseOCRProvider):
             for page_idx in range(len(doc)):
                 page = doc[page_idx]
                 page_num = page_idx + 1
-                pix = page.get_pixmap(dpi=150)
+                pix = page.get_pixmap(dpi=300)
                 try:
-                    ocr_pdf_bytes = pix.pdfocr_tobytes(tessdata=self.tessdata_dir)
+                    ocr_pdf_bytes = pix.pdfocr_tobytes(language=self.languages, tessdata=self.tessdata_dir)
                     ocr_doc = fitz.open("pdf", ocr_pdf_bytes)
                     ocr_page = ocr_doc[0]
                     words_raw = ocr_page.get_text("words")

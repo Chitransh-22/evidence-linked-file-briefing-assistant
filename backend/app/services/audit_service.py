@@ -13,8 +13,11 @@ def compute_event_hash(previous_hash: str, payload_str: str) -> str:
 
 
 class AuditService:
-    @staticmethod
+    COLLECTION_NAME = "audit_logs"
+
+    @classmethod
     async def log_event(
+        cls,
         user_id: str,
         action: str,
         resource_type: str,
@@ -30,7 +33,7 @@ class AuditService:
         clean_metadata = sanitize_log_dict(metadata or {})
 
         # Fetch latest audit log to obtain previous_hash
-        last_log = await db.audit_logs.find_one(sort=[("timestamp", -1)])
+        last_log = await db[cls.COLLECTION_NAME].find_one(sort=[("timestamp", -1)])
         previous_hash = last_log.get("event_hash", "0" * 64) if last_log else "0" * 64
 
         payload_content = {
@@ -62,14 +65,14 @@ class AuditService:
             "event_hash": event_hash,
         }
 
-        await db.audit_logs.insert_one(audit_record)
+        await db[cls.COLLECTION_NAME].insert_one(audit_record)
         return event_id
 
-    @staticmethod
-    async def verify_chain_integrity() -> Dict[str, Any]:
+    @classmethod
+    async def verify_chain_integrity(cls) -> Dict[str, Any]:
         """Verify the cryptographic integrity of the entire audit trail."""
         db = get_database()
-        cursor = db.audit_logs.find().sort("timestamp", 1)
+        cursor = db[cls.COLLECTION_NAME].find().sort("timestamp", 1)
         logs = await cursor.to_list(length=10000)
 
         if not logs:

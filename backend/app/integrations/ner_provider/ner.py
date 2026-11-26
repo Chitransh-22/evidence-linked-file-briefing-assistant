@@ -36,8 +36,15 @@ class GovernmentNERService:
     ]
 
     REF_DOC_PATTERNS = [
-        re.compile(r"\b(?:F\.No\.|Ref\s*No\.?|Case\s*No\.?|FIR\s*No\.?|RC\s*No\.?|File\s*No\.?|Order\s*No\.?)\s*[:/-]?\s*[A-Za-z0-9/_-]+\b", re.IGNORECASE),
-        re.compile(r"\b[A-Z]{2,4}/\d{2,6}/\d{2,4}\b"),
+        re.compile(r"\b(?:F\.No\.|Ref(?:erence)?\s*(?:No\.?|Case)?|Case\s*(?:No\.?|Reference)?|FIR\s*No\.?|RC\s*No\.?|File\s*No\.?|Order\s*No\.?)\s*[:/-]?\s*[A-Za-z0-9/_-]+\b", re.IGNORECASE),
+        re.compile(r"\b[A-Z]{2,5}(?:/[A-Z0-9_-]+){1,4}\b"),
+    ]
+
+    LOCATION_PATTERNS = [
+        re.compile(r"\b(?:Ward|Sector|Block|વોર્ડ|વૉર્ડ|સેક્ટર|वार्ड|सेक्टर)\s*(?:No\.?|No|નંબર|क्रमाંક)?\s*[\dIVXLCDM]+\b", re.IGNORECASE),
+        re.compile(r"\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+(?:District|Store|Relief Store|Center|Centre|Depot|Corridor)\b"),
+        re.compile(r"\b(?:Nandivan|Sanand|Gandhinagar|Ahmedabad|Vadodara|Surat|Rajkot|Delhi|Mumbai)\b", re.IGNORECASE),
+        re.compile(r"\b(?:નંદિવન|નાંદીવાન|नंदिवन|नांदीवान)\s*(?:જિલ્લો|જિલ્લા|રાજ્ય|વિસ્તાર|जिला)?\b"),
     ]
 
     VEHICLE_PATTERNS = [
@@ -49,17 +56,24 @@ class GovernmentNERService:
         "Anti-Corruption Bureau", "Income Tax Department", "Ministry of Home Affairs",
         "Ministry of Finance", "State Police", "CID", "Vigilance Commission",
         "Municipal Corporation", "District Collectorate", "Registrar of Companies",
-        "महસૂલ વિભાગ", "પોલીસ વિભાગ", "તકેદારી આયોગ", "આવકવેરા વિભાગ", "મહેસૂલ શાખા"
+        "District Relief Office", "District Relief Store", "Vigilance & Inspection Committee", "Relief Store Gate Desk",
+        "Taluka Relief Officer", "Public Grievance Desk",
+        "महસૂલ વિભાગ", "પોલીસ વિભાગ", "તકેદારી આયોગ", "આવકવેરા વિભાગ", "મહેસૂલ શાખા",
+        "તાલુકા રાહત કચેરી", "તાલુકા રાહત અધિકારી", "રાહત ભંડાર", "રાહત સ્ટોર", "રાહત કચેરી", "રાહત સામગ્રી ભંડાર", "રાહતસામગ્રીભંડાર", "રાહતસ્ટોર",
+        "राहत भंडार", "राहत सामग्री भंडार", "राहतसामग्रीभंडार", "सतर्कता एवं निरीक्षण समिति", "सहायता केंद्र"
     ]
 
     PERSON_TITLES = [
-        r"(?:Shri|Smt|Mr\.|Mrs\.|Ms\.|Dr\.|Prof\.|Adv\.|Inspector|Officer|Commissioner|Superintendent|Constable)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,3})",
-        r"(?:શ્રી|શ્રીમતી|ડૉ\.|પોલીસ ઇન્સ્પેક્ટર)\s+([\u0A80-\u0AFF]+(?:\s+[\u0A80-\u0AFF]+){1,2})"
+        r"(?:Shri|Smt|Mr\.|Mrs\.|Ms\.|Dr\.|Prof\.|Adv\.|Inspector|Officer|Commissioner|Superintendent|Constable)\s+((?:[A-Z]\.\s*)*[A-Z][a-z]+(?:\s+(?:[A-Z]\.\s*|[A-Z][a-z]+))*)",
+        r"(?:Authorized by:|Recorded by:|Driver name recorded:|Gate entry recorded by:|Prepared by:|Signed:|Signatory:|Signature:|Applicant:|Representative:)\s*((?:[A-Z]\.\s*)*[A-Z][a-z]+(?:\s+(?:[A-Z]\.\s*|[A-Z][a-z]+))*)",
+        r"(?:શ્રી|શ્રીમતી|ડૉ\.|પોલીસ ઇન્સ્પેક્ટર|હું,\s*|રજૂઆતકર્તા:\s*|સહી:\s*|નોંધ કરનાર:\s*|નોંધણી:\s*)([\u0A80-\u0AFF]+(?:\s+[\u0A80-\u0AFF]+){1,2})",
+        r"(?:श्री|श्रीमती|डॉ\.|अधिकारी:\s*|प्रभारी:\s*|हस्ताक्षर:\s*|कथनकर्ता:\s*)([\u0900-\u097F]+(?:\s+[\u0900-\u097F]+){1,2})"
     ]
 
     ORGANIZATION_KEYWORDS = [
         "Pvt Ltd", "Private Limited", "Limited", "Ltd", "LLP", "Corporation", "Bank",
-        "Enterprises", "Industries", "Infra", "Holdings", "Agency", "Foundation", "Trust"
+        "Enterprises", "Industries", "Infra", "Holdings", "Agency", "Foundation", "Trust",
+        "Logistics", "Suppliers", "Services", "Transport", "લોજિસ્ટિક્સ", "लॉजिस्टिक्स"
     ]
 
     def extract_entities(
@@ -210,6 +224,20 @@ class GovernmentNERService:
                     para=para_number,
                     span=(match.start(1), match.end(1)),
                     conf=0.85
+                ))
+
+        # 11. Location
+        for pat in self.LOCATION_PATTERNS:
+            for match in pat.finditer(text):
+                loc_name = match.group().strip()
+                entities.append(self._build_entity_record(
+                    name=loc_name,
+                    category="Location",
+                    doc_id=document_id,
+                    page=page_number,
+                    para=para_number,
+                    span=(match.start(), match.end()),
+                    conf=0.90
                 ))
 
         # Deduplicate occurrences within the same paragraph while preserving distinct entity values

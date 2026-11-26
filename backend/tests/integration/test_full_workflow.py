@@ -38,13 +38,21 @@ async def test_full_document_to_briefing_workflow():
     db = get_database()
 
     # Ensure idempotency by removing any prior test artifacts
-    await db.cases.delete_many({"case_reference": {"$regex": "^CR-TEST-INTEG"}})
+    prior_test_cases = await db.cases.find({"case_reference": {"$regex": "^CR-TEST"}}, {"_id": 1}).to_list(100)
+    prior_case_ids = [c["_id"] for c in prior_test_cases]
+    prior_test_docs = await db.documents.find({"document_title": "Primary Inspection Report"}, {"_id": 1}).to_list(100)
+    prior_doc_ids = [d["_id"] for d in prior_test_docs]
+
+    await db.cases.delete_many({"case_reference": {"$regex": "^CR-TEST"}})
     await db.documents.delete_many({"document_title": "Primary Inspection Report"})
-    await db.document_pages.delete_many({"document_id": {"$exists": True}})
-    await db.processing_jobs.delete_many({"document_id": {"$exists": True}})
-    await db.evidence_ledger.delete_many({"case_id": {"$regex": "^CR-TEST"}})
-    await db.chronology_events.delete_many({"case_id": {"$regex": "^CR-TEST"}})
-    await db.contradictions.delete_many({"case_id": {"$regex": "^CR-TEST"}})
+    if prior_doc_ids:
+        await db.document_pages.delete_many({"document_id": {"$in": prior_doc_ids}})
+        await db.processing_jobs.delete_many({"document_id": {"$in": prior_doc_ids}})
+    if prior_case_ids:
+        await db.entities.delete_many({"case_id": {"$in": prior_case_ids}})
+        await db.evidence_ledger.delete_many({"case_id": {"$in": prior_case_ids}})
+        await db.chronology_events.delete_many({"case_id": {"$in": prior_case_ids}})
+        await db.contradictions.delete_many({"case_id": {"$in": prior_case_ids}})
     await db.briefings.delete_many({"title": "Comprehensive Briefing - Valuation Audit"})
 
     transport = ASGITransport(app=app)

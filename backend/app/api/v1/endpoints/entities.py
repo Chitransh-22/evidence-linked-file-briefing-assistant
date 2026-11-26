@@ -9,6 +9,7 @@ router = APIRouter()
 @router.get("")
 async def list_entities(
     case_id: Optional[str] = None,
+    document_id: Optional[str] = None,
     entity_type: Optional[str] = None,
     search: Optional[str] = None,
     page: int = Query(1, ge=1),
@@ -19,6 +20,8 @@ async def list_entities(
     query = {}
     if case_id:
         query["case_id"] = case_id
+    if document_id:
+        query["source_occurrences.document_id"] = document_id
     if entity_type:
         query["entity_type"] = entity_type
     if search:

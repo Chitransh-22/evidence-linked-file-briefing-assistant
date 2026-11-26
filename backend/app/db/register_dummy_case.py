@@ -224,15 +224,32 @@ async def register_dummy_case(close_conn: bool = True):
 
         # Entities
         entities = seed_data.get("entities", [])
+        entity_doc_mapping = {
+            "Nandivan District Relief Office": ["DOC-D01", "DOC-D03"],
+            "BlueRiver Relief Logistics": ["DOC-D01", "DOC-D03", "DOC-D04", "DOC-D07"],
+            "Kavita Parmar": ["DOC-D01"],
+            "A. K. Solanki": ["DOC-D02"],
+            "Devendra Solanki": ["DOC-D02"],
+            "R. Mehta": ["DOC-D03"],
+            "P. Shah": ["DOC-D05"],
+            "Ward 3": ["DOC-D01", "DOC-D02"],
+            "Ward 4": ["DOC-D01", "DOC-D02", "DOC-D06"],
+            "Ward 5": ["DOC-D01"],
+            "GJ-00-AB-0000": ["DOC-D05"],
+            "Portable water purification kit": ["DOC-D01", "DOC-D03", "DOC-D04", "DOC-D06", "DOC-D07"],
+            "Nandivan District Relief Store, Sector 2": ["DOC-D02"],
+        }
         for ent in entities:
             ent_id = f"{actual_case_id}_{ent['name'].lower()}_{ent['type']}"
+            matching_docs = entity_doc_mapping.get(ent["name"], ["DOC-D01"])
+            source_occurrences = [{"document_id": doc_id, "page_number": 1} for doc_id in matching_docs]
             ent_rec = {
                 "_id": ent_id,
                 "case_id": actual_case_id,
                 "entity_name": ent["name"],
                 "normalized_name": ent["name"].lower(),
                 "entity_type": ent["type"],
-                "source_occurrences": [{"document_id": "DOC-D03", "page_number": 1}],
+                "source_occurrences": source_occurrences,
                 "created_at": "2026-08-20T10:00:00Z",
             }
             await db.entities.update_one({"_id": ent_id}, {"$set": ent_rec}, upsert=True)

@@ -42,7 +42,7 @@ export function DocumentViewerPage() {
           apiClient.get(`/documents/${documentId}`),
           apiClient.get(`/documents/${documentId}/pages`),
           apiClient.get(`/evidence?document_id=${documentId}&limit=50`),
-          apiClient.get(`/entities?limit=100`),
+          apiClient.get(`/entities?document_id=${documentId}&limit=100`),
         ]);
 
         setDocument(docRes.data);

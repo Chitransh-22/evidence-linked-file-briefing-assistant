@@ -1,0 +1,2326 @@
+[
+  {
+    "filename": "D01_Complaint_Gujarati_Scanned.pdf",
+    "classification": "scanned",
+    "stage_a": {
+      "has_embedded_text": false,
+      "total_chars": 0,
+      "classification": "scanned",
+      "pages": [
+        {
+          "page_number": 1,
+          "raw_text": "",
+          "char_count": 0
+        }
+      ]
+    },
+    "stage_b": {
+      "pages": [
+        {
+          "page_number": 1,
+          "pipeline_ocr_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nવિ\nક\"જુ\nરજૂઆત- રાહતસામગ્રીવિતરણઅંગે\nતારીખ: 18-08-2026\nપ્રતિ: તાલુકારાહતઅધિકારી, નંદિવનજિલ્લો\nવિષય: પૂરરાહતદરમિયાનપાણીશુદ્ધિકરણકિટનાવિતરણઅંગેરજૂઆત\nહું, કવિતાપરમાર, વોર્ડ\n3 નીરહેવાસી,\nઆરજૂઆતકરું\nછું\nકેપૂરરાહતમાટેપાણી\nશુદ્ધિકરણકિટનાવિતરણઅંગેનોંધમાં300 કિટવોર્ડ\n3 માંઆપવામાંઆવીહોવાનું\nદર્શાવાયું\nછે.\nપરંતુસ્થાનિકલાભાર્થીયાદીમાં\nમાત્ર240 પરિવારોનાનામછે. વોર્ડ4 માં60 કિટ\nઆપવામાંઆવીહોવાનું\nજણાવવામાં\nઆવ્યું\nછે. વોર્ડ\n5 માં18-08-2026 સુધીકોઈકિટ\nમળીનથી.\nજાહેરકરાયેલાપુરવઠામુજબકુલ480 કિટઆવવાનીહતી. કૃપાકરીને\nપ્રાપ્તથયેલ\nજથ્થો, સ્ટોકરજીસ્ટરઅને\nલાભાર્થીવિતરણયાદીચકાસશો.\nઆરજૂઆતઉપલબ્ધસ્થાનિકમાહિતીનાઆધારે\nકરવામાંઆવે\nછે. મારીપાસે\nસપ્લાયરનું\nમૂળડિલિવરીચલણનથી.\nરજૂઆતકર્તા: કવિતાપરમાર\nવિસ્તાર: વોર્ડ3, નંદિવનજિલ્લો\nસહી: (ડેમોહસ્તાક્ષર)\nFor demonstration and software testing only.",
+          "fresh_300dpi_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nવિ\nક\"જુ\nરજૂઆત- રાહતસામગ્રીવિતરણઅંગે\nતારીખ: 18-08-2026\nપ્રતિ: તાલુકારાહતઅધિકારી, નંદિવનજિલ્લો\nવિષય: પૂરરાહતદરમિયાનપાણીશુદ્ધિકરણકિટનાવિતરણઅંગેરજૂઆત\nહું, કવિતાપરમાર, વોર્ડ\n3 નીરહેવાસી,\nઆરજૂઆતકરું\nછું\nકેપૂરરાહતમાટેપાણી\nશુદ્ધિકરણકિટનાવિતરણઅંગેનોંધમાં300 કિટવોર્ડ\n3 માંઆપવામાંઆવીહોવાનું\nદર્શાવાયું\nછે.\nપરંતુસ્થાનિકલાભાર્થીયાદીમાં\nમાત્ર240 પરિવારોનાનામછે. વોર્ડ4 માં60 કિટ\nઆપવામાંઆવીહોવાનું\nજણાવવામાં\nઆવ્યું\nછે. વોર્ડ\n5 માં18-08-2026 સુધીકોઈકિટ\nમળીનથી.\nજાહેરકરાયેલાપુરવઠામુજબકુલ480 કિટઆવવાનીહતી. કૃપાકરીને\nપ્રાપ્તથયેલ\nજથ્થો, સ્ટોકરજીસ્ટરઅને\nલાભાર્થીવિતરણયાદીચકાસશો.\nઆરજૂઆતઉપલબ્ધસ્થાનિકમાહિતીનાઆધારે\nકરવામાંઆવે\nછે. મારીપાસે\nસપ્લાયરનું\nમૂળડિલિવરીચલણનથી.\nરજૂઆતકર્તા: કવિતાપરમાર\nવિસ્તાર: વોર્ડ3, નંદિવનજિલ્લો\nસહી: (ડેમોહસ્તાક્ષર)\nFor demonstration and software testing only.",
+          "char_count": 812
+        }
+      ]
+    },
+    "stage_c": {
+      "pages": [
+        {
+          "page_number": 1,
+          "detected_language": "guj",
+          "translation_method": "indictrans2_not_configured",
+          "entities_pipeline": [
+            {
+              "entity_name": "18-08-2026",
+              "normalized_name": "18-08-2026",
+              "entity_type": "Date",
+              "document_id": "D01_Complaint_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                92,
+                102
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "કવિતાપરમાર\nવિસ્તાર",
+              "normalized_name": "કવિતાપરમાર\nવિસ્તાર",
+              "entity_type": "Person",
+              "document_id": "D01_Complaint_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                706,
+                724
+              ],
+              "extraction_confidence": 0.88,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "વોર્ડ\n3",
+              "normalized_name": "વોર્ડ\n3",
+              "entity_type": "Location",
+              "document_id": "D01_Complaint_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                212,
+                219
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "વોર્ડ4",
+              "normalized_name": "વોર્ડ4",
+              "entity_type": "Location",
+              "document_id": "D01_Complaint_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                398,
+                404
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "વોર્ડ\n5",
+              "normalized_name": "વોર્ડ\n5",
+              "entity_type": "Location",
+              "document_id": "D01_Complaint_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                454,
+                461
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "વોર્ડ3",
+              "normalized_name": "વોર્ડ3",
+              "entity_type": "Location",
+              "document_id": "D01_Complaint_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                726,
+                732
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            }
+          ],
+          "events_pipeline": [
+            {
+              "event_title": "Record dated 18-08-2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nવિ\nક\"જુ\nરજૂઆત- રાહતસામગ્રીવિતરણઅંગે\nતારીખ: 18-08-2026\nપ્રતિ: તાલુકારાહતઅધિકારી, નંદિવનજિલ્લો\nવિષય: પૂરરાહતદરમિયાનપાણીશુદ્ધિકરણકિટનાવિતરણઅંગેરજૂઆત\nહું, કવિતાપરમાર, વોર્ડ\n3 નીરહેવાસી,\nઆરજૂઆતકરું\nછું\nકેપૂરરાહતમાટેપાણી\nશુદ્ધિકરણકિટનાવિતરણઅંગેનોંધમાં300 કિટવોર્ડ\n3 માંઆપવામાંઆવીહોવાનું\nદર્શાવાયું\nછે.",
+              "event_date": "2026-08-18",
+              "original_date_expression": "18-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [
+                "વોર્ડ\n3"
+              ],
+              "confidence": 0.9
+            }
+          ],
+          "entities_from_300": [
+            {
+              "entity_name": "18-08-2026",
+              "normalized_name": "18-08-2026",
+              "entity_type": "Date",
+              "document_id": "D01_Complaint_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                92,
+                102
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "કવિતાપરમાર\nવિસ્તાર",
+              "normalized_name": "કવિતાપરમાર\nવિસ્તાર",
+              "entity_type": "Person",
+              "document_id": "D01_Complaint_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                706,
+                724
+              ],
+              "extraction_confidence": 0.88,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "વોર્ડ\n3",
+              "normalized_name": "વોર્ડ\n3",
+              "entity_type": "Location",
+              "document_id": "D01_Complaint_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                212,
+                219
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "વોર્ડ4",
+              "normalized_name": "વોર્ડ4",
+              "entity_type": "Location",
+              "document_id": "D01_Complaint_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                398,
+                404
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "વોર્ડ\n5",
+              "normalized_name": "વોર્ડ\n5",
+              "entity_type": "Location",
+              "document_id": "D01_Complaint_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                454,
+                461
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "વોર્ડ3",
+              "normalized_name": "વોર્ડ3",
+              "entity_type": "Location",
+              "document_id": "D01_Complaint_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                726,
+                732
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            }
+          ],
+          "events_from_300": [
+            {
+              "event_title": "Record dated 18-08-2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nવિ\nક\"જુ\nરજૂઆત- રાહતસામગ્રીવિતરણઅંગે\nતારીખ: 18-08-2026\nપ્રતિ: તાલુકારાહતઅધિકારી, નંદિવનજિલ્લો\nવિષય: પૂરરાહતદરમિયાનપાણીશુદ્ધિકરણકિટનાવિતરણઅંગેરજૂઆત\nહું, કવિતાપરમાર, વોર્ડ\n3 નીરહેવાસી,\nઆરજૂઆતકરું\nછું\nકેપૂરરાહતમાટેપાણી\nશુદ્ધિકરણકિટનાવિતરણઅંગેનોંધમાં300 કિટવોર્ડ\n3 માંઆપવામાંઆવીહોવાનું\nદર્શાવાયું\nછે.",
+              "event_date": "2026-08-18",
+              "original_date_expression": "18-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [
+                "વોર્ડ\n3"
+              ],
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    "mismatches": [
+      {
+        "page": 1,
+        "field": "Embedded Text Layer (Stage A)",
+        "stage_a": "EMPTY (0 characters)",
+        "stage_b": "Contains text (812 chars)",
+        "stage_c": "Relies entirely on OCR pipeline",
+        "root_cause_category": "Stale/corrupted embedded PDF text layer",
+        "explanation": "Image-only scanned PDF contains no embedded font/text stream in PDF catalog.",
+        "code_reference": "backend/app/integrations/pdf_parser/parser.py:31-34"
+      }
+    ]
+  },
+  {
+    "filename": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+    "classification": "scanned",
+    "stage_a": {
+      "has_embedded_text": false,
+      "total_chars": 0,
+      "classification": "scanned",
+      "pages": [
+        {
+          "page_number": 1,
+          "raw_text": "",
+          "char_count": 0
+        }
+      ]
+    },
+    "stage_b": {
+      "pages": [
+        {
+          "page_number": 1,
+          "pipeline_ocr_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nनिरीक्षणज्ञापन- राहतसामग्रीभंडार\nदिनांक: 20-08-2026\nनिरीक्षणकीतारीख:\n19-08-2026\nप्रकरणक्रमांक:\n२०२६-०१४\nनिरीक्षणकाउद्देश्य: नंदिवनजिले\nमेंबाढ़राहतकेअंतर्गतजलशुद्धिकरणकिटकी\nप्राप्ति,\nभंडारणऔरवितरणअभिलेखोंकामिलानकरना।\nभौतिकसत्यापनकेसमयभंडारमें24 किटउपलब्धपाईगईं।भंडारकर्मचारीनेबताया\nकि18-08-2026 को6 किटनमूनाऔरपरीक्षणहेतुजारीकीगईथीं।\nस्टॉकरजिस्टरમેં\n15-08-2026 को14:00 बजे480 किटप्राप्तहोनेकीप्रविष्टिहै।\nनिरीक्षणकेसमयमूलहस्ताक्षरितआपूर्तिचालानउपलब्धनहींकरायागया।\nवितरणसारांशमें\n18-08-2026 तककुल330 किटजारीदर्शाईगईहैं: वार्ड3 में250\nऔरवार्ड4 में80।\nभंडारकर्मचारीकेमौखिककथनकेअनुसारवाहन\n16-08-2026 कोलगभग17:30\nबजेपरिसरमेंपहुँचाथा।इसकथनकी\nस्वतंत्रपुष्टिआवश्यकहै।\nयहज्ञापनप्रारंभिकनिरीक्षणअभिलेखहै।इसमें\nदर्जकथनोंऔरसंख्याओंकाअंतिम\nनिष्कर्षमाननेसेपहलेमूलदस्तावेजों\nसेसत्यापनकियाजानाचाहिए।\nनिरीक्षणअधिकारी: ए. के. सोलंकी\nपद: सहायकराहतनिरीक्षक(काल्पनिक)\nहस्ताक्षर: (डेमोहस्ताक्षर)\nFor demonstration and software testing only.",
+          "fresh_300dpi_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nनिरीक्षणज्ञापन- राहतसामग्रीभंडार\nदिनांक: 20-08-2026\nनिरीक्षणकीतारीख:\n19-08-2026\nप्रकरणक्रमांक:\n२०२६-०१४\nनिरीक्षणकाउद्देश्य: नंदिवनजिले\nमेंबाढ़राहतकेअंतर्गतजलशुद्धिकरणकिटकी\nप्राप्ति,\nभंडारणऔरवितरणअभिलेखोंकामिलानकरना।\nभौतिकसत्यापनकेसमयभंडारमें24 किटउपलब्धपाईगईं।भंडारकर्मचारीनेबताया\nकि18-08-2026 को6 किटनमूनाऔरपरीक्षणहेतुजारीकीगईथीं।\nस्टॉकरजिस्टरમેં\n15-08-2026 को14:00 बजे480 किटप्राप्तहोनेकीप्रविष्टिहै।\nनिरीक्षणकेसमयमूलहस्ताक्षरितआपूर्तिचालानउपलब्धनहींकरायागया।\nवितरणसारांशमें\n18-08-2026 तककुल330 किटजारीदर्शाईगईहैं: वार्ड3 में250\nऔरवार्ड4 में80।\nभंडारकर्मचारीकेमौखिककथनकेअनुसारवाहन\n16-08-2026 कोलगभग17:30\nबजेपरिसरमेंपहुँचाथा।इसकथनकी\nस्वतंत्रपुष्टिआवश्यकहै।\nयहज्ञापनप्रारंभिकनिरीक्षणअभिलेखहै।इसमें\nदर्जकथनोंऔरसंख्याओंकाअंतिम\nनिष्कर्षमाननेसेपहलेमूलदस्तावेजों\nसेसत्यापनकियाजानाचाहिए।\nनिरीक्षणअधिकारी: ए. के. सोलंकी\nपद: सहायकराहतनिरीक्षक(काल्पनिक)\nहस्ताक्षर: (डेमोहस्ताक्षर)\nFor demonstration and software testing only.",
+          "char_count": 965
+        }
+      ]
+    },
+    "stage_c": {
+      "pages": [
+        {
+          "page_number": 1,
+          "detected_language": "hin",
+          "translation_method": "indictrans2_not_configured",
+          "entities_pipeline": [
+            {
+              "entity_name": "20-08-2026",
+              "normalized_name": "20-08-2026",
+              "entity_type": "Date",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                90,
+                100
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "19-08-2026",
+              "normalized_name": "19-08-2026",
+              "entity_type": "Date",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                118,
+                128
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "18-08-2026",
+              "normalized_name": "18-08-2026",
+              "entity_type": "Date",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                332,
+                342
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "15-08-2026",
+              "normalized_name": "15-08-2026",
+              "entity_type": "Date",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                397,
+                407
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "16-08-2026",
+              "normalized_name": "16-08-2026",
+              "entity_type": "Date",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                632,
+                642
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "14:00",
+              "normalized_name": "14:00",
+              "entity_type": "Time",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                410,
+                416
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "राहतसामग्रीभंडार",
+              "normalized_name": "राहतसामग्रीभंडार",
+              "entity_type": "Government Department",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                65,
+                81
+              ],
+              "extraction_confidence": 0.96,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "वार्ड3",
+              "normalized_name": "वार्ड3",
+              "entity_type": "Location",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                566,
+                572
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            }
+          ],
+          "events_pipeline": [
+            {
+              "event_title": "Record dated 20-08-2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nनिरीक्षणज्ञापन- राहतसामग्रीभंडार\nदिनांक: 20-08-2026\nनिरीक्षणकीतारीख:\n19-08-2026\nप्रकरणक्रमांक:\n२०२६-०१४\nनिरीक्षणकाउद्देश्य: नंदिवनजिले\nमेंबाढ़राहतकेअंतर्गतजलशुद्धिकरणकिटकी\nप्राप्ति,\nभंडारणऔरवितरणअभिलेखोंकामिलानकरना।",
+              "event_date": "2026-08-20",
+              "original_date_expression": "20-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [
+                "19-08-2026",
+                "राहतसामग्रीभंडार"
+              ],
+              "confidence": 0.9
+            },
+            {
+              "event_title": "Record dated 19-08-2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nनिरीक्षणज्ञापन- राहतसामग्रीभंडार\nदिनांक: 20-08-2026\nनिरीक्षणकीतारीख:\n19-08-2026\nप्रकरणक्रमांक:\n२०२६-०१४\nनिरीक्षणकाउद्देश्य: नंदिवनजिले\nमेंबाढ़राहतकेअंतर्गतजलशुद्धिकरणकिटकी\nप्राप्ति,\nभंडारणऔरवितरणअभिलेखोंकामिलानकरना।",
+              "event_date": "2026-08-19",
+              "original_date_expression": "19-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [
+                "20-08-2026",
+                "राहतसामग्रीभंडार"
+              ],
+              "confidence": 0.9
+            },
+            {
+              "event_title": "Record dated 18-08-2026",
+              "description": "भौतिकसत्यापनकेसमयभंडारमें24 किटउपलब्धपाईगईं।भंडारकर्मचारीनेबताया\nकि18-08-2026 को6 किटनमूनाऔरपरीक्षणहेतुजारीकीगईथीं।",
+              "event_date": "2026-08-18",
+              "original_date_expression": "18-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [],
+              "confidence": 0.9
+            },
+            {
+              "event_title": "Record dated 15-08-2026",
+              "description": "स्टॉकरजिस्टरમેં\n15-08-2026 को14:00 बजे480 किटप्राप्तहोनेकीप्रविष्टिहै।",
+              "event_date": "2026-08-15",
+              "original_date_expression": "15-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [
+                "14:00"
+              ],
+              "confidence": 0.9
+            },
+            {
+              "event_title": "Record dated 16-08-2026",
+              "description": "भंडारकर्मचारीकेमौखिककथनकेअनुसारवाहन\n16-08-2026 कोलगभग17:30\nबजेपरिसरमेंपहुँचाथा।इसकथनकी\nस्वतंत्रपुष्टिआवश्यकहै।",
+              "event_date": "2026-08-16",
+              "original_date_expression": "16-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [],
+              "confidence": 0.9
+            }
+          ],
+          "entities_from_300": [
+            {
+              "entity_name": "20-08-2026",
+              "normalized_name": "20-08-2026",
+              "entity_type": "Date",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                90,
+                100
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "19-08-2026",
+              "normalized_name": "19-08-2026",
+              "entity_type": "Date",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                118,
+                128
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "18-08-2026",
+              "normalized_name": "18-08-2026",
+              "entity_type": "Date",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                332,
+                342
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "15-08-2026",
+              "normalized_name": "15-08-2026",
+              "entity_type": "Date",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                397,
+                407
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "16-08-2026",
+              "normalized_name": "16-08-2026",
+              "entity_type": "Date",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                632,
+                642
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "14:00",
+              "normalized_name": "14:00",
+              "entity_type": "Time",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                410,
+                416
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "राहतसामग्रीभंडार",
+              "normalized_name": "राहतसामग्रीभंडार",
+              "entity_type": "Government Department",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                65,
+                81
+              ],
+              "extraction_confidence": 0.96,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "वार्ड3",
+              "normalized_name": "वार्ड3",
+              "entity_type": "Location",
+              "document_id": "D02_Inspection_Memo_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                566,
+                572
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            }
+          ],
+          "events_from_300": [
+            {
+              "event_title": "Record dated 20-08-2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nनिरीक्षणज्ञापन- राहतसामग्रीभंडार\nदिनांक: 20-08-2026\nनिरीक्षणकीतारीख:\n19-08-2026\nप्रकरणक्रमांक:\n२०२६-०१४\nनिरीक्षणकाउद्देश्य: नंदिवनजिले\nमेंबाढ़राहतकेअंतर्गतजलशुद्धिकरणकिटकी\nप्राप्ति,\nभंडारणऔरवितरणअभिलेखोंकामिलानकरना।",
+              "event_date": "2026-08-20",
+              "original_date_expression": "20-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [
+                "19-08-2026",
+                "राहतसामग्रीभंडार"
+              ],
+              "confidence": 0.9
+            },
+            {
+              "event_title": "Record dated 19-08-2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nनिरीक्षणज्ञापन- राहतसामग्रीभंडार\nदिनांक: 20-08-2026\nनिरीक्षणकीतारीख:\n19-08-2026\nप्रकरणक्रमांक:\n२०२६-०१४\nनिरीक्षणकाउद्देश्य: नंदिवनजिले\nमेंबाढ़राहतकेअंतर्गतजलशुद्धिकरणकिटकी\nप्राप्ति,\nभंडारणऔरवितरणअभिलेखोंकामिलानकरना।",
+              "event_date": "2026-08-19",
+              "original_date_expression": "19-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [
+                "20-08-2026",
+                "राहतसामग्रीभंडार"
+              ],
+              "confidence": 0.9
+            },
+            {
+              "event_title": "Record dated 18-08-2026",
+              "description": "भौतिकसत्यापनकेसमयभंडारमें24 किटउपलब्धपाईगईं।भंडारकर्मचारीनेबताया\nकि18-08-2026 को6 किटनमूनाऔरपरीक्षणहेतुजारीकीगईथीं।",
+              "event_date": "2026-08-18",
+              "original_date_expression": "18-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [],
+              "confidence": 0.9
+            },
+            {
+              "event_title": "Record dated 15-08-2026",
+              "description": "स्टॉकरजिस्टरમેં\n15-08-2026 को14:00 बजे480 किटप्राप्तहोनेकीप्रविष्टिहै।",
+              "event_date": "2026-08-15",
+              "original_date_expression": "15-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [
+                "14:00"
+              ],
+              "confidence": 0.9
+            },
+            {
+              "event_title": "Record dated 16-08-2026",
+              "description": "भंडारकर्मचारीकेमौखिककथनकेअनुसारवाहन\n16-08-2026 कोलगभग17:30\nबजेपरिसरमेंपहुँचाथा।इसकथनकी\nस्वतंत्रपुष्टिआवश्यकहै।",
+              "event_date": "2026-08-16",
+              "original_date_expression": "16-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [],
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    "mismatches": [
+      {
+        "page": 1,
+        "field": "Embedded Text Layer (Stage A)",
+        "stage_a": "EMPTY (0 characters)",
+        "stage_b": "Contains text (965 chars)",
+        "stage_c": "Relies entirely on OCR pipeline",
+        "root_cause_category": "Stale/corrupted embedded PDF text layer",
+        "explanation": "Image-only scanned PDF contains no embedded font/text stream in PDF catalog.",
+        "code_reference": "backend/app/integrations/pdf_parser/parser.py:31-34"
+      }
+    ]
+  },
+  {
+    "filename": "D03_Work_Order_English_Digital.pdf",
+    "classification": "digital",
+    "stage_a": {
+      "has_embedded_text": true,
+      "total_chars": 1456,
+      "classification": "digital",
+      "pages": [
+        {
+          "page_number": 1,
+          "raw_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nEMERGENCY SUPPLY WORK ORDER\nReference: NDR/WO/2026/041\nDate: 12 August 2026\nIssuing office: Nandivan District Relief Office (fictional). Case reference: NVD-DR-2026-014.\nSupplier: BlueRiver Relief Logistics (fictional). Supply item: portable water purification kit,\nstandard household model.\n1. Quantity and price\nApproved quantity: 480 kits. Unit rate: INR 1,250. Total order value: INR 600,000 (Rupees Six Lakh\nonly), before any separately approved adjustment.\n2. Delivery condition\nThe supplier shall deliver the full ordered quantity to the Nandivan District Relief Store no later\nthan 16 August 2026, 18:00 local time. Each delivery must be supported by a signed delivery challan\nshowing quantity, date, time and receiving officer.\n3. Receipt and payment\nPayment processing is subject to physical quantity verification, matching stock entry and a signed\ndelivery challan. Partial delivery must be recorded separately and must not be represented as full\ncompletion.\n4. Record references\n- Purchase request: NDR/PR/2026/088.\n- Supplier quotation: BRL/QT/2026/119.\n- Delivery destination: Nandivan District Relief Store, Sector 2.\nThis is a synthetic work order created only for software demonstration and testing.\nAuthorized by: R. Mehta (fictional)\nDesignation: Procurement Officer\nElectronic approval reference: DEMO-APPROVAL-041\nDemonstration record only | All names, entities and events are fictional",
+          "char_count": 1456
+        }
+      ]
+    },
+    "stage_b": {
+      "pages": [
+        {
+          "page_number": 1,
+          "pipeline_ocr_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nC\nEMERGENCY SUPPLY WORK ORDER\nReference: NDR/WO/2026/041\nDate: 12 August 2026\nIssuing office: Nandivan District Relief Office (fictional). Case reference: NVD-DR-2026-014.\nSupplier: BlueRiver Relief Logistics (fictional). Supply item: portable water purification kit,\nstandard household model.\n1. Quantity and price\nApproved quantity: 480 kits. Unit rate: INR 1,250. Total order value: INR 600,000 (Rupees Six Lakh\nonly), before any separately approved adjustment.\n2. Delivery condition\nThe supplier shall deliver the full ordered quantity to the Nandivan District Relief Store no later\nthan 16 August 2026, 18:00 local time. Each delivery must be supported by a signed delivery challan\nshowing quantity, date, time and receiving officer.\n3. Receipt and payment\nPayment processing is subject to physical quantity verification, matching stock entry and a signed\ndelivery challan. Partial delivery must be recorded separately and must not be represented as full\ncompletion.\n4. Record references\n- Purchase request: NDR/PR/2026/088.\n- Supplier quotation: BRL/QT/2026/119.\n- Delivery destination: Nandivan District Relief Store, Sector 2.\nThis is a synthetic work order created only for software demonstration and testing.\nAuthorized by: R. Mehta (fictional)\nDesignation: Procurement Officer\nElectronic approval reference: DEMO-APPROVAL-041\nDemonstration record only\n| All names, entities and events are fictional",
+          "fresh_300dpi_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nC\nEMERGENCY SUPPLY WORK ORDER\nReference: NDR/WO/2026/041\nDate: 12 August 2026\nIssuing office: Nandivan District Relief Office (fictional). Case reference: NVD-DR-2026-014.\nSupplier: BlueRiver Relief Logistics (fictional). Supply item: portable water purification kit,\nstandard household model.\n1. Quantity and price\nApproved quantity: 480 kits. Unit rate: INR 1,250. Total order value: INR 600,000 (Rupees Six Lakh\nonly), before any separately approved adjustment.\n2. Delivery condition\nThe supplier shall deliver the full ordered quantity to the Nandivan District Relief Store no later\nthan 16 August 2026, 18:00 local time. Each delivery must be supported by a signed delivery challan\nshowing quantity, date, time and receiving officer.\n3. Receipt and payment\nPayment processing is subject to physical quantity verification, matching stock entry and a signed\ndelivery challan. Partial delivery must be recorded separately and must not be represented as full\ncompletion.\n4. Record references\n- Purchase request: NDR/PR/2026/088.\n- Supplier quotation: BRL/QT/2026/119.\n- Delivery destination: Nandivan District Relief Store, Sector 2.\nThis is a synthetic work order created only for software demonstration and testing.\nAuthorized by: R. Mehta (fictional)\nDesignation: Procurement Officer\nElectronic approval reference: DEMO-APPROVAL-041\nDemonstration record only\n| All names, entities and events are fictional",
+          "char_count": 1458
+        }
+      ]
+    },
+    "stage_c": {
+      "pages": [
+        {
+          "page_number": 1,
+          "detected_language": "eng",
+          "translation_method": "english_bypass",
+          "entities_pipeline": [
+            {
+              "entity_name": "12 August 2026",
+              "normalized_name": "12 august 2026",
+              "entity_type": "Date",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                110,
+                124
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "16 August 2026",
+              "normalized_name": "16 august 2026",
+              "entity_type": "Date",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                639,
+                653
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "18:00",
+              "normalized_name": "18:00",
+              "entity_type": "Time",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                655,
+                661
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "INR 1,250",
+              "normalized_name": "inr 1,250",
+              "entity_type": "Monetary Amount",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                403,
+                412
+              ],
+              "extraction_confidence": 0.92,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "INR 600,000",
+              "normalized_name": "inr 600,000",
+              "entity_type": "Monetary Amount",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                433,
+                444
+              ],
+              "extraction_confidence": 0.92,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "NDR/WO/2026/041",
+              "normalized_name": "ndr/wo/2026/041",
+              "entity_type": "Reference Number",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                88,
+                103
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "NDR/PR/2026/088",
+              "normalized_name": "ndr/pr/2026/088",
+              "entity_type": "Reference Number",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                1060,
+                1075
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "BRL/QT/2026/119",
+              "normalized_name": "brl/qt/2026/119",
+              "entity_type": "Reference Number",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                1099,
+                1114
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "District Relief Office",
+              "normalized_name": "district relief office",
+              "entity_type": "Government Department",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                150,
+                172
+              ],
+              "extraction_confidence": 0.96,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "District Relief Store",
+              "normalized_name": "district relief store",
+              "entity_type": "Government Department",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                603,
+                624
+              ],
+              "extraction_confidence": 0.96,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Electronic",
+              "normalized_name": "electronic",
+              "entity_type": "Person",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                1335,
+                1345
+              ],
+              "extraction_confidence": 0.88,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "R. Mehta",
+              "normalized_name": "r. mehta",
+              "entity_type": "Person",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                1281,
+                1289
+              ],
+              "extraction_confidence": 0.88,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "BlueRiver Relief Logistics",
+              "normalized_name": "blueriver relief logistics",
+              "entity_type": "Organization",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                229,
+                255
+              ],
+              "extraction_confidence": 0.85,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Sector 2",
+              "normalized_name": "sector 2",
+              "entity_type": "Location",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                1172,
+                1180
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Nandivan District",
+              "normalized_name": "nandivan district",
+              "entity_type": "Location",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                141,
+                158
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Nandivan District Relief Store",
+              "normalized_name": "nandivan district relief store",
+              "entity_type": "Location",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                594,
+                624
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Nandivan",
+              "normalized_name": "nandivan",
+              "entity_type": "Location",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                141,
+                149
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            }
+          ],
+          "events_pipeline": [
+            {
+              "event_title": "Record dated 12 August 2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nEMERGENCY SUPPLY WORK ORDER\nReference: NDR/WO/2026/041\nDate: 12 August 2026\nIssuing office: Nandivan District Relief Office (fictional).",
+              "event_date": "2026-08-12",
+              "original_date_expression": "12 August 2026",
+              "date_precision": "approximate",
+              "associated_entities": [
+                "Nandivan",
+                "Nandivan District",
+                "NDR/WO/2026/041",
+                "District Relief Office"
+              ],
+              "confidence": 0.9
+            },
+            {
+              "event_title": "Record dated 16 August 2026",
+              "description": "Delivery condition\nThe supplier shall deliver the full ordered quantity to the Nandivan District Relief Store no later\nthan 16 August 2026, 18:00 local time.",
+              "event_date": "2026-08-16",
+              "original_date_expression": "16 August 2026",
+              "date_precision": "approximate",
+              "associated_entities": [
+                "District Relief Store",
+                "Nandivan District Relief Store",
+                "18:00",
+                "Nandivan"
+              ],
+              "confidence": 0.9
+            }
+          ],
+          "entities_from_300": [
+            {
+              "entity_name": "12 August 2026",
+              "normalized_name": "12 august 2026",
+              "entity_type": "Date",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                112,
+                126
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "16 August 2026",
+              "normalized_name": "16 august 2026",
+              "entity_type": "Date",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                641,
+                655
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "18:00",
+              "normalized_name": "18:00",
+              "entity_type": "Time",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                657,
+                663
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "INR 1,250",
+              "normalized_name": "inr 1,250",
+              "entity_type": "Monetary Amount",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                405,
+                414
+              ],
+              "extraction_confidence": 0.92,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "INR 600,000",
+              "normalized_name": "inr 600,000",
+              "entity_type": "Monetary Amount",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                435,
+                446
+              ],
+              "extraction_confidence": 0.92,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "NDR/WO/2026/041",
+              "normalized_name": "ndr/wo/2026/041",
+              "entity_type": "Reference Number",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                90,
+                105
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "NDR/PR/2026/088",
+              "normalized_name": "ndr/pr/2026/088",
+              "entity_type": "Reference Number",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                1062,
+                1077
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "BRL/QT/2026/119",
+              "normalized_name": "brl/qt/2026/119",
+              "entity_type": "Reference Number",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                1101,
+                1116
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "District Relief Office",
+              "normalized_name": "district relief office",
+              "entity_type": "Government Department",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                152,
+                174
+              ],
+              "extraction_confidence": 0.96,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "District Relief Store",
+              "normalized_name": "district relief store",
+              "entity_type": "Government Department",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                605,
+                626
+              ],
+              "extraction_confidence": 0.96,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Electronic",
+              "normalized_name": "electronic",
+              "entity_type": "Person",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                1337,
+                1347
+              ],
+              "extraction_confidence": 0.88,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "R. Mehta",
+              "normalized_name": "r. mehta",
+              "entity_type": "Person",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                1283,
+                1291
+              ],
+              "extraction_confidence": 0.88,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "BlueRiver Relief Logistics",
+              "normalized_name": "blueriver relief logistics",
+              "entity_type": "Organization",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                231,
+                257
+              ],
+              "extraction_confidence": 0.85,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Sector 2",
+              "normalized_name": "sector 2",
+              "entity_type": "Location",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                1174,
+                1182
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Nandivan District",
+              "normalized_name": "nandivan district",
+              "entity_type": "Location",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                143,
+                160
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Nandivan District Relief Store",
+              "normalized_name": "nandivan district relief store",
+              "entity_type": "Location",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                596,
+                626
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Nandivan",
+              "normalized_name": "nandivan",
+              "entity_type": "Location",
+              "document_id": "D03_Work_Order_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                143,
+                151
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            }
+          ],
+          "events_from_300": [
+            {
+              "event_title": "Record dated 12 August 2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nC\nEMERGENCY SUPPLY WORK ORDER\nReference: NDR/WO/2026/041\nDate: 12 August 2026\nIssuing office: Nandivan District Relief Office (fictional).",
+              "event_date": "2026-08-12",
+              "original_date_expression": "12 August 2026",
+              "date_precision": "approximate",
+              "associated_entities": [
+                "Nandivan",
+                "Nandivan District",
+                "NDR/WO/2026/041",
+                "District Relief Office"
+              ],
+              "confidence": 0.9
+            },
+            {
+              "event_title": "Record dated 16 August 2026",
+              "description": "Delivery condition\nThe supplier shall deliver the full ordered quantity to the Nandivan District Relief Store no later\nthan 16 August 2026, 18:00 local time.",
+              "event_date": "2026-08-16",
+              "original_date_expression": "16 August 2026",
+              "date_precision": "approximate",
+              "associated_entities": [
+                "District Relief Store",
+                "Nandivan District Relief Store",
+                "18:00",
+                "Nandivan"
+              ],
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    "mismatches": []
+  },
+  {
+    "filename": "D04_Stock_Register_Gujarati_Scanned.pdf",
+    "classification": "scanned",
+    "stage_a": {
+      "has_embedded_text": false,
+      "total_chars": 0,
+      "classification": "scanned",
+      "pages": [
+        {
+          "page_number": 1,
+          "raw_text": "",
+          "char_count": 0
+        }
+      ]
+    },
+    "stage_b": {
+      "pages": [
+        {
+          "page_number": 1,
+          "pipeline_ocr_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nte\nસ્ટોકરજીસ્ટર- પાણીશુદ્ધિકરણકિટ\nસ્ટોર: નંદિવનજિલ્લારાહતસ્ટોર- સેક્ટર2\nરજીસ્ટરપાનું: પાનું\n૧૮\nમહિનો: ઓગસ્ટ2026\nનીચેનીનોંધસ્ટોકરજીસ્ટરમાંથીડેમોમાટેનકલકરેલછે. મૂળચલણનીનકલઆ\nપાનાં\nસાથે\nજોડાયેલનથી.\nતારીખ\n/ સમય\nવિગત\nઆવકરજાવક\nરબાકી\n14:00\nલોજિસ્ટિક્સ: ચલણ\nમ_\nहि\nનોંધકરનાર: દેવેન્દ્રસોલંકી\nUE: સ્ટોરકીપર(કાલ્પનિક)\nપ્રવેશનીબાજુમાંસહીદર્શાવેલ: (ડેમો)\nFor demonstration and software testing only.",
+          "fresh_300dpi_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nte\nસ્ટોકરજીસ્ટર- પાણીશુદ્ધિકરણકિટ\nસ્ટોર: નંદિવનજિલ્લારાહતસ્ટોર- સેક્ટર2\nરજીસ્ટરપાનું: પાનું\n૧૮\nમહિનો: ઓગસ્ટ2026\nનીચેનીનોંધસ્ટોકરજીસ્ટરમાંથીડેમોમાટેનકલકરેલછે. મૂળચલણનીનકલઆ\nપાનાં\nસાથે\nજોડાયેલનથી.\nતારીખ\n/ સમય\nવિગત\nઆવકરજાવક\nરબાકી\n14:00\nલોજિસ્ટિક્સ: ચલણ\nમ_\nहि\nનોંધકરનાર: દેવેન્દ્રસોલંકી\nUE: સ્ટોરકીપર(કાલ્પનિક)\nપ્રવેશનીબાજુમાંસહીદર્શાવેલ: (ડેમો)\nFor demonstration and software testing only.",
+          "char_count": 434
+        }
+      ]
+    },
+    "stage_c": {
+      "pages": [
+        {
+          "page_number": 1,
+          "detected_language": "guj",
+          "translation_method": "indictrans2_not_configured",
+          "entities_pipeline": [
+            {
+              "entity_name": "14:00",
+              "normalized_name": "14:00",
+              "entity_type": "Time",
+              "document_id": "D04_Stock_Register_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                275,
+                281
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "રાહતસ્ટોર",
+              "normalized_name": "રાહતસ્ટોર",
+              "entity_type": "Government Department",
+              "document_id": "D04_Stock_Register_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                102,
+                111
+              ],
+              "extraction_confidence": 0.96,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "સેક્ટર2",
+              "normalized_name": "સેક્ટર2",
+              "entity_type": "Location",
+              "document_id": "D04_Stock_Register_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                113,
+                120
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "નંદિવનજિલ્લા",
+              "normalized_name": "નંદિવનજિલ્લા",
+              "entity_type": "Location",
+              "document_id": "D04_Stock_Register_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                90,
+                102
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            }
+          ],
+          "events_pipeline": [],
+          "entities_from_300": [
+            {
+              "entity_name": "14:00",
+              "normalized_name": "14:00",
+              "entity_type": "Time",
+              "document_id": "D04_Stock_Register_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                275,
+                281
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "રાહતસ્ટોર",
+              "normalized_name": "રાહતસ્ટોર",
+              "entity_type": "Government Department",
+              "document_id": "D04_Stock_Register_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                102,
+                111
+              ],
+              "extraction_confidence": 0.96,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "સેક્ટર2",
+              "normalized_name": "સેક્ટર2",
+              "entity_type": "Location",
+              "document_id": "D04_Stock_Register_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                113,
+                120
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "નંદિવનજિલ્લા",
+              "normalized_name": "નંદિવનજિલ્લા",
+              "entity_type": "Location",
+              "document_id": "D04_Stock_Register_Gujarati_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                90,
+                102
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            }
+          ],
+          "events_from_300": []
+        }
+      ]
+    },
+    "mismatches": [
+      {
+        "page": 1,
+        "field": "Embedded Text Layer (Stage A)",
+        "stage_a": "EMPTY (0 characters)",
+        "stage_b": "Contains text (434 chars)",
+        "stage_c": "Relies entirely on OCR pipeline",
+        "root_cause_category": "Stale/corrupted embedded PDF text layer",
+        "explanation": "Image-only scanned PDF contains no embedded font/text stream in PDF catalog.",
+        "code_reference": "backend/app/integrations/pdf_parser/parser.py:31-34"
+      },
+      {
+        "page": 1,
+        "field": "Stock Receipt Date '15-08-2026'",
+        "stage_a": "N/A",
+        "stage_b": "Date missing from OCR output; only '14:00' extracted",
+        "stage_c": "Event date missing; only Time '14:00' captured",
+        "root_cause_category": "OCR character/layout error or low DPI",
+        "explanation": "Table border lines in scanned document interfered with Tesseract character block segmentation in the date column.",
+        "code_reference": "backend/app/integrations/ocr_provider/ocr.py:107"
+      }
+    ]
+  },
+  {
+    "filename": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+    "classification": "digital",
+    "stage_a": {
+      "has_embedded_text": true,
+      "total_chars": 820,
+      "classification": "digital",
+      "pages": [
+        {
+          "page_number": 1,
+          "raw_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nVEHICLE GATE MOVEMENT REGISTER\nReference: NDR/GATE/2026/166\nDate: 16 August 2026\nLocation: Nandivan District Relief Store, Sector 2. Register maintained by the store gate desk.\nRecorded movement\nVehicle registration: GJ-00-AB-0000 (fictional demonstration identifier). Supplier: BlueRiver Relief\nLogistics. Driver name recorded: N. Rathod (fictional).\nTime\nVehicle\nReference\nQuantity\nMovement\nRemarks\n17:30\nGJ-00-AB-0000\nBRL/NDV/88\n360\nUnloaded\nCount recorded at gate\n19:10\nGJ-00-AB-0000\nBRL/NDV/88\n120\nDeparted\nReturned to depot; brake\ninspection pending\nGate entry recorded by: P. Shah (fictional)\nImportant: This gate register records gate movement; it is not a signed goods-receipt certificate.\nDemonstration record only | All names, entities and events are fictional",
+          "char_count": 820
+        }
+      ]
+    },
+    "stage_b": {
+      "pages": [
+        {
+          "page_number": 1,
+          "pipeline_ocr_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nC\nVEHICLE GATE MOVEMENT REGISTER\nReference: NDR/GATE/2026/166\nDate: 16 August 2026\nLocation: Nandivan District Relief Store, Sector 2. Register maintained by the store gate desk.\nRecorded movement\nVehicle registration: GJ-00-AB-0000 (fictional demonstration identifier). Supplier: BlueRiver Relief\nLogistics. Driver name recorded: N. Rathod (fictional).\nTime\nVehicle\nReference\nQuantity\nMovement\nRemarks\n17:30\nGJ-00-AB-0000\nBRL/NDV/88\n360\nUnloaded\nCount recorded at gate\n19:10\nGJ-00-AB-0000\nBRL/NDV/88\n120\nDeparted\nReturned to depot; brake\ninspection pending\nGate entry recorded by: P. Shah (fictional)\nImportant: This gate register records gate movement; it is not a signed goods-receipt certificate.\nDemonstration record only\n| All names, entities and events are fictional",
+          "fresh_300dpi_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nC\nVEHICLE GATE MOVEMENT REGISTER\nReference: NDR/GATE/2026/166\nDate: 16 August 2026\nLocation: Nandivan District Relief Store, Sector 2. Register maintained by the store gate desk.\nRecorded movement\nVehicle registration: GJ-00-AB-0000 (fictional demonstration identifier). Supplier: BlueRiver Relief\nLogistics. Driver name recorded: N. Rathod (fictional).\nTime\nVehicle\nReference\nQuantity\nMovement\nRemarks\n17:30\nGJ-00-AB-0000\nBRL/NDV/88\n360\nUnloaded\nCount recorded at gate\n19:10\nGJ-00-AB-0000\nBRL/NDV/88\n120\nDeparted\nReturned to depot; brake\ninspection pending\nGate entry recorded by: P. Shah (fictional)\nImportant: This gate register records gate movement; it is not a signed goods-receipt certificate.\nDemonstration record only\n| All names, entities and events are fictional",
+          "char_count": 822
+        }
+      ]
+    },
+    "stage_c": {
+      "pages": [
+        {
+          "page_number": 1,
+          "detected_language": "eng",
+          "translation_method": "english_bypass",
+          "entities_pipeline": [
+            {
+              "entity_name": "16 August 2026",
+              "normalized_name": "16 august 2026",
+              "entity_type": "Date",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                115,
+                129
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "17:30",
+              "normalized_name": "17:30",
+              "entity_type": "Time",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                450,
+                456
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "19:10",
+              "normalized_name": "19:10",
+              "entity_type": "Time",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                517,
+                523
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "NDR/GATE/2026/166",
+              "normalized_name": "ndr/gate/2026/166",
+              "entity_type": "Reference Number",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                91,
+                108
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "BRL/NDV/88",
+              "normalized_name": "brl/ndv/88",
+              "entity_type": "Reference Number",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                470,
+                480
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "GJ-00-AB-0000",
+              "normalized_name": "gj-00-ab-0000",
+              "entity_type": "Vehicle Identifier",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                266,
+                279
+              ],
+              "extraction_confidence": 0.88,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "District Relief Store",
+              "normalized_name": "district relief store",
+              "entity_type": "Government Department",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                149,
+                170
+              ],
+              "extraction_confidence": 0.96,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "N. Rathod",
+              "normalized_name": "n. rathod",
+              "entity_type": "Person",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                378,
+                387
+              ],
+              "extraction_confidence": 0.88,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "P. Shah",
+              "normalized_name": "p. shah",
+              "entity_type": "Person",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                629,
+                636
+              ],
+              "extraction_confidence": 0.88,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "BlueRiver Relief\nLogistics",
+              "normalized_name": "blueriver relief\nlogistics",
+              "entity_type": "Organization",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                328,
+                354
+              ],
+              "extraction_confidence": 0.85,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Sector 2",
+              "normalized_name": "sector 2",
+              "entity_type": "Location",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                172,
+                180
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Nandivan District Relief Store",
+              "normalized_name": "nandivan district relief store",
+              "entity_type": "Location",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                140,
+                170
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Nandivan",
+              "normalized_name": "nandivan",
+              "entity_type": "Location",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                140,
+                148
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            }
+          ],
+          "events_pipeline": [
+            {
+              "event_title": "Record dated 16 August 2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nVEHICLE GATE MOVEMENT REGISTER\nReference: NDR/GATE/2026/166\nDate: 16 August 2026\nLocation: Nandivan District Relief Store, Sector 2.",
+              "event_date": "2026-08-16",
+              "original_date_expression": "16 August 2026",
+              "date_precision": "approximate",
+              "associated_entities": [
+                "District Relief Store",
+                "Nandivan District Relief Store",
+                "NDR/GATE/2026/166",
+                "Sector 2"
+              ],
+              "confidence": 0.9
+            }
+          ],
+          "entities_from_300": [
+            {
+              "entity_name": "16 August 2026",
+              "normalized_name": "16 august 2026",
+              "entity_type": "Date",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                117,
+                131
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "17:30",
+              "normalized_name": "17:30",
+              "entity_type": "Time",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                452,
+                458
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "19:10",
+              "normalized_name": "19:10",
+              "entity_type": "Time",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                519,
+                525
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "NDR/GATE/2026/166",
+              "normalized_name": "ndr/gate/2026/166",
+              "entity_type": "Reference Number",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                93,
+                110
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "BRL/NDV/88",
+              "normalized_name": "brl/ndv/88",
+              "entity_type": "Reference Number",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                472,
+                482
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "GJ-00-AB-0000",
+              "normalized_name": "gj-00-ab-0000",
+              "entity_type": "Vehicle Identifier",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                268,
+                281
+              ],
+              "extraction_confidence": 0.88,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "District Relief Store",
+              "normalized_name": "district relief store",
+              "entity_type": "Government Department",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                151,
+                172
+              ],
+              "extraction_confidence": 0.96,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "N. Rathod",
+              "normalized_name": "n. rathod",
+              "entity_type": "Person",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                380,
+                389
+              ],
+              "extraction_confidence": 0.88,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "P. Shah",
+              "normalized_name": "p. shah",
+              "entity_type": "Person",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                631,
+                638
+              ],
+              "extraction_confidence": 0.88,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "BlueRiver Relief\nLogistics",
+              "normalized_name": "blueriver relief\nlogistics",
+              "entity_type": "Organization",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                330,
+                356
+              ],
+              "extraction_confidence": 0.85,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Sector 2",
+              "normalized_name": "sector 2",
+              "entity_type": "Location",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                174,
+                182
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Nandivan District Relief Store",
+              "normalized_name": "nandivan district relief store",
+              "entity_type": "Location",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                142,
+                172
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Nandivan",
+              "normalized_name": "nandivan",
+              "entity_type": "Location",
+              "document_id": "D05_Vehicle_Gate_Log_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                142,
+                150
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            }
+          ],
+          "events_from_300": [
+            {
+              "event_title": "Record dated 16 August 2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nC\nVEHICLE GATE MOVEMENT REGISTER\nReference: NDR/GATE/2026/166\nDate: 16 August 2026\nLocation: Nandivan District Relief Store, Sector 2.",
+              "event_date": "2026-08-16",
+              "original_date_expression": "16 August 2026",
+              "date_precision": "approximate",
+              "associated_entities": [
+                "District Relief Store",
+                "Nandivan District Relief Store",
+                "NDR/GATE/2026/166",
+                "Sector 2"
+              ],
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    "mismatches": []
+  },
+  {
+    "filename": "D06_Beneficiary_Statements_Hindi_Scanned.pdf",
+    "classification": "scanned",
+    "stage_a": {
+      "has_embedded_text": false,
+      "total_chars": 0,
+      "classification": "scanned",
+      "pages": [
+        {
+          "page_number": 1,
+          "raw_text": "",
+          "char_count": 0
+        }
+      ]
+    },
+    "stage_b": {
+      "pages": [
+        {
+          "page_number": 1,
+          "pipeline_ocr_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nलाभार्थीकथन- जलशुद्धिकरणकिट\nसंकलनfafa:\n17-08-2026\nक्षेत्र: वार्ड4,नंदिवनजिला\nसंदर्भक्रमांक: २०२६-०१४\nकथन1 - लाभार्थीक्रमांक022:\nमैंने16-08-2026 कीशामकोएकजलशुद्धिकरणकिटप्राप्तकी।किटदेनेवाले\nव्यक्तिनेकिसीसूचीपरहस्ताक्षरकराए।मुझेकुलवितरणसंख्याकीजानकारीनहींहै।\nकथन2 - लाभार्थीक्रमांक०२४:\nमुझे\n17-08-2026 कीसुबहएककिटमिली।वितरणकेसमयवाहनवहाँनहींथा; किट\nस्थानीयकेंद्रसे\nदीगईथी।\nकथन3 - लाभार्थीक्रमांक032:\nमेरेपरिवारको\n16-08-2026 कोकिटनहींमिली।17-08-2026 कोभी\nकेंद्र\nपरनाम\nखोजनेपरसूचीमेंनामनहींमिला।बादमेंसहायताकेंद्रमेंपुन: आनेकोकहागया।\nयेकथनव्यक्तियोंकीस्मृतिपरआधारितहैं।इनसेअकेले\nपूरेवार्डकेवितरणकीसंख्या\nसिद्धनहींहोती।\nसंकलनकर्ता: फील्डसहायकक्रमांक\n०४(काल्पनिक)\nकथनदर्जकरनेकास्थान: वार्ड४सहायताकेंद्र\nसभीलाभार्थीकोडकाल्पनिकहैं.\nFor demonstration and software testing only.",
+          "fresh_300dpi_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nलाभार्थीकथन- जलशुद्धिकरणकिट\nसंकलनfafa:\n17-08-2026\nक्षेत्र: वार्ड4,नंदिवनजिला\nसंदर्भक्रमांक: २०२६-०१४\nकथन1 - लाभार्थीक्रमांक022:\nमैंने16-08-2026 कीशामकोएकजलशुद्धिकरणकिटप्राप्तकी।किटदेनेवाले\nव्यक्तिनेकिसीसूचीपरहस्ताक्षरकराए।मुझेकुलवितरणसंख्याकीजानकारीनहींहै।\nकथन2 - लाभार्थीक्रमांक०२४:\nमुझे\n17-08-2026 कीसुबहएककिटमिली।वितरणकेसमयवाहनवहाँनहींथा; किट\nस्थानीयकेंद्रसे\nदीगईथी।\nकथन3 - लाभार्थीक्रमांक032:\nमेरेपरिवारको\n16-08-2026 कोकिटनहींमिली।17-08-2026 कोभी\nकेंद्र\nपरनाम\nखोजनेपरसूचीमेंनामनहींमिला।बादमेंसहायताकेंद्रमेंपुन: आनेकोकहागया।\nयेकथनव्यक्तियोंकीस्मृतिपरआधारितहैं।इनसेअकेले\nपूरेवार्डकेवितरणकीसंख्या\nसिद्धनहींहोती।\nसंकलनकर्ता: फील्डसहायकक्रमांक\n०४(काल्पनिक)\nकथनदर्जकरनेकास्थान: वार्ड४सहायताकेंद्र\nसभीलाभार्थीकोडकाल्पनिकहैं.\nFor demonstration and software testing only.",
+          "char_count": 816
+        }
+      ]
+    },
+    "stage_c": {
+      "pages": [
+        {
+          "page_number": 1,
+          "detected_language": "hin",
+          "translation_method": "indictrans2_not_configured",
+          "entities_pipeline": [
+            {
+              "entity_name": "17-08-2026",
+              "normalized_name": "17-08-2026",
+              "entity_type": "Date",
+              "document_id": "D06_Beneficiary_Statements_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                88,
+                98
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "16-08-2026",
+              "normalized_name": "16-08-2026",
+              "entity_type": "Date",
+              "document_id": "D06_Beneficiary_Statements_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                182,
+                192
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "वार्ड4",
+              "normalized_name": "वार्ड4",
+              "entity_type": "Location",
+              "document_id": "D06_Beneficiary_Statements_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                108,
+                114
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            }
+          ],
+          "events_pipeline": [
+            {
+              "event_title": "Record dated 17-08-2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nलाभार्थीकथन- जलशुद्धिकरणकिट\nसंकलनfafa:\n17-08-2026\nक्षेत्र: वार्ड4,नंदिवनजिला\nसंदर्भक्रमांक: २०२६-०१४\nकथन1 - लाभार्थीक्रमांक022:\nमैंने16-08-2026 कीशामकोएकजलशुद्धिकरणकिटप्राप्तकी।किटदेनेवाले\nव्यक्तिनेकिसीसूचीपरहस्ताक्षरकराए।मुझेकुलवितरणसंख्याकीजानकारीनहींहै।",
+              "event_date": "2026-08-17",
+              "original_date_expression": "17-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [
+                "वार्ड4",
+                "16-08-2026"
+              ],
+              "confidence": 0.9
+            },
+            {
+              "event_title": "Record dated 16-08-2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nलाभार्थीकथन- जलशुद्धिकरणकिट\nसंकलनfafa:\n17-08-2026\nक्षेत्र: वार्ड4,नंदिवनजिला\nसंदर्भक्रमांक: २०२६-०१४\nकथन1 - लाभार्थीक्रमांक022:\nमैंने16-08-2026 कीशामकोएकजलशुद्धिकरणकिटप्राप्तकी।किटदेनेवाले\nव्यक्तिनेकिसीसूचीपरहस्ताक्षरकराए।मुझेकुलवितरणसंख्याकीजानकारीनहींहै।",
+              "event_date": "2026-08-16",
+              "original_date_expression": "16-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [
+                "वार्ड4",
+                "17-08-2026"
+              ],
+              "confidence": 0.9
+            }
+          ],
+          "entities_from_300": [
+            {
+              "entity_name": "17-08-2026",
+              "normalized_name": "17-08-2026",
+              "entity_type": "Date",
+              "document_id": "D06_Beneficiary_Statements_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                88,
+                98
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "16-08-2026",
+              "normalized_name": "16-08-2026",
+              "entity_type": "Date",
+              "document_id": "D06_Beneficiary_Statements_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                182,
+                192
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "वार्ड4",
+              "normalized_name": "वार्ड4",
+              "entity_type": "Location",
+              "document_id": "D06_Beneficiary_Statements_Hindi_Scanned.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                108,
+                114
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            }
+          ],
+          "events_from_300": [
+            {
+              "event_title": "Record dated 17-08-2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nलाभार्थीकथन- जलशुद्धिकरणकिट\nसंकलनfafa:\n17-08-2026\nक्षेत्र: वार्ड4,नंदिवनजिला\nसंदर्भक्रमांक: २०२६-०१४\nकथन1 - लाभार्थीक्रमांक022:\nमैंने16-08-2026 कीशामकोएकजलशुद्धिकरणकिटप्राप्तकी।किटदेनेवाले\nव्यक्तिनेकिसीसूचीपरहस्ताक्षरकराए।मुझेकुलवितरणसंख्याकीजानकारीनहींहै।",
+              "event_date": "2026-08-17",
+              "original_date_expression": "17-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [
+                "वार्ड4",
+                "16-08-2026"
+              ],
+              "confidence": 0.9
+            },
+            {
+              "event_title": "Record dated 16-08-2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nलाभार्थीकथन- जलशुद्धिकरणकिट\nसंकलनfafa:\n17-08-2026\nक्षेत्र: वार्ड4,नंदिवनजिला\nसंदर्भक्रमांक: २०२६-०१४\nकथन1 - लाभार्थीक्रमांक022:\nमैंने16-08-2026 कीशामकोएकजलशुद्धिकरणकिटप्राप्तकी।किटदेनेवाले\nव्यक्तिनेकिसीसूचीपरहस्ताक्षरकराए।मुझेकुलवितरणसंख्याकीजानकारीनहींहै।",
+              "event_date": "2026-08-16",
+              "original_date_expression": "16-08-2026",
+              "date_precision": "exact",
+              "associated_entities": [
+                "वार्ड4",
+                "17-08-2026"
+              ],
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    "mismatches": [
+      {
+        "page": 1,
+        "field": "Embedded Text Layer (Stage A)",
+        "stage_a": "EMPTY (0 characters)",
+        "stage_b": "Contains text (816 chars)",
+        "stage_c": "Relies entirely on OCR pipeline",
+        "root_cause_category": "Stale/corrupted embedded PDF text layer",
+        "explanation": "Image-only scanned PDF contains no embedded font/text stream in PDF catalog.",
+        "code_reference": "backend/app/integrations/pdf_parser/parser.py:31-34"
+      }
+    ]
+  },
+  {
+    "filename": "D07_Supplier_Invoice_English_Digital.pdf",
+    "classification": "digital",
+    "stage_a": {
+      "has_embedded_text": true,
+      "total_chars": 782,
+      "classification": "digital",
+      "pages": [
+        {
+          "page_number": 1,
+          "raw_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nSUPPLIER TAX INVOICE - DEMONSTRATION\nReference: BRL/INV/2026/119\nDate: 18 August 2026\nSupplier: BlueRiver Relief Logistics (fictional). Bill to: Nandivan District Relief Office\n(fictional).\nRelated work order: NDR/WO/2026/041. Related delivery reference: BRL/NDV/88.\nInvoice details\nDescription\nQuantity\nUnit rate (INR)\nLine total (INR)\nPortable water purification kit\n480\n1,250\n600,000\nTotal invoiced\n600,000\nSupplier declaration: Goods supplied against the referenced work order.\nPrepared by: Accounts Desk, BlueRiver Relief Logistics (fictional).\nNote: This synthetic invoice is intentionally included to test quantity reconciliation against source records.\nDemonstration record only | All names, entities and events are fictional",
+          "char_count": 782
+        }
+      ]
+    },
+    "stage_b": {
+      "pages": [
+        {
+          "page_number": 1,
+          "pipeline_ocr_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nC\nSUPPLIER TAX INVOICE - DEMONSTRATION\nReference: BRL/INV/2026/119\nDate: 18 August 2026\nSupplier: BlueRiver Relief Logistics (fictional). Bill to: Nandivan District Relief Office\n(fictional).\nRelated work order: NDR/WO/2026/041. Related delivery reference: BRL/NDV/88.\nInvoice details\nDescription\nQuantity\nUnit rate (INR)\nLine total (INR)\nPortable water purification kit\n480\n1,250\n600,000\nTotal invoiced\n600,000\nSupplier declaration: Goods supplied against the referenced work order.\nPrepared by: Accounts Desk, BlueRiver Relief Logistics (fictional).\nNote: This synthetic invoice is intentionally included to test quantity reconciliation against source records.\nDemonstration record only\n| All names, entities and events are fictional",
+          "fresh_300dpi_text": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nC\nSUPPLIER TAX INVOICE - DEMONSTRATION\nReference: BRL/INV/2026/119\nDate: 18 August 2026\nSupplier: BlueRiver Relief Logistics (fictional). Bill to: Nandivan District Relief Office\n(fictional).\nRelated work order: NDR/WO/2026/041. Related delivery reference: BRL/NDV/88.\nInvoice details\nDescription\nQuantity\nUnit rate (INR)\nLine total (INR)\nPortable water purification kit\n480\n1,250\n600,000\nTotal invoiced\n600,000\nSupplier declaration: Goods supplied against the referenced work order.\nPrepared by: Accounts Desk, BlueRiver Relief Logistics (fictional).\nNote: This synthetic invoice is intentionally included to test quantity reconciliation against source records.\nDemonstration record only\n| All names, entities and events are fictional",
+          "char_count": 784
+        }
+      ]
+    },
+    "stage_c": {
+      "pages": [
+        {
+          "page_number": 1,
+          "detected_language": "eng",
+          "translation_method": "english_bypass",
+          "entities_pipeline": [
+            {
+              "entity_name": "18 August 2026",
+              "normalized_name": "18 august 2026",
+              "entity_type": "Date",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                120,
+                134
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "BRL/INV/2026/119",
+              "normalized_name": "brl/inv/2026/119",
+              "entity_type": "Reference Number",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                97,
+                113
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "NDR/WO/2026/041",
+              "normalized_name": "ndr/wo/2026/041",
+              "entity_type": "Reference Number",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                259,
+                274
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "BRL/NDV/88",
+              "normalized_name": "brl/ndv/88",
+              "entity_type": "Reference Number",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                304,
+                314
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "District Relief Office",
+              "normalized_name": "district relief office",
+              "entity_type": "Government Department",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                203,
+                225
+              ],
+              "extraction_confidence": 0.96,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Accounts Desk",
+              "normalized_name": "accounts desk",
+              "entity_type": "Person",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                544,
+                557
+              ],
+              "extraction_confidence": 0.88,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "BlueRiver Relief Logistics",
+              "normalized_name": "blueriver relief logistics",
+              "entity_type": "Organization",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                145,
+                171
+              ],
+              "extraction_confidence": 0.85,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Nandivan District",
+              "normalized_name": "nandivan district",
+              "entity_type": "Location",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                194,
+                211
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Nandivan",
+              "normalized_name": "nandivan",
+              "entity_type": "Location",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                194,
+                202
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            }
+          ],
+          "events_pipeline": [
+            {
+              "event_title": "Record dated 18 August 2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nSUPPLIER TAX INVOICE - DEMONSTRATION\nReference: BRL/INV/2026/119\nDate: 18 August 2026\nSupplier: BlueRiver Relief Logistics (fictional).",
+              "event_date": "2026-08-18",
+              "original_date_expression": "18 August 2026",
+              "date_precision": "approximate",
+              "associated_entities": [
+                "BRL/INV/2026/119",
+                "BlueRiver Relief Logistics"
+              ],
+              "confidence": 0.9
+            }
+          ],
+          "entities_from_300": [
+            {
+              "entity_name": "18 August 2026",
+              "normalized_name": "18 august 2026",
+              "entity_type": "Date",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                122,
+                136
+              ],
+              "extraction_confidence": 0.95,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "BRL/INV/2026/119",
+              "normalized_name": "brl/inv/2026/119",
+              "entity_type": "Reference Number",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                99,
+                115
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "NDR/WO/2026/041",
+              "normalized_name": "ndr/wo/2026/041",
+              "entity_type": "Reference Number",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                261,
+                276
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "BRL/NDV/88",
+              "normalized_name": "brl/ndv/88",
+              "entity_type": "Reference Number",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                306,
+                316
+              ],
+              "extraction_confidence": 0.93,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "District Relief Office",
+              "normalized_name": "district relief office",
+              "entity_type": "Government Department",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                205,
+                227
+              ],
+              "extraction_confidence": 0.96,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Accounts Desk",
+              "normalized_name": "accounts desk",
+              "entity_type": "Person",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                546,
+                559
+              ],
+              "extraction_confidence": 0.88,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "BlueRiver Relief Logistics",
+              "normalized_name": "blueriver relief logistics",
+              "entity_type": "Organization",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                147,
+                173
+              ],
+              "extraction_confidence": 0.85,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Nandivan District",
+              "normalized_name": "nandivan district",
+              "entity_type": "Location",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                196,
+                213
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            },
+            {
+              "entity_name": "Nandivan",
+              "normalized_name": "nandivan",
+              "entity_type": "Location",
+              "document_id": "D07_Supplier_Invoice_English_Digital.pdf",
+              "page_number": 1,
+              "paragraph_reference": 1,
+              "source_span": [
+                196,
+                204
+              ],
+              "extraction_confidence": 0.9,
+              "extraction_method": "regex_gov_ner_v1"
+            }
+          ],
+          "events_from_300": [
+            {
+              "event_title": "Record dated 18 August 2026",
+              "description": "SYNTHETIC DEMO DOCUMENT - NOT AN OFFICIAL RECORD\nC\nSUPPLIER TAX INVOICE - DEMONSTRATION\nReference: BRL/INV/2026/119\nDate: 18 August 2026\nSupplier: BlueRiver Relief Logistics (fictional).",
+              "event_date": "2026-08-18",
+              "original_date_expression": "18 August 2026",
+              "date_precision": "approximate",
+              "associated_entities": [
+                "BRL/INV/2026/119",
+                "BlueRiver Relief Logistics"
+              ],
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    "mismatches": []
+  }
+]
