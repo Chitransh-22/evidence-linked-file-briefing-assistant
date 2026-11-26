@@ -12,8 +12,8 @@ export function DataTable({
 }) {
   if (isLoading) {
     return (
-      <div className="gov-table-container" style={{ padding: "40px", textAlign: "center", color: "#64748B" }}>
-        <div style={{ display: "inline-block", width: "24px", height: "24px", border: "2px solid #CBD5E1", borderTopColor: "#183153", borderRadius: "50%", animation: "spin 0.8s linear infinite" }}></div>
+      <div className="gov-table-container" style={{ padding: "40px", textAlign: "center", color: "var(--color-text-secondary)" }}>
+        <div style={{ display: "inline-block", width: "24px", height: "24px", border: "2px solid var(--color-border)", borderTopColor: "var(--color-primary, #F36B21)", borderRadius: "50%", animation: "spin 0.8s linear infinite" }}></div>
         <div style={{ marginTop: "12px", fontSize: "13px" }}>Loading government ledger records...</div>
         <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
       </div>
@@ -22,7 +22,7 @@ export function DataTable({
 
   if (isError) {
     return (
-      <div className="gov-table-container" style={{ padding: "30px", textAlign: "center", color: "#B91C1C", backgroundColor: "#FEF2F2" }}>
+      <div className="gov-table-container" style={{ padding: "30px", textAlign: "center", color: "var(--color-red-alert)", backgroundColor: "var(--color-red-bg)" }}>
         <AlertCircle size={28} style={{ margin: "0 auto 8px" }} />
         <div style={{ fontWeight: 600, fontSize: "14px" }}>Failed to retrieve records</div>
         <div style={{ fontSize: "12px", marginTop: "4px" }}>{error?.message || "Internal server communication error."}</div>
@@ -45,7 +45,7 @@ export function DataTable({
         <tbody>
           {data.length === 0 ? (
             <tr>
-              <td colSpan={columns.length} style={{ padding: "40px 20px", textAlign: "center", color: "#64748B" }}>
+              <td colSpan={columns.length} style={{ padding: "40px 20px", textAlign: "center", color: "var(--color-text-secondary)" }}>
                 <Inbox size={32} style={{ margin: "0 auto 8px", opacity: 0.6 }} />
                 <div>{emptyMessage}</div>
               </td>
@@ -65,11 +65,11 @@ export function DataTable({
       </table>
 
       {pagination && pagination.pages > 1 && (
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 16px", borderTop: "1px solid #E2E8F0", backgroundColor: "#F8FAFC", fontSize: "13px" }}>
-          <div style={{ color: "#64748B" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 16px", borderTop: "1px solid var(--color-border)", backgroundColor: "var(--color-hover)", fontSize: "13px" }}>
+          <div style={{ color: "var(--color-text-secondary)" }}>
             Showing page <b>{pagination.page}</b> of <b>{pagination.pages}</b> ({pagination.total} total items)
           </div>
-          <div style={{ display: "flex", gap: "6px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
             <button
               className="btn btn-secondary btn-sm"
               disabled={pagination.page <= 1}
@@ -77,6 +77,9 @@ export function DataTable({
             >
               <ChevronLeft size={14} /> Previous
             </button>
+            <span className="pagination-pill active" aria-current="page">
+              {pagination.page}
+            </span>
             <button
               className="btn btn-secondary btn-sm"
               disabled={pagination.page >= pagination.pages}

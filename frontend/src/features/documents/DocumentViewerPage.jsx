@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
-  FileText,
   ChevronLeft,
   ChevronRight,
   ZoomIn,
   ZoomOut,
   Download,
   AlertTriangle,
-  RotateCcw,
-  CheckCircle,
-  ExternalLink,
   Languages,
-  Layers,
   ArrowLeft,
   Loader2,
 } from "lucide-react";
@@ -60,7 +55,6 @@ export function DocumentViewerPage() {
     loadDocumentData();
   }, [documentId]);
 
-  // Authenticated PDF blob retrieval for seamless iframe rendering
   useEffect(() => {
     let activeUrl = null;
     let isCancelled = false;
@@ -97,11 +91,11 @@ export function DocumentViewerPage() {
   }, [documentId]);
 
   if (isLoading) {
-    return <div style={{ padding: "40px", color: "#64748B" }}>Loading document inspection workspace...</div>;
+    return <div style={{ padding: "40px", color: "var(--color-text-secondary)" }}>Loading document inspection workspace...</div>;
   }
 
   if (!document) {
-    return <div style={{ padding: "40px", color: "#B91C1C" }}>Document not found.</div>;
+    return <div style={{ padding: "40px", color: "var(--color-red-alert)" }}>Document not found.</div>;
   }
 
   const currentPage = pages.find((p) => p.page_number === currentPageNum) || pages[0] || {};
@@ -117,8 +111,10 @@ export function DocumentViewerPage() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: "12px",
           paddingBottom: "12px",
-          borderBottom: "1px solid #D8DEE7",
+          borderBottom: "1px solid var(--color-border)",
           marginBottom: "12px",
         }}
       >
@@ -127,14 +123,14 @@ export function DocumentViewerPage() {
             <ArrowLeft size={14} /> Back
           </button>
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <h2 style={{ fontSize: "16px", fontWeight: 700, color: "#183153" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+              <h2 style={{ fontSize: "16px", fontWeight: 700, color: "var(--color-text-primary)" }}>
                 {document.document_title}
               </h2>
               <StatusBadge status={document.processing_status} />
               <span className="badge badge-neutral">Doc ID: {document._id}</span>
             </div>
-            <div style={{ fontSize: "12px", color: "#64748B" }}>
+            <div style={{ fontSize: "12px", color: "var(--color-text-secondary)" }}>
               Case: <b>{document.case_reference || document.case_id}</b> • SHA-256: <code>{document.sha256?.slice(0, 16)}...</code> • Classification: <b>{document.classification}</b>
             </div>
           </div>
@@ -164,8 +160,8 @@ export function DocumentViewerPage() {
           <div
             style={{
               padding: "8px 14px",
-              backgroundColor: "#F8FAFC",
-              borderBottom: "1px solid #E2E8F0",
+              backgroundColor: "var(--color-hover)",
+              borderBottom: "1px solid var(--color-border)",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
@@ -179,7 +175,7 @@ export function DocumentViewerPage() {
               >
                 <ChevronLeft size={14} />
               </button>
-              <span style={{ fontSize: "12px", color: "#334155", fontWeight: 600 }}>
+              <span style={{ fontSize: "12px", color: "var(--color-text-primary)", fontWeight: 600 }}>
                 Page {currentPageNum} of {pages.length || 1}
               </span>
               <button
@@ -203,7 +199,7 @@ export function DocumentViewerPage() {
           </div>
 
           {/* Embedded Viewer Canvas */}
-          <div style={{ flex: 1, backgroundColor: "#E2E8F0", overflow: "hidden", position: "relative" }}>
+          <div style={{ flex: 1, backgroundColor: "var(--color-border)", overflow: "hidden", position: "relative" }}>
             {isPdfLoading && !pdfBlobUrl ? (
               <div
                 style={{
@@ -212,12 +208,12 @@ export function DocumentViewerPage() {
                   alignItems: "center",
                   justifyContent: "center",
                   height: "100%",
-                  color: "#64748B",
+                  color: "var(--color-text-secondary)",
                   fontSize: "13px",
                   gap: "10px",
                 }}
               >
-                <Loader2 size={24} className="spin" style={{ animation: "spin 1s linear infinite" }} />
+                <Loader2 size={24} className="spin" style={{ animation: "spin 1s linear infinite", color: "var(--color-primary)" }} />
                 <span>Loading authenticated PDF stream...</span>
               </div>
             ) : (
@@ -242,8 +238,8 @@ export function DocumentViewerPage() {
           <div
             style={{
               display: "flex",
-              backgroundColor: "#F8FAFC",
-              borderBottom: "1px solid #E2E8F0",
+              backgroundColor: "var(--color-hover)",
+              borderBottom: "1px solid var(--color-border)",
               overflowX: "auto",
               padding: "0 8px",
             }}
@@ -265,10 +261,10 @@ export function DocumentViewerPage() {
                     padding: "10px 14px",
                     fontSize: "12px",
                     fontWeight: isActive ? 600 : 500,
-                    color: isActive ? "#183153" : "#64748B",
-                    background: "none",
+                    color: isActive ? "var(--color-text-primary)" : "var(--color-text-secondary)",
+                    background: isActive ? "var(--color-surface)" : "none",
                     border: "none",
-                    borderBottom: isActive ? "2px solid #183153" : "2px solid transparent",
+                    borderBottom: isActive ? "2px solid var(--color-primary)" : "2px solid transparent",
                     cursor: "pointer",
                     whiteSpace: "nowrap",
                   }}
@@ -281,11 +277,10 @@ export function DocumentViewerPage() {
 
           {/* Tab Body */}
           <div style={{ flex: 1, overflowY: "auto", padding: "16px" }}>
-            {/* Normalized Text Tab */}
             {activeTab === "normalized" && (
               <div>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
-                  <span style={{ fontSize: "12px", color: "#64748B" }}>
+                  <span style={{ fontSize: "12px", color: "var(--color-text-secondary)" }}>
                     Unicode Normalized • Page {currentPageNum}
                   </span>
                   <span className="badge badge-neutral">Detected: {currentPage.detected_language?.toUpperCase() || "ENG"}</span>
@@ -295,12 +290,12 @@ export function DocumentViewerPage() {
                     fontFamily: "var(--font-family-mono)",
                     fontSize: "13px",
                     lineHeight: "1.6",
-                    backgroundColor: "#F8FAFC",
+                    backgroundColor: "var(--color-hover)",
                     padding: "16px",
-                    border: "1px solid #E2E8F0",
+                    border: "1px solid var(--color-border)",
                     borderRadius: "4px",
                     whiteSpace: "pre-wrap",
-                    color: "#1E293B",
+                    color: "var(--color-text-primary)",
                   }}
                 >
                   {currentPage.normalized_text || "No normalized text extracted for this page."}
@@ -308,17 +303,16 @@ export function DocumentViewerPage() {
               </div>
             )}
 
-            {/* Translated Text Tab */}
             {activeTab === "translated" && (
               <div>
                 <div
                   style={{
                     padding: "10px 12px",
-                    backgroundColor: "#E0F2FE",
+                    backgroundColor: "var(--color-blue-bg)",
                     border: "1px solid rgba(3, 105, 161, 0.3)",
                     borderRadius: "4px",
                     fontSize: "12px",
-                    color: "#0369A1",
+                    color: "var(--color-blue-info)",
                     marginBottom: "14px",
                     display: "flex",
                     alignItems: "center",
@@ -336,11 +330,12 @@ export function DocumentViewerPage() {
                     fontFamily: "var(--font-family-sans)",
                     fontSize: "13.5px",
                     lineHeight: "1.6",
-                    backgroundColor: "#ffffff",
+                    backgroundColor: "var(--color-surface)",
                     padding: "16px",
-                    border: "1px solid #E2E8F0",
+                    border: "1px solid var(--color-border)",
                     borderRadius: "4px",
                     whiteSpace: "pre-wrap",
+                    color: "var(--color-text-primary)",
                   }}
                 >
                   {currentPage.translated_text || currentPage.normalized_text || "No translation output available."}
@@ -348,18 +343,17 @@ export function DocumentViewerPage() {
               </div>
             )}
 
-            {/* Original Text Tab */}
             {activeTab === "original" && (
               <div>
-                <div style={{ fontSize: "12px", color: "#64748B", marginBottom: "8px" }}>
+                <div style={{ fontSize: "12px", color: "var(--color-text-secondary)", marginBottom: "8px" }}>
                   Extraction Method: <b>{currentPage.extraction_method || "Digital PyMuPDF"}</b> • OCR Confidence: <b>{currentPage.ocr_confidence || 100}%</b>
                 </div>
                 {currentPage.layout_metadata?.ocr_warning && (
                   <div
                     style={{
                       padding: "8px 12px",
-                      backgroundColor: "#FEF3C7",
-                      color: "#B45309",
+                      backgroundColor: "var(--color-amber-bg)",
+                      color: "var(--color-amber-warning)",
                       borderRadius: "4px",
                       fontSize: "12px",
                       marginBottom: "12px",
@@ -374,11 +368,12 @@ export function DocumentViewerPage() {
                     fontFamily: "var(--font-family-mono)",
                     fontSize: "12px",
                     lineHeight: "1.5",
-                    backgroundColor: "#F8FAFC",
+                    backgroundColor: "var(--color-hover)",
                     padding: "14px",
-                    border: "1px solid #E2E8F0",
+                    border: "1px solid var(--color-border)",
                     borderRadius: "4px",
                     whiteSpace: "pre-wrap",
+                    color: "var(--color-text-primary)",
                   }}
                 >
                   {currentPage.original_text || currentPage.ocr_text || "Raw text empty."}
@@ -386,10 +381,9 @@ export function DocumentViewerPage() {
               </div>
             )}
 
-            {/* Entities Tab */}
             {activeTab === "entities" && (
               <div>
-                <div style={{ fontSize: "12px", color: "#64748B", marginBottom: "12px" }}>
+                <div style={{ fontSize: "12px", color: "var(--color-text-secondary)", marginBottom: "12px" }}>
                   Named Entities identified in this document:
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
@@ -398,8 +392,8 @@ export function DocumentViewerPage() {
                       key={ent.id || ent._id}
                       style={{
                         padding: "8px 12px",
-                        backgroundColor: "#F8FAFC",
-                        border: "1px solid #E2E8F0",
+                        backgroundColor: "var(--color-hover)",
+                        border: "1px solid var(--color-border)",
                         borderRadius: "4px",
                         display: "flex",
                         justifyContent: "space-between",
@@ -407,10 +401,10 @@ export function DocumentViewerPage() {
                       }}
                     >
                       <div>
-                        <span style={{ fontWeight: 600, fontSize: "13px", color: "#183153" }}>
+                        <span style={{ fontWeight: 600, fontSize: "13px", color: "var(--color-text-primary)" }}>
                           {ent.entity_name}
                         </span>
-                        <div style={{ fontSize: "11px", color: "#64748B" }}>
+                        <div style={{ fontSize: "11px", color: "var(--color-text-secondary)" }}>
                           Occurrences: {ent.occurrence_count || ent.source_occurrences?.length || 1}
                         </div>
                       </div>
@@ -421,7 +415,6 @@ export function DocumentViewerPage() {
               </div>
             )}
 
-            {/* Evidence Records Tab */}
             {activeTab === "evidence" && (
               <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
                 {evidenceList.map((ev) => (
@@ -429,21 +422,21 @@ export function DocumentViewerPage() {
                     key={ev._id}
                     style={{
                       padding: "12px",
-                      border: "1px solid #CBD5E1",
+                      border: "1px solid var(--color-border)",
                       borderRadius: "4px",
-                      backgroundColor: "#ffffff",
+                      backgroundColor: "var(--color-surface)",
                     }}
                   >
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <span style={{ fontWeight: 700, fontSize: "12px", color: "#183153" }}>
+                      <span style={{ fontWeight: 700, fontSize: "12px", color: "var(--color-text-primary)" }}>
                         {ev._id} • Page {ev.page_number}
                       </span>
                       <StatusBadge status={ev.verification_status} />
                     </div>
-                    <div style={{ fontSize: "13px", marginTop: "6px", color: "#334155", lineHeight: "1.4" }}>
+                    <div style={{ fontSize: "13px", marginTop: "6px", color: "var(--color-text-primary)", lineHeight: "1.4" }}>
                       {ev.source_excerpt}
                     </div>
-                    <div style={{ marginTop: "8px", display: "flex", justifyContent: "space-between", fontSize: "11px", color: "#64748B" }}>
+                    <div style={{ marginTop: "8px", display: "flex", justifyContent: "space-between", fontSize: "11px", color: "var(--color-text-secondary)" }}>
                       <span>Category: <b>{ev.evidence_category}</b></span>
                       <span>Confidence: <b>{Math.round((ev.confidence || 0) * 100)}%</b></span>
                     </div>
@@ -452,11 +445,10 @@ export function DocumentViewerPage() {
               </div>
             )}
 
-            {/* Processing Audit Tab */}
             {activeTab === "pipeline" && (
-              <div style={{ fontSize: "13px", color: "#334155" }}>
+              <div style={{ fontSize: "13px", color: "var(--color-text-primary)" }}>
                 <h4 style={{ fontSize: "13px", marginBottom: "8px" }}>Ingestion Provenance</h4>
-                <div style={{ backgroundColor: "#F8FAFC", padding: "12px", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
+                <div style={{ backgroundColor: "var(--color-hover)", padding: "12px", border: "1px solid var(--color-border)", borderRadius: "4px" }}>
                   <div><b>File Size:</b> {document.file_size} bytes</div>
                   <div><b>Storage Key:</b> {document.storage_key}</div>
                   <div><b>SHA-256:</b> <code>{document.sha256}</code></div>

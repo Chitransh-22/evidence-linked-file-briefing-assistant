@@ -1,53 +1,60 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ShieldCheck, Lock, User, Eye, EyeOff, AlertCircle, ArrowRight, UserCheck } from "lucide-react";
+import {
+  Lock,
+  User,
+  Eye,
+  EyeOff,
+  AlertCircle,
+  ArrowRight,
+  Search,
+  FileCheck,
+  Settings,
+  FileUp,
+  ClipboardCheck,
+  CheckCircle2,
+  Users,
+  ClipboardList,
+} from "lucide-react";
 import { useAuthStore } from "../../store/authStore";
+import "./login.css";
 
 const QUICK_USERS = [
   {
     role: "Investigating Officer",
     username: "investigator",
     password: "OfficerGov2026!",
-    badge: "Investigator",
-    badgeColor: "#1E40AF",
-    badgeBg: "#DBEAFE",
-    desc: "Case management, evidence analysis & briefing draft",
+    desc: "Investigation.",
+    icon: Search,
   },
   {
     role: "Supervisory Reviewer",
     username: "reviewer",
     password: "OfficerGov2026!",
-    badge: "Reviewer",
-    badgeColor: "#9A3412",
-    badgeBg: "#FFEDD5",
-    desc: "Claim verification, 3-column review & approval sign-off",
+    desc: "Review.",
+    icon: FileCheck,
   },
   {
     role: "System Administrator",
     username: "admin",
     password: "AdminSecureGov2026!",
-    badge: "Admin",
-    badgeColor: "#831843",
-    badgeBg: "#FCE7F3",
-    desc: "User management, AI engine health & system telemetry",
+    desc: "Administration.",
+    icon: Settings,
   },
   {
     role: "Intake Officer",
     username: "intake_officer",
     password: "OfficerGov2026!",
-    badge: "Intake",
-    badgeColor: "#065F46",
-    badgeBg: "#D1FAE5",
-    desc: "Document intake dropzone, SHA-256 checks & routing",
+    desc: "Document intake.",
+    icon: FileUp,
   },
   {
     role: "Independent Auditor",
     username: "auditor",
     password: "OfficerGov2026!",
-    badge: "Auditor",
-    badgeColor: "#3730A3",
-    badgeBg: "#E0E7FF",
-    desc: "Read-only ledger & SHA-256 audit chain verification",
+    desc: "Audit & compliance.",
+    icon: ClipboardCheck,
+    fullWidth: true,
   },
 ];
 
@@ -98,255 +105,186 @@ export function LoginPage() {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        minHeight: "100vh",
-        backgroundColor: "#F3F5F8",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "24px 16px",
-      }}
-    >
-      <div
-        className="gov-card"
-        style={{
-          width: "100%",
-          maxWidth: "480px",
-          backgroundColor: "#ffffff",
-          border: "1px solid #D8DEE7",
-          boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.08)",
-          borderRadius: "6px",
-          overflow: "hidden",
-        }}
-      >
-        {/* Header Branding */}
-        <div
-          style={{
-            padding: "24px 24px 18px",
-            borderBottom: "1px solid #E2E8F0",
-            textAlign: "center",
-            backgroundColor: "#F8FAFC",
-          }}
-        >
-          <div
-            style={{
-              width: "48px",
-              height: "48px",
-              backgroundColor: "#183153",
-              color: "#ffffff",
-              borderRadius: "6px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              margin: "0 auto 10px",
-            }}
-          >
-            <ShieldCheck size={26} />
-          </div>
-          <h2 style={{ fontSize: "15px", color: "#183153", fontWeight: 700, letterSpacing: "-0.01em", margin: 0 }}>
-            GOVERNMENT DOCUMENT EVIDENCE INTELLIGENCE & BRIEFING SYSTEM
-          </h2>
-          <div style={{ fontSize: "11px", color: "#64748B", textTransform: "uppercase", letterSpacing: "0.05em", marginTop: "4px" }}>
-            Official Restricted Access Portal
-          </div>
+    <div className="login-terminal">
+      <div className="lt-top-accent" aria-hidden="true" />
+
+      {/* Minimal Top Header */}
+      <header className="lt-header">
+        <div className="lt-container lt-header-inner">
+          <span className="lt-header-brand">LEKH</span>
+          <span className="lt-header-status">
+            <Lock size={14} strokeWidth={2} aria-hidden="true" />
+            <span>Restricted Access</span>
+          </span>
         </div>
+      </header>
 
-        {/* Quick Testing User Selectors */}
-        <div
-          style={{
-            backgroundColor: "#F1F5F9",
-            borderBottom: "1px solid #E2E8F0",
-            padding: "16px 20px",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}>
-            <span style={{ fontSize: "11px", fontWeight: 700, color: "#1E293B", textTransform: "uppercase", letterSpacing: "0.04em", display: "flex", alignItems: "center", gap: "6px" }}>
-              <UserCheck size={14} color="#183153" /> Quick Login by Role (For Testing)
-            </span>
-            <span style={{ fontSize: "10px", color: "#64748B" }}>1-Click Auth</span>
-          </div>
+      {/* Main Container */}
+      <main className="lt-main">
+        <div className="lt-container">
+          {/* Institutional Title Section */}
+          <section className="lt-title-section">
+            <div className="lt-eyebrow-row">
+              <span className="lt-eyebrow-line" aria-hidden="true" />
+              <span className="lt-eyebrow-label">OFFICIAL ACCESS PORTAL</span>
+            </div>
+            <h1 className="lt-page-title">
+              Ledger for Evidence and Knowledge Handling
+            </h1>
+            <p className="lt-page-subtitle">
+              Authenticate to access your designated investigation workspace.
+            </p>
+          </section>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-            {QUICK_USERS.map((u) => {
-              const isThisLoading = isLoading && activeQuickUser === u.username;
-              return (
-                <button
-                  key={u.username}
-                  type="button"
-                  onClick={() => handleQuickLogin(u)}
-                  disabled={isLoading}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    padding: "7px 10px",
-                    backgroundColor: activeQuickUser === u.username ? "#E2E8F0" : "#FFFFFF",
-                    border: "1px solid #CBD5E1",
-                    borderRadius: "4px",
-                    cursor: isLoading ? "not-allowed" : "pointer",
-                    textAlign: "left",
-                    transition: "all 0.15s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!isLoading) e.currentTarget.style.borderColor = "#94A3B8";
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isLoading) e.currentTarget.style.borderColor = "#CBD5E1";
-                  }}
-                >
-                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    <span
-                      style={{
-                        fontSize: "10px",
-                        fontWeight: 700,
-                        padding: "2px 6px",
-                        borderRadius: "3px",
-                        backgroundColor: u.badgeBg,
-                        color: u.badgeColor,
-                        minWidth: "68px",
-                        textAlign: "center",
-                      }}
+          {/* Two-Column Authentication Workspace */}
+          <section className="lt-workspace">
+            {/* Left Section: Manual Authentication */}
+            <div>
+              <div className="lt-section-code">01 / AUTHENTICATION</div>
+              <h2 className="lt-section-heading">Officer sign in</h2>
+              <p className="lt-section-desc">Enter your official credentials.</p>
+
+              {isExpired && (
+                <div className="lt-alert-warning" role="alert">
+                  <AlertCircle size={16} aria-hidden="true" />
+                  <span>Your session has expired. Please re-authenticate.</span>
+                </div>
+              )}
+
+              {error && (
+                <div className="lt-alert-error" role="alert">
+                  <AlertCircle size={16} aria-hidden="true" />
+                  <span>{error}</span>
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit}>
+                <div className="lt-field-group">
+                  <label className="lt-label" htmlFor="username">
+                    Officer Username / Official Email
+                  </label>
+                  <div className="lt-input-wrap">
+                    <User size={16} className="lt-input-icon" aria-hidden="true" />
+                    <input
+                      id="username"
+                      type="text"
+                      className="lt-input"
+                      placeholder="e.g. investigator or admin"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      disabled={isLoading}
+                      autoComplete="username"
+                    />
+                  </div>
+                </div>
+
+                <div className="lt-field-group">
+                  <label className="lt-label" htmlFor="password">
+                    Security Password
+                  </label>
+                  <div className="lt-input-wrap">
+                    <Lock size={16} className="lt-input-icon" aria-hidden="true" />
+                    <input
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      className="lt-input has-toggle"
+                      placeholder="Enter your confidential password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      disabled={isLoading}
+                      autoComplete="current-password"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="lt-pw-toggle"
+                      aria-label={showPassword ? "Hide password" : "Show password"}
+                      title={showPassword ? "Hide password" : "Show password"}
                     >
-                      {u.badge}
-                    </span>
-                    <div>
-                      <div style={{ fontSize: "12px", fontWeight: 600, color: "#1E293B" }}>
-                        {u.role}
-                      </div>
-                      <div style={{ fontSize: "10px", color: "#64748B" }}>
-                        User: <code style={{ color: "#0F172A", fontWeight: 600 }}>{u.username}</code>
-                      </div>
-                    </div>
+                      {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                    </button>
                   </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "4px", color: "#475569", fontSize: "11px", fontWeight: 600 }}>
-                    {isThisLoading ? "Signing in..." : <ArrowRight size={14} />}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+                </div>
 
-        {/* Form Body */}
-        <div style={{ padding: "20px 24px" }}>
-          <div style={{ fontSize: "11px", color: "#64748B", textTransform: "uppercase", letterSpacing: "0.04em", fontWeight: 600, marginBottom: "12px", textAlign: "center" }}>
-            — Or Enter Officer Credentials Manually —
-          </div>
-
-          {isExpired && (
-            <div
-              style={{
-                padding: "10px 12px",
-                backgroundColor: "#FEF3C7",
-                border: "1px solid #F59E0B",
-                borderRadius: "4px",
-                color: "#B45309",
-                fontSize: "12px",
-                marginBottom: "14px",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
-            >
-              <AlertCircle size={16} /> Your session has expired. Please re-authenticate.
-            </div>
-          )}
-
-          {error && (
-            <div
-              style={{
-                padding: "10px 12px",
-                backgroundColor: "#FEE2E2",
-                border: "1px solid #EF4444",
-                borderRadius: "4px",
-                color: "#B91C1C",
-                fontSize: "12px",
-                marginBottom: "14px",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
-            >
-              <AlertCircle size={16} /> {error}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit}>
-            <div className="form-group" style={{ marginBottom: "12px" }}>
-              <label className="form-label" htmlFor="username">
-                Officer Username / Official Email
-              </label>
-              <div style={{ position: "relative" }}>
-                <input
-                  id="username"
-                  type="text"
-                  className="form-input"
-                  style={{ paddingLeft: "34px" }}
-                  placeholder="e.g. investigator or admin"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  disabled={isLoading}
-                  autoComplete="username"
-                />
-                <User size={16} style={{ position: "absolute", left: "10px", top: "10px", color: "#94A3B8" }} />
-              </div>
-            </div>
-
-            <div className="form-group" style={{ marginBottom: "14px" }}>
-              <label className="form-label" htmlFor="password">
-                Security Password
-              </label>
-              <div style={{ position: "relative" }}>
-                <input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  className="form-input"
-                  style={{ paddingLeft: "34px", paddingRight: "34px" }}
-                  placeholder="Enter your confidential password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  disabled={isLoading}
-                  autoComplete="current-password"
-                />
-                <Lock size={16} style={{ position: "absolute", left: "10px", top: "10px", color: "#94A3B8" }} />
                 <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  style={{ position: "absolute", right: "10px", top: "10px", background: "none", border: "none", color: "#94A3B8", cursor: "pointer" }}
-                  title={showPassword ? "Hide password" : "Show password"}
+                  type="submit"
+                  className="lt-submit-btn"
+                  disabled={isLoading}
                 >
-                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                  <span>
+                    {isLoading && !activeQuickUser
+                      ? "Validating Credentials..."
+                      : "Authenticate & Access System"}
+                  </span>
+                  <ArrowRight size={16} aria-hidden="true" />
                 </button>
-              </div>
+              </form>
+
+              <p className="lt-notice">
+                Access is restricted to authorized personnel.
+              </p>
             </div>
 
-            <button
-              type="submit"
-              className="btn btn-primary"
-              style={{ width: "100%", height: "38px" }}
-              disabled={isLoading}
-            >
-              {isLoading && !activeQuickUser ? "Validating Credentials..." : "Authenticate & Access System"}
-            </button>
-          </form>
+            {/* Vertical Neutral Divider */}
+            <div className="lt-divider-vertical" aria-hidden="true" />
 
-          <div
-            style={{
-              marginTop: "20px",
-              paddingTop: "14px",
-              borderTop: "1px solid #E2E8F0",
-              fontSize: "11px",
-              color: "#64748B",
-              textAlign: "center",
-              lineHeight: "1.4",
-            }}
-          >
-            CONFIDENTIAL WARNING: Unauthorized access is strictly prohibited under the Information Technology Act.
-            All user sessions and document access events are cryptographically hashed and logged.
+            {/* Right Section: Quick Role Access */}
+            <div>
+              <div className="lt-section-code">02 / ROLE ACCESS</div>
+              <h2 className="lt-section-heading">Select workspace</h2>
+              <p className="lt-section-desc">Quick access · Testing only</p>
+
+              <div className="lt-role-grid">
+                {QUICK_USERS.map((u) => {
+                  const Icon = u.icon;
+                  const isThisLoading = isLoading && activeQuickUser === u.username;
+                  return (
+                    <button
+                      key={u.username}
+                      type="button"
+                      onClick={() => handleQuickLogin(u)}
+                      disabled={isLoading}
+                      className={`lt-role-tile${u.fullWidth ? " is-full" : ""}`}
+                    >
+                      <div className="lt-role-tile-left">
+                        <Icon size={18} strokeWidth={1.9} className="lt-role-icon" aria-hidden="true" />
+                        <div>
+                          <div className="lt-role-title">{u.role}</div>
+                          <div className="lt-role-desc">{u.desc}</div>
+                        </div>
+                      </div>
+                      <span className="lt-role-arrow">
+                        {isThisLoading ? "Signing in..." : <ArrowRight size={15} aria-hidden="true" />}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
+          {/* Bottom Information Strip */}
+          <div className="lt-info-strip">
+            <div className="lt-info-item">
+              <CheckCircle2 size={15} className="lt-info-icon" aria-hidden="true" />
+              <span>Evidence Integrity</span>
+            </div>
+            <div className="lt-info-item">
+              <Users size={15} className="lt-info-icon" aria-hidden="true" />
+              <span>Role-Based Access</span>
+            </div>
+            <div className="lt-info-item">
+              <ClipboardList size={15} className="lt-info-icon" aria-hidden="true" />
+              <span>Audit Accountability</span>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
+
+      {/* Institutional Footer */}
+      <footer className="lt-footer">
+        LEKH · AUTHORIZED PERSONNEL ONLY
+      </footer>
     </div>
   );
 }

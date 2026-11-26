@@ -13,113 +13,104 @@ import {
   AlertTriangle,
   FileSignature,
   ShieldCheck,
-  Settings,
   LogOut,
-  Bell,
   Activity,
   Sliders,
   UserCog,
+  Menu,
 } from "lucide-react";
 import { useAuthStore } from "../store/authStore";
+import { getAuthorizedMenuSections, getRoleBadgeLabel } from "../config/rbac";
+import lekhLogo from "../assets/logo.png";
+
+const ICON_MAP = {
+  LayoutDashboard,
+  FolderKanban,
+  UploadCloud,
+  FileText,
+  Cpu,
+  BookOpen,
+  Search,
+  Users,
+  Calendar,
+  AlertTriangle,
+  FileSignature,
+  ShieldCheck,
+  Activity,
+  Sliders,
+  UserCog,
+};
 
 export function MainLayout() {
-  const { user, logout } = useAuthStore();
+  const { user, isAuthenticated, logout } = useAuthStore();
   const navigate = useNavigate();
   const location = useLocation();
-  const [showAdminMenu, setShowAdminMenu] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const authorizedSections = isAuthenticated && user?.role
+    ? getAuthorizedMenuSections(user.role)
+    : [];
 
   const handleLogout = async () => {
     await logout();
-    navigate("/login");
+    navigate("/", { replace: true });
   };
 
-  // Generate breadcrumb path
   const pathParts = location.pathname.split("/").filter(Boolean);
   const breadcrumb = pathParts.length > 0 ? pathParts.map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(" / ") : "Dashboard";
 
   return (
-    <div className="app-shell">
+    <div className="app-shell auth-theme">
+      {/* Mobile Sidebar Backdrop */}
+      <div
+        className={`sidebar-backdrop${mobileMenuOpen ? " is-open" : ""}`}
+        onClick={() => setMobileMenuOpen(false)}
+        aria-hidden="true"
+      />
+
       {/* Sidebar */}
-      <aside className="app-sidebar">
+      <aside className={`app-sidebar${mobileMenuOpen ? " is-open" : ""}`}>
         <div className="sidebar-brand">
-          <div className="brand-icon">
-            <ShieldCheck size={20} />
-          </div>
+          <img src={lekhLogo} alt="LEKH logo" className="brand-logo-img" />
           <div>
-            <div className="brand-title">EVIDENCE INTELLIGENCE</div>
-            <div className="brand-sub">GOVERNMENT BRIEFING SYSTEM</div>
+            <div className="brand-title">LEKH</div>
+            <div className="brand-sub">Ledger for Evidence and Knowledge Handling</div>
           </div>
         </div>
 
-        <nav className="sidebar-nav">
-          <div className="nav-section-title">Core Operations</div>
-          <NavLink to="/dashboard" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-            <LayoutDashboard size={16} /> Dashboard
-          </NavLink>
-          <NavLink to="/cases" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-            <FolderKanban size={16} /> Case Register
-          </NavLink>
-          <NavLink to="/intake" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-            <UploadCloud size={16} /> Document Intake
-          </NavLink>
-          <NavLink to="/documents" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-            <FileText size={16} /> Document Library
-          </NavLink>
-          <NavLink to="/processing" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-            <Cpu size={16} /> Processing Queue
-          </NavLink>
-
-          <div className="nav-section-title">Intelligence & Evidence</div>
-          <NavLink to="/evidence" end className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-            <BookOpen size={16} /> Evidence Ledger
-          </NavLink>
-          <NavLink to="/evidence/search" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-            <Search size={16} /> Evidence Search
-          </NavLink>
-          <NavLink to="/entities" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-            <Users size={16} /> Entity Register
-          </NavLink>
-          <NavLink to="/chronology" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-            <Calendar size={16} /> Event Chronology
-          </NavLink>
-          <NavLink to="/contradictions" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-            <AlertTriangle size={16} /> Contradiction Analysis
-          </NavLink>
-          <NavLink to="/briefings" end className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-            <FileSignature size={16} /> Investigation Briefings
-          </NavLink>
-
-          <div className="nav-section-title">Governance & Administration</div>
-          <NavLink to="/audit-logs" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-            <ShieldCheck size={16} /> Tamper-Evident Audit
-          </NavLink>
-
-          {user?.role === "system_administrator" && (
-            <>
-              <NavLink to="/admin/users" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-                <UserCog size={16} /> Officer Accounts
-              </NavLink>
-              <NavLink to="/admin/ai-services" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-                <Sliders size={16} /> AI Pipeline Readiness
-              </NavLink>
-              <NavLink to="/admin/system" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-                <Activity size={16} /> System Health
-              </NavLink>
-            </>
-          )}
+        <nav className="sidebar-nav" aria-label="Main Navigation">
+          {authorizedSections.map((section) => (
+            <React.Fragment key={section.id}>
+              <div className="nav-section-title">{section.title}</div>
+              {section.items.map((item) => {
+                const Icon = ICON_MAP[item.icon] || FileText;
+                return (
+                  <NavLink
+                    key={item.id}
+                    to={item.to}
+                    end={Boolean(item.end)}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
+                  >
+                    <Icon size={16} /> {item.label}
+                  </NavLink>
+                );
+              })}
+            </React.Fragment>
+          ))}
         </nav>
 
         {/* Current Officer Profile */}
         <div className="sidebar-user">
           <div className="user-info-text">
             <div className="user-name">{user?.full_name || user?.username || "Authorized Officer"}</div>
-            <div className="user-role-badge">{(user?.role || "Officer").replace("_", " ")}</div>
+            <div className="user-role-badge">{(user?.role || "Officer").replace(/_/g, " ")}</div>
           </div>
           <button
             onClick={handleLogout}
             title="Log out of secure session"
-            style={{ background: "none", border: "none", color: "#94A3B8", cursor: "pointer", padding: "4px" }}
+            className="sidebar-logout-btn"
           >
             <LogOut size={16} />
           </button>
@@ -131,16 +122,24 @@ export function MainLayout() {
         {/* Top Header */}
         <header className="app-header">
           <div className="header-left">
+            <button
+              type="button"
+              className="mobile-menu-btn"
+              aria-label="Toggle navigation menu"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+            >
+              <Menu size={16} />
+            </button>
             <div className="header-breadcrumbs">
               <span>Home</span>
               <span>/</span>
-              <span style={{ color: "#183153", fontWeight: 600 }}>{breadcrumb}</span>
+              <span className="header-breadcrumb-active">{breadcrumb}</span>
             </div>
           </div>
 
           <div className="header-right">
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "12px", color: "#64748B" }}>
-              <span style={{ width: "8px", height: "8px", backgroundColor: "#0F766E", borderRadius: "50%", display: "inline-block" }}></span>
+            <div className="header-node-status">
+              <span className="header-node-dot"></span>
               <span>Ledger Node: Online</span>
             </div>
 
@@ -151,45 +150,20 @@ export function MainLayout() {
                 style={{ display: "flex", alignItems: "center", gap: "6px" }}
               >
                 <span>{user?.username}</span>
-                <span className="badge badge-info" style={{ fontSize: "10px", padding: "1px 6px" }}>
-                  {user?.role === "system_administrator" ? "Admin" : user?.role === "investigating_officer" ? "Investigator" : "Officer"}
+                <span className="badge badge-primary" style={{ fontSize: "10px", padding: "1px 6px" }}>
+                  {getRoleBadgeLabel(user?.role)}
                 </span>
               </button>
 
               {showUserDropdown && (
-                <div
-                  style={{
-                    position: "absolute",
-                    right: 0,
-                    top: "40px",
-                    width: "220px",
-                    backgroundColor: "#ffffff",
-                    border: "1px solid #CBD5E1",
-                    borderRadius: "4px",
-                    boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)",
-                    zIndex: 50,
-                    padding: "8px 0",
-                  }}
-                >
-                  <div style={{ padding: "8px 14px", borderBottom: "1px solid #E2E8F0", fontSize: "12px" }}>
-                    <div style={{ fontWeight: 600, color: "#183153" }}>{user?.full_name}</div>
-                    <div style={{ color: "#64748B" }}>{user?.email}</div>
+                <div className="header-user-dropdown">
+                  <div className="header-user-dropdown-meta">
+                    <div style={{ fontWeight: 600, color: "var(--color-text-primary)" }}>{user?.full_name}</div>
+                    <div style={{ color: "var(--color-text-secondary)" }}>{user?.email}</div>
                   </div>
                   <button
                     onClick={handleLogout}
-                    style={{
-                      width: "100%",
-                      textAlign: "left",
-                      padding: "8px 14px",
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      fontSize: "13px",
-                      color: "#B91C1C",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                    }}
+                    className="header-user-dropdown-logout"
                   >
                     <LogOut size={14} /> End Secure Session
                   </button>

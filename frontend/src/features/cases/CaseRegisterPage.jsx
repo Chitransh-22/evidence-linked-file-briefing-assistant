@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Plus, Search, Filter, FolderOpen, Edit, UserPlus, Archive, X, AlertCircle } from "lucide-react";
+import { Plus, Search, FolderOpen, X, AlertCircle } from "lucide-react";
 import { apiClient } from "../../services/api/client";
 import { DataTable } from "../../components/tables/DataTable";
 import { StatusBadge } from "../../components/common/StatusBadge";
 import { useAuthStore } from "../../store/authStore";
+import { ACTIONS, canPerformAction } from "../../config/rbac";
 
 export function CaseRegisterPage() {
   const navigate = useNavigate();
   const { user } = useAuthStore();
+  const canCreateCase = canPerformAction(user?.role, ACTIONS.CREATE_CASE);
 
   const [cases, setCases] = useState([]);
   const [total, setTotal] = useState(0);
@@ -18,7 +20,6 @@ export function CaseRegisterPage() {
   const [statusFilter, setStatusFilter] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  // Modal State
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [formError, setFormError] = useState("");
   const [formData, setFormData] = useState({
@@ -64,6 +65,7 @@ export function CaseRegisterPage() {
 
   const handleCreateCase = async (e) => {
     e.preventDefault();
+    if (!canCreateCase) return;
     if (!formData.case_reference.trim() || !formData.title.trim()) {
       setFormError("Case Reference and Title are required.");
       return;
@@ -98,7 +100,7 @@ export function CaseRegisterPage() {
       accessor: "case_reference",
       width: "160px",
       render: (row) => (
-        <span style={{ fontWeight: 600, color: "#183153" }}>
+        <span style={{ fontWeight: 600, color: "var(--color-text-primary)" }}>
           {row.case_reference}
         </span>
       ),
@@ -108,8 +110,8 @@ export function CaseRegisterPage() {
       accessor: "title",
       render: (row) => (
         <div>
-          <div style={{ fontWeight: 500, color: "#1E293B" }}>{row.title}</div>
-          <div style={{ fontSize: "11px", color: "#64748B" }}>Priority: {row.priority}</div>
+          <div style={{ fontWeight: 500, color: "var(--color-text-primary)" }}>{row.title}</div>
+          <div style={{ fontSize: "11px", color: "var(--color-text-secondary)" }}>Priority: {row.priority}</div>
         </div>
       ),
     },
@@ -123,7 +125,7 @@ export function CaseRegisterPage() {
       accessor: "assigned_officers",
       width: "160px",
       render: (row) => (
-        <span style={{ fontSize: "12px", color: "#475569" }}>
+        <span style={{ fontSize: "12px", color: "var(--color-text-secondary)" }}>
           {row.assigned_officers?.join(", ") || "Unassigned"}
         </span>
       ),
@@ -172,9 +174,11 @@ export function CaseRegisterPage() {
           <h1 className="page-title">Case Register & Workspaces</h1>
           <div className="page-subtitle">Official investigation files and evidence directories</div>
         </div>
-        <button className="btn btn-primary" onClick={() => setShowCreateModal(true)}>
-          <Plus size={16} /> New Case File
-        </button>
+        {canCreateCase && (
+          <button className="btn btn-primary" onClick={() => setShowCreateModal(true)}>
+            <Plus size={16} /> New Case File
+          </button>
+        )}
       </div>
 
       {/* Filter and Search Bar */}
@@ -199,7 +203,7 @@ export function CaseRegisterPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <Search size={15} style={{ position: "absolute", left: "10px", top: "10px", color: "#94A3B8" }} />
+            <Search size={15} style={{ position: "absolute", left: "10px", top: "10px", color: "var(--color-text-muted)" }} />
           </div>
           <button type="submit" className="btn btn-secondary">
             Search
@@ -207,7 +211,7 @@ export function CaseRegisterPage() {
         </form>
 
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <span style={{ fontSize: "13px", color: "#64748B" }}>Status:</span>
+          <span style={{ fontSize: "13px", color: "var(--color-text-secondary)" }}>Status:</span>
           <select
             className="form-select"
             style={{ width: "130px" }}
@@ -238,28 +242,17 @@ export function CaseRegisterPage() {
       />
 
       {/* New Case Modal */}
-      {showCreateModal && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            backgroundColor: "rgba(16, 36, 58, 0.6)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 100,
-            padding: "20px",
-          }}
-        >
+      {showCreateModal && canCreateCase && (
+        <div className="modal-backdrop">
           <div
             className="gov-card"
-            style={{ width: "100%", maxWidth: "540px", backgroundColor: "#ffffff" }}
+            style={{ width: "100%", maxWidth: "540px" }}
           >
             <div className="gov-card-header">
               <h3 style={{ fontSize: "15px", fontWeight: 600 }}>Create New Investigation Case</h3>
               <button
                 onClick={() => setShowCreateModal(false)}
-                style={{ background: "none", border: "none", cursor: "pointer", color: "#64748B" }}
+                style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-secondary)" }}
               >
                 <X size={18} />
               </button>
@@ -270,8 +263,8 @@ export function CaseRegisterPage() {
                 <div
                   style={{
                     padding: "8px 12px",
-                    backgroundColor: "#FEE2E2",
-                    color: "#B91C1C",
+                    backgroundColor: "var(--color-red-bg)",
+                    color: "var(--color-red-alert)",
                     borderRadius: "4px",
                     marginBottom: "14px",
                     fontSize: "12px",

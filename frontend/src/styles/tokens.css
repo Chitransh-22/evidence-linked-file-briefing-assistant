@@ -1,12 +1,12 @@
 :root {
-  /* Government-Grade Institutional Color Palette */
+  /* Legacy Login & Fallback Tokens (preserved for Sign-In page) */
   --color-primary-navy: #183153;
   --color-primary-hover: #122642;
   --color-dark-navy: #10243A;
   --color-slate: #334155;
   --color-secondary-grey: #64748B;
   --color-muted-grey: #94A3B8;
-  
+
   --color-bg-main: #F3F5F8;
   --color-bg-card: #FFFFFF;
   --color-bg-subtle: #F8FAFC;
@@ -16,6 +16,7 @@
   --color-border-light: #E2E8F0;
   --color-border-dark: #CBD5E1;
 
+  /* Semantic Status Colors */
   --color-teal-positive: #0F766E;
   --color-teal-bg: #CCFBF1;
   --color-amber-warning: #B45309;
@@ -28,7 +29,7 @@
   /* Typography */
   --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  
+
   --font-size-xs: 0.75rem;    /* 12px */
   --font-size-sm: 0.8125rem;  /* 13px */
   --font-size-base: 0.875rem; /* 14px */
@@ -56,8 +57,52 @@
   --radius-md: 6px;
   --radius-lg: 8px;
 
-  /* Shadows (Subtle, professional) */
+  /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
   --shadow-lg: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+}
+
+/* Authenticated Application Theme Tokens: White, Warm Orange & Soft Black */
+.auth-theme {
+  --color-primary: #F36B21;
+  --color-primary-hover: #D95715;
+  --color-primary-light: #FFF1E8;
+  --color-primary-accessible: #C2410C;
+  --color-primary-border: rgba(243, 107, 33, 0.28);
+
+  --color-background: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-sidebar: #FFF1E8;
+  --color-sidebar-border: #F1D5C3;
+  --color-sidebar-hover: #FFE5D3;
+  --color-sidebar-active: #FFDCC7;
+  --color-sidebar-active-indicator: #F36B21;
+  --color-sidebar-active-icon: #B74308;
+  --color-sidebar-text: #242424;
+  --color-sidebar-muted: #795B49;
+  --color-sidebar-scrollbar: #D9B49C;
+
+  --color-text-primary: #242424;
+  --color-text-secondary: #666666;
+  --color-text-muted: #808080;
+
+  --color-border: #E5E5E5;
+  --color-border-light: #E5E5E5;
+  --color-border-dark: #D4D4D4;
+  --color-hover: #F7F7F7;
+
+  /* Map shared legacy tokens inside authenticated layout */
+  --color-primary-navy: #242424;
+  --color-slate: #242424;
+  --color-secondary-grey: #666666;
+  --color-muted-grey: #808080;
+  --color-bg-main: #FFFFFF;
+  --color-bg-card: #FFFFFF;
+  --color-bg-subtle: #F7F7F7;
+  --color-bg-hover: #F7F7F7;
+
+  --shadow-sm: 0 1px 2px 0 rgba(36, 36, 36, 0.04);
+  --shadow-md: 0 2px 6px -1px rgba(36, 36, 36, 0.06), 0 1px 2px -1px rgba(36, 36, 36, 0.03);
+  --shadow-lg: 0 6px 16px -2px rgba(36, 36, 36, 0.08), 0 2px 4px -1px rgba(36, 36, 36, 0.04);
 }

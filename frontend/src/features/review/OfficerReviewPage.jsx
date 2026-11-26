@@ -1,26 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
-  FileSignature,
   Save,
   Send,
   Download,
   RotateCcw,
-  CheckCircle,
   FileCheck,
   ArrowLeft,
-  Clock,
-  History,
-  AlertCircle,
 } from "lucide-react";
 import { apiClient, downloadFile } from "../../services/api/client";
 import { StatusBadge } from "../../components/common/StatusBadge";
 import { useAuthStore } from "../../store/authStore";
+import { ACTIONS, canPerformAction } from "../../config/rbac";
 
 export function OfficerReviewPage() {
   const { briefingId } = useParams();
   const navigate = useNavigate();
   const { user } = useAuthStore();
+
+  const canEditBriefing = canPerformAction(user?.role, ACTIONS.EDIT_BRIEFING);
+  const canRegenerateSection = canPerformAction(user?.role, ACTIONS.REGENERATE_BRIEFING_SECTION);
+  const canVerifyClaims = canPerformAction(user?.role, ACTIONS.VERIFY_CLAIMS);
+  const canSubmitForReview = canPerformAction(user?.role, ACTIONS.SUBMIT_BRIEFING_REVIEW);
+  const canExportBriefing = canPerformAction(user?.role, ACTIONS.EXPORT_BRIEFING);
 
   const [briefing, setBriefing] = useState(null);
   const [sectionData, setSectionData] = useState({});
@@ -54,10 +56,12 @@ export function OfficerReviewPage() {
   }, [briefingId]);
 
   const handleSectionTextChange = (secName, val) => {
+    if (!canEditBriefing || briefing?.status === "Approved") return;
     setSectionData(prev => ({ ...prev, [secName]: val }));
   };
 
   const handleSaveDraft = async () => {
+    if (!canEditBriefing || briefing?.status === "Approved") return;
     setIsSaving(true);
     setSaveConfirmation("");
     try {
@@ -75,7 +79,7 @@ export function OfficerReviewPage() {
   };
 
   const handleRegenerateCurrentSection = async () => {
-    if (!activeSection) return;
+    if (!activeSection || !canRegenerateSection || briefing?.status === "Approved") return;
     const confirmRegen = window.confirm(`Regenerate section "${activeSection}" from retrieved evidence? Your edits in other sections will be preserved.`);
     if (!confirmRegen) return;
 
@@ -95,6 +99,7 @@ export function OfficerReviewPage() {
   };
 
   const handleSubmitForReview = async () => {
+    if (!canSubmitForReview) return;
     const confirmSubmit = window.confirm("Submit this briefing to the Supervisory Review Commissioner for official sign-off?");
     if (!confirmSubmit) return;
 
@@ -109,14 +114,15 @@ export function OfficerReviewPage() {
   };
 
   if (isLoading) {
-    return <div style={{ padding: "40px", color: "#64748B" }}>Loading officer review workspace...</div>;
+    return <div style={{ padding: "40px", color: "var(--color-text-secondary)" }}>Loading officer review workspace...</div>;
   }
 
   if (!briefing) {
-    return <div style={{ padding: "40px", color: "#B91C1C" }}>Briefing record not found.</div>;
+    return <div style={{ padding: "40px", color: "var(--color-red-alert)" }}>Briefing record not found.</div>;
   }
 
   const sectionsList = Object.keys(sectionData);
+  const isEditable = canEditBriefing && briefing.status !== "Approved";
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "calc(100vh - 100px)" }}>
@@ -126,8 +132,10 @@ export function OfficerReviewPage() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: "12px",
           paddingBottom: "12px",
-          borderBottom: "1px solid #D8DEE7",
+          borderBottom: "1px solid var(--color-border)",
           marginBottom: "12px",
         }}
       >
@@ -136,46 +144,52 @@ export function OfficerReviewPage() {
             <ArrowLeft size={14} /> Back
           </button>
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <h2 style={{ fontSize: "16px", fontWeight: 700, color: "#183153" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+              <h2 style={{ fontSize: "16px", fontWeight: 700, color: "var(--color-text-primary)" }}>
                 {briefing.title}
               </h2>
-              <span className="badge badge-info">v{briefing.version}</span>
+              <span className="badge badge-primary">v{briefing.version}</span>
               <StatusBadge status={briefing.status} />
             </div>
-            <div style={{ fontSize: "12px", color: "#64748B" }}>
+            <div style={{ fontSize: "12px", color: "var(--color-text-secondary)" }}>
               Case: <b>{briefing.case_reference}</b> • Prepared By: <b>{briefing.created_by}</b>
             </div>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
           {saveConfirmation && (
-            <span style={{ fontSize: "12px", color: "#0F766E", fontWeight: 600 }}>
+            <span style={{ fontSize: "12px", color: "var(--color-teal-positive)", fontWeight: 600 }}>
               ✓ {saveConfirmation}
             </span>
           )}
-          <button
-            className="btn btn-secondary btn-sm"
-            onClick={() => navigate(`/briefings/${briefingId}/verification`)}
-          >
-            <FileCheck size={14} /> Claim Verification Workspace
-          </button>
-          <button
-            className="btn btn-secondary btn-sm"
-            onClick={() => downloadFile(`/briefings/${briefingId}/export/pdf`, `Briefing_${briefing?.case_reference || briefingId}.pdf`)}
-          >
-            <Download size={14} /> Export PDF
-          </button>
-          <button
-            className="btn btn-secondary btn-sm"
-            onClick={handleSaveDraft}
-            disabled={isSaving}
-          >
-            <Save size={14} /> {isSaving ? "Saving..." : "Save Draft"}
-          </button>
-          {briefing.status === "Draft" && (
+          {canVerifyClaims && (
+            <button
+              className="btn btn-secondary btn-sm"
+              onClick={() => navigate(`/briefings/${briefingId}/verification`)}
+            >
+              <FileCheck size={14} /> Claim Verification Workspace
+            </button>
+          )}
+          {canExportBriefing && (
+            <button
+              className="btn btn-secondary btn-sm"
+              onClick={() => downloadFile(`/briefings/${briefingId}/export/pdf`, `Briefing_${briefing?.case_reference || briefingId}.pdf`)}
+            >
+              <Download size={14} /> Export PDF
+            </button>
+          )}
+          {isEditable && (
+            <button
+              className="btn btn-secondary btn-sm"
+              onClick={handleSaveDraft}
+              disabled={isSaving}
+            >
+              <Save size={14} /> {isSaving ? "Saving..." : "Save Draft"}
+            </button>
+          )}
+          {briefing.status === "Draft" && canSubmitForReview && (
             <button className="btn btn-primary btn-sm" onClick={handleSubmitForReview}>
               <Send size={14} /> Submit for Review
             </button>
@@ -188,7 +202,7 @@ export function OfficerReviewPage() {
         {/* Left: Section Navigation */}
         <div className="gov-card" style={{ display: "flex", flexDirection: "column", overflow: "hidden" }}>
           <div className="gov-card-header" style={{ padding: "10px 14px" }}>
-            <span style={{ fontSize: "12px", fontWeight: 700, color: "#183153", textTransform: "uppercase" }}>
+            <span style={{ fontSize: "12px", fontWeight: 700, color: "var(--color-text-primary)", textTransform: "uppercase" }}>
               Briefing Sections
             </span>
           </div>
@@ -205,8 +219,9 @@ export function OfficerReviewPage() {
                     padding: "10px 12px",
                     borderRadius: "4px",
                     border: "none",
-                    backgroundColor: isActive ? "#183153" : "transparent",
-                    color: isActive ? "#ffffff" : "#334155",
+                    borderLeft: isActive ? "3px solid var(--color-primary)" : "3px solid transparent",
+                    backgroundColor: isActive ? "var(--color-primary-light)" : "transparent",
+                    color: "var(--color-text-primary)",
                     fontSize: "12.5px",
                     fontWeight: isActive ? 600 : 500,
                     cursor: "pointer",
@@ -221,47 +236,49 @@ export function OfficerReviewPage() {
           </div>
         </div>
 
-        {/* Center: Editable Section Content */}
+        {/* Center: Section Content */}
         <div className="gov-card" style={{ display: "flex", flexDirection: "column", overflow: "hidden" }}>
           <div
             style={{
               padding: "12px 18px",
-              backgroundColor: "#F8FAFC",
-              borderBottom: "1px solid #E2E8F0",
+              backgroundColor: "var(--color-hover)",
+              borderBottom: "1px solid var(--color-border)",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
             }}
           >
-            <h3 style={{ fontSize: "14px", fontWeight: 700, color: "#183153" }}>
+            <h3 style={{ fontSize: "14px", fontWeight: 700, color: "var(--color-text-primary)" }}>
               {activeSection}
             </h3>
-            <button
-              className="btn btn-secondary btn-sm"
-              onClick={handleRegenerateCurrentSection}
-              disabled={isRegenerating}
-            >
-              <RotateCcw size={13} /> {isRegenerating ? "Regenerating..." : "Regenerate Section"}
-            </button>
+            {canRegenerateSection && briefing.status !== "Approved" && (
+              <button
+                className="btn btn-secondary btn-sm"
+                onClick={handleRegenerateCurrentSection}
+                disabled={isRegenerating}
+              >
+                <RotateCcw size={13} /> {isRegenerating ? "Regenerating..." : "Regenerate Section"}
+              </button>
+            )}
           </div>
 
           <div style={{ flex: 1, padding: "16px", display: "flex", flexDirection: "column" }}>
             <textarea
+              className="form-textarea"
               style={{
                 flex: 1,
                 width: "100%",
                 padding: "16px",
-                border: "1px solid #CBD5E1",
-                borderRadius: "4px",
                 fontFamily: "var(--font-family-sans)",
                 fontSize: "13.5px",
                 lineHeight: "1.6",
-                color: "#1E293B",
+                color: "var(--color-text-primary)",
+                backgroundColor: isEditable ? "var(--color-surface)" : "var(--color-hover)",
                 resize: "none",
-                outline: "none",
               }}
               value={sectionData[activeSection] || ""}
               onChange={(e) => handleSectionTextChange(activeSection, e.target.value)}
+              readOnly={!isEditable}
               placeholder="Enter section narrative or edit AI-synthesized draft..."
             />
           </div>
@@ -270,7 +287,7 @@ export function OfficerReviewPage() {
         {/* Right: Revision History & Audit Log */}
         <div className="gov-card" style={{ display: "flex", flexDirection: "column", overflow: "hidden" }}>
           <div className="gov-card-header" style={{ padding: "10px 14px" }}>
-            <span style={{ fontSize: "12px", fontWeight: 700, color: "#183153", textTransform: "uppercase" }}>
+            <span style={{ fontSize: "12px", fontWeight: 700, color: "var(--color-text-primary)", textTransform: "uppercase" }}>
               Audit & Revision History
             </span>
           </div>
@@ -281,17 +298,17 @@ export function OfficerReviewPage() {
                   key={idx}
                   style={{
                     padding: "8px 10px",
-                    backgroundColor: "#F8FAFC",
-                    border: "1px solid #E2E8F0",
+                    backgroundColor: "var(--color-hover)",
+                    border: "1px solid var(--color-border)",
                     borderRadius: "4px",
                   }}
                 >
-                  <div style={{ fontWeight: 600, color: "#183153" }}>{ch.action}</div>
-                  <div style={{ color: "#64748B", fontSize: "11px", marginTop: "2px" }}>
+                  <div style={{ fontWeight: 600, color: "var(--color-text-primary)" }}>{ch.action}</div>
+                  <div style={{ color: "var(--color-text-secondary)", fontSize: "11px", marginTop: "2px" }}>
                     Officer: <b>{ch.user_id}</b> • {ch.timestamp?.slice(0, 16).replace("T", " ")}
                   </div>
                   {ch.note && (
-                    <div style={{ color: "#334155", marginTop: "4px", fontStyle: "italic" }}>
+                    <div style={{ color: "var(--color-text-primary)", marginTop: "4px", fontStyle: "italic" }}>
                       "{ch.note}"
                     </div>
                   )}

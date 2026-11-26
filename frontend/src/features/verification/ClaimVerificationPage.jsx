@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { CheckCircle2, AlertTriangle, XCircle, HelpCircle, ArrowLeft, ExternalLink, ShieldCheck } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { apiClient } from "../../services/api/client";
 import { StatusBadge } from "../../components/common/StatusBadge";
 import { DataTable } from "../../components/tables/DataTable";
+import { useAuthStore } from "../../store/authStore";
+import { ACTIONS, canPerformAction } from "../../config/rbac";
 
 export function ClaimVerificationPage() {
   const { briefingId } = useParams();
   const navigate = useNavigate();
+  const user = useAuthStore((state) => state.user);
+  const canVerifyClaims = canPerformAction(user?.role, ACTIONS.VERIFY_CLAIMS);
 
-  const [briefing, setBriefing] = useState(null);
   const [claims, setClaims] = useState([]);
   const [selectedClaim, setSelectedClaim] = useState(null);
   const [verifyStatus, setVerifyStatus] = useState("Supported");
@@ -20,7 +23,6 @@ export function ClaimVerificationPage() {
     setIsLoading(true);
     try {
       const res = await apiClient.get(`/briefings/${briefingId}`);
-      setBriefing(res.data.briefing);
       setClaims(res.data.claims || []);
     } catch (err) {
       console.error(err);
@@ -35,7 +37,7 @@ export function ClaimVerificationPage() {
 
   const handleUpdateClaim = async (e) => {
     e.preventDefault();
-    if (!selectedClaim) return;
+    if (!selectedClaim || !canVerifyClaims) return;
     try {
       await apiClient.post(`/briefings/${briefingId}/verify`, {
         claim_id: selectedClaim._id,
@@ -61,7 +63,7 @@ export function ClaimVerificationPage() {
         <button className="btn btn-secondary btn-sm" onClick={() => navigate(`/briefings/${briefingId}/review`)}>
           <ArrowLeft size={14} /> Back to Briefing Review
         </button>
-        <span style={{ fontSize: "12px", color: "#64748B" }}>Briefing ID: <b>{briefingId}</b></span>
+        <span style={{ fontSize: "12px", color: "var(--color-text-secondary)" }}>Briefing ID: <b>{briefingId}</b></span>
       </div>
 
       <div className="page-header">
@@ -77,30 +79,29 @@ export function ClaimVerificationPage() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
+          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
           gap: "12px",
           marginBottom: "20px",
         }}
       >
         <div className="gov-card" style={{ padding: "14px 16px" }}>
-          <div style={{ fontSize: "11px", color: "#64748B", textTransform: "uppercase" }}>Fully Supported</div>
-          <div style={{ fontSize: "20px", fontWeight: 700, color: "#0F766E", marginTop: "4px" }}>{supportedCount}</div>
+          <div style={{ fontSize: "11px", color: "var(--color-text-secondary)", textTransform: "uppercase" }}>Fully Supported</div>
+          <div style={{ fontSize: "20px", fontWeight: 700, color: "var(--color-teal-positive)", marginTop: "4px" }}>{supportedCount}</div>
         </div>
         <div className="gov-card" style={{ padding: "14px 16px" }}>
-          <div style={{ fontSize: "11px", color: "#64748B", textTransform: "uppercase" }}>Partially Supported</div>
-          <div style={{ fontSize: "20px", fontWeight: 700, color: "#0369A1", marginTop: "4px" }}>{partialCount}</div>
+          <div style={{ fontSize: "11px", color: "var(--color-text-secondary)", textTransform: "uppercase" }}>Partially Supported</div>
+          <div style={{ fontSize: "20px", fontWeight: 700, color: "var(--color-blue-info)", marginTop: "4px" }}>{partialCount}</div>
         </div>
         <div className="gov-card" style={{ padding: "14px 16px" }}>
-          <div style={{ fontSize: "11px", color: "#64748B", textTransform: "uppercase" }}>Conflicting Evidence</div>
-          <div style={{ fontSize: "20px", fontWeight: 700, color: "#B45309", marginTop: "4px" }}>{conflictCount}</div>
+          <div style={{ fontSize: "11px", color: "var(--color-text-secondary)", textTransform: "uppercase" }}>Conflicting Evidence</div>
+          <div style={{ fontSize: "20px", fontWeight: 700, color: "var(--color-amber-warning)", marginTop: "4px" }}>{conflictCount}</div>
         </div>
         <div className="gov-card" style={{ padding: "14px 16px" }}>
-          <div style={{ fontSize: "11px", color: "#64748B", textTransform: "uppercase" }}>Requires Human Review</div>
-          <div style={{ fontSize: "20px", fontWeight: 700, color: "#B91C1C", marginTop: "4px" }}>{unverifiedCount}</div>
+          <div style={{ fontSize: "11px", color: "var(--color-text-secondary)", textTransform: "uppercase" }}>Requires Human Review</div>
+          <div style={{ fontSize: "20px", fontWeight: 700, color: "var(--color-red-alert)", marginTop: "4px" }}>{unverifiedCount}</div>
         </div>
       </div>
 
-      {/* Claims Table */}
       <DataTable
         columns={[
           { header: "Claim ID", accessor: "_id", width: "130px", render: (r) => <b>{r._id}</b> },
@@ -111,54 +112,46 @@ export function ClaimVerificationPage() {
             accessor: "supporting_evidence_ids",
             width: "150px",
             render: (r) => (
-              <span style={{ fontSize: "11px", color: "#475569" }}>
+              <span style={{ fontSize: "11px", color: "var(--color-text-secondary)" }}>
                 {r.supporting_evidence_ids?.join(", ") || "No Direct Citation"}
               </span>
             ),
           },
           { header: "Verification Status", accessor: "verification_status", width: "160px", render: (r) => <StatusBadge status={r.verification_status} /> },
-          {
-            header: "Action",
-            width: "110px",
-            align: "right",
-            render: (r) => (
-              <button
-                className="btn btn-secondary btn-sm"
-                onClick={() => {
-                  setSelectedClaim(r);
-                  setVerifyStatus(r.verification_status);
-                  setExplanation(r.verification_explanation || "");
-                }}
-              >
-                Inspect
-              </button>
-            ),
-          },
+          ...(canVerifyClaims
+            ? [
+                {
+                  header: "Action",
+                  width: "110px",
+                  align: "right",
+                  render: (r) => (
+                    <button
+                      className="btn btn-secondary btn-sm"
+                      onClick={() => {
+                        setSelectedClaim(r);
+                        setVerifyStatus(r.verification_status);
+                        setExplanation(r.verification_explanation || "");
+                      }}
+                    >
+                      Inspect
+                    </button>
+                  ),
+                },
+              ]
+            : []),
         ]}
         data={claims}
         isLoading={isLoading}
       />
 
-      {/* Verification Drawer / Modal */}
-      {selectedClaim && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            backgroundColor: "rgba(16, 36, 58, 0.6)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 100,
-            padding: "20px",
-          }}
-        >
-          <div className="gov-card" style={{ width: "100%", maxWidth: "600px", backgroundColor: "#ffffff" }}>
+      {selectedClaim && canVerifyClaims && (
+        <div className="modal-backdrop">
+          <div className="gov-card" style={{ width: "100%", maxWidth: "600px" }}>
             <div className="gov-card-header">
-              <h3 style={{ fontSize: "15px", fontWeight: 700, color: "#183153" }}>
+              <h3 style={{ fontSize: "15px", fontWeight: 700, color: "var(--color-text-primary)" }}>
                 Verify Asserted Claim: {selectedClaim._id}
               </h3>
-              <button onClick={() => setSelectedClaim(null)} style={{ background: "none", border: "none", cursor: "pointer", color: "#64748B" }}>
+              <button onClick={() => setSelectedClaim(null)} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-secondary)" }}>
                 &times;
               </button>
             </div>
@@ -166,14 +159,14 @@ export function ClaimVerificationPage() {
             <form onSubmit={handleUpdateClaim} style={{ padding: "20px" }}>
               <div className="form-group">
                 <label className="form-label">Asserted Claim Text:</label>
-                <div style={{ padding: "12px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px", fontSize: "13px", lineHeight: "1.4" }}>
+                <div style={{ padding: "12px", backgroundColor: "var(--color-hover)", border: "1px solid var(--color-border)", borderRadius: "4px", fontSize: "13px", lineHeight: "1.4" }}>
                   "{selectedClaim.claim_text}"
                 </div>
               </div>
 
               <div className="form-group">
                 <label className="form-label">Supporting Evidence IDs:</label>
-                <div style={{ fontSize: "12px", color: "#183153", fontWeight: 600 }}>
+                <div style={{ fontSize: "12px", color: "var(--color-primary-accessible)", fontWeight: 600 }}>
                   {selectedClaim.supporting_evidence_ids?.join(", ") || "None"}
                 </div>
               </div>

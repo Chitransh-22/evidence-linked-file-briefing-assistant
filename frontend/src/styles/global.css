@@ -60,7 +60,7 @@ h4 { font-size: var(--font-size-md); }
 }
 
 .btn:disabled {
-  opacity: 0.6;
+  opacity: 0.55;
   cursor: not-allowed;
 }
 
@@ -232,4 +232,200 @@ h4 { font-size: var(--font-size-md); }
   font-size: var(--font-size-xs);
   color: var(--color-red-alert);
   margin-top: var(--spacing-1);
+}
+
+/* ==================== AUTHENTICATED THEME OVERRIDES ==================== */
+
+.auth-theme {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+.auth-theme h1,
+.auth-theme h2,
+.auth-theme h3,
+.auth-theme h4,
+.auth-theme h5 {
+  color: var(--color-text-primary);
+}
+
+.auth-theme a {
+  color: var(--color-primary-accessible);
+}
+
+.auth-theme a:hover {
+  color: var(--color-primary-hover);
+}
+
+.auth-theme :focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.auth-theme input[type="checkbox"],
+.auth-theme input[type="radio"] {
+  accent-color: var(--color-primary);
+}
+
+.auth-theme .btn-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.auth-theme .btn-primary:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  color: var(--color-text-primary);
+}
+
+.auth-theme .btn-secondary {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+.auth-theme .btn-secondary:hover:not(:disabled) {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-text-primary);
+}
+
+.auth-theme .gov-card {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.auth-theme .gov-card-header {
+  border-bottom-color: var(--color-border);
+}
+
+.auth-theme .gov-table-container {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.auth-theme .gov-table th {
+  background-color: var(--color-hover);
+  color: var(--color-text-primary);
+  border-bottom-color: var(--color-border);
+}
+
+.auth-theme .gov-table td {
+  color: var(--color-text-primary);
+  border-bottom-color: var(--color-border);
+}
+
+.auth-theme .gov-table tbody tr:hover {
+  background-color: var(--color-primary-light);
+}
+
+.auth-theme .gov-table tbody tr.is-selected {
+  background-color: var(--color-primary-light);
+  box-shadow: inset 3px 0 0 var(--color-primary);
+}
+
+.auth-theme .form-label {
+  color: var(--color-text-primary);
+}
+
+.auth-theme .form-input,
+.auth-theme .form-select,
+.auth-theme .form-textarea {
+  border-color: var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+.auth-theme .form-input::placeholder,
+.auth-theme .form-textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.auth-theme .form-input:focus,
+.auth-theme .form-select:focus,
+.auth-theme .form-textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(243, 107, 33, 0.16);
+}
+
+.auth-theme .badge-neutral {
+  background-color: var(--color-hover);
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
+}
+
+.auth-theme .badge-primary {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-accessible);
+  border: 1px solid var(--color-primary-border);
+}
+
+.auth-theme .dashboard-link {
+  color: var(--color-text-primary);
+  font-size: 12px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.auth-theme .dashboard-link:hover {
+  color: var(--color-primary-accessible);
+  text-decoration: none;
+}
+
+.auth-theme .dashboard-metric-card {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.auth-theme .dashboard-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+.auth-theme .dashboard-metric-card:hover .dashboard-card-link {
+  color: var(--color-primary-accessible);
+}
+
+.auth-theme .modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(36, 36, 36, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.auth-theme .pagination-pill {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.auth-theme .pagination-pill:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.auth-theme .pagination-pill.active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-text-primary);
 }

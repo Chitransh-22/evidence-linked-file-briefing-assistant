@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { Search, Filter, FileText, Download, RotateCcw, ExternalLink } from "lucide-react";
-import { apiClient, downloadFile, getAuthenticatedUrl } from "../../services/api/client";
+import { useNavigate } from "react-router-dom";
+import { Search, Download, RotateCcw, ExternalLink } from "lucide-react";
+import { apiClient, downloadFile } from "../../services/api/client";
 import { DataTable } from "../../components/tables/DataTable";
 import { StatusBadge } from "../../components/common/StatusBadge";
+import { useAuthStore } from "../../store/authStore";
+import { ACTIONS, canPerformAction } from "../../config/rbac";
 
 export function DocumentLibraryPage() {
   const navigate = useNavigate();
-  const location = useLocation();
+  const user = useAuthStore((state) => state.user);
+  const canUploadDocument = canPerformAction(user?.role, ACTIONS.UPLOAD_DOCUMENT);
+  const canRetryProcessing = canPerformAction(user?.role, ACTIONS.RETRY_PROCESSING);
 
   const [documents, setDocuments] = useState([]);
   const [total, setTotal] = useState(0);
@@ -52,6 +56,7 @@ export function DocumentLibraryPage() {
 
   const handleRetry = async (docId, e) => {
     e.stopPropagation();
+    if (!canRetryProcessing) return;
     try {
       await apiClient.post(`/documents/${docId}/retry`);
       loadDocuments();
@@ -70,15 +75,15 @@ export function DocumentLibraryPage() {
       header: "Document ID",
       accessor: "_id",
       width: "140px",
-      render: (row) => <span style={{ fontWeight: 600, color: "#183153" }}>{row._id}</span>,
+      render: (row) => <span style={{ fontWeight: 600, color: "var(--color-text-primary)" }}>{row._id}</span>,
     },
     {
       header: "Document Title",
       accessor: "document_title",
       render: (row) => (
         <div>
-          <div style={{ fontWeight: 500, color: "#1E293B" }}>{row.document_title}</div>
-          <div style={{ fontSize: "11px", color: "#64748B" }}>
+          <div style={{ fontWeight: 500, color: "var(--color-text-primary)" }}>{row.document_title}</div>
+          <div style={{ fontSize: "11px", color: "var(--color-text-secondary)" }}>
             File: {row.original_filename} • Authority: {row.source_authority || "N/A"}
           </div>
         </div>
@@ -144,7 +149,7 @@ export function DocumentLibraryPage() {
           >
             <Download size={13} />
           </button>
-          {row.processing_status === "Failed" && (
+          {row.processing_status === "Failed" && canRetryProcessing && (
             <button
               className="btn btn-secondary btn-sm"
               onClick={(e) => handleRetry(row._id, e)}
@@ -165,9 +170,11 @@ export function DocumentLibraryPage() {
           <h1 className="page-title">Document Repository & Library</h1>
           <div className="page-subtitle">Master register of all digital exhibits and scanned source files</div>
         </div>
-        <button className="btn btn-primary" onClick={() => navigate("/intake")}>
-          Intake New Document
-        </button>
+        {canUploadDocument && (
+          <button className="btn btn-primary" onClick={() => navigate("/intake")}>
+            Intake New Document
+          </button>
+        )}
       </div>
 
       {/* Filter and Search Bar */}
@@ -192,7 +199,7 @@ export function DocumentLibraryPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <Search size={15} style={{ position: "absolute", left: "10px", top: "10px", color: "#94A3B8" }} />
+            <Search size={15} style={{ position: "absolute", left: "10px", top: "10px", color: "var(--color-text-muted)" }} />
           </div>
           <button type="submit" className="btn btn-secondary">
             Search

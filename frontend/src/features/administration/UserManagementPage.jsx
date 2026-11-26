@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { UserCog, Plus, Edit, UserX, UserCheck, X, AlertCircle } from "lucide-react";
+import { Plus, X, AlertCircle } from "lucide-react";
 import { apiClient } from "../../services/api/client";
 import { DataTable } from "../../components/tables/DataTable";
 import { StatusBadge } from "../../components/common/StatusBadge";
+import { useAuthStore } from "../../store/authStore";
+import { ACTIONS, canPerformAction } from "../../config/rbac";
 
 export function UserManagementPage() {
+  const currentUser = useAuthStore((state) => state.user);
+  const canManageUsers = canPerformAction(currentUser?.role, ACTIONS.MANAGE_USERS);
+
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Modal State
   const [showModal, setShowModal] = useState(false);
   const [formError, setFormError] = useState("");
   const [formData, setFormData] = useState({
@@ -38,6 +42,7 @@ export function UserManagementPage() {
 
   const handleCreateUser = async (e) => {
     e.preventDefault();
+    if (!canManageUsers) return;
     setFormError("");
     try {
       const payload = {
@@ -61,6 +66,7 @@ export function UserManagementPage() {
   };
 
   const toggleUserStatus = async (user) => {
+    if (!canManageUsers) return;
     const newStatus = user.status === "active" ? "disabled" : "active";
     const confirmToggle = window.confirm(`Change status for officer "${user.username}" to ${newStatus.toUpperCase()}?`);
     if (!confirmToggle) return;
@@ -85,8 +91,8 @@ export function UserManagementPage() {
       accessor: "full_name",
       render: (r) => (
         <div>
-          <div style={{ fontWeight: 500, color: "#183153" }}>{r.full_name}</div>
-          <div style={{ fontSize: "11px", color: "#64748B" }}>{r.email}</div>
+          <div style={{ fontWeight: 500, color: "var(--color-text-primary)" }}>{r.full_name}</div>
+          <div style={{ fontSize: "11px", color: "var(--color-text-secondary)" }}>{r.email}</div>
         </div>
       ),
     },
@@ -95,7 +101,7 @@ export function UserManagementPage() {
       accessor: "role",
       width: "180px",
       render: (r) => (
-        <span className="badge badge-info" style={{ textTransform: "capitalize" }}>
+        <span className="badge badge-primary" style={{ textTransform: "capitalize" }}>
           {r.role?.replace(/_/g, " ")}
         </span>
       ),
@@ -112,19 +118,23 @@ export function UserManagementPage() {
       width: "150px",
       render: (r) => r.last_login ? r.last_login.slice(0, 16).replace("T", " ") : "Never",
     },
-    {
-      header: "Actions",
-      width: "130px",
-      align: "right",
-      render: (r) => (
-        <button
-          className={`btn btn-sm ${r.status === "active" ? "btn-secondary" : "btn-primary"}`}
-          onClick={() => toggleUserStatus(r)}
-        >
-          {r.status === "active" ? "Disable" : "Enable"}
-        </button>
-      ),
-    },
+    ...(canManageUsers
+      ? [
+          {
+            header: "Actions",
+            width: "130px",
+            align: "right",
+            render: (r) => (
+              <button
+                className={`btn btn-sm ${r.status === "active" ? "btn-secondary" : "btn-primary"}`}
+                onClick={() => toggleUserStatus(r)}
+              >
+                {r.status === "active" ? "Disable" : "Enable"}
+              </button>
+            ),
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -134,9 +144,11 @@ export function UserManagementPage() {
           <h1 className="page-title">Officer & Role Access Administration</h1>
           <div className="page-subtitle">Enforce backend role-based access control and case file permissions</div>
         </div>
-        <button className="btn btn-primary" onClick={() => setShowModal(true)}>
-          <Plus size={16} /> Add Officer Account
-        </button>
+        {canManageUsers && (
+          <button className="btn btn-primary" onClick={() => setShowModal(true)}>
+            <Plus size={16} /> Add Officer Account
+          </button>
+        )}
       </div>
 
       <DataTable
@@ -145,31 +157,19 @@ export function UserManagementPage() {
         isLoading={isLoading}
       />
 
-      {/* Add User Modal */}
-      {showModal && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            backgroundColor: "rgba(16, 36, 58, 0.6)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 100,
-            padding: "20px",
-          }}
-        >
-          <div className="gov-card" style={{ width: "100%", maxWidth: "520px", backgroundColor: "#ffffff" }}>
+      {showModal && canManageUsers && (
+        <div className="modal-backdrop">
+          <div className="gov-card" style={{ width: "100%", maxWidth: "520px" }}>
             <div className="gov-card-header">
-              <h3 style={{ fontSize: "15px", fontWeight: 700, color: "#183153" }}>Register Authorized Officer</h3>
-              <button onClick={() => setShowModal(false)} style={{ background: "none", border: "none", cursor: "pointer", color: "#64748B" }}>
+              <h3 style={{ fontSize: "15px", fontWeight: 700, color: "var(--color-text-primary)" }}>Register Authorized Officer</h3>
+              <button onClick={() => setShowModal(false)} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-secondary)" }}>
                 <X size={18} />
               </button>
             </div>
 
             <form onSubmit={handleCreateUser} style={{ padding: "20px" }}>
               {formError && (
-                <div style={{ padding: "8px 12px", backgroundColor: "#FEE2E2", color: "#B91C1C", borderRadius: "4px", fontSize: "12px", marginBottom: "14px" }}>
+                <div style={{ padding: "8px 12px", backgroundColor: "var(--color-red-bg)", color: "var(--color-red-alert)", borderRadius: "4px", fontSize: "12px", marginBottom: "14px" }}>
                   <AlertCircle size={14} style={{ display: "inline", marginRight: "6px" }} />
                   {formError}
                 </div>

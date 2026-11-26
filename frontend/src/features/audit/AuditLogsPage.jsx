@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { ShieldCheck, Download, Search, CheckCircle2, AlertTriangle, Key } from "lucide-react";
+import { ShieldCheck, Download, CheckCircle2, AlertTriangle } from "lucide-react";
 import { apiClient, downloadFile } from "../../services/api/client";
 import { DataTable } from "../../components/tables/DataTable";
 import { StatusBadge } from "../../components/common/StatusBadge";
+import { useAuthStore } from "../../store/authStore";
+import { ACTIONS, canPerformAction } from "../../config/rbac";
 
 export function AuditLogsPage() {
+  const user = useAuthStore((state) => state.user);
+  const canVerifyChain = canPerformAction(user?.role, ACTIONS.VERIFY_AUDIT_CHAIN);
+  const canExportAuditCsv = canPerformAction(user?.role, ACTIONS.EXPORT_AUDIT_CSV);
+
   const [logs, setLogs] = useState([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
@@ -12,7 +18,6 @@ export function AuditLogsPage() {
   const [actionFilter, setActionFilter] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  // Cryptographic Chain Verification State
   const [verificationResult, setVerificationResult] = useState(null);
   const [isVerifying, setIsVerifying] = useState(false);
 
@@ -38,6 +43,7 @@ export function AuditLogsPage() {
   }, [page, actionFilter]);
 
   const handleVerifyChain = async () => {
+    if (!canVerifyChain) return;
     setIsVerifying(true);
     try {
       const res = await apiClient.get("/audit-logs/verify-chain");
@@ -67,7 +73,7 @@ export function AuditLogsPage() {
       accessor: "action",
       width: "210px",
       render: (r) => (
-        <span style={{ fontWeight: 600, color: "#183153", fontSize: "12px" }}>
+        <span style={{ fontWeight: 600, color: "var(--color-text-primary)", fontSize: "12px" }}>
           {r.action}
         </span>
       ),
@@ -77,7 +83,7 @@ export function AuditLogsPage() {
       accessor: "resource_type",
       width: "180px",
       render: (r) => (
-        <span style={{ fontSize: "12px", color: "#475569" }}>
+        <span style={{ fontSize: "12px", color: "var(--color-text-secondary)" }}>
           {r.resource_type}: <code>{r.resource_id}</code>
         </span>
       ),
@@ -92,7 +98,7 @@ export function AuditLogsPage() {
       header: "SHA-256 Event Hash",
       accessor: "event_hash",
       render: (r) => (
-        <code style={{ fontSize: "10px", color: "#64748B" }}>
+        <code style={{ fontSize: "10px", color: "var(--color-text-secondary)" }}>
           {r.event_hash ? `${r.event_hash.slice(0, 24)}...` : "Genesis"}
         </code>
       ),
@@ -108,21 +114,27 @@ export function AuditLogsPage() {
             Cryptographically chained SHA-256 audit ledger tracking every access, extraction, and briefing sign-off
           </div>
         </div>
-        <div style={{ display: "flex", gap: "10px" }}>
-          <button
-            className="btn btn-secondary"
-            onClick={() => downloadFile(`/audit-logs/export`, "audit_logs.csv")}
-          >
-            <Download size={14} /> Export Audit CSV
-          </button>
-          <button
-            className="btn btn-primary"
-            onClick={handleVerifyChain}
-            disabled={isVerifying}
-          >
-            <ShieldCheck size={15} /> {isVerifying ? "Verifying Hash Chain..." : "Verify Hash Chain Integrity"}
-          </button>
-        </div>
+        {(canExportAuditCsv || canVerifyChain) && (
+          <div style={{ display: "flex", gap: "10px" }}>
+            {canExportAuditCsv && (
+              <button
+                className="btn btn-secondary"
+                onClick={() => downloadFile(`/audit-logs/export`, "audit_logs.csv")}
+              >
+                <Download size={14} /> Export Audit CSV
+              </button>
+            )}
+            {canVerifyChain && (
+              <button
+                className="btn btn-primary"
+                onClick={handleVerifyChain}
+                disabled={isVerifying}
+              >
+                <ShieldCheck size={15} /> {isVerifying ? "Verifying Hash Chain..." : "Verify Hash Chain Integrity"}
+              </button>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Verification Result Banner */}
@@ -130,8 +142,8 @@ export function AuditLogsPage() {
         <div
           style={{
             padding: "16px 20px",
-            backgroundColor: verificationResult.valid ? "#CCFBF1" : "#FEE2E2",
-            border: `1px solid ${verificationResult.valid ? "#0F766E" : "#EF4444"}`,
+            backgroundColor: verificationResult.valid ? "var(--color-teal-bg)" : "var(--color-red-bg)",
+            border: `1px solid ${verificationResult.valid ? "var(--color-teal-positive)" : "var(--color-red-alert)"}`,
             borderRadius: "4px",
             marginBottom: "20px",
             display: "flex",
@@ -140,11 +152,11 @@ export function AuditLogsPage() {
           }}
         >
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", fontWeight: 700, fontSize: "14px", color: verificationResult.valid ? "#0F766E" : "#B91C1C" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", fontWeight: 700, fontSize: "14px", color: verificationResult.valid ? "var(--color-teal-positive)" : "var(--color-red-alert)" }}>
               {verificationResult.valid ? <CheckCircle2 size={18} /> : <AlertTriangle size={18} />}
               <span>{verificationResult.message}</span>
             </div>
-            <div style={{ fontSize: "12px", color: "#334155", marginTop: "4px" }}>
+            <div style={{ fontSize: "12px", color: "var(--color-text-primary)", marginTop: "4px" }}>
               Verified Records: <b>{verificationResult.total_records}</b> • Chain Head Hash: <code>{verificationResult.head_hash?.slice(0, 32)}...</code>
             </div>
           </div>
@@ -159,7 +171,7 @@ export function AuditLogsPage() {
 
       {/* Filter Bar */}
       <div className="gov-card" style={{ padding: "14px 16px", marginBottom: "16px", display: "flex", gap: "12px", alignItems: "center" }}>
-        <span style={{ fontSize: "13px", color: "#64748B" }}>Action Filter:</span>
+        <span style={{ fontSize: "13px", color: "var(--color-text-secondary)" }}>Action Filter:</span>
         <select
           className="form-select"
           style={{ width: "240px" }}

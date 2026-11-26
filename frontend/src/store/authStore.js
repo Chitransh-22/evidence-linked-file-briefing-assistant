@@ -1,8 +1,22 @@
 import { create } from "zustand";
 import { apiClient } from "../services/api/client";
+import {
+  VALID_ROLES,
+  canAccessMenu as rbacCanAccessMenu,
+  canPerformAction as rbacCanPerformAction,
+  hasPermission as rbacHasPermission,
+} from "../config/rbac";
 
-const storedUser = localStorage.getItem("gov_user");
-const initialUser = storedUser ? JSON.parse(storedUser) : null;
+function readStoredUser() {
+  try {
+    const storedUser = localStorage.getItem("gov_user");
+    return storedUser ? JSON.parse(storedUser) : null;
+  } catch {
+    return null;
+  }
+}
+
+const initialUser = readStoredUser();
 const initialToken = localStorage.getItem("gov_token") || null;
 
 export const useAuthStore = create((set, get) => ({
@@ -22,7 +36,7 @@ export const useAuthStore = create((set, get) => ({
   logout: async () => {
     try {
       await apiClient.post("/auth/logout");
-    } catch (e) {
+    } catch {
       // ignore
     } finally {
       localStorage.removeItem("gov_token");
@@ -33,8 +47,13 @@ export const useAuthStore = create((set, get) => ({
 
   hasRole: (allowedRoles) => {
     const user = get().user;
-    if (!user) return false;
-    if (user.role === "system_administrator") return true;
+    if (!user?.role || !VALID_ROLES.has(user.role) || !Array.isArray(allowedRoles)) {
+      return false;
+    }
     return allowedRoles.includes(user.role);
   },
+
+  canAccessMenu: (menuId) => rbacCanAccessMenu(get().user?.role, menuId),
+  canPerformAction: (action) => rbacCanPerformAction(get().user?.role, action),
+  hasPermission: (permission) => rbacHasPermission(get().user?.role, permission),
 }));

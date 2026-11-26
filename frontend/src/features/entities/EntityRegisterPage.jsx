@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Users, Search, Filter, ExternalLink, X, Building, User, Calendar, MapPin, Tag } from "lucide-react";
+import { Search, ExternalLink, X, Building, User, Calendar, MapPin, Tag } from "lucide-react";
 import { apiClient } from "../../services/api/client";
 import { DataTable } from "../../components/tables/DataTable";
-import { StatusBadge } from "../../components/common/StatusBadge";
 
 export function EntityRegisterPage() {
   const navigate = useNavigate();
@@ -16,7 +15,6 @@ export function EntityRegisterPage() {
   const [typeFilter, setTypeFilter] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  // Detail Modal
   const [selectedEntity, setSelectedEntity] = useState(null);
   const [entityDetail, setEntityDetail] = useState(null);
 
@@ -56,11 +54,11 @@ export function EntityRegisterPage() {
   };
 
   const getEntityIcon = (type) => {
-    if (type === "Person") return <User size={14} />;
-    if (type === "Organization" || type === "Government Department") return <Building size={14} />;
-    if (type === "Date") return <Calendar size={14} />;
-    if (type === "Location") return <MapPin size={14} />;
-    return <Tag size={14} />;
+    if (type === "Person") return <User size={14} color="var(--color-primary)" />;
+    if (type === "Organization" || type === "Government Department") return <Building size={14} color="var(--color-primary)" />;
+    if (type === "Date") return <Calendar size={14} color="var(--color-primary)" />;
+    if (type === "Location") return <MapPin size={14} color="var(--color-primary)" />;
+    return <Tag size={14} color="var(--color-primary)" />;
   };
 
   const columns = [
@@ -69,7 +67,7 @@ export function EntityRegisterPage() {
       accessor: "entity_name",
       render: (r) => (
         <div
-          style={{ display: "flex", alignItems: "center", gap: "8px", fontWeight: 600, color: "#183153", cursor: "pointer" }}
+          style={{ display: "flex", alignItems: "center", gap: "8px", fontWeight: 600, color: "var(--color-text-primary)", cursor: "pointer" }}
           onClick={() => handleOpenDetail(r)}
         >
           {getEntityIcon(r.entity_type)}
@@ -87,7 +85,7 @@ export function EntityRegisterPage() {
       header: "Case File",
       accessor: "case_id",
       width: "180px",
-      render: (r) => <span style={{ fontSize: "12px", color: "#475569" }}>{r.case_id}</span>,
+      render: (r) => <span style={{ fontSize: "12px", color: "var(--color-text-secondary)" }}>{r.case_id}</span>,
     },
     {
       header: "Occurrences",
@@ -139,7 +137,7 @@ export function EntityRegisterPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <Search size={15} style={{ position: "absolute", left: "10px", top: "10px", color: "#94A3B8" }} />
+            <Search size={15} style={{ position: "absolute", left: "10px", top: "10px", color: "var(--color-text-muted)" }} />
           </div>
           <button type="submit" className="btn btn-secondary">Search</button>
         </form>
@@ -165,7 +163,6 @@ export function EntityRegisterPage() {
         </select>
       </div>
 
-      {/* Table */}
       <DataTable
         columns={columns}
         data={entities}
@@ -178,42 +175,29 @@ export function EntityRegisterPage() {
         }}
       />
 
-      {/* Detail Modal */}
       {selectedEntity && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            backgroundColor: "rgba(16, 36, 58, 0.6)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 100,
-            padding: "20px",
-          }}
-        >
-          <div className="gov-card" style={{ width: "100%", maxWidth: "600px", backgroundColor: "#ffffff" }}>
+        <div className="modal-backdrop">
+          <div className="gov-card" style={{ width: "100%", maxWidth: "600px" }}>
             <div className="gov-card-header">
               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <span className="badge badge-info">{selectedEntity.entity_type}</span>
-                <h3 style={{ fontSize: "16px", fontWeight: 700, color: "#183153" }}>
+                <span className="badge badge-primary">{selectedEntity.entity_type}</span>
+                <h3 style={{ fontSize: "16px", fontWeight: 700, color: "var(--color-text-primary)" }}>
                   {selectedEntity.entity_name}
                 </h3>
               </div>
               <button
                 onClick={() => { setSelectedEntity(null); setEntityDetail(null); }}
-                style={{ background: "none", border: "none", cursor: "pointer", color: "#64748B" }}
+                style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-secondary)" }}
               >
                 <X size={18} />
               </button>
             </div>
 
             <div style={{ padding: "20px", maxHeight: "70vh", overflowY: "auto" }}>
-              <div style={{ fontSize: "12px", color: "#64748B", marginBottom: "14px" }}>
+              <div style={{ fontSize: "12px", color: "var(--color-text-secondary)", marginBottom: "14px" }}>
                 Case File: <b>{selectedEntity.case_id}</b>
               </div>
 
-              {/* Source Occurrences List */}
               <h4 style={{ fontSize: "13px", fontWeight: 600, marginBottom: "8px" }}>Source Document Occurrences</h4>
               <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginBottom: "16px" }}>
                 {(selectedEntity.source_occurrences || []).map((occ, idx) => (
@@ -221,8 +205,8 @@ export function EntityRegisterPage() {
                     key={idx}
                     style={{
                       padding: "8px 12px",
-                      backgroundColor: "#F8FAFC",
-                      border: "1px solid #E2E8F0",
+                      backgroundColor: "var(--color-hover)",
+                      border: "1px solid var(--color-border)",
                       borderRadius: "4px",
                       display: "flex",
                       justifyContent: "space-between",
@@ -241,7 +225,6 @@ export function EntityRegisterPage() {
                 ))}
               </div>
 
-              {/* Associated Evidence Records */}
               {entityDetail?.evidence_records?.length > 0 && (
                 <div>
                   <h4 style={{ fontSize: "13px", fontWeight: 600, marginBottom: "8px" }}>Connected Evidence Records</h4>
@@ -251,13 +234,13 @@ export function EntityRegisterPage() {
                         key={ev._id}
                         style={{
                           padding: "10px",
-                          backgroundColor: "#ffffff",
-                          border: "1px solid #CBD5E1",
+                          backgroundColor: "var(--color-surface)",
+                          border: "1px solid var(--color-border)",
                           borderRadius: "4px",
                           fontSize: "12.5px",
                         }}
                       >
-                        <div style={{ fontWeight: 600, color: "#183153", marginBottom: "4px" }}>
+                        <div style={{ fontWeight: 600, color: "var(--color-text-primary)", marginBottom: "4px" }}>
                           {ev._id} • Page {ev.page_number}
                         </div>
                         <div>{ev.source_excerpt}</div>

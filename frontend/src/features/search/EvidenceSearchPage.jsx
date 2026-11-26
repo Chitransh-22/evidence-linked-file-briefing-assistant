@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, Sparkles, Filter, ExternalLink, BookOpen, AlertCircle, FilePlus } from "lucide-react";
+import { Search, ExternalLink, BookOpen, AlertCircle } from "lucide-react";
 import { apiClient } from "../../services/api/client";
-import { StatusBadge } from "../../components/common/StatusBadge";
 
 export function EvidenceSearchPage() {
   const navigate = useNavigate();
 
   const [query, setQuery] = useState("");
-  const [searchMode, setSearchMode] = useState("semantic"); // semantic, keyword, entity
+  const [searchMode, setSearchMode] = useState("semantic");
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searched, setSearched] = useState(false);
@@ -43,8 +42,7 @@ export function EvidenceSearchPage() {
 
       {/* Search Input Box Card */}
       <div className="gov-card" style={{ padding: "24px", marginBottom: "20px" }}>
-        {/* Mode Tabs */}
-        <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
+        <div style={{ display: "flex", gap: "8px", marginBottom: "16px", flexWrap: "wrap" }}>
           {[
             { id: "semantic", label: "Semantic Vector Search" },
             { id: "keyword", label: "Keyword Search" },
@@ -59,9 +57,9 @@ export function EvidenceSearchPage() {
                 fontWeight: 600,
                 borderRadius: "4px",
                 border: "1px solid",
-                borderColor: searchMode === mode.id ? "#183153" : "#CBD5E1",
-                backgroundColor: searchMode === mode.id ? "#183153" : "#FFFFFF",
-                color: searchMode === mode.id ? "#FFFFFF" : "#475569",
+                borderColor: searchMode === mode.id ? "var(--color-primary)" : "var(--color-border)",
+                backgroundColor: searchMode === mode.id ? "var(--color-primary-light)" : "var(--color-surface)",
+                color: "var(--color-text-primary)",
                 cursor: "pointer",
               }}
             >
@@ -80,15 +78,15 @@ export function EvidenceSearchPage() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
-            <Search size={18} style={{ position: "absolute", left: "12px", top: "12px", color: "#94A3B8" }} />
+            <Search size={18} style={{ position: "absolute", left: "12px", top: "12px", color: "var(--color-text-muted)" }} />
           </div>
           <button type="submit" className="btn btn-primary" style={{ height: "42px", padding: "0 20px" }} disabled={isLoading}>
             {isLoading ? "Searching Vector Database..." : "Execute Search"}
           </button>
         </form>
 
-        <div style={{ marginTop: "12px", fontSize: "12px", color: "#64748B", display: "flex", alignItems: "center", gap: "6px" }}>
-          <AlertCircle size={14} />
+        <div style={{ marginTop: "12px", fontSize: "12px", color: "var(--color-text-secondary)", display: "flex", alignItems: "center", gap: "6px" }}>
+          <AlertCircle size={14} color="var(--color-primary)" />
           <span>Semantic relevance score reflects vector embedding proximity, not independent proof of factual truth.</span>
         </div>
       </div>
@@ -97,20 +95,20 @@ export function EvidenceSearchPage() {
       {searched && (
         <div>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
-            <h3 style={{ fontSize: "14px", fontWeight: 600, color: "#183153" }}>
+            <h3 style={{ fontSize: "14px", fontWeight: 600, color: "var(--color-text-primary)" }}>
               Retrieved Evidentiary Records ({results.length})
             </h3>
-            <span style={{ fontSize: "12px", color: "#64748B" }}>
+            <span style={{ fontSize: "12px", color: "var(--color-text-secondary)" }}>
               Query: <i>"{query}"</i>
             </span>
           </div>
 
           {isLoading ? (
-            <div style={{ padding: "40px", textAlign: "center", color: "#64748B" }}>
+            <div style={{ padding: "40px", textAlign: "center", color: "var(--color-text-secondary)" }}>
               Searching Qdrant collection and enriching with Evidence Ledger...
             </div>
           ) : results.length === 0 ? (
-            <div className="gov-card" style={{ padding: "40px", textAlign: "center", color: "#64748B" }}>
+            <div className="gov-card" style={{ padding: "40px", textAlign: "center", color: "var(--color-text-secondary)" }}>
               No reliable supporting evidence records found matching your semantic inquiry.
             </div>
           ) : (
@@ -120,22 +118,22 @@ export function EvidenceSearchPage() {
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "8px" }}>
                     <div>
                       <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                        <span style={{ fontWeight: 700, fontSize: "13px", color: "#183153" }}>
+                        <span style={{ fontWeight: 700, fontSize: "13px", color: "var(--color-text-primary)" }}>
                           {res.evidence_id}
                         </span>
-                        <span className="badge badge-info">{res.evidence_category}</span>
+                        <span className="badge badge-primary">{res.evidence_category}</span>
                         <span className="badge badge-neutral" style={{ textTransform: "uppercase" }}>
                           {res.language}
                         </span>
                       </div>
-                      <div style={{ fontSize: "12px", color: "#64748B", marginTop: "2px" }}>
+                      <div style={{ fontSize: "12px", color: "var(--color-text-secondary)", marginTop: "2px" }}>
                         Source: <b>{res.document_title}</b> (Doc ID: {res.document_id}) • <b>Page {res.page_number}</b>
                       </div>
                     </div>
 
                     <div style={{ textAlign: "right" }}>
-                      <div style={{ fontSize: "11px", color: "#64748B" }}>Relevance Score</div>
-                      <div style={{ fontSize: "15px", fontWeight: 700, color: "#0F766E" }}>
+                      <div style={{ fontSize: "11px", color: "var(--color-text-secondary)" }}>Relevance Score</div>
+                      <div style={{ fontSize: "15px", fontWeight: 700, color: "var(--color-teal-positive)" }}>
                         {Math.round(res.relevance_score * 100)}%
                       </div>
                     </div>
@@ -145,10 +143,10 @@ export function EvidenceSearchPage() {
                     style={{
                       fontSize: "13.5px",
                       lineHeight: "1.5",
-                      color: "#1E293B",
-                      backgroundColor: "#F8FAFC",
+                      color: "var(--color-text-primary)",
+                      backgroundColor: "var(--color-hover)",
                       padding: "12px",
-                      border: "1px solid #E2E8F0",
+                      border: "1px solid var(--color-border)",
                       borderRadius: "4px",
                     }}
                   >
@@ -157,7 +155,7 @@ export function EvidenceSearchPage() {
 
                   {res.associated_entities?.length > 0 && (
                     <div style={{ marginTop: "10px", display: "flex", gap: "6px", flexWrap: "wrap", alignItems: "center" }}>
-                      <span style={{ fontSize: "11px", color: "#64748B" }}>Entities:</span>
+                      <span style={{ fontSize: "11px", color: "var(--color-text-secondary)" }}>Entities:</span>
                       {res.associated_entities.map((e, eIdx) => (
                         <span key={eIdx} className="badge badge-neutral" style={{ fontSize: "11px" }}>
                           {e}

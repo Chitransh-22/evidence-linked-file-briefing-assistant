@@ -1,6 +1,6 @@
 import React from "react";
-import { describe, it, expect, vi } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
+import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { StatusBadge } from "../components/common/StatusBadge";
 import { DataTable } from "../components/tables/DataTable";
@@ -48,24 +48,40 @@ describe("Frontend Component Verification", () => {
     expect(screen.getByText("Zero records found")).toBeInTheDocument();
   });
 
-  it("renders LoginPage with official branding and input fields", () => {
-    render(
+  it("renders LoginPage as minimalist government access terminal with 5 role tiles", () => {
+    const { container } = render(
       <BrowserRouter>
         <LoginPage />
       </BrowserRouter>
     );
 
-    expect(screen.getByText(/GOVERNMENT DOCUMENT EVIDENCE INTELLIGENCE & BRIEFING SYSTEM/i)).toBeInTheDocument();
+    expect(container.querySelector(".login-terminal")).toBeTruthy();
+    expect(container.querySelector(".lucide-shield-check")).toBeNull();
+    expect(screen.getByText("LEKH")).toBeInTheDocument();
+    expect(screen.getByText("Restricted Access")).toBeInTheDocument();
+    expect(screen.getByText("OFFICIAL ACCESS PORTAL")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /Ledger for Evidence and Knowledge Handling/i })
+    ).toBeInTheDocument();
+    expect(screen.getByText("01 / AUTHENTICATION")).toBeInTheDocument();
+    expect(screen.getByText("02 / ROLE ACCESS")).toBeInTheDocument();
+
     expect(screen.getByPlaceholderText(/e\.g\. investigator or admin/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/Enter your confidential password/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Authenticate & Access System/i })).toBeInTheDocument();
 
-    // Verify Quick Role Testing buttons are present
-    expect(screen.getByText(/Quick Login by Role \(For Testing\)/i)).toBeInTheDocument();
+    // Verify all 5 quick-login role tiles are present without coloured role badges
     expect(screen.getByText("Investigating Officer")).toBeInTheDocument();
     expect(screen.getByText("Supervisory Reviewer")).toBeInTheDocument();
     expect(screen.getByText("System Administrator")).toBeInTheDocument();
     expect(screen.getByText("Intake Officer")).toBeInTheDocument();
     expect(screen.getByText("Independent Auditor")).toBeInTheDocument();
+    expect(container.querySelector(".lt-role-tile.is-full")).toBeTruthy();
+
+    // Bottom strip and institutional footer
+    expect(screen.getByText("Evidence Integrity")).toBeInTheDocument();
+    expect(screen.getByText("Role-Based Access")).toBeInTheDocument();
+    expect(screen.getByText("Audit Accountability")).toBeInTheDocument();
+    expect(screen.getByText("LEKH · AUTHORIZED PERSONNEL ONLY")).toBeInTheDocument();
   });
 });

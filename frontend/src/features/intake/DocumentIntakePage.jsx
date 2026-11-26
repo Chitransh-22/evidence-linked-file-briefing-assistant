@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { UploadCloud, FileText, CheckCircle2, AlertCircle, X, ShieldAlert, Cpu } from "lucide-react";
+import { UploadCloud, FileText, AlertCircle, X } from "lucide-react";
 import { apiClient } from "../../services/api/client";
+import { useAuthStore } from "../../store/authStore";
+import { ACTIONS, canPerformAction } from "../../config/rbac";
 
 export function DocumentIntakePage() {
   const navigate = useNavigate();
+  const user = useAuthStore((state) => state.user);
+  const canUploadDocument = canPerformAction(user?.role, ACTIONS.UPLOAD_DOCUMENT);
   const location = useLocation();
   const fileInputRef = useRef(null);
 
@@ -73,6 +77,7 @@ export function DocumentIntakePage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!canUploadDocument) return;
     if (!selectedCaseId) {
       setErrorMsg("Please select an authorized Case file for ingestion.");
       return;
@@ -103,14 +108,12 @@ export function DocumentIntakePage() {
       formData.append("allow_duplicate", allowDuplicate ? "true" : "false");
 
       setUploadProgress(60);
-      const res = await apiClient.post("/documents/upload", formData, {
+      await apiClient.post("/documents/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
       setUploadProgress(100);
-      const data = res.data;
 
-      // Navigate to processing queue or document viewer
       setTimeout(() => {
         navigate(`/processing`);
       }, 500);
@@ -136,15 +139,15 @@ export function DocumentIntakePage() {
         </div>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: "24px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "24px" }}>
         {/* Left: Upload and Dropzone */}
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           {/* Dropzone */}
           <div
             className="gov-card"
             style={{
-              border: "2px dashed #94A3B8",
-              backgroundColor: "#F8FAFC",
+              border: "2px dashed var(--color-border-dark)",
+              backgroundColor: "var(--color-hover)",
               textAlign: "center",
               padding: "40px 20px",
               cursor: "pointer",
@@ -164,8 +167,8 @@ export function DocumentIntakePage() {
               style={{
                 width: "52px",
                 height: "52px",
-                backgroundColor: "#18315315",
-                color: "#183153",
+                backgroundColor: "var(--color-primary-light)",
+                color: "var(--color-primary)",
                 borderRadius: "50%",
                 display: "flex",
                 alignItems: "center",
@@ -175,10 +178,10 @@ export function DocumentIntakePage() {
             >
               <UploadCloud size={28} />
             </div>
-            <div style={{ fontWeight: 600, fontSize: "15px", color: "#183153" }}>
+            <div style={{ fontWeight: 600, fontSize: "15px", color: "var(--color-text-primary)" }}>
               Drag and Drop Official PDF Files Here
             </div>
-            <div style={{ fontSize: "12px", color: "#64748B", marginTop: "4px" }}>
+            <div style={{ fontSize: "12px", color: "var(--color-text-secondary)", marginTop: "4px" }}>
               Or click to browse your workstation • Multilingual documents supported (Gujarati, Hindi, English)
             </div>
           </div>
@@ -205,23 +208,23 @@ export function DocumentIntakePage() {
                       alignItems: "center",
                       justifyContent: "space-between",
                       padding: "10px 12px",
-                      backgroundColor: "#F8FAFC",
-                      border: "1px solid #E2E8F0",
+                      backgroundColor: "var(--color-hover)",
+                      border: "1px solid var(--color-border)",
                       borderRadius: "4px",
                       marginBottom: "8px",
                     }}
                   >
                     <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                      <FileText size={18} color="#183153" />
+                      <FileText size={18} color="var(--color-primary)" />
                       <div>
-                        <div style={{ fontSize: "13px", fontWeight: 500, color: "#1E293B" }}>{f.name}</div>
-                        <div style={{ fontSize: "11px", color: "#64748B" }}>{(f.size / 1024).toFixed(1)} KB • PDF Document</div>
+                        <div style={{ fontSize: "13px", fontWeight: 500, color: "var(--color-text-primary)" }}>{f.name}</div>
+                        <div style={{ fontSize: "11px", color: "var(--color-text-secondary)" }}>{(f.size / 1024).toFixed(1)} KB • PDF Document</div>
                       </div>
                     </div>
                     <button
                       type="button"
                       onClick={() => removeFile(idx)}
-                      style={{ background: "none", border: "none", color: "#94A3B8", cursor: "pointer" }}
+                      style={{ background: "none", border: "none", color: "var(--color-text-muted)", cursor: "pointer" }}
                     >
                       <X size={16} />
                     </button>
@@ -236,10 +239,10 @@ export function DocumentIntakePage() {
             <div
               style={{
                 padding: "16px",
-                backgroundColor: "#FEF3C7",
-                border: "1px solid #F59E0B",
+                backgroundColor: "var(--color-amber-bg)",
+                border: "1px solid var(--color-amber-warning)",
                 borderRadius: "4px",
-                color: "#B45309",
+                color: "var(--color-amber-warning)",
               }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: "8px", fontWeight: 600, fontSize: "14px" }}>
@@ -265,10 +268,10 @@ export function DocumentIntakePage() {
             <div
               style={{
                 padding: "12px 14px",
-                backgroundColor: "#FEE2E2",
-                border: "1px solid #EF4444",
+                backgroundColor: "var(--color-red-bg)",
+                border: "1px solid var(--color-red-alert)",
                 borderRadius: "4px",
-                color: "#B91C1C",
+                color: "var(--color-red-alert)",
                 fontSize: "13px",
                 display: "flex",
                 alignItems: "center",
@@ -366,12 +369,12 @@ export function DocumentIntakePage() {
 
             {isUploading && (
               <div style={{ marginBottom: "16px" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "12px", color: "#64748B", marginBottom: "4px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "12px", color: "var(--color-text-secondary)", marginBottom: "4px" }}>
                   <span>Uploading and calculating SHA-256...</span>
                   <span>{uploadProgress}%</span>
                 </div>
-                <div style={{ height: "6px", backgroundColor: "#E2E8F0", borderRadius: "3px", overflow: "hidden" }}>
-                  <div style={{ height: "100%", width: `${uploadProgress}%`, backgroundColor: "#183153", transition: "width 0.3s ease" }}></div>
+                <div style={{ height: "6px", backgroundColor: "var(--color-border)", borderRadius: "3px", overflow: "hidden" }}>
+                  <div style={{ height: "100%", width: `${uploadProgress}%`, backgroundColor: "var(--color-primary)", transition: "width 0.3s ease" }}></div>
                 </div>
               </div>
             )}
@@ -380,7 +383,7 @@ export function DocumentIntakePage() {
               type="submit"
               className="btn btn-primary"
               style={{ width: "100%", height: "40px" }}
-              disabled={isUploading || selectedFiles.length === 0}
+              disabled={!canUploadDocument || isUploading || selectedFiles.length === 0}
             >
               {isUploading ? "Ingesting..." : "Submit for Asynchronous AI Processing"}
             </button>

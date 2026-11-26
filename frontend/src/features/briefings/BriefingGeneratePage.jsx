@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { FileSignature, CheckSquare, Square, Sparkles, ArrowLeft, AlertCircle } from "lucide-react";
+import { CheckSquare, Square, ArrowLeft, AlertCircle } from "lucide-react";
 import { apiClient } from "../../services/api/client";
+import { useAuthStore } from "../../store/authStore";
+import { ACTIONS, canPerformAction } from "../../config/rbac";
 
 const STANDARD_SECTIONS = [
   "Executive Summary",
@@ -23,6 +25,8 @@ const STANDARD_SECTIONS = [
 export function BriefingGeneratePage() {
   const { caseId } = useParams();
   const navigate = useNavigate();
+  const user = useAuthStore((state) => state.user);
+  const canGenerateBriefing = canPerformAction(user?.role, ACTIONS.GENERATE_BRIEFING);
 
   const [caseData, setCaseData] = useState(null);
   const [stats, setStats] = useState(null);
@@ -58,6 +62,7 @@ export function BriefingGeneratePage() {
 
   const handleGenerate = async (e) => {
     e.preventDefault();
+    if (!canGenerateBriefing) return;
     if (selectedSections.length === 0) {
       alert("Please select at least one briefing section to compile.");
       return;
@@ -72,7 +77,6 @@ export function BriefingGeneratePage() {
       });
 
       const briefing = res.data.briefing;
-      // Navigate directly to the Officer Review Workspace
       navigate(`/briefings/${briefing._id}/review`);
     } catch (err) {
       alert("Briefing generation failed: " + (err.response?.data?.detail || err.message));
@@ -82,11 +86,11 @@ export function BriefingGeneratePage() {
   };
 
   if (isLoading) {
-    return <div style={{ padding: "40px", color: "#64748B" }}>Loading case intelligence readiness...</div>;
+    return <div style={{ padding: "40px", color: "var(--color-text-secondary)" }}>Loading case intelligence readiness...</div>;
   }
 
   if (!caseData) {
-    return <div style={{ padding: "40px", color: "#B91C1C" }}>Case file not found.</div>;
+    return <div style={{ padding: "40px", color: "var(--color-red-alert)" }}>Case file not found.</div>;
   }
 
   return (
@@ -98,35 +102,35 @@ export function BriefingGeneratePage() {
       <div className="gov-card" style={{ marginBottom: "20px" }}>
         <div className="gov-card-header">
           <div>
-            <span style={{ fontSize: "11px", color: "#64748B", textTransform: "uppercase" }}>AI-Assisted Synthesis</span>
-            <h2 style={{ fontSize: "16px", fontWeight: 700, color: "#183153" }}>
+            <span style={{ fontSize: "11px", color: "var(--color-text-secondary)", textTransform: "uppercase" }}>AI-Assisted Synthesis</span>
+            <h2 style={{ fontSize: "16px", fontWeight: 700, color: "var(--color-text-primary)" }}>
               Investigation Briefing Generator
             </h2>
           </div>
         </div>
 
         {/* Readiness Checklist */}
-        <div style={{ padding: "20px", borderBottom: "1px solid #E2E8F0", backgroundColor: "#F8FAFC" }}>
-          <h4 style={{ fontSize: "13px", fontWeight: 600, color: "#183153", marginBottom: "12px" }}>
+        <div style={{ padding: "20px", borderBottom: "1px solid var(--color-border)", backgroundColor: "var(--color-hover)" }}>
+          <h4 style={{ fontSize: "13px", fontWeight: 600, color: "var(--color-text-primary)", marginBottom: "12px" }}>
             Case Intelligence Synthesis Readiness
           </h4>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", fontSize: "12px" }}>
-            <div style={{ padding: "10px", backgroundColor: "#ffffff", border: "1px solid #CBD5E1", borderRadius: "4px" }}>
-              <div style={{ color: "#64748B" }}>Available Documents</div>
-              <div style={{ fontSize: "16px", fontWeight: 700, color: "#183153" }}>{stats?.documents || 0}</div>
+            <div style={{ padding: "10px", backgroundColor: "var(--color-surface)", border: "1px solid var(--color-border)", borderRadius: "4px" }}>
+              <div style={{ color: "var(--color-text-secondary)" }}>Available Documents</div>
+              <div style={{ fontSize: "16px", fontWeight: 700, color: "var(--color-text-primary)" }}>{stats?.documents || 0}</div>
             </div>
-            <div style={{ padding: "10px", backgroundColor: "#ffffff", border: "1px solid #CBD5E1", borderRadius: "4px" }}>
-              <div style={{ color: "#64748B" }}>Evidence Ledger Records</div>
-              <div style={{ fontSize: "16px", fontWeight: 700, color: "#183153" }}>{stats?.evidence_records || 0}</div>
+            <div style={{ padding: "10px", backgroundColor: "var(--color-surface)", border: "1px solid var(--color-border)", borderRadius: "4px" }}>
+              <div style={{ color: "var(--color-text-secondary)" }}>Evidence Ledger Records</div>
+              <div style={{ fontSize: "16px", fontWeight: 700, color: "var(--color-text-primary)" }}>{stats?.evidence_records || 0}</div>
             </div>
-            <div style={{ padding: "10px", backgroundColor: "#ffffff", border: "1px solid #CBD5E1", borderRadius: "4px" }}>
-              <div style={{ color: "#64748B" }}>Chronological Milestones</div>
-              <div style={{ fontSize: "16px", fontWeight: 700, color: "#183153" }}>{stats?.events || 0}</div>
+            <div style={{ padding: "10px", backgroundColor: "var(--color-surface)", border: "1px solid var(--color-border)", borderRadius: "4px" }}>
+              <div style={{ color: "var(--color-text-secondary)" }}>Chronological Milestones</div>
+              <div style={{ fontSize: "16px", fontWeight: 700, color: "var(--color-text-primary)" }}>{stats?.events || 0}</div>
             </div>
           </div>
 
-          <div style={{ marginTop: "12px", fontSize: "12px", color: "#64748B", display: "flex", alignItems: "center", gap: "6px" }}>
-            <AlertCircle size={14} />
+          <div style={{ marginTop: "12px", fontSize: "12px", color: "var(--color-text-secondary)", display: "flex", alignItems: "center", gap: "6px" }}>
+            <AlertCircle size={14} color="var(--color-primary)" />
             <span>
               Briefings are synthesized strictly from retrieved evidence and chronological records. Legal determinations or guilt are never autonomously decided.
             </span>
@@ -155,9 +159,9 @@ export function BriefingGeneratePage() {
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
                 gap: "8px",
-                backgroundColor: "#F8FAFC",
+                backgroundColor: "var(--color-hover)",
                 padding: "16px",
-                border: "1px solid #E2E8F0",
+                border: "1px solid var(--color-border)",
                 borderRadius: "4px",
               }}
             >
@@ -173,11 +177,11 @@ export function BriefingGeneratePage() {
                       gap: "8px",
                       cursor: "pointer",
                       fontSize: "13px",
-                      color: checked ? "#183153" : "#64748B",
+                      color: checked ? "var(--color-text-primary)" : "var(--color-text-secondary)",
                       fontWeight: checked ? 600 : 400,
                     }}
                   >
-                    {checked ? <CheckSquare size={16} color="#183153" /> : <Square size={16} color="#94A3B8" />}
+                    {checked ? <CheckSquare size={16} color="var(--color-primary)" /> : <Square size={16} color="var(--color-text-muted)" />}
                     <span>{sec}</span>
                   </div>
                 );
@@ -193,13 +197,15 @@ export function BriefingGeneratePage() {
             >
               Cancel
             </button>
-            <button
-              type="submit"
-              className="btn btn-primary"
-              disabled={isGenerating || selectedSections.length === 0}
-            >
-              {isGenerating ? "Compiling Intelligence Draft..." : "Synthesize Investigation Briefing"}
-            </button>
+            {canGenerateBriefing && (
+              <button
+                type="submit"
+                className="btn btn-primary"
+                disabled={isGenerating || selectedSections.length === 0}
+              >
+                {isGenerating ? "Compiling Intelligence Draft..." : "Synthesize Investigation Briefing"}
+              </button>
+            )}
           </div>
         </form>
       </div>

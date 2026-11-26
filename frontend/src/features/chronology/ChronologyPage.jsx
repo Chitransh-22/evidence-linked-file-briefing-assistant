@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Calendar, Plus, Download, Search, ExternalLink, X, AlertCircle } from "lucide-react";
+import { Plus, Download, ExternalLink, X } from "lucide-react";
 import { apiClient, downloadFile } from "../../services/api/client";
 import { DataTable } from "../../components/tables/DataTable";
 import { StatusBadge } from "../../components/common/StatusBadge";
+import { useAuthStore } from "../../store/authStore";
+import { ACTIONS, canPerformAction } from "../../config/rbac";
 
 export function ChronologyPage() {
   const navigate = useNavigate();
+  const user = useAuthStore((state) => state.user);
+  const canMutateChronology = canPerformAction(user?.role, ACTIONS.MUTATE_CHRONOLOGY);
 
   const [events, setEvents] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [page, setPage] = useState(1);
-  const [viewMode, setViewMode] = useState("timeline"); // timeline, table
+  const [page] = useState(1);
+  const [viewMode, setViewMode] = useState("timeline");
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  // Manual Event Modal
   const [showAddModal, setShowAddModal] = useState(false);
   const [cases, setCases] = useState([]);
   const [formData, setFormData] = useState({
@@ -39,7 +41,6 @@ export function ChronologyPage() {
         apiClient.get("/cases?limit=50"),
       ]);
       setEvents(res.data.items || []);
-      setTotal(res.data.total || 0);
       setCases(casesRes.data.items || []);
       if (!formData.case_id && casesRes.data.items?.length > 0) {
         setFormData(prev => ({ ...prev, case_id: casesRes.data.items[0].id }));
@@ -57,6 +58,7 @@ export function ChronologyPage() {
 
   const handleAddEvent = async (e) => {
     e.preventDefault();
+    if (!canMutateChronology) return;
     try {
       const payload = {
         ...formData,
@@ -93,9 +95,11 @@ export function ChronologyPage() {
           >
             <Download size={14} /> Export Timeline CSV
           </button>
-          <button className="btn btn-primary" onClick={() => setShowAddModal(true)}>
-            <Plus size={14} /> Add Event Manually
-          </button>
+          {canMutateChronology && (
+            <button className="btn btn-primary" onClick={() => setShowAddModal(true)}>
+              <Plus size={14} /> Add Event Manually
+            </button>
+          )}
         </div>
       </div>
 
@@ -143,9 +147,9 @@ export function ChronologyPage() {
       {viewMode === "timeline" ? (
         <div className="gov-card" style={{ padding: "24px" }}>
           {isLoading ? (
-            <div style={{ textAlign: "center", color: "#64748B", padding: "30px" }}>Loading chronology...</div>
+            <div style={{ textAlign: "center", color: "var(--color-text-secondary)", padding: "30px" }}>Loading chronology...</div>
           ) : events.length === 0 ? (
-            <div style={{ textAlign: "center", color: "#64748B", padding: "30px" }}>No chronological events found.</div>
+            <div style={{ textAlign: "center", color: "var(--color-text-secondary)", padding: "30px" }}>No chronological events found.</div>
           ) : (
             <div style={{ position: "relative", paddingLeft: "36px" }}>
               {/* Vertical Spine */}
@@ -156,7 +160,7 @@ export function ChronologyPage() {
                   top: "10px",
                   bottom: "10px",
                   width: "2px",
-                  backgroundColor: "#CBD5E1",
+                  backgroundColor: "var(--color-border)",
                 }}
               ></div>
 
@@ -172,31 +176,31 @@ export function ChronologyPage() {
                         width: "18px",
                         height: "18px",
                         borderRadius: "50%",
-                        backgroundColor: "#183153",
-                        border: "3px solid #ffffff",
-                        boxShadow: "0 0 0 2px #CBD5E1",
+                        backgroundColor: "var(--color-primary)",
+                        border: "3px solid var(--color-surface)",
+                        boxShadow: "0 0 0 2px var(--color-border)",
                       }}
                     ></div>
 
                     {/* Event Card */}
                     <div
                       style={{
-                        backgroundColor: "#F8FAFC",
-                        border: "1px solid #E2E8F0",
+                        backgroundColor: "var(--color-hover)",
+                        border: "1px solid var(--color-border)",
                         borderRadius: "4px",
                         padding: "14px 16px",
                       }}
                     >
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                         <div>
-                          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                            <span style={{ fontWeight: 700, fontSize: "14px", color: "#183153" }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                            <span style={{ fontWeight: 700, fontSize: "14px", color: "var(--color-text-primary)" }}>
                               {ev.event_date || ev.original_date_expression}
                             </span>
                             <span className="badge badge-neutral">Precision: {ev.date_precision || "exact"}</span>
                             <StatusBadge status={ev.review_status} />
                           </div>
-                          <h4 style={{ fontSize: "14px", fontWeight: 600, color: "#1E293B", marginTop: "4px" }}>
+                          <h4 style={{ fontSize: "14px", fontWeight: 600, color: "var(--color-text-primary)", marginTop: "4px" }}>
                             {ev.event_title}
                           </h4>
                         </div>
@@ -210,15 +214,15 @@ export function ChronologyPage() {
                         )}
                       </div>
 
-                      <div style={{ fontSize: "13px", color: "#334155", marginTop: "8px", lineHeight: "1.5" }}>
+                      <div style={{ fontSize: "13px", color: "var(--color-text-primary)", marginTop: "8px", lineHeight: "1.5" }}>
                         {ev.description}
                       </div>
 
                       {ev.associated_entities?.length > 0 && (
                         <div style={{ marginTop: "10px", display: "flex", gap: "6px", flexWrap: "wrap", alignItems: "center" }}>
-                          <span style={{ fontSize: "11px", color: "#64748B" }}>Entities:</span>
+                          <span style={{ fontSize: "11px", color: "var(--color-text-secondary)" }}>Entities:</span>
                           {ev.associated_entities.map((ent, eIdx) => (
-                            <span key={eIdx} className="badge badge-info" style={{ fontSize: "11px" }}>
+                            <span key={eIdx} className="badge badge-primary" style={{ fontSize: "11px" }}>
                               {ent}
                             </span>
                           ))}
@@ -232,7 +236,6 @@ export function ChronologyPage() {
           )}
         </div>
       ) : (
-        /* Tabular View */
         <DataTable
           columns={[
             { header: "Date", accessor: "event_date", width: "130px", render: (r) => <b>{r.event_date || r.original_date_expression}</b> },
@@ -247,24 +250,12 @@ export function ChronologyPage() {
         />
       )}
 
-      {/* Manual Add Event Modal */}
-      {showAddModal && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            backgroundColor: "rgba(16, 36, 58, 0.6)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 100,
-            padding: "20px",
-          }}
-        >
-          <div className="gov-card" style={{ width: "100%", maxWidth: "520px", backgroundColor: "#ffffff" }}>
+      {showAddModal && canMutateChronology && (
+        <div className="modal-backdrop">
+          <div className="gov-card" style={{ width: "100%", maxWidth: "520px" }}>
             <div className="gov-card-header">
               <h3 style={{ fontSize: "15px", fontWeight: 600 }}>Record Manual Chronology Milestone</h3>
-              <button onClick={() => setShowAddModal(false)} style={{ background: "none", border: "none", cursor: "pointer", color: "#64748B" }}>
+              <button onClick={() => setShowAddModal(false)} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-secondary)" }}>
                 <X size={18} />
               </button>
             </div>

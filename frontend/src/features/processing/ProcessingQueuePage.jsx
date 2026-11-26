@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Cpu, RotateCcw, XCircle, RefreshCw, CheckCircle2, AlertCircle, Clock } from "lucide-react";
+import { RotateCcw, XCircle, RefreshCw } from "lucide-react";
 import { apiClient } from "../../services/api/client";
 import { DataTable } from "../../components/tables/DataTable";
 import { StatusBadge } from "../../components/common/StatusBadge";
+import { useAuthStore } from "../../store/authStore";
+import { ACTIONS, canPerformAction } from "../../config/rbac";
 
 const PIPELINE_STAGES = [
   "Ingestion",
@@ -28,12 +29,14 @@ const PIPELINE_STAGES = [
 ];
 
 export function ProcessingQueuePage() {
-  const navigate = useNavigate();
+  const user = useAuthStore((state) => state.user);
+  const canRetryProcessing = canPerformAction(user?.role, ACTIONS.RETRY_PROCESSING);
+  const canCancelProcessing = canPerformAction(user?.role, ACTIONS.CANCEL_PROCESSING);
 
   const [jobs, setJobs] = useState([]);
   const [selectedJob, setSelectedJob] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [statusFilter, setStatusFilter] = useState("");
+  const [statusFilter] = useState("");
 
   const loadJobs = async () => {
     setIsLoading(true);
@@ -45,7 +48,6 @@ export function ProcessingQueuePage() {
       if (!selectedJob && items.length > 0) {
         setSelectedJob(items[0]);
       } else if (selectedJob) {
-        // update selected job if in list
         const updated = items.find(j => j._id === selectedJob._id);
         if (updated) setSelectedJob(updated);
       }
@@ -58,12 +60,13 @@ export function ProcessingQueuePage() {
 
   useEffect(() => {
     loadJobs();
-    const interval = setInterval(loadJobs, 4000); // 4-second polling for active jobs
+    const interval = setInterval(loadJobs, 4000);
     return () => clearInterval(interval);
   }, [statusFilter]);
 
   const handleRetryJob = async (jobId, e) => {
     e?.stopPropagation();
+    if (!canRetryProcessing) return;
     try {
       await apiClient.post(`/jobs/${jobId}/retry`);
       loadJobs();
@@ -74,6 +77,7 @@ export function ProcessingQueuePage() {
 
   const handleCancelJob = async (jobId, e) => {
     e?.stopPropagation();
+    if (!canCancelProcessing) return;
     try {
       await apiClient.post(`/jobs/${jobId}/cancel`);
       loadJobs();
@@ -107,14 +111,14 @@ export function ProcessingQueuePage() {
         <div className="gov-card" style={{ marginBottom: "20px" }}>
           <div className="gov-card-header">
             <div>
-              <span style={{ fontSize: "11px", color: "#64748B", textTransform: "uppercase" }}>Active Pipeline Visualizer</span>
-              <h3 style={{ fontSize: "15px", fontWeight: 700, color: "#183153" }}>
+              <span style={{ fontSize: "11px", color: "var(--color-text-secondary)", textTransform: "uppercase" }}>Active Pipeline Visualizer</span>
+              <h3 style={{ fontSize: "15px", fontWeight: 700, color: "var(--color-text-primary)" }}>
                 Job {selectedJob.job_id} • Doc {selectedJob.document_id}
               </h3>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <StatusBadge status={selectedJob.status} />
-              {selectedJob.status === "Failed" && (
+              {selectedJob.status === "Failed" && canRetryProcessing && (
                 <button
                   className="btn btn-secondary btn-sm"
                   onClick={() => handleRetryJob(selectedJob._id)}
@@ -126,7 +130,6 @@ export function ProcessingQueuePage() {
           </div>
 
           <div style={{ padding: "20px" }}>
-            {/* Horizontal 19-Stage Stepper Grid */}
             <div
               style={{
                 display: "grid",
@@ -141,22 +144,22 @@ export function ProcessingQueuePage() {
                 const isCurrent = curIdx === idx && selectedJob.status !== "Completed";
                 const isFailed = isCurrent && selectedJob.status === "Failed";
 
-                let bg = "#F1F5F9";
-                let textCol = "#64748B";
-                let borderColor = "#CBD5E1";
+                let bg = "var(--color-hover)";
+                let textCol = "var(--color-text-secondary)";
+                let borderColor = "var(--color-border)";
 
                 if (isFailed) {
-                  bg = "#FEE2E2";
-                  textCol = "#B91C1C";
+                  bg = "var(--color-red-bg)";
+                  textCol = "var(--color-red-alert)";
                   borderColor = "#EF4444";
                 } else if (isPassed) {
-                  bg = "#CCFBF1";
-                  textCol = "#0F766E";
+                  bg = "var(--color-teal-bg)";
+                  textCol = "var(--color-teal-positive)";
                   borderColor = "#14B8A6";
                 } else if (isCurrent) {
-                  bg = "#E0F2FE";
-                  textCol = "#0369A1";
-                  borderColor = "#0284C7";
+                  bg = "var(--color-primary-light)";
+                  textCol = "var(--color-primary-accessible)";
+                  borderColor = "var(--color-primary)";
                 }
 
                 return (
@@ -178,15 +181,14 @@ export function ProcessingQueuePage() {
               })}
             </div>
 
-            {/* Error or Progress Bar */}
             {selectedJob.error ? (
               <div
                 style={{
                   padding: "10px 14px",
-                  backgroundColor: "#FEE2E2",
-                  border: "1px solid #EF4444",
+                  backgroundColor: "var(--color-red-bg)",
+                  border: "1px solid var(--color-red-alert)",
                   borderRadius: "4px",
-                  color: "#B91C1C",
+                  color: "var(--color-red-alert)",
                   fontSize: "12px",
                 }}
               >
@@ -194,16 +196,16 @@ export function ProcessingQueuePage() {
               </div>
             ) : (
               <div>
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "12px", color: "#64748B", marginBottom: "4px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "12px", color: "var(--color-text-secondary)", marginBottom: "4px" }}>
                   <span>Current Stage: <b>{selectedJob.current_stage}</b></span>
                   <span>Progress: <b>{selectedJob.progress || 0}%</b></span>
                 </div>
-                <div style={{ height: "8px", backgroundColor: "#E2E8F0", borderRadius: "4px", overflow: "hidden" }}>
+                <div style={{ height: "8px", backgroundColor: "var(--color-border)", borderRadius: "4px", overflow: "hidden" }}>
                   <div
                     style={{
                       height: "100%",
                       width: `${selectedJob.progress || 0}%`,
-                      backgroundColor: "#183153",
+                      backgroundColor: "var(--color-primary)",
                       transition: "width 0.4s ease",
                     }}
                   ></div>
@@ -222,7 +224,7 @@ export function ProcessingQueuePage() {
             accessor: "_id",
             width: "150px",
             render: (r) => (
-              <span style={{ fontWeight: 600, color: "#183153", cursor: "pointer" }} onClick={() => setSelectedJob(r)}>
+              <span style={{ fontWeight: 600, color: "var(--color-text-primary)", cursor: "pointer" }} onClick={() => setSelectedJob(r)}>
                 {r._id}
               </span>
             ),
@@ -279,7 +281,7 @@ export function ProcessingQueuePage() {
                 >
                   View
                 </button>
-                {r.status === "Failed" && (
+                {r.status === "Failed" && canRetryProcessing && (
                   <button
                     className="btn btn-secondary btn-sm"
                     onClick={(e) => handleRetryJob(r._id, e)}
@@ -288,7 +290,7 @@ export function ProcessingQueuePage() {
                     <RotateCcw size={13} />
                   </button>
                 )}
-                {r.status === "Processing" && (
+                {r.status === "Processing" && canCancelProcessing && (
                   <button
                     className="btn btn-danger btn-sm"
                     onClick={(e) => handleCancelJob(r._id, e)}

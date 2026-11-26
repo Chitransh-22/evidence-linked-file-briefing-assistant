@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { FileSignature, Download, CheckCircle, RotateCcw, ExternalLink, XCircle, AlertCircle } from "lucide-react";
+import { Download, CheckCircle, AlertCircle } from "lucide-react";
 import { apiClient, downloadFile } from "../../services/api/client";
 import { DataTable } from "../../components/tables/DataTable";
 import { StatusBadge } from "../../components/common/StatusBadge";
 import { useAuthStore } from "../../store/authStore";
+import { ACTIONS, ROLES, canPerformAction } from "../../config/rbac";
 
 export function BriefingsRegisterPage() {
   const navigate = useNavigate();
   const { user } = useAuthStore();
 
+  const canExportBriefing = canPerformAction(user?.role, ACTIONS.EXPORT_BRIEFING);
+  const canApproveBriefing = canPerformAction(user?.role, ACTIONS.APPROVE_BRIEFING);
+
   const [briefings, setBriefings] = useState([]);
-  const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [statusFilter, setStatusFilter] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -26,7 +29,6 @@ export function BriefingsRegisterPage() {
 
       const res = await apiClient.get(`/briefings?${params.toString()}`);
       setBriefings(res.data.items || []);
-      setTotal(res.data.total || 0);
     } catch (err) {
       console.error(err);
     } finally {
@@ -39,12 +41,12 @@ export function BriefingsRegisterPage() {
   }, [page, statusFilter]);
 
   const handleApproveBriefing = async (briefingId, creator) => {
-    if (user?.role !== "supervisory_reviewer" && user?.role !== "system_administrator") {
+    if (!canApproveBriefing) {
       alert("Only an authorized Supervisory Reviewer or System Administrator may approve final briefings.");
       return;
     }
 
-    if (creator === user?.username && user?.role !== "system_administrator") {
+    if (creator === user?.username && user?.role !== ROLES.SYSTEM_ADMINISTRATOR) {
       setApprovalError("Separation of duties violation: An investigating officer cannot self-approve their own briefing draft.");
       return;
     }
@@ -73,8 +75,8 @@ export function BriefingsRegisterPage() {
       accessor: "title",
       render: (r) => (
         <div>
-          <div style={{ fontWeight: 600, color: "#183153" }}>{r.title}</div>
-          <div style={{ fontSize: "11px", color: "#64748B" }}>Case Reference: {r.case_reference}</div>
+          <div style={{ fontWeight: 600, color: "var(--color-text-primary)" }}>{r.title}</div>
+          <div style={{ fontSize: "11px", color: "var(--color-text-secondary)" }}>Case Reference: {r.case_reference}</div>
         </div>
       ),
     },
@@ -83,7 +85,7 @@ export function BriefingsRegisterPage() {
       accessor: "version",
       width: "80px",
       align: "center",
-      render: (r) => <span className="badge badge-info">v{r.version}</span>,
+      render: (r) => <span className="badge badge-primary">v{r.version}</span>,
     },
     {
       header: "Prepared By",
@@ -95,7 +97,7 @@ export function BriefingsRegisterPage() {
       accessor: "claim_stats",
       width: "150px",
       render: (r) => (
-        <span style={{ fontSize: "12px", color: "#334155" }}>
+        <span style={{ fontSize: "12px", color: "var(--color-text-primary)" }}>
           <b>{r.claim_stats?.supported || 0}</b> / {r.claim_stats?.total || 0} verified
         </span>
       ),
@@ -116,23 +118,27 @@ export function BriefingsRegisterPage() {
             className="btn btn-secondary btn-sm"
             onClick={() => navigate(`/briefings/${r._id}/review`)}
           >
-            Review
+            {canPerformAction(user?.role, ACTIONS.EDIT_BRIEFING) ? "Review" : "View"}
           </button>
-          <button
-            className="btn btn-secondary btn-sm"
-            onClick={() => downloadFile(`/briefings/${r._id}/export/pdf`, `Briefing_${r.case_reference || r._id}.pdf`)}
-            title="Download Official PDF"
-          >
-            <Download size={13} /> PDF
-          </button>
-          <button
-            className="btn btn-secondary btn-sm"
-            onClick={() => downloadFile(`/briefings/${r._id}/export/docx`, `Briefing_${r.case_reference || r._id}.docx`)}
-            title="Download Official DOCX"
-          >
-            DOCX
-          </button>
-          {r.status === "Under Review" && (user?.role === "supervisory_reviewer" || user?.role === "system_administrator") && (
+          {canExportBriefing && (
+            <>
+              <button
+                className="btn btn-secondary btn-sm"
+                onClick={() => downloadFile(`/briefings/${r._id}/export/pdf`, `Briefing_${r.case_reference || r._id}.pdf`)}
+                title="Download Official PDF"
+              >
+                <Download size={13} /> PDF
+              </button>
+              <button
+                className="btn btn-secondary btn-sm"
+                onClick={() => downloadFile(`/briefings/${r._id}/export/docx`, `Briefing_${r.case_reference || r._id}.docx`)}
+                title="Download Official DOCX"
+              >
+                DOCX
+              </button>
+            </>
+          )}
+          {r.status === "Under Review" && canApproveBriefing && (r.created_by !== user?.username || user?.role === ROLES.SYSTEM_ADMINISTRATOR) && (
             <button
               className="btn btn-primary btn-sm"
               onClick={() => handleApproveBriefing(r._id, r.created_by)}
@@ -161,10 +167,10 @@ export function BriefingsRegisterPage() {
         <div
           style={{
             padding: "12px 14px",
-            backgroundColor: "#FEE2E2",
-            border: "1px solid #EF4444",
+            backgroundColor: "var(--color-red-bg)",
+            border: "1px solid var(--color-red-alert)",
             borderRadius: "4px",
-            color: "#B91C1C",
+            color: "var(--color-red-alert)",
             fontSize: "13px",
             marginBottom: "16px",
             display: "flex",
@@ -178,7 +184,7 @@ export function BriefingsRegisterPage() {
 
       {/* Filter Bar */}
       <div className="gov-card" style={{ padding: "14px 16px", marginBottom: "16px", display: "flex", gap: "12px", alignItems: "center" }}>
-        <span style={{ fontSize: "13px", color: "#64748B" }}>Filter Status:</span>
+        <span style={{ fontSize: "13px", color: "var(--color-text-secondary)" }}>Filter Status:</span>
         <select
           className="form-select"
           style={{ width: "200px" }}
