@@ -21,6 +21,7 @@ class IndicTrans2Service:
         self._model = None
         self._tokenizer = None
         self._model_load_attempted = False
+        self._cache: Dict[Tuple[str, str], str] = {}
 
     @property
     def model_path(self) -> str:
@@ -156,12 +157,70 @@ class IndicTrans2Service:
 
         return "\n".join(translated_paragraphs)
 
+    def _translate_with_gemini(self, text: str, source_lang: str) -> Optional[str]:
+        """High-accuracy neural translation using Google Gemini API."""
+        import os
+        api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+        if not api_key:
+            return None
+
+        cache_key = (text.strip(), source_lang)
+        if cache_key in self._cache:
+            return self._cache[cache_key]
+
+        try:
+            from google import genai
+            client = genai.Client(api_key=api_key)
+            lang_name = "Gujarati" if source_lang == "guj" else ("Hindi" if source_lang == "hin" else source_lang)
+
+            # Split into chunks of paragraphs if text is very long
+            paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
+            if not paragraphs:
+                paragraphs = [text.strip()]
+
+            translated_paras = []
+            for para in paragraphs:
+                if not para:
+                    continue
+                para_cache_key = (para, source_lang)
+                if para_cache_key in self._cache:
+                    translated_paras.append(self._cache[para_cache_key])
+                    continue
+
+                prompt = (
+                    f"You are a certified government and legal evidence translation engine.\n"
+                    f"Translate the following {lang_name} documentary evidence accurately into formal, clear English.\n"
+                    f"STRICT RULES:\n"
+                    f"1. Output ONLY the direct English translation without introductory remarks, quotes, or preambles.\n"
+                    f"2. Faithfully preserve all numbers, dates, monetary amounts (INR/Rs), entity names, references, and titles exactly.\n\n"
+                    f"TEXT TO TRANSLATE:\n{para}"
+                )
+
+                resp = client.models.generate_content(
+                    model="gemini-3.5-flash-lite",
+                    contents=prompt
+                )
+                res_text = resp.text.strip() if resp and resp.text else para
+                if res_text.startswith("```") and res_text.endswith("```"):
+                    lines = res_text.splitlines()
+                    res_text = "\n".join(lines[1:-1]).strip()
+
+                self._cache[para_cache_key] = res_text
+                translated_paras.append(res_text)
+
+            final_result = "\n\n".join(translated_paras)
+            self._cache[cache_key] = final_result
+            return final_result
+        except Exception as e:
+            logger.warning(f"Gemini neural translation unavailable or failed: {e}")
+            return None
+
     def _translate_with_fallback(self, text: str, source_lang: str) -> Optional[str]:
         """Attempt lightweight translation fallback when IndicTrans2 weights are not present."""
         lang_code = "gu" if source_lang == "guj" else "hi"
+        # 1. Try deep_translator GoogleTranslator
         try:
             from deep_translator import GoogleTranslator
-            # Split text into chunks < 4500 chars to respect translator boundaries
             chunks = [text[i:i + 4000] for i in range(0, len(text), 4000)]
             translated_chunks = []
             for chunk in chunks:
@@ -169,10 +228,27 @@ class IndicTrans2Service:
                     continue
                 trans = GoogleTranslator(source=lang_code, target="en").translate(chunk)
                 translated_chunks.append(trans if trans else chunk)
-            return "\n".join(translated_chunks)
+            if translated_chunks:
+                return "\n".join(translated_chunks)
         except Exception as e:
-            logger.debug(f"Lightweight translation fallback skipped/failed ({e})")
-            return None
+            logger.debug(f"GoogleTranslator fallback skipped ({e})")
+
+        # 2. Try deep_translator MyMemoryTranslator
+        try:
+            from deep_translator import MyMemoryTranslator
+            chunks = [text[i:i + 500] for i in range(0, len(text), 500)]
+            translated_chunks = []
+            for chunk in chunks:
+                if not chunk.strip():
+                    continue
+                trans = MyMemoryTranslator(source=f"{lang_code}-IN", target="en-GB").translate(chunk)
+                translated_chunks.append(trans if trans else chunk)
+            if translated_chunks:
+                return " ".join(translated_chunks)
+        except Exception as e:
+            logger.debug(f"MyMemoryTranslator fallback skipped ({e})")
+
+        return None
 
     def translate_to_english(self, text: str, source_lang: str) -> Tuple[str, str, Dict[str, Any]]:
         """
@@ -205,7 +281,17 @@ class IndicTrans2Service:
             except Exception as e:
                 logger.error(f"IndicTrans2 inference failed: {e}")
 
-        # 3. Priority 2: Lightweight Translator Fallback (if network/service available)
+        # 3. Priority 2: Gemini Neural AI Translation
+        gemini_translated = self._translate_with_gemini(text, source_lang)
+        if gemini_translated:
+            return gemini_translated, "gemini_neural_translation", {
+                "model": "gemini-3.5-flash-lite",
+                "source_lang": source_lang,
+                "target_lang": "eng",
+                "status": "success",
+            }
+
+        # 4. Priority 3: Lightweight Translator Fallback (deep_translator / MyMemory)
         fallback_translated = self._translate_with_fallback(text, source_lang)
         if fallback_translated:
             return fallback_translated, "indic_lightweight_fallback", {
@@ -215,7 +301,7 @@ class IndicTrans2Service:
                 "status": "success",
             }
 
-        # 4. Priority 3: Honest Fallback (Air-gapped offline state without weights)
+        # 5. Priority 4: Honest Fallback (Air-gapped offline state without weights)
         logger.info(f"IndicTrans2 model weights not configured for {source_lang}. Preserving source text without hallucinated translation.")
         return text, "indictrans2_not_configured", {
             "model": self.model_version,

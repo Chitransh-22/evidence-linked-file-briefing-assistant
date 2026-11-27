@@ -10,13 +10,19 @@ import {
   Languages,
   ArrowLeft,
   Loader2,
+  Trash2,
+  X,
 } from "lucide-react";
 import { apiClient, getAuthenticatedUrl, downloadFile } from "../../services/api/client";
 import { StatusBadge } from "../../components/common/StatusBadge";
+import { useAuthStore } from "../../store/authStore";
+import { ACTIONS, canPerformAction } from "../../config/rbac";
 
 export function DocumentViewerPage() {
   const { documentId } = useParams();
   const navigate = useNavigate();
+  const user = useAuthStore((state) => state.user);
+  const canDeleteDocument = canPerformAction(user?.role, ACTIONS.DELETE_DOCUMENT);
 
   const [document, setDocument] = useState(null);
   const [pages, setPages] = useState([]);
@@ -28,6 +34,23 @@ export function DocumentViewerPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [pdfBlobUrl, setPdfBlobUrl] = useState(null);
   const [isPdfLoading, setIsPdfLoading] = useState(true);
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState("");
+
+  const handleDeleteDocument = async () => {
+    if (!canDeleteDocument || !document) return;
+    setIsDeleting(true);
+    setDeleteError("");
+    try {
+      await apiClient.delete(`/documents/${documentId}`);
+      navigate("/documents");
+    } catch (err) {
+      setDeleteError(err.response?.data?.detail || "Failed to delete document.");
+      setIsDeleting(false);
+    }
+  };
 
   useEffect(() => {
     async function loadDocumentData() {
@@ -149,6 +172,19 @@ export function DocumentViewerPage() {
           >
             Open Case Workspace &rarr;
           </button>
+          {canDeleteDocument && (
+            <button
+              className="btn btn-secondary btn-sm"
+              style={{ color: "var(--color-red-alert)", borderColor: "var(--color-red-alert)" }}
+              onClick={() => {
+                setShowDeleteModal(true);
+                setDeleteError("");
+              }}
+              title="Permanently Delete Document (Admin Only)"
+            >
+              <Trash2 size={14} /> Delete Document
+            </button>
+          )}
         </div>
       </div>
 
@@ -417,31 +453,68 @@ export function DocumentViewerPage() {
 
             {activeTab === "evidence" && (
               <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                {evidenceList.map((ev) => (
-                  <div
-                    key={ev._id}
-                    style={{
-                      padding: "12px",
-                      border: "1px solid var(--color-border)",
-                      borderRadius: "4px",
-                      backgroundColor: "var(--color-surface)",
-                    }}
-                  >
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <span style={{ fontWeight: 700, fontSize: "12px", color: "var(--color-text-primary)" }}>
-                        {ev._id} • Page {ev.page_number}
-                      </span>
-                      <StatusBadge status={ev.verification_status} />
-                    </div>
-                    <div style={{ fontSize: "13px", marginTop: "6px", color: "var(--color-text-primary)", lineHeight: "1.4" }}>
-                      {ev.source_excerpt}
-                    </div>
-                    <div style={{ marginTop: "8px", display: "flex", justifyContent: "space-between", fontSize: "11px", color: "var(--color-text-secondary)" }}>
-                      <span>Category: <b>{ev.evidence_category}</b></span>
-                      <span>Confidence: <b>{Math.round((ev.confidence || 0) * 100)}%</b></span>
-                    </div>
+                {evidenceList.length === 0 ? (
+                  <div style={{ padding: "20px", textAlign: "center", color: "var(--color-text-secondary)", fontSize: "13px" }}>
+                    No extracted evidence records linked to this document.
                   </div>
-                ))}
+                ) : (
+                  evidenceList.map((ev) => {
+                    const primaryText = ev.translated_text || ev.source_excerpt;
+                    const hasTranslation = ev.translated_text && ev.source_excerpt && ev.translated_text !== ev.source_excerpt;
+                    return (
+                      <div
+                        key={ev._id}
+                        style={{
+                          padding: "14px",
+                          border: "1px solid var(--color-border)",
+                          borderRadius: "4px",
+                          backgroundColor: "var(--color-surface)",
+                        }}
+                      >
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                          <span style={{ fontWeight: 700, fontSize: "12px", color: "var(--color-text-primary)" }}>
+                            {ev._id} • Page {ev.page_number}
+                          </span>
+                          <StatusBadge status={ev.verification_status} />
+                        </div>
+                        <div style={{ fontSize: "13.5px", fontWeight: 500, marginTop: "8px", color: "var(--color-text-primary)", lineHeight: "1.45" }}>
+                          {primaryText}
+                        </div>
+                        {hasTranslation && (
+                          <div
+                            style={{
+                              marginTop: "8px",
+                              fontSize: "12px",
+                              color: "var(--color-text-secondary)",
+                              backgroundColor: "var(--color-hover)",
+                              padding: "6px 10px",
+                              borderRadius: "4px",
+                              borderLeft: "3px solid var(--color-primary)",
+                            }}
+                          >
+                            <div style={{ display: "flex", alignItems: "center", gap: "4px", fontWeight: 600, fontSize: "11px", color: "var(--color-primary)", marginBottom: "3px" }}>
+                              <Languages size={12} /> Grounded Original Script ({ev.detected_language ? ev.detected_language.toUpperCase() : "Regional"}):
+                            </div>
+                            <div>{ev.source_excerpt}</div>
+                          </div>
+                        )}
+                        {ev.associated_entities?.length > 0 && (
+                          <div style={{ marginTop: "8px", display: "flex", gap: "4px", flexWrap: "wrap" }}>
+                            {ev.associated_entities.map((e, idx) => (
+                              <span key={idx} className="badge badge-neutral" style={{ fontSize: "10px", padding: "1px 5px" }}>
+                                {e}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        <div style={{ marginTop: "10px", display: "flex", justifyContent: "space-between", fontSize: "11px", color: "var(--color-text-secondary)", paddingTop: "8px", borderTop: "1px solid var(--color-border)" }}>
+                          <span>Category: <b>{ev.evidence_category}</b></span>
+                          <span>Confidence: <b>{Math.round((ev.confidence || 0) * 100)}%</b></span>
+                        </div>
+                      </div>
+                    );
+                  })
+                )}
               </div>
             )}
 
@@ -461,6 +534,78 @@ export function DocumentViewerPage() {
           </div>
         </div>
       </div>
+
+      {/* Delete Document Confirmation Modal */}
+      {showDeleteModal && canDeleteDocument && (
+        <div className="modal-backdrop">
+          <div className="gov-card" style={{ width: "100%", maxWidth: "480px", borderTop: "4px solid var(--color-red-alert)" }}>
+            <div className="gov-card-header">
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <AlertTriangle size={18} color="var(--color-red-alert)" />
+                <h3 style={{ fontSize: "15px", fontWeight: 700, color: "var(--color-red-alert)" }}>
+                  Permanently Delete Document
+                </h3>
+              </div>
+              <button
+                onClick={() => setShowDeleteModal(false)}
+                style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-secondary)" }}
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <div style={{ padding: "20px" }}>
+              <p style={{ fontSize: "13px", color: "var(--color-text-primary)", marginBottom: "14px" }}>
+                Are you sure you want to permanently delete document: <br />
+                <b>{document.document_title || documentId}</b>?
+              </p>
+              <div
+                style={{
+                  backgroundColor: "var(--color-hover)",
+                  border: "1px solid var(--color-border)",
+                  borderRadius: "4px",
+                  padding: "10px",
+                  fontSize: "12px",
+                  color: "var(--color-text-secondary)",
+                  lineHeight: "1.5",
+                  marginBottom: "16px",
+                }}
+              >
+                <b style={{ color: "var(--color-red-alert)" }}>Cascading Purge:</b>
+                <ul style={{ margin: "6px 0 0 16px", padding: 0 }}>
+                  <li>All extracted pages, sections, and chunks</li>
+                  <li>All Qdrant vector embeddings associated with this document</li>
+                  <li>All extracted evidence records & dependent chronology events</li>
+                  <li>Physical PDF file and intermediate artifacts on disk</li>
+                </ul>
+              </div>
+              {deleteError && (
+                <div style={{ color: "var(--color-red-alert)", fontSize: "12px", marginBottom: "10px" }}>
+                  {deleteError}
+                </div>
+              )}
+              <div style={{ display: "flex", justifyContent: "flex-end", gap: "10px" }}>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setShowDeleteModal(false)}
+                  disabled={isDeleting}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  style={{ backgroundColor: "var(--color-red-alert)", borderColor: "var(--color-red-alert)" }}
+                  onClick={handleDeleteDocument}
+                  disabled={isDeleting}
+                >
+                  {isDeleting ? "Purging Document..." : "Permanently Delete Document"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

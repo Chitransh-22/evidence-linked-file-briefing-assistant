@@ -1,0 +1,1137 @@
+test_images/med_test_00000_00000.png	nofrills.	0.9200
+test_images/med_test_00000_00001.png	(JOE'S No FRILLS	0.9200
+test_images/med_test_00000_00002.png	-21-GROCERY	0.9200
+test_images/med_test_00000_00003.png	06321119455	0.9200
+test_images/med_test_00000_00004.png	CAMP BROTH CHick	0.9200
+test_images/med_test_00000_00005.png	2.69	0.9200
+test_images/med_test_00000_00006.png	06827437434	0.9200
+test_images/med_test_00000_00007.png	NESTLE WAIER	0.9200
+test_images/med_test_00000_00008.png	4.33	0.9200
+test_images/med_test_00000_00009.png	82869606086	0.9200
+test_images/med_test_00000_00010.png	ARZ CHICK PEAS	0.9200
+test_images/med_test_00000_00011.png	0.97	0.9200
+test_images/med_test_00000_00012.png	-22-DAIRY	0.9200
+test_images/med_test_00000_00013.png	05787575007	0.9200
+test_images/med_test_00000_00014.png	2.99	0.9200
+test_images/med_test_00000_00015.png	(23-FROZEN.	0.9200
+test_images/med_test_00000_00016.png	06038325709.	0.9200
+test_images/med_test_00000_00017.png	No NAME WINTER	0.9200
+test_images/med_test_00000_00018.png	2.49,	0.9200
+test_images/med_test_00000_00019.png	25-NATURAL	0.9200
+test_images/med_test_00000_00020.png	.FOODS	0.9200
+test_images/med_test_00000_00021.png	02529301073	0.9200
+test_images/med_test_00000_00022.png	HW SILK UNSWTNED	0.9200
+test_images/med_test_00000_00023.png	3.88	0.9200
+test_images/med_test_00000_00024.png	401t	0.9200
+test_images/med_test_00000_00025.png	BANANA	0.9200
+test_images/med_test_00000_00026.png	1.02	0.9200
+test_images/med_test_00000_00027.png	4093	0.9200
+test_images/med_test_00000_00028.png	ONION SPANISH	0.9200
+test_images/med_test_00000_00029.png	0.445 kg & $2.84/k9	0.9200
+test_images/med_test_00000_00030.png	1.26	0.9200
+test_images/med_test_00000_00031.png	SUBTOTAL	0.9200
+test_images/med_test_00000_00032.png	16.63	0.9200
+test_images/med_test_00000_00033.png	TOTAL	0.9200
+test_images/med_test_00000_00034.png	16.63	0.9200
+test_images/med_test_00000_00035.png	nofrills	0.9200
+test_images/med_test_00000_00036.png	900. Dufferin Street	0.9200
+test_images/med_test_00000_00037.png	Toronto ON	0.9200
+test_images/med_test_00000_00038.png	STORE 00730	0.9200
+test_images/med_test_00000_00039.png	(EERWNZ0073010C	0.9200
+test_images/med_test_00000_00040.png	REG 10	0.9200
+test_images/med_test_00001_00041.png	Oakview Hospital	0.9200
+test_images/med_test_00001_00042.png	45 Oak Ave.	0.9200
+test_images/med_test_00001_00043.png	signature:	0.5000
+test_images/med_test_00001_00044.png	Dh C. Poss	0.9200
+test_images/med_test_00002_00045.png	PAG INA Pe	0.9200
+test_images/med_test_00002_00046.png	DI BRUGNON RENZO	0.9200
+test_images/med_test_00002_00047.png	UIA A. UERTUNNI 173	0.9200
+test_images/med_test_00002_00048.png	ROMA PI 10694991000	0.9200
+test_images/med_test_00002_00049.png	EURO	0.9200
+test_images/med_test_00002_00050.png	1, 60	0.9200
+test_images/med_test_00002_00051.png	WILE	0.9200
+test_images/med_test_00002_00052.png	CONTANT	0.9200
+test_images/med_test_00002_00053.png	1,60	0.9200
+test_images/med_test_00002_00054.png	SCONTRINO FISCALE	0.9200
+test_images/med_test_00002_00055.png	000013	0.9200
+test_images/med_test_00002_00056.png	UENERD! 01-08-2014	0.9200
+test_images/med_test_00002_00057.png	18:34	0.9200
+test_images/med_test_00002_00058.png	ARRIU. E GRAZIE	0.9200
+test_images/med_test_00003_00059.png	Atul S. Vadhavkar	0.9200
+test_images/med_test_00003_00060.png	B.Sc. (Micro), D.M.L.T.	0.9200
+test_images/med_test_00003_00061.png	SHREE	0.9200
+test_images/med_test_00003_00062.png	FULLY	0.9200
+test_images/med_test_00003_00063.png	DIAGNOSTIC	0.9200
+test_images/med_test_00003_00064.png	COMPUTERISED	0.9200
+test_images/med_test_00003_00065.png	PATHOLOGICAL	0.9200
+test_images/med_test_00003_00066.png	CENTRE	0.9200
+test_images/med_test_00003_00067.png	LABORATORY	0.9200
+test_images/med_test_00003_00068.png	SHREE HOSPITAL, Gan	0.9200
+test_images/med_test_00003_00069.png	Murbad Road, Kalyan (WW).	0.9200
+test_images/med_test_00003_00070.png	Dr.	0.9200
+test_images/med_test_00003_00071.png	Dr, BHAVESH CHAUHAN MD	0.9200
+test_images/med_test_00003_00072.png	& Time	0.9200
+test_images/med_test_00003_00073.png	12:47:26	0.9200
+test_images/med_test_00003_00074.png	Report Release Time	0.9200
+test_images/med_test_00003_00075.png	13:42:13	0.9200
+test_images/med_test_00003_00076.png	Sample Id	0.9200
+test_images/med_test_00003_00077.png	: 10436879	0.9200
+test_images/med_test_00003_00078.png	COMPLETE BLOOD COUNT	0.9200
+test_images/med_test_00003_00079.png	Result	0.9200
+test_images/med_test_00003_00080.png	Unit	0.9200
+test_images/med_test_00003_00081.png	Biological Ref. Range	0.9200
+test_images/med_test_00003_00082.png	Test	0.9200
+test_images/med_test_00003_00083.png	9.10 L]	0.9200
+test_images/med_test_00003_00084.png	gm/dl	0.9200
+test_images/med_test_00003_00085.png	13.0-17.0 gm/dl.	0.9200
+test_images/med_test_00003_00086.png	Haemoglobin	0.9200
+test_images/med_test_00003_00087.png	3.19 [L]	0.9200
+test_images/med_test_00003_00088.png	mill/cmm	0.9200
+test_images/med_test_00003_00089.png	4.5-5.5 mill/cmm	0.9200
+test_images/med_test_00003_00090.png	Total R.B.C. Count	0.9200
+test_images/med_test_00003_00091.png	27.20 [L]	0.9200
+test_images/med_test_00003_00092.png	40.0-50.0 %	0.9200
+test_images/med_test_00003_00093.png	Haematocrit (PCV/HCT)	0.9200
+test_images/med_test_00003_00094.png	85.30	0.9200
+test_images/med_test_00003_00095.png	83.0-95.0 fl	0.9200
+test_images/med_test_00003_00096.png	Pg	0.9200
+test_images/med_test_00003_00097.png	27.0-32.0 Pg	0.9200
+test_images/med_test_00003_00098.png	28.50	0.9200
+test_images/med_test_00003_00099.png	g/dl	0.9200
+test_images/med_test_00003_00100.png	31.5-34.5 g/dl	0.9200
+test_images/med_test_00003_00101.png	33.50	0.9200
+test_images/med_test_00003_00102.png	16.5 [H]	0.9200
+test_images/med_test_00003_00103.png	11.6-14.6 %	0.9200
+test_images/med_test_00003_00104.png	10560 [H]	0.9200
+test_images/med_test_00003_00105.png	/ul	0.9200
+test_images/med_test_00003_00106.png	4000-10000 /ul	0.9200
+test_images/med_test_00003_00107.png	Total W.B.C. Count	0.9200
+test_images/med_test_00003_00108.png	DIFFERENTIAL COUNT:	0.9200
+test_images/med_test_00003_00109.png	87.7 [H]	0.9200
+test_images/med_test_00003_00110.png	Neutrophils	0.9200
+test_images/med_test_00003_00111.png	5.9 [L]	0.9200
+test_images/med_test_00003_00112.png	20-40 %	0.9200
+test_images/med_test_00003_00113.png	Lymphocytes	0.9200
+test_images/med_test_00003_00114.png	0.7 [L]	0.9200
+test_images/med_test_00003_00115.png	1-6%	0.9200
+test_images/med_test_00003_00116.png	Eosinophils	0.9200
+test_images/med_test_00003_00117.png	Monocytes	0.9200
+test_images/med_test_00003_00118.png	0-1 %	0.9200
+test_images/med_test_00003_00119.png	Basophils	0.9200
+test_images/med_test_00003_00120.png	0.2	0.9200
+test_images/med_test_00003_00121.png	PLATELETS	0.9200
+test_images/med_test_00003_00122.png	/uL	0.9200
+test_images/med_test_00003_00123.png	150-450 /uL	0.9200
+test_images/med_test_00003_00124.png	Platelet Count	0.9200
+test_images/med_test_00003_00125.png	370	0.9200
+test_images/med_test_00003_00126.png	9.4	0.9200
+test_images/med_test_00003_00127.png	fL	0.9200
+test_images/med_test_00003_00128.png	6.78-13.46 fL	0.9200
+test_images/med_test_00003_00129.png	2.90	0.9200
+test_images/med_test_00003_00130.png	ABSOLUTE COUNTS	0.9200
+test_images/med_test_00003_00131.png	9261.12 [H]	0.9200
+test_images/med_test_00003_00132.png	ful	0.9200
+test_images/med_test_00003_00133.png	1575-8800 /uL	0.9200
+test_images/med_test_00003_00134.png	Neutrophils (abs)	0.9200
+test_images/med_test_00003_00135.png	623.04 [L]	0.9200
+test_images/med_test_00003_00136.png	/uL	0.9200
+test_images/med_test_00003_00137.png	1125-4950 /uL	0.9200
+test_images/med_test_00003_00138.png	Lymphocytes (abs)	0.9200
+test_images/med_test_00003_00139.png	73.92	0.9200
+test_images/med_test_00003_00140.png	/ul	0.9200
+test_images/med_test_00003_00141.png	0-400 /uL	0.9200
+test_images/med_test_00003_00142.png	Eosinophils (abs)	0.9200
+test_images/med_test_00003_00143.png	580.80	0.9200
+test_images/med_test_00003_00144.png	ful	0.9200
+test_images/med_test_00003_00145.png	0-1000 /uL	0.9200
+test_images/med_test_00003_00146.png	Monocytes (abs)	0.9200
+test_images/med_test_00003_00147.png	21.12	0.9200
+test_images/med_test_00003_00148.png	/uL	0.9200
+test_images/med_test_00003_00149.png	Basophils (abs)	0.9200
+test_images/med_test_00003_00150.png	Equipment: Mindray BC-700	0.9200
+test_images/med_test_00003_00151.png	Nabe	0.9200
+test_images/med_test_00003_00152.png	Atul S. Vadhavkar	0.9200
+test_images/med_test_00003_00153.png	Dr. A. J. Ranadive	0.9200
+test_images/med_test_00003_00154.png	B. Sc. (Micra), D.M.L.T,	0.9200
+test_images/med_test_00003_00155.png	M.D, (Pathology)	0.9200
+test_images/med_test_00004_00156.png	Shree PathlLab	0.9200
+test_images/med_test_00004_00157.png	PH.:	0.9200
+test_images/med_test_00004_00158.png	Tel. : 01274-222109	0.9200
+test_images/med_test_00004_00159.png	Patient	0.9200
+test_images/med_test_00004_00160.png	Reported on	0.9200
+test_images/med_test_00004_00161.png	SPUTUM CULTURE 12 DRUGS	0.9200
+test_images/med_test_00004_00162.png	Organism Isolated	0.9200
+test_images/med_test_00004_00163.png	Actinobacter sp.	0.9200
+test_images/med_test_00004_00164.png	Antibiotic	0.9200
+test_images/med_test_00004_00165.png	Sr	0.9200
+test_images/med_test_00004_00166.png	IName Of Antibiotics	0.9200
+test_images/med_test_00004_00167.png	No.	0.9200
+test_images/med_test_00004_00168.png	[Sensitivity	0.9200
+test_images/med_test_00004_00169.png	MEROPENAM + SULBACTUM	0.9200
+test_images/med_test_00004_00170.png	ISensitive( ++++)	0.9200
+test_images/med_test_00004_00171.png	ICo-Trimaxazole	0.9200
+test_images/med_test_00004_00172.png	Resistant	0.9200
+test_images/med_test_00004_00173.png	Cephalexin	0.9200
+test_images/med_test_00004_00174.png	Resistant	0.9200
+test_images/med_test_00004_00175.png	ICEFOPARZONE	0.9200
+test_images/med_test_00004_00176.png	ISensitive (+)	0.9200
+test_images/med_test_00004_00177.png	Levofloxacin	0.9200
+test_images/med_test_00004_00178.png	ISensitive (+)	0.9200
+test_images/med_test_00004_00179.png	Ciprofoxacin	0.9200
+test_images/med_test_00004_00180.png	Resistant	0.9200
+test_images/med_test_00004_00181.png	Metronidazole	0.9200
+test_images/med_test_00004_00182.png	Resistant	0.9200
+test_images/med_test_00004_00183.png	[Doxycyclin	0.9200
+test_images/med_test_00004_00184.png	Resistant	0.9200
+test_images/med_test_00004_00185.png	ICLOXACILLIN	0.9200
+test_images/med_test_00004_00186.png	ISensitive	0.9200
+test_images/med_test_00004_00187.png	CLARITHROMYCIN	0.9200
+test_images/med_test_00004_00188.png	ISensitive (++++)	0.9200
+test_images/med_test_00004_00189.png	11	0.9200
+test_images/med_test_00004_00190.png	ILINCOMYCIN	0.9200
+test_images/med_test_00004_00191.png	[Resistant	0.9200
+test_images/med_test_00004_00192.png	IGENTAMICIN	0.9200
+test_images/med_test_00004_00193.png	[Resistant	0.9200
+test_images/med_test_00004_00194.png	Comment:	0.9200
+test_images/med_test_00004_00195.png	Dr. Kamal Kant	0.9200
+test_images/med_test_00004_00196.png	M.B.B.S., M.D.	0.9200
+test_images/med_test_00004_00197.png	DMC - 8271	0.9200
+test_images/med_test_00004_00198.png	Shree Path Lab	0.9200
+test_images/med_test_00004_00199.png	IR, AKANKSHA GUPTA	0.9200
+test_images/med_test_00004_00200.png	Consultant Pathologist	0.9200
+test_images/med_test_00004_00201.png	KAMAL KANT	0.9200
+test_images/med_test_00004_00202.png	Consultant Pathologist	0.9200
+test_images/med_test_00005_00203.png	Sugam Hospitals	0.9200
+test_images/med_test_00005_00204.png	Symbol of Health	0.9200
+test_images/med_test_00005_00205.png	Name :Mr.MURALI.G	0.9200
+test_images/med_test_00005_00206.png	HAEMATOLOGY - Hb	0.9200
+test_images/med_test_00005_00207.png	PCV.	0.9200
+test_images/med_test_00005_00208.png	Xae	0.9200
+test_images/med_test_00005_00209.png	AAO	0.9200
+test_images/med_test_00005_00210.png	TOTAL WBC COUNT	0.9200
+test_images/med_test_00005_00211.png	Gb20	0.9200
+test_images/med_test_00005_00212.png	PLATELET COUNT	0.9200
+test_images/med_test_00005_00213.png	war	0.9200
+test_images/med_test_00005_00214.png	2.80,	0.5000
+test_images/med_test_00005_00215.png	[213	0.9200
+test_images/med_test_00005_00216.png	DIFFERENTIAL COUNT - N	0.9200
+test_images/med_test_00005_00217.png	tae	0.9200
+test_images/med_test_00005_00218.png	Welk	0.9200
+test_images/med_test_00005_00219.png	ESR - 1/2 Hour	0.9200
+test_images/med_test_00005_00220.png	1 Hour	0.9200
+test_images/med_test_00005_00221.png	GLUCOSE PROFILE - RBS	0.9200
+test_images/med_test_00005_00222.png	Buc	0.9200
+test_images/med_test_00005_00223.png	FBS	0.9200
+test_images/med_test_00005_00224.png	Iga	0.9200
+test_images/med_test_00005_00225.png	PPBS	0.9200
+test_images/med_test_00005_00226.png	2bo	0.9200
+test_images/med_test_00005_00227.png	HBA1C	0.9200
+test_images/med_test_00005_00228.png	q.S	0.9200
+test_images/med_test_00005_00229.png	ard	0.9200
+test_images/med_test_00005_00230.png	RFT - UREA.	0.9200
+test_images/med_test_00005_00231.png	CREATININE	0.9200
+test_images/med_test_00005_00232.png	).0	0.9200
+test_images/med_test_00005_00233.png	Db	0.9200
+test_images/med_test_00005_00234.png	ELECTROLYTES - SODIUM	0.9200
+test_images/med_test_00005_00235.png	134	0.9200
+test_images/med_test_00005_00236.png	yo	0.9200
+test_images/med_test_00005_00237.png	13	0.9200
+test_images/med_test_00005_00238.png	+o	0.9200
+test_images/med_test_00005_00239.png	POTASSIUM	0.9200
+test_images/med_test_00005_00240.png	Lio	0.9200
+test_images/med_test_00005_00241.png	3!	0.9200
+test_images/med_test_00005_00242.png	CHLORIDE	0.9200
+test_images/med_test_00005_00243.png	too	0.9200
+test_images/med_test_00005_00244.png	BICARBONATE	0.9200
+test_images/med_test_00005_00245.png	LIPID PROFILE	0.9200
+test_images/med_test_00005_00246.png	TOTAL CHOLESTEROL	0.9200
+test_images/med_test_00005_00247.png	pri	0.9200
+test_images/med_test_00005_00248.png	TGL	0.9200
+test_images/med_test_00005_00249.png	i al	0.9200
+test_images/med_test_00005_00250.png	HDE)	0.9200
+test_images/med_test_00005_00251.png	ted	0.9200
+test_images/med_test_00005_00252.png	LDL	0.9200
+test_images/med_test_00005_00253.png	52	0.9200
+test_images/med_test_00005_00254.png	VLDL	0.9200
+test_images/med_test_00005_00255.png	i.	0.9200
+test_images/med_test_00005_00256.png	RF	0.9200
+test_images/med_test_00005_00257.png	Ric!	0.9200
+test_images/med_test_00005_00258.png	pa)	0.9200
+test_images/med_test_00005_00259.png	FREET4 /	0.9200
+test_images/med_test_00005_00260.png	Lag	0.9200
+test_images/med_test_00005_00261.png	TSH	0.9200
+test_images/med_test_00005_00262.png	PANCREATIC PROFILE	0.9200
+test_images/med_test_00005_00263.png	SERUM AMYLASE	0.9200
+test_images/med_test_00005_00264.png	SERUM LIPASE	0.9200
+test_images/med_test_00005_00265.png	LFT - BILIRUBIN - TOTAL	0.9200
+test_images/med_test_00005_00266.png	DIRECT	0.9200
+test_images/med_test_00005_00267.png	INDIRECT	0.9200
+test_images/med_test_00005_00268.png	SGOT	0.9200
+test_images/med_test_00005_00269.png	SGPT	0.9200
+test_images/med_test_00005_00270.png	GoL-	0.9200
+test_images/med_test_00006_00271.png	Greenwood Medical Center	0.9200
+test_images/med_test_00006_00272.png	45 Oak Ave.	0.9200
+test_images/med_test_00006_00273.png	De A Sut	0.9200
+test_images/med_test_00007_00274.png	Mrs. Mamta Srivastava	0.9200
+test_images/med_test_00007_00275.png	Lab No	0.9200
+test_images/med_test_00007_00276.png	181727	0.9200
+test_images/med_test_00007_00277.png	orient Name	0.9200
+test_images/med_test_00007_00278.png	6175124 / M25/308576	0.9200
+test_images/med_test_00007_00279.png	Sample Date	0.9200
+test_images/med_test_00007_00280.png	font0/1PNo	0.9200
+test_images/med_test_00007_00281.png	5 Yrs/Female	0.9200
+test_images/med_test_00007_00282.png	Receiving Date	0.9200
+test_images/med_test_00007_00283.png	lage/Gender	0.9200
+test_images/med_test_00007_00284.png	12-617.) T2-SIXTH FLOOR	0.9200
+test_images/med_test_00007_00285.png	Report Date	0.9200
+test_images/med_test_00007_00286.png	[ped No/Ward	0.9200
+test_images/med_test_00007_00287.png	Report Status	0.9200
+test_images/med_test_00007_00288.png	Provisional) Interim	0.9200
+test_images/med_test_00007_00289.png	(mob. No.	0.9200
+test_images/med_test_00007_00290.png	Dr. PRIYANKA VERMA	0.9200
+test_images/med_test_00007_00291.png	referred By	0.9200
+test_images/med_test_00007_00292.png	39.7 4	0.9200
+test_images/med_test_00007_00293.png	PLCR	0.9200
+test_images/med_test_00007_00294.png	Calculated:	0.5000
+test_images/med_test_00007_00295.png	--End Of Report--	0.9200
+test_images/med_test_00008_00296.png	Oakview Hospital	0.9200
+test_images/med_test_00008_00297.png	45 Oak Ave.	0.9200
+test_images/med_test_00008_00298.png	Clanaturc 	0.9200
+test_images/med_test_00008_00299.png	DA Srith	0.9200
+test_images/med_test_00009_00300.png	7900 Norfolk Ave.	0.9200
+test_images/med_test_00009_00301.png	301-652-1311	0.9200
+test_images/med_test_00009_00302.png	Server: Kelsey	0.9200
+test_images/med_test_00009_00303.png	Table 3/1	0.9200
+test_images/med_test_00009_00304.png	12/05/2015	0.9200
+test_images/med_test_00009_00305.png	Wheat Hse	0.9200
+test_images/med_test_00009_00306.png	5.25	0.9200
+test_images/med_test_00009_00307.png	Wheat Hs NONIC	0.9200
+test_images/med_test_00009_00308.png	Cod Fish & Chips	0.9200
+test_images/med_test_00009_00309.png	MJBourbon Pecan Pie	0.9200
+test_images/med_test_00009_00310.png	13.99.	0.9200
+test_images/med_test_00009_00311.png	6.99	0.9200
+test_images/med_test_00009_00312.png	Red Ale Hse	0.9200
+test_images/med_test_00009_00313.png	Red Ale Hs NONIC	0.9200
+test_images/med_test_00009_00314.png	5.25	0.9200
+test_images/med_test_00009_00315.png	Maker's Mark Burger	0.5000
+test_images/med_test_00009_00316.png	10.99	0.9200
+test_images/med_test_00009_00317.png	Sub Caesar	0.5000
+test_images/med_test_00009_00318.png	1.95	0.9200
+test_images/med_test_00009_00319.png	Complete Subtotal	0.9200
+test_images/med_test_00009_00320.png	44.42	0.9200
+test_images/med_test_00009_00321.png	Subtotal	0.9200
+test_images/med_test_00009_00322.png	44.42	0.9200
+test_images/med_test_00009_00323.png	Tax	0.9200
+test_images/med_test_00009_00324.png	2.99	0.9200
+test_images/med_test_00009_00325.png	Total	0.9200
+test_images/med_test_00009_00326.png	47.41	0.9200
+test_images/med_test_00009_00327.png	Balance Due	0.9200
+test_images/med_test_00009_00328.png	A7.41	0.9200
+test_images/med_test_00010_00329.png	Berver:Marciarn	0.9200
+test_images/med_test_00010_00330.png	6/02/18 09:35pm	0.9200
+test_images/med_test_00010_00331.png	Table No:44	0.9200
+test_images/med_test_00010_00332.png	3 Cover Charge	0.9200
+test_images/med_test_00010_00333.png	2 Bt! Evian	0.9200
+test_images/med_test_00010_00334.png	 Cocktail and Passion	0.9200
+test_images/med_test_00010_00335.png	1 PinUp Colada	0.9200
+test_images/med_test_00010_00336.png	1 5 Sashimi Platter	0.9200
+test_images/med_test_00010_00337.png	) 8 sushi platter	0.9200
+test_images/med_test_00010_00338.png	 King Crab Scallop	0.9200
+test_images/med_test_00010_00339.png	 SF Champagne Cocktai	0.9200
+test_images/med_test_00010_00340.png	Sashimi	0.9200
+test_images/med_test_00010_00341.png	1 Sexy Fish Lager	0.9200
+test_images/med_test_00010_00342.png	 Maki Spicy Tuna Rol	0.9200
+test_images/med_test_00010_00343.png	 Rainbow Tree	0.9200
+test_images/med_test_00010_00344.png	 Rice Rice Baby	0.9200
+test_images/med_test_00010_00345.png	 Rhubarb Crumble	0.9200
+test_images/med_test_00010_00346.png	29 .26	0.9200
+test_images/med_test_00011_00347.png	6/3/2016 8.104) a	0.9200
+test_images/med_test_00011_00348.png	Drive-Thru	0.9200
+test_images/med_test_00011_00349.png	Twwt eis  a Cachier:Nital %	0.9200
+test_images/med_test_00011_00350.png	3	0.9200
+test_images/med_test_00011_00351.png	1.99 1Mrap Bcn Egg AM	0.5000
+test_images/med_test_00011_00352.png	18)	0.9200
+test_images/med_test_00011_00353.png	OR	0.9200
+test_images/med_test_00011_00354.png	8	0.9200
+test_images/med_test_00011_00355.png	(Tax:	0.9200
+test_images/med_test_00011_00356.png	(Total:	0.9200
+test_images/med_test_00011_00357.png	BR	0.9200
+test_images/med_test_00011_00358.png	Dlscount Total:	0.5000
+test_images/med_test_00011_00359.png	(9.00)	0.9200
+test_images/med_test_00011_00360.png	Change	0.9200
+test_images/med_test_00011_00361.png	VO	0.9200
+test_images/med_test_00011_00362.png	Visa:	0.9200
+test_images/med_test_00011_00363.png	Ba	0.9200
+test_images/med_test_00012_00364.png	FOOD OPERA	0.9200
+test_images/med_test_00012_00365.png	PADANG PADANG	0.9200
+test_images/med_test_00012_00366.png	FOOD OPERA@ TONORCHARD	0.9200
+test_images/med_test_00012_00367.png	SINGAPORE 238801	0.9200
+test_images/med_test_00012_00368.png	AJ24261	0.9200
+test_images/med_test_00012_00369.png	Qty	0.9200
+test_images/med_test_00012_00370.png	Descriptions	0.9200
+test_images/med_test_00012_00371.png	Amount	0.9200
+test_images/med_test_00012_00372.png	WHITE RICE	0.9200
+test_images/med_test_00012_00373.png	1.00	0.5000
+test_images/med_test_00012_00374.png	ADD MUTTON CURRY (S)	0.9200
+test_images/med_test_00012_00375.png	5.50	0.9200
+test_images/med_test_00012_00376.png	SEAFOOD (FISH/SQUID/PR	0.9200
+test_images/med_test_00012_00377.png	13.50	0.9200
+test_images/med_test_00012_00378.png	TOTAL	0.9200
+test_images/med_test_00012_00379.png	20.00	0.9200
+test_images/med_test_00012_00380.png	CASH	0.9200
+test_images/med_test_00012_00381.png	20.00	0.9200
+test_images/med_test_00012_00382.png	1.31	0.9200
+test_images/med_test_00012_00383.png	CHANGE	0.9200
+test_images/med_test_00012_00384.png	0.00	0.9200
+test_images/med_test_00012_00385.png	Thank You &	0.9200
+test_images/med_test_00012_00386.png	Ush:10	0.9200
+test_images/med_test_00013_00387.png	Riverside Clinic	0.9200
+test_images/med_test_00013_00388.png	678 Orchard Ln.	0.9200
+test_images/med_test_00014_00389.png	Meadowview Health	0.9200
+test_images/med_test_00014_00390.png	234 Maple Blvd.	0.9200
+test_images/med_test_00014_00391.png	SLynature:	0.9200
+test_images/med_test_00014_00392.png	Dh C. Rogyi	0.9200
+test_images/med_test_00015_00393.png	Oakview Hospital	0.9200
+test_images/med_test_00015_00394.png	123 Hain St.	0.9200
+test_images/med_test_00015_00395.png	De 4 Gomes	0.9200
+test_images/med_test_00015_00396.png	signature:	0.5000
+test_images/med_test_00016_00397.png	SAN PABLO	0.9200
+test_images/med_test_00016_00398.png	RENUEVA PARACHUQUES	0.9200
+test_images/med_test_00016_00399.png	PECHUGA PAVO S/GRA	0.9200
+test_images/med_test_00016_00400.png	1,00.	0.9200
+test_images/med_test_00016_00401.png	ACEITE SINTETICO 21	0.9200
+test_images/med_test_00016_00402.png	BOLSA CARREFOUR	0.9200
+test_images/med_test_00016_00403.png	PECHUGA POLLO FILE	0.9200
+test_images/med_test_00016_00404.png	4,16	0.9200
+test_images/med_test_00016_00405.png	ALBONDIGAS ATON	0.9200
+test_images/med_test_00016_00406.png	2, 00	0.9200
+test_images/med_test_00016_00407.png	FILETES ATUN SALSA	0.9200
+test_images/med_test_00016_00408.png	2,00	0.9200
+test_images/med_test_00016_00409.png	ZUNO NARANJA x	0.9200
+test_images/med_test_00016_00410.png	1.05,	0.9200
+test_images/med_test_00016_00411.png	ZUHO NARANJA x6	0.9200
+test_images/med_test_00016_00412.png	1,05	0.9200
+test_images/med_test_00016_00413.png	PAN S/CORTEZA 4506	0.9200
+test_images/med_test_00016_00414.png	FANTA NARANJA LATA	0.9200
+test_images/med_test_00016_00415.png	3,44	0.9200
+test_images/med_test_00016_00416.png	TIPO	0.9200
+test_images/med_test_00016_00417.png	BASE	0.9200
+test_images/med_test_00016_00418.png	CUOTA	0.9200
+test_images/med_test_00016_00419.png	21, 00%	0.9200
+test_images/med_test_00016_00420.png	0.86	0.5000
+test_images/med_test_00016_00421.png	9931876544552	0.9200
+test_images/med_test_00016_00422.png	PAGANO Vale Dto Isabe!	0.9200
+test_images/med_test_00016_00423.png	PAGADD Vale dto Silueta	0.5000
+test_images/med_test_00016_00424.png	400	0.9200
+test_images/med_test_00016_00425.png	1/00	0.9200
+test_images/med_test_00016_00426.png	PAGADO	0.5000
+test_images/med_test_00017_00427.png	SWASTIK HOSPITAL	0.9200
+test_images/med_test_00017_00428.png	Jhaar Road, Bahadurgarh	0.9200
+test_images/med_test_00017_00429.png	The Skill Ta Weal	0.9200
+test_images/med_test_00017_00430.png	The Spirit Jo Care	0.9200
+test_images/med_test_00017_00431.png	[By: Dr YOGESH CHAHAR	0.9200
+test_images/med_test_00017_00432.png	CULTURE REPORT	0.9200
+test_images/med_test_00017_00433.png	Colony Count: CFU>10s /ml	0.9200
+test_images/med_test_00017_00434.png	AMOXYCILLIN	0.9200
+test_images/med_test_00017_00435.png	S+	0.9200
+test_images/med_test_00017_00436.png	St+	0.9200
+test_images/med_test_00017_00437.png	AMPICILLIN	0.9200
+test_images/med_test_00017_00438.png	AMIKACIN	0.9200
+test_images/med_test_00017_00439.png	CEFOTAXIME	0.9200
+test_images/med_test_00017_00440.png	S++	0.9200
+test_images/med_test_00017_00441.png	CEFIXIME	0.9200
+test_images/med_test_00017_00442.png	AMOXYCLAVE	0.9200
+test_images/med_test_00017_00443.png	CEFUROXIME	0.9200
+test_images/med_test_00017_00444.png	CEFTAZIDIME	0.9200
+test_images/med_test_00017_00445.png	St+	0.9200
+test_images/med_test_00017_00446.png	DOXYCYCLINE	0.9200
+test_images/med_test_00017_00447.png	COLISTIN	0.9200
+test_images/med_test_00017_00448.png	CIPROFLOXACIM	0.9200
+test_images/med_test_00017_00449.png	CHLORAMPHENICOL	0.9200
+test_images/med_test_00017_00450.png	GENTAMYCIN	0.9200
+test_images/med_test_00017_00451.png	Stet	0.9200
+test_images/med_test_00017_00452.png	FOSFOMYCIN	0.9200
+test_images/med_test_00017_00453.png	TEICOPLANIN	0.9200
+test_images/med_test_00017_00454.png	IMIPENEM	0.9200
+test_images/med_test_00017_00455.png	S+4+	0.9200
+test_images/med_test_00017_00456.png	LEVOFLOXACIN	0.9200
+test_images/med_test_00017_00457.png	MEROPENEM	0.9200
+test_images/med_test_00017_00458.png	S+	0.9200
+test_images/med_test_00017_00459.png	NITROFURANTOIN R	0.9200
+test_images/med_test_00017_00460.png	NETILMYCIN	0.9200
+test_images/med_test_00017_00461.png	NALIDIXIC ACID	0.9200
+test_images/med_test_00017_00462.png	PIPERACILIN	0.9200
+test_images/med_test_00017_00463.png	OFLOXACIN	0.9200
+test_images/med_test_00017_00464.png	NORFLOXACIN	0.9200
+test_images/med_test_00017_00465.png	S+	0.9200
+test_images/med_test_00017_00466.png	CEFIPIME+TAZOBACTUM	0.9200
+test_images/med_test_00017_00467.png	AMPICILLIN+SALBACTUM	0.9200
+test_images/med_test_00017_00468.png	S++	0.9200
+test_images/med_test_00017_00469.png	MEROPENEM+SALBACTUM	0.9200
+test_images/med_test_00017_00470.png	CEFOPERAZONE+SALBACTUM	0.9200
+test_images/med_test_00017_00471.png	S++	0.9200
+test_images/med_test_00017_00472.png	Moderate Sensitive	0.9200
+test_images/med_test_00017_00473.png	 Resistant	0.9200
+test_images/med_test_00017_00474.png	S+++	0.9200
+test_images/med_test_00017_00475.png	High Sensitive	0.9200
+test_images/med_test_00017_00476.png	S+	0.9200
+test_images/med_test_00017_00477.png	 Mild Sensitive	0.9200
+test_images/med_test_00017_00478.png	REPORTED DATE:	0.9200
+test_images/med_test_00017_00479.png	SAMPLE RECEIVED DATE:	0.9200
+test_images/med_test_00017_00480.png	Dr. Yooesh Klimar Chahar	0.9200
+test_images/med_test_00017_00481.png	Dr. VIPUL JAIN	0.9200
+test_images/med_test_00017_00482.png	MD (Inigrnal Medi .vie)	0.9200
+test_images/med_test_00017_00483.png	DMO No. R/06131	0.9200
+test_images/med_test_00017_00484.png	PATHALOGIST	0.9200
+test_images/med_test_00017_00485.png	Reg. No. DMC-1515	0.9200
+test_images/med_test_00017_00486.png	MICROBIOLOGIST	0.9200
+test_images/med_test_00017_00487.png	3D/4D Ultrasound	0.9200
+test_images/med_test_00017_00488.png	On Panel :	0.5000
+test_images/med_test_00017_00489.png	Color Doppler	0.9200
+test_images/med_test_00017_00490.png	CT-Scan	0.5000
+test_images/med_test_00017_00491.png	 aryana Government	0.9200
+test_images/med_test_00017_00492.png	Digital X-Ray	0.9200
+test_images/med_test_00017_00493.png	Delhi Government	0.9200
+test_images/med_test_00017_00494.png	Computerised La	0.9200
+test_images/med_test_00017_00495.png	Delhi Jal Board	0.9200
+test_images/med_test_00017_00496.png	All TPA & Insurance	0.9200
+test_images/med_test_00018_00497.png	TT	0.9200
+test_images/med_test_00018_00498.png	Colonia Centro.	0.9200
+test_images/med_test_00018_00499.png	RFC TCH951030A17	0.9200
+test_images/med_test_00018_00500.png	PRECIO	0.9200
+test_images/med_test_00018_00501.png	PRECIO	0.9200
+test_images/med_test_00018_00502.png	CANT SKU ARTICULO	0.9200
+test_images/med_test_00018_00503.png	REGULAR OFERTA	0.9200
+test_images/med_test_00018_00504.png	TOTAI	0.9200
+test_images/med_test_00018_00505.png	107.90	0.9200
+test_images/med_test_00018_00506.png	107.)	0.9200
+test_images/med_test_00018_00507.png	47,40	0.9200
+test_images/med_test_00018_00508.png	47	0.9200
+test_images/med_test_00018_00509.png	11.90	0.9200
+test_images/med_test_00018_00510.png	LL. su	0.9200
+test_images/med_test_00018_00511.png	167.20	0.9200
+test_images/med_test_00018_00512.png	FFECTIVO	0.9200
+test_images/med_test_00018_00513.png	200.00	0.9200
+test_images/med_test_00018_00514.png	CAMBIO	0.9200
+test_images/med_test_00018_00515.png	32.80	0.9200
+test_images/med_test_00020_00516.png	Walmart	0.9200
+test_images/med_test_00020_00517.png	MANAGER CARMEN GARCTA	0.9200
+test_images/med_test_00020_00518.png	PLAINFIELD IL 60585	0.9200
+test_images/med_test_00020_00519.png	SEWING MACH	0.9200
+test_images/med_test_00020_00520.png	001250263548	0.9200
+test_images/med_test_00020_00521.png	SUBTOTAL	0.9200
+test_images/med_test_00020_00522.png	86.97	0.9200
+test_images/med_test_00020_00523.png	6.80	0.9200
+test_images/med_test_00020_00524.png	TOTAL	0.9200
+test_images/med_test_00020_00525.png	93.77	0.9200
+test_images/med_test_00020_00526.png	DISCV TEND	0.9200
+test_images/med_test_00020_00527.png	> FEAS AF 2	0.9200
+test_images/med_test_00020_00528.png	Discover Credit	0.9200
+test_images/med_test_00020_00529.png	6867	0.9200
+test_images/med_test_00020_00530.png	APPROVAL  00436P	0.9200
+test_images/med_test_00020_00531.png	AID A0000001523010	0.9200
+test_images/med_test_00020_00532.png	TC EOSEOK3911 6895D0	0.9200
+test_images/med_test_00020_00533.png	01/04/16	0.9200
+test_images/med_test_00020_00534.png	19:28:05	0.9200
+test_images/med_test_00020_00535.png	CHANGE DUE	0.9200
+test_images/med_test_00020_00536.png	0.00	0.9200
+test_images/med_test_00020_00537.png	 ITEMS SOLD 2	0.9200
+test_images/med_test_00020_00538.png	01/04/16	0.9200
+test_images/med_test_00020_00539.png	19:28:05	0.9200
+test_images/med_test_00020_00540.png	You have purchased an	0.9200
+test_images/med_test_00020_00541.png	and online at	0.9200
+test_images/med_test_00020_00542.png	plan coverage.	0.9200
+test_images/med_test_00021_00543.png	SWASTIK HOSPITAL	0.9200
+test_images/med_test_00021_00544.png	Jhaar Road, Bahadurgarh	0.9200
+test_images/med_test_00021_00545.png	Ve Skill To Heat	0.9200
+test_images/med_test_00021_00546.png	The Spirit Jo Care	0.9200
+test_images/med_test_00021_00547.png	Patient Id	0.9200
+test_images/med_test_00021_00548.png	Sri No.	0.9200
+test_images/med_test_00021_00549.png	101	0.9200
+test_images/med_test_00021_00550.png	Date	0.9200
+test_images/med_test_00021_00551.png	SWASTIK HOSPITAL	0.9200
+test_images/med_test_00021_00552.png	Test 	0.9200
+test_images/med_test_00021_00553.png	HAEMATOLOGY	0.9200
+test_images/med_test_00021_00554.png	4AEMOGLOBIN (Hb)	0.9200
+test_images/med_test_00021_00555.png	11.2	0.9200
+test_images/med_test_00021_00556.png	gm/dl	0.9200
+test_images/med_test_00021_00557.png	16,800	0.9200
+test_images/med_test_00021_00558.png	/cumm	0.9200
+test_images/med_test_00021_00559.png	4000 - 11000	0.9200
+test_images/med_test_00021_00560.png	NEUTROPHIL	0.9200
+test_images/med_test_00021_00561.png	77	0.9200
+test_images/med_test_00021_00562.png	 YMPHOCYTE	0.9200
+test_images/med_test_00021_00563.png	20	0.9200
+test_images/med_test_00021_00564.png	EOSINOPHIL	0.9200
+test_images/med_test_00021_00565.png	01	0.9200
+test_images/med_test_00021_00566.png	lv ONOCYTE	0.9200
+test_images/med_test_00021_00567.png	02	0.9200
+test_images/med_test_00021_00568.png	& ASOPHIL	0.9200
+test_images/med_test_00021_00569.png	OO	0.9200
+test_images/med_test_00021_00570.png	P ATELET COUNT	0.9200
+test_images/med_test_00021_00571.png	0.82	0.9200
+test_images/med_test_00021_00572.png	Lakh/cmm	0.9200
+test_images/med_test_00021_00573.png	3.90	0.9200
+test_images/med_test_00021_00574.png	Millions/cmm	0.9200
+test_images/med_test_00021_00575.png	3.8- 48	0.9200
+test_images/med_test_00021_00576.png	R BC COUNT	0.9200
+test_images/med_test_00021_00577.png	33.6	0.9200
+test_images/med_test_00021_00578.png	85.0	0.9200
+test_images/med_test_00021_00579.png	fl	0.9200
+test_images/med_test_00021_00580.png	80 - 100	0.9200
+test_images/med_test_00021_00581.png	27.6	0.9200
+test_images/med_test_00021_00582.png	Picogram	0.9200
+test_images/med_test_00021_00583.png	33.3	0.9200
+test_images/med_test_00021_00584.png	gm/d!	0.9200
+test_images/med_test_00021_00585.png	30 - 35	0.9200
+test_images/med_test_00021_00586.png	Dr. Yogesh Klip Chahar	0.9200
+test_images/med_test_00021_00587.png	MD (Ipf6f lal MAedicine:)	0.9200
+test_images/med_test_00021_00588.png	DMC No. & V5724	0.9200
+test_images/med_test_00021_00589.png	Lae 10211	0.9200
+test_images/med_test_00021_00590.png	TECHNICIAN	0.9200
+test_images/med_test_00021_00591.png	DMC/R/10211	0.9200
+test_images/med_test_00021_00592.png	3D/4D Ultrasound	0.9200
+test_images/med_test_00021_00593.png	On Panel	0.5000
+test_images/med_test_00021_00594.png	Color Doppler	0.9200
+test_images/med_test_00021_00595.png	Haryana Government	0.9200
+test_images/med_test_00021_00596.png	CT-Scan	0.5000
+test_images/med_test_00021_00597.png	Delhi Government	0.9200
+test_images/med_test_00021_00598.png	Digital X-Ray	0.9200
+test_images/med_test_00021_00599.png	Delhi Jal Board	0.9200
+test_images/med_test_00021_00600.png	Computerised Lab	0.9200
+test_images/med_test_00021_00601.png	All TPA & Insurance	0.9200
+test_images/med_test_00022_00602.png	& TRAUMA CENTRE	0.9200
+test_images/med_test_00022_00603.png	NABH.	0.9200
+test_images/med_test_00022_00604.png	[Transaction No.	0.9200
+test_images/med_test_00022_00605.png	42162	0.9200
+test_images/med_test_00022_00606.png	Patient Name	0.9200
+test_images/med_test_00022_00607.png	MRS.SUNITA,	0.9200
+test_images/med_test_00022_00608.png	[Date	0.9200
+test_images/med_test_00022_00609.png	IMobile No,	0.9200
+test_images/med_test_00022_00610.png	IDoctor Name	0.9200
+test_images/med_test_00022_00611.png	Reporting Date	0.9200
+test_images/med_test_00022_00612.png	HAEMATOLOGY REPORT	0.9200
+test_images/med_test_00022_00613.png	ICOMPONENT	0.9200
+test_images/med_test_00022_00614.png	RESULTS	0.9200
+test_images/med_test_00022_00615.png	UNITS	0.9200
+test_images/med_test_00022_00616.png	REFF.RANGE	0.9200
+test_images/med_test_00022_00617.png	HB (HAEMOGLOBIN	0.9200
+test_images/med_test_00022_00618.png	HAEMOGLOBIN	0.9200
+test_images/med_test_00022_00619.png	9.9	0.9200
+test_images/med_test_00022_00620.png	grid	0.9200
+test_images/med_test_00022_00621.png	[TLc	0.9200
+test_images/med_test_00022_00622.png	[ruc	0.9200
+test_images/med_test_00022_00623.png	19800	0.9200
+test_images/med_test_00022_00624.png	lcomm	0.9200
+test_images/med_test_00022_00625.png	4000-11000	0.9200
+test_images/med_test_00022_00626.png	loic	0.9200
+test_images/med_test_00022_00627.png	NEUTROPHILS	0.9200
+test_images/med_test_00022_00628.png	8	0.9200
+test_images/med_test_00022_00629.png	LYMPHOCYTES	0.9200
+test_images/med_test_00022_00630.png	7	0.9200
+test_images/med_test_00022_00631.png	IMONOCYTE	0.9200
+test_images/med_test_00022_00632.png	[EOSINOPHILS	0.9200
+test_images/med_test_00022_00633.png	IBASHOPHILS	0.9200
+test_images/med_test_00022_00634.png	lIRec	0.9200
+test_images/med_test_00022_00635.png	IRac	0.9200
+test_images/med_test_00022_00636.png	3.80	0.9200
+test_images/med_test_00022_00637.png	misioncumm	0.9200
+test_images/med_test_00022_00638.png	lpov	0.9200
+test_images/med_test_00022_00639.png	lecv	0.9200
+test_images/med_test_00022_00640.png	WE	0.9200
+test_images/med_test_00022_00641.png	lacy	0.9200
+test_images/med_test_00022_00642.png	Icy	0.9200
+test_images/med_test_00022_00643.png	[McH	0.9200
+test_images/med_test_00022_00644.png	IMCH	0.9200
+test_images/med_test_00022_00645.png	26.1	0.9200
+test_images/med_test_00022_00646.png	pa	0.9200
+test_images/med_test_00022_00647.png	[MCHC	0.9200
+test_images/med_test_00022_00648.png	IMCHC	0.9200
+test_images/med_test_00022_00649.png	29.4	0.9200
+test_images/med_test_00022_00650.png	ged	0.9200
+test_images/med_test_00022_00651.png	204	0.9200
+test_images/med_test_00022_00652.png	laccumm	0.9200
+test_images/med_test_00022_00653.png	[Row	0.9200
+test_images/med_test_00022_00654.png	14.8	0.9200
+test_images/med_test_00022_00655.png	lpct	0.9200
+test_images/med_test_00022_00656.png	lect	0.9200
+test_images/med_test_00022_00657.png	0.22	0.9200
+test_images/med_test_00022_00658.png	p	0.9200
+test_images/med_test_00022_00659.png	[uv	0.9200
+test_images/med_test_00022_00660.png	wOSPn,	0.9200
+test_images/med_test_00022_00661.png	10.2	0.9200
+test_images/med_test_00022_00662.png	Or. RAHUL	0.9200
+test_images/med_test_00022_00663.png	MBBS MS1Gen, Surgery)	0.9200
+test_images/med_test_00022_00664.png	Dr. GUREREN GILL	0.9200
+test_images/med_test_00022_00665.png	Regd. Nb.- DMC 91158	0.9200
+test_images/med_test_00022_00666.png	30/40 Cold	0.9200
+test_images/med_test_00022_00667.png	wat tz afta 24 We sare	0.9200
+test_images/med_test_00023_00668.png	Kenny Rogers Roasters	0.9200
+test_images/med_test_00023_00669.png	Tel :07-2229097	0.9200
+test_images/med_test_00023_00670.png	Date: 2017/09/23 16:21:55	0.9200
+test_images/med_test_00023_00671.png	Chkn&Garden Meal	0.5000
+test_images/med_test_00023_00672.png	RM22 90	0.9200
+test_images/med_test_00023_00673.png	RM23.50.	0.9200
+test_images/med_test_00023_00674.png	RM11.50	0.9200
+test_images/med_test_00023_00675.png	Orange Juice	0.5000
+test_images/med_test_00023_00676.png	RMB .90	0.9200
+test_images/med_test_00023_00677.png	Iced Lemon Tea	0.5000
+test_images/med_test_00023_00678.png	RMG .90	0.9200
+test_images/med_test_00023_00679.png	Cash	0.9200
+test_images/med_test_00023_00680.png	RM100.00.	0.9200
+test_images/med_test_00023_00681.png	Change	0.9200
+test_images/med_test_00023_00682.png	RM26 30	0.9200
+test_images/med_test_00023_00683.png	WWW.KRR.COM.MY	0.5000
+test_images/med_test_00023_00684.png	001-1348181	0.5000
+test_images/med_test_00024_00685.png	DresserWayne	0.9200
+test_images/med_test_00024_00686.png	Serial Interface	0.9200
+test_images/med_test_00024_00687.png	Baud rate	0.9200
+test_images/med_test_00024_00688.png	Datarare	0.9200
+test_images/med_test_00024_00689.png	Parity.	0.9200
+test_images/med_test_00024_00690.png	None	0.9200
+test_images/med_test_00024_00691.png	Flow Control: XON/OFE	0.9200
+test_images/med_test_00024_00692.png	Dip switches	0.9200
+test_images/med_test_00024_00693.png	BSsi	0.9200
+test_images/med_test_00024_00694.png	Oe	0.9200
+test_images/med_test_00024_00695.png	CUbaaaLCERRTIANEREOOOUL	0.9200
+test_images/med_test_00025_00696.png	Meadowview Health	0.9200
+test_images/med_test_00025_00697.png	849 Pine Rd.	0.9200
+test_images/med_test_00025_00698.png	signature:	0.5000
+test_images/med_test_00025_00699.png	Dr A Suit	0.9200
+test_images/med_test_00026_00700.png	(Citadel	0.9200
+test_images/med_test_00026_00701.png	Discount:	0.9200
+test_images/med_test_00026_00702.png	Final Price	0.9200
+test_images/med_test_00026_00703.png	$-20.00	0.9200
+test_images/med_test_00026_00704.png	$39.99 T	0.9200
+test_images/med_test_00026_00705.png	NIKE ROSHE ONE	0.9200
+test_images/med_test_00026_00706.png	0888408083029.	0.9200
+test_images/med_test_00026_00707.png	TtealPercent Discount 20%	0.9200
+test_images/med_test_00026_00708.png	$15.00	0.9200
+test_images/med_test_00026_00709.png	Store Level Promotion	0.9200
+test_images/med_test_00026_00710.png	Final Price	0.9200
+test_images/med_test_00026_00711.png	$59.99 T	0.9200
+test_images/med_test_00026_00712.png	Subtotal	0.9200
+test_images/med_test_00026_00713.png	$99.98	0.9200
+test_images/med_test_00026_00714.png	(Tax	0.9200
+test_images/med_test_00026_00715.png	$10.00	0.9200
+test_images/med_test_00026_00716.png	Total	0.9200
+test_images/med_test_00026_00717.png	$109.98	0.9200
+test_images/med_test_00026_00718.png	You Saved $35.00 today	0.5000
+test_images/med_test_00026_00719.png	Weestendarddepit	0.9200
+test_images/med_test_00026_00720.png	$109.98	0.9200
+test_images/med_test_00026_00721.png	083820	0.9200
+test_images/med_test_00026_00722.png	TxRef	0.9200
+test_images/med_test_00026_00723.png	TxType	0.9200
+test_images/med_test_00026_00724.png	sry001212963171037	0.9200
+test_images/med_test_00026_00725.png	Mid	0.9200
+test_images/med_test_00026_00726.png	GOODS_SERVICES	0.9200
+test_images/med_test_00026_00727.png	Tid	0.9200
+test_images/med_test_00026_00728.png	2449	0.9200
+test_images/med_test_00026_00729.png	e315M-902062881	0.9200
+test_images/med_test_00026_00730.png	PANSeq	0.9200
+test_images/med_test_00026_00731.png	PrefName	0.9200
+test_images/med_test_00026_00732.png	US DEBIT	0.9200
+test_images/med_test_00026_00733.png	Aid	0.9200
+test_images/med_test_00026_00734.png	A0000000980840	0.9200
+test_images/med_test_00026_00735.png	Ke	0.9200
+test_images/med_test_00026_00736.png	2F645054033C036	0.9200
+test_images/med_test_00027_00737.png	Meadowview Health	0.9200
+test_images/med_test_00027_00738.png	234 Maple Blvd.	0.9200
+test_images/med_test_00027_00739.png	Gr AH Fobngen	0.9200
+test_images/med_test_00028_00740.png	DIAGNOSTIC REPORT	0.9200
+test_images/med_test_00028_00741.png	FORTIS - NAGARBHAVI  170	0.9200
+test_images/med_test_00028_00742.png	GURUKRUPA LAYOUT,	0.9200
+test_images/med_test_00028_00743.png	> FH.13813531	0.9200
+test_images/med_test_00028_00744.png	560072	0.9200
+test_images/med_test_00028_00745.png	(ALTA NO	0.9200
+test_images/med_test_00028_00746.png	10:14757	0.9200
+test_images/med_test_00028_00747.png	RLFORTLO	0.9200
+test_images/med_test_00028_00748.png	trz33:40	0.9200
+test_images/med_test_00028_00749.png	Test Report Status	0.9200
+test_images/med_test_00028_00750.png	Final	0.9200
+test_images/med_test_00028_00751.png	Results	0.9200
+test_images/med_test_00028_00752.png	Units	0.9200
+test_images/med_test_00028_00753.png	5.40	0.9200
+test_images/med_test_00028_00754.png	4.21	0.9200
+test_images/med_test_00028_00755.png	HEMOGLOBIN (HB)	0.9200
+test_images/med_test_00028_00756.png	11.7? Low	0.9200
+test_images/med_test_00028_00757.png	a/d	0.9200
+test_images/med_test_00028_00758.png	HEMATOCRIT (PCV)	0.9200
+test_images/med_test_00028_00759.png	36.4	0.9200
+test_images/med_test_00028_00760.png	87.0	0.9200
+test_images/med_test_00028_00761.png	fL	0.9200
+test_images/med_test_00028_00762.png	27,9	0.9200
+test_images/med_test_00028_00763.png	bg	0.9200
+test_images/med_test_00028_00764.png	CONCENTRATION(MCHC)	0.9200
+test_images/med_test_00028_00765.png	32.2	0.9200
+test_images/med_test_00028_00766.png	MENTZER. INDEX	0.9200
+test_images/med_test_00028_00767.png	20.7	0.9200
+test_images/med_test_00028_00768.png	10.0	0.9200
+test_images/med_test_00028_00769.png	15.3 High	0.9200
+test_images/med_test_00028_00770.png	NEUTROPHILS	0.9200
+test_images/med_test_00028_00771.png	58	0.9200
+test_images/med_test_00028_00772.png	ABSOLUTE NEUTROPHIL COUNT	0.9200
+test_images/med_test_00028_00773.png	3.23	0.9200
+test_images/med_test_00028_00774.png	LYMPHOCYTES	0.9200
+test_images/med_test_00028_00775.png	29	0.9200
+test_images/med_test_00028_00776.png	ABSOLUIT LYMPHOCYTE COUNT	0.9200
+test_images/med_test_00028_00777.png	1.57	0.9200
+test_images/med_test_00028_00778.png	SrConsultant	0.9200
+test_images/med_test_00028_00779.png	PERFORMED AT:	0.9200
+test_images/med_test_00028_00780.png	Agus Diagnostics Ltd	0.9200
+test_images/med_test_00028_00781.png	Rangolore, 3600/2	0.9200
+test_images/med_test_00028_00782.png	Joan]	0.9200
+test_images/med_test_00028_00783.png	fa)  98023014100, Fax:	0.9200
+test_images/med_test_00029_00784.png	Greenwood Medical Center	0.9200
+test_images/med_test_00029_00785.png	234 Maple Blvd.	0.9200
+test_images/med_test_00029_00786.png	Dr 4 Pomc	0.9200
+test_images/med_test_00030_00787.png	Greenwood Medical Center	0.9200
+test_images/med_test_00030_00788.png	89 Pine Rd.	0.9200
+test_images/med_test_00030_00789.png	Dr Ih fe	0.9200
+test_images/med_test_00030_00790.png	signature:	0.5000
+test_images/med_test_00031_00791.png	Oakview Hospital	0.9200
+test_images/med_test_00031_00792.png	45 Oak Ave.	0.9200
+test_images/med_test_00031_00793.png	signature:	0.5000
+test_images/med_test_00032_00794.png	Riverside Clinic	0.9200
+test_images/med_test_00032_00795.png	234 Maple Bivd.	0.9200
+test_images/med_test_00032_00796.png	De. & Gomey	0.9200
+test_images/med_test_00032_00797.png	Chanaturc:	0.9200
+test_images/med_test_00033_00798.png	BOMBAY HOSPITAL  INDORE	0.9200
+test_images/med_test_00033_00799.png	DEPARTMENT OF PATHOLOGY	0.9200
+test_images/med_test_00033_00800.png	[By : Dr. Ravi Rathi	0.9200
+test_images/med_test_00033_00801.png	Vch No.	0.9200
+test_images/med_test_00033_00802.png	Sample Collected On :	0.9200
+test_images/med_test_00033_00803.png	0:03:44	0.9200
+test_images/med_test_00033_00804.png	Sample Type  SERUM	0.9200
+test_images/med_test_00033_00805.png	1:52:45	0.9200
+test_images/med_test_00033_00806.png	Sample No	0.9200
+test_images/med_test_00033_00807.png	: 25050397	0.9200
+test_images/med_test_00033_00808.png	TEST DESCRIPTION	0.9200
+test_images/med_test_00033_00809.png	OBSERVED VALUE	0.9200
+test_images/med_test_00033_00810.png	UNIT	0.9200
+test_images/med_test_00033_00811.png	Troponin -  (HS)	0.9200
+test_images/med_test_00033_00812.png	0.004	0.9200
+test_images/med_test_00033_00813.png	ng/mL	0.9200
+test_images/med_test_00033_00814.png	Dr. D.B.S. Mahor	0.9200
+test_images/med_test_00033_00815.png	Dr. Neelam Bharihoke	0.9200
+test_images/med_test_00033_00816.png	M.D. (Biochemistry)	0.9200
+test_images/med_test_00033_00817.png	M.D. (Pathology)	0.9200
+test_images/med_test_00033_00818.png	Biochemist	0.9200
+test_images/med_test_00033_00819.png	Pathologist	0.9200
+test_images/med_test_00033_00820.png	AUTHORISED	0.9200
+test_images/med_test_00034_00821.png	City Health Clinic	0.9200
+test_images/med_test_00034_00822.png	+89 Pine Rd.	0.9200
+test_images/med_test_00034_00823.png	Yi A Dey	0.9200
+test_images/med_test_00034_00824.png	Chamalure	0.9200
+test_images/med_test_00035_00825.png	Riverside Clinic	0.9200
+test_images/med_test_00035_00826.png	68 Orchard Ln.	0.9200
+test_images/med_test_00035_00827.png	signature:	0.5000
+test_images/med_test_00035_00828.png	Dr L Patel	0.9200
+test_images/med_test_00036_00829.png	Oakview Hospital	0.9200
+test_images/med_test_00036_00830.png	648 Orchard Ln.	0.9200
+test_images/med_test_00036_00831.png	Chgnature	0.9200
+test_images/med_test_00036_00832.png	De A Pemex	0.9200
+test_images/med_test_00037_00833.png	Dsignat ton	0.9200
+test_images/med_test_00037_00834.png	Tota!	0.9200
+test_images/med_test_00037_00835.png	16.90	0.9200
+test_images/med_test_00037_00836.png	(2 TERRINE MAISON	0.9200
+test_images/med_test_00037_00837.png	Menu	0.9200
+test_images/med_test_00037_00838.png	ESCALOPE FOIE GRAS	0.9200
+test_images/med_test_00037_00839.png	19.00	0.9200
+test_images/med_test_00037_00840.png	19,00,	0.9200
+test_images/med_test_00037_00841.png	2 CASSOULET TRADITIO	0.9200
+test_images/med_test_00037_00842.png	19.00	0.9200
+test_images/med_test_00037_00843.png	Nenu	0.9200
+test_images/med_test_00037_00844.png	19.08	0.9200
+test_images/med_test_00037_00845.png	 CROUSTADE POMMES A	0.9200
+test_images/med_test_00037_00846.png	Nenu	0.9200
+test_images/med_test_00037_00847.png	FROMABE BLANC PRUN	0.9200
+test_images/med_test_00037_00848.png	Nenu	0.9200
+test_images/med_test_00037_00849.png	NET TTC EUR	0.9200
+test_images/med_test_00037_00850.png	80,30	0.9200
+test_images/med_test_00037_00851.png	KT,	0.9200
+test_images/med_test_00037_00852.png	Os	0.9200
+test_images/med_test_00037_00853.png	ATS	0.9200
+test_images/med_test_00037_00854.png	-WAISON MICQULEAU	0.9200
+test_images/med_test_00037_00855.png	MERCI DE VOTRE WISTTE	0.9200
+test_images/med_test_00037_00856.png	SIRET 463 848 SRU0OOOI0	0.9200
+test_images/med_test_00038_00857.png	Riverside Clinic	0.9200
+test_images/med_test_00038_00858.png	678 Orchard Ln.	0.9200
+test_images/med_test_00038_00859.png	De A Swat	0.9200
+test_images/med_test_00039_00860.png	The Mango Tree Pte Ltd	0.9200
+test_images/med_test_00039_00861.png	Cover:4	0.9200
+test_images/med_test_00039_00862.png	Description	0.9200
+test_images/med_test_00039_00863.png	Qty	0.9200
+test_images/med_test_00039_00864.png	Total	0.9200
+test_images/med_test_00039_00865.png	Muroh Makhani	0.9200
+test_images/med_test_00039_00866.png	$16.00	0.9200
+test_images/med_test_00039_00867.png	$16.00	0.9200
+test_images/med_test_00039_00868.png	Tava Dosa	0.9200
+test_images/med_test_00039_00869.png	$4.40	0.9200
+test_images/med_test_00039_00870.png	$4.40	0.9200
+test_images/med_test_00039_00871.png	Garlic Naan	0.9200
+test_images/med_test_00039_00872.png	$4.50	0.9200
+test_images/med_test_00039_00873.png	99.00	0.9200
+test_images/med_test_00039_00874.png	Mango Mapas.	0.9200
+test_images/med_test_00039_00875.png	$10.50	0.9200
+test_images/med_test_00039_00876.png	$10.50	0.9200
+test_images/med_test_00039_00877.png	Rounding $0.04	0.9200
+test_images/med_test_00040_00878.png	SWASTIK HOSPITAL!	0.9200
+test_images/med_test_00040_00879.png	Jhaar Road, Bahadurgarh	0.9200
+test_images/med_test_00040_00880.png	We Shirt To Care	0.9200
+test_images/med_test_00040_00881.png	Name: Mrs. PREETIKA	0.5000
+test_images/med_test_00040_00882.png	Visit-Date-there-	0.9200
+test_images/med_test_00040_00883.png	+HOORISTOOT OST	0.9200
+test_images/med_test_00040_00884.png	805 FPATIENTID 6725005	0.9200
+test_images/med_test_00040_00885.png	et Ys	0.9200
+test_images/med_test_00040_00886.png	114:02:29	0.9200
+test_images/med_test_00040_00887.png	Ref. Lab	0.9200
+test_images/med_test_00040_00888.png	SWASTIK HOSPITAL	0.9200
+test_images/med_test_00040_00889.png	Sex	0.9200
+test_images/med_test_00040_00890.png	i emale	0.9200
+test_images/med_test_00040_00891.png	18:20:53	0.9200
+test_images/med_test_00040_00892.png	Ref. By	0.9200
+test_images/med_test_00040_00893.png	test	0.9200
+test_images/med_test_00040_00894.png	21.00 L	0.9200
+test_images/med_test_00040_00895.png	ng/ml	0.9200
+test_images/med_test_00040_00896.png	DEFICIENT :	0.9200
+test_images/med_test_00040_00897.png	<20	0.9200
+test_images/med_test_00040_00898.png	INSUFFICIENT: 20-30	0.9200
+test_images/med_test_00040_00899.png	Clinical Information 	0.9200
+test_images/med_test_00040_00900.png	SUFFICIENT:	0.9200
+test_images/med_test_00040_00901.png	30- 100	0.9200
+test_images/med_test_00040_00902.png	Dr. Yogesh Kumayfhsor	0.9200
+test_images/med_test_00040_00903.png	On Panel: -	0.5000
+test_images/med_test_00040_00904.png	3D/4D Ultrasound	0.9200
+test_images/med_test_00040_00905.png	Harvana Government	0.9200
+test_images/med_test_00040_00906.png	Color Doppler	0.9200
+test_images/med_test_00040_00907.png	CT-Scan	0.5000
+test_images/med_test_00040_00908.png	Digital X-Ray	0.9200
+test_images/med_test_00040_00909.png	Computerised Lab	0.9200
+test_images/med_test_00041_00910.png	Meadowview Health	0.9200
+test_images/med_test_00041_00911.png	789 Pine Rd.	0.9200
+test_images/med_test_00041_00912.png	SLanature:	0.9200
+test_images/med_test_00041_00913.png	Bh A Foboon	0.9200
+test_images/med_test_00042_00914.png	Badenerstrasse 76.	0.9200
+test_images/med_test_00042_00915.png	98.2015	0.9200
+test_images/med_test_00042_00916.png	13,50	0.9200
+test_images/med_test_00042_00917.png	13,50.	0.9200
+test_images/med_test_00042_00918.png	24,50:	0.9200
+test_images/med_test_00042_00919.png	28,50.	0.9200
+test_images/med_test_00042_00920.png	Total	0.9200
+test_images/med_test_00042_00921.png	CHF 144,50	0.9200
+test_images/med_test_00042_00922.png	Umsatz 8.0% ink].	0.9200
+test_images/med_test_00042_00923.png	MySt 8.0%	0.9200
+test_images/med_test_00042_00924.png	CHF 10,70	0.9200
+test_images/med_test_00042_00925.png	Bar	0.9200
+test_images/med_test_00042_00926.png	CHF	0.9200
+test_images/med_test_00042_00927.png	144,50	0.9200
+test_images/med_test_00042_00928.png	000003	0.9200
+test_images/med_test_00043_00929.png	THANK.	0.9200
+test_images/med_test_00043_00930.png	YOU FOR	0.9200
+test_images/med_test_00043_00931.png	SHOPPING	0.9200
+test_images/med_test_00043_00932.png	t 6607	0.9200
+test_images/med_test_00043_00933.png	SHELL	0.9200
+test_images/med_test_00043_00934.png	101 GALLATIN RD. NORTH	0.9200
+test_images/med_test_00043_00935.png	MADISON	0.9200
+test_images/med_test_00043_00936.png	TN 37115	0.9200
+test_images/med_test_00043_00937.png	aty	0.9200
+test_images/med_test_00043_00938.png	amount	0.9200
+test_images/med_test_00043_00939.png	Nescr.	0.9200
+test_images/med_test_00043_00940.png	10.00	0.9200
+test_images/med_test_00043_00941.png	FUEL AUTH FOR PIMP 09	0.9200
+test_images/med_test_00043_00942.png	Sub Total	0.9200
+test_images/med_test_00043_00943.png	10.00	0.9200
+test_images/med_test_00043_00944.png	7ax	0.9200
+test_images/med_test_00043_00945.png	0.00	0.9200
+test_images/med_test_00043_00946.png	TOTAL.	0.9200
+test_images/med_test_00043_00947.png	1a .00	0.9200
+test_images/med_test_00043_00948.png	PREAUTH $	0.9200
+test_images/med_test_00043_00949.png	10.00	0.9200
+test_images/med_test_00043_00950.png	Debi t	0.9200
+test_images/med_test_00043_00951.png	XXXXXXXKXKKK 1790	0.9200
+test_images/med_test_00043_00952.png	53607	0.9200
+test_images/med_test_00043_00953.png	01/02/14 22:23:26	0.9200
+test_images/med_test_00044_00954.png	Meadowview Health	0.9200
+test_images/med_test_00044_00955.png	123 Main St.	0.9200
+test_images/med_test_00044_00956.png	Vanature:	0.9200
+test_images/med_test_00045_00957.png	Selected	0.9200
+test_images/med_test_00045_00958.png	Selected	0.9200
+test_images/med_test_00045_00959.png	Not sclected	0.9200
+test_images/med_test_00046_00960.png	Morton's The Steakhouse	0.9200
+test_images/med_test_00046_00961.png	Server: Rudy	0.9200
+test_images/med_test_00046_00962.png	(mana	0.9200
+test_images/med_test_00046_00963.png	esc	0.9200
+test_images/med_test_00046_00964.png	Baked Potato	0.9200
+test_images/med_test_00046_00965.png	Nortons Salad	0.9200
+test_images/med_test_00046_00966.png	13,00.	0.9200
+test_images/med_test_00046_00967.png	Ba	0.9200
+test_images/med_test_00046_00968.png	Diet Coke	0.9200
+test_images/med_test_00046_00969.png	Be	0.9200
+test_images/med_test_00046_00970.png	ey]	0.9200
+test_images/med_test_00046_00971.png	OG] MER Charies Krug	0.9200
+test_images/med_test_00046_00972.png	15.00,	0.9200
+test_images/med_test_00046_00973.png	Filet Mignon, 602	0.9200
+test_images/med_test_00046_00974.png	46.00.	0.9200
+test_images/med_test_00046_00975.png	Chicken Bianco:	0.9200
+test_images/med_test_00046_00976.png	ao	0.9200
+test_images/med_test_00046_00977.png	0)	0.9200
+test_images/med_test_00046_00978.png	Subtotal	0.9200
+test_images/med_test_00046_00979.png	44	0.9200
+test_images/med_test_00046_00980.png	(Special Occasion	0.9200
+test_images/med_test_00046_00981.png	38	0.9200
+test_images/med_test_00046_00982.png	Disc Sub Total	0.9200
+test_images/med_test_00046_00983.png	129.25,	0.9200
+test_images/med_test_00046_00984.png	(Tax	0.9200
+test_images/med_test_00046_00985.png	10.58	0.9200
+test_images/med_test_00046_00986.png	(Tota	0.9200
+test_images/med_test_00046_00987.png	199.9)	0.9200
+test_images/med_test_00046_00988.png	$138.91	0.9200
+test_images/med_test_00047_00989.png	& TRAUMA CENTRE	0.9200
+test_images/med_test_00047_00990.png	Trandaction No.	0.9200
+test_images/med_test_00047_00991.png	: 41519	0.9200
+test_images/med_test_00047_00992.png	Patieht	0.9200
+test_images/med_test_00047_00993.png	Mobde No.	0.9200
+test_images/med_test_00047_00994.png	4759	0.9200
+test_images/med_test_00047_00995.png	IDoctr Name	0.9200
+test_images/med_test_00047_00996.png	KUMARI	0.9200
+test_images/med_test_00047_00997.png	Reporting Date	0.9200
+test_images/med_test_00047_00998.png	[TestName:	0.9200
+test_images/med_test_00047_00999.png	ANTI HCV.	0.9200
+test_images/med_test_00047_01000.png	COMPONENT	0.9200
+test_images/med_test_00047_01001.png	RESULTS	0.9200
+test_images/med_test_00047_01002.png	UNITS	0.9200
+test_images/med_test_00047_01003.png	REFF.RANGE	0.9200
+test_images/med_test_00047_01004.png	[ANTI Ecv	0.9200
+test_images/med_test_00047_01005.png	NEGATIVE.	0.9200
+test_images/med_test_00047_01006.png	14 weds after infection.	0.9200
+test_images/med_test_00047_01007.png	ipast infection by HCV.	0.9200
+test_images/med_test_00047_01008.png	Pathologist/Technologist	0.9200
+test_images/med_test_00047_01009.png	Dr. GURLEAN GILL	0.9200
+test_images/med_test_00047_01010.png	MBBS, WED (Phthology'	0.9200
+test_images/med_test_00047_01011.png	(Obs-& Gynae)	0.9200
+test_images/med_test_00047_01012.png	Regd. HN 013316	0.9200
+test_images/med_test_00047_01013.png	wat az Afra 24 wesaree	0.9200
+test_images/med_test_00048_01014.png	Invoice no: 72128555	0.9200
+test_images/med_test_00048_01015.png	Date of issue:	0.9200
+test_images/med_test_00048_01016.png	12/25/2013	0.9200
+test_images/med_test_00048_01017.png	Seller:	0.9200
+test_images/med_test_00048_01018.png	Client:	0.9200
+test_images/med_test_00048_01019.png	Obrien Group	0.9200
+test_images/med_test_00048_01020.png	Duncan-Davis	0.9200
+test_images/med_test_00048_01021.png	6217 Boyd Ville Apt, 758	0.9200
+test_images/med_test_00048_01022.png	PSC 2324, Box 6632	0.9200
+test_images/med_test_00048_01023.png	Robbinsberg, AZ 54997	0.9200
+test_images/med_test_00048_01024.png	APO AP 93827	0.9200
+test_images/med_test_00048_01025.png	Tax Id: 905-82-5399	0.9200
+test_images/med_test_00048_01026.png	Tax Id: 917-86-7656	0.9200
+test_images/med_test_00048_01027.png	ITEMS	0.9200
+test_images/med_test_00048_01028.png	No.	0.9200
+test_images/med_test_00048_01029.png	Description	0.9200
+test_images/med_test_00048_01030.png	Qty	0.9200
+test_images/med_test_00048_01031.png	UM	0.9200
+test_images/med_test_00048_01032.png	Net price	0.9200
+test_images/med_test_00048_01033.png	Net worth	0.9200
+test_images/med_test_00048_01034.png	VAT [%]	0.9200
+test_images/med_test_00048_01035.png	Gross	0.9200
+test_images/med_test_00048_01036.png	worth	0.9200
+test_images/med_test_00048_01037.png	i	0.9200
+test_images/med_test_00048_01038.png	2,00	0.9200
+test_images/med_test_00048_01039.png	each	0.9200
+test_images/med_test_00048_01040.png	99,90	0.9200
+test_images/med_test_00048_01041.png	199,80	0.9200
+test_images/med_test_00048_01042.png	10%	0.9200
+test_images/med_test_00048_01043.png	219,78	0.9200
+test_images/med_test_00048_01044.png	Verdicts) (8 Volume Set)	0.9200
+test_images/med_test_00048_01045.png	2.	0.5000
+test_images/med_test_00048_01046.png	Sasinowski M-Legacy Of Ra	0.9200
+test_images/med_test_00048_01047.png	1,00	0.9200
+test_images/med_test_00048_01048.png	each	0.9200
+test_images/med_test_00048_01049.png	19,40	0.9200
+test_images/med_test_00048_01050.png	19,40	0.9200
+test_images/med_test_00048_01051.png	10%	0.9200
+test_images/med_test_00048_01052.png	21,34	0.9200
+test_images/med_test_00048_01053.png	BOOK NEW	0.9200
+test_images/med_test_00048_01054.png	3,00	0.9200
+test_images/med_test_00048_01055.png	each	0.9200
+test_images/med_test_00048_01056.png	139,95	0.9200
+test_images/med_test_00048_01057.png	419,85	0.9200
+test_images/med_test_00048_01058.png	10%	0.9200
+test_images/med_test_00048_01059.png	461,83	0.9200
+test_images/med_test_00048_01060.png	+ Master Index mn853	0.9200
+test_images/med_test_00048_01061.png	4.	0.9200
+test_images/med_test_00048_01062.png	Tumbling by Caela Carter	0.9200
+test_images/med_test_00048_01063.png	3,00	0.9200
+test_images/med_test_00048_01064.png	each	0.9200
+test_images/med_test_00048_01065.png	4,49	0.9200
+test_images/med_test_00048_01066.png	13,47	0.9200
+test_images/med_test_00048_01067.png	10%	0.9200
+test_images/med_test_00048_01068.png	14,82	0.9200
+test_images/med_test_00048_01069.png	5.	0.5000
+test_images/med_test_00048_01070.png	2,00	0.9200
+test_images/med_test_00048_01071.png	each	0.9200
+test_images/med_test_00048_01072.png	6,62	0.9200
+test_images/med_test_00048_01073.png	13,24	0.9200
+test_images/med_test_00048_01074.png	10%	0.9200
+test_images/med_test_00048_01075.png	14,56	0.9200
+test_images/med_test_00048_01076.png	People.	0.9200
+test_images/med_test_00048_01077.png	SUMMARY	0.9200
+test_images/med_test_00048_01078.png	VAT [%]	0.9200
+test_images/med_test_00048_01079.png	Net worth	0.9200
+test_images/med_test_00048_01080.png	VAT	0.9200
+test_images/med_test_00048_01081.png	Gross worth	0.9200
+test_images/med_test_00048_01082.png	10%	0.9200
+test_images/med_test_00048_01083.png	665,76	0.9200
+test_images/med_test_00048_01084.png	66,58	0.9200
+test_images/med_test_00048_01085.png	732,34	0.9200
+test_images/med_test_00048_01086.png	Total	0.9200
+test_images/med_test_00048_01087.png	$ 665,76	0.9200
+test_images/med_test_00048_01088.png	$ 66,58	0.9200
+test_images/med_test_00048_01089.png	$ 732,34	0.9200
+test_images/med_test_00049_01090.png	ISO : 9001-2008	0.9200
+test_images/med_test_00049_01091.png	SARVODAYA HOSPITAL	0.9200
+test_images/med_test_00049_01092.png	Regn No. MCI 3455	0.9200
+test_images/med_test_00049_01093.png	Investiqation	0.9200
+test_images/med_test_00049_01094.png	Observed Value	0.9200
+test_images/med_test_00049_01095.png	Unit	0.9200
+test_images/med_test_00049_01096.png	Biological Ref interval	0.9200
+test_images/med_test_00049_01097.png	BIOCHEMISTRY	0.9200
+test_images/med_test_00049_01098.png	VER FUNCTION TEST (LFT!	0.9200
+test_images/med_test_00049_01099.png	BILIRUBIN TOTAL	0.9200
+test_images/med_test_00049_01100.png	9.42 H	0.9200
+test_images/med_test_00049_01101.png	mag fal	0.9200
+test_images/med_test_00049_01102.png	0,30- 1.20	0.9200
+test_images/med_test_00049_01103.png	CONJUGATED (D, BILIRUBIN	0.9200
+test_images/med_test_00049_01104.png	7.79H	0.9200
+test_images/med_test_00049_01105.png	mgd	0.9200
+test_images/med_test_00049_01106.png	1.63H	0.9200
+test_images/med_test_00049_01107.png	mg/dl	0.9200
+test_images/med_test_00049_01108.png	SGOT	0.9200
+test_images/med_test_00049_01109.png	162 H	0.9200
+test_images/med_test_00049_01110.png	W/L	0.9200
+test_images/med_test_00049_01111.png	SGPT	0.9200
+test_images/med_test_00049_01112.png	86H	0.9200
+test_images/med_test_00049_01113.png	JUL	0.9200
+test_images/med_test_00049_01114.png	ALKALINE PHOSPHATASE	0.9200
+test_images/med_test_00049_01115.png	396 H	0.9200
+test_images/med_test_00049_01116.png	UL	0.9200
+test_images/med_test_00049_01117.png	42.00 - 128.00	0.9200
+test_images/med_test_00049_01118.png	TOTAL PROTEIN	0.9200
+test_images/med_test_00049_01119.png	6.2	0.9200
+test_images/med_test_00049_01120.png	ginsd]	0.9200
+test_images/med_test_00049_01121.png	6.20 - 8.00	0.9200
+test_images/med_test_00049_01122.png	ALBUMIN	0.9200
+test_images/med_test_00049_01123.png	3.7L	0.9200
+test_images/med_test_00049_01124.png	Gmirdi	0.9200
+test_images/med_test_00049_01125.png	3.80 - 5.40	0.9200
+test_images/med_test_00049_01126.png	GLOBULIN	0.9200
+test_images/med_test_00049_01127.png	2.5	0.9200
+test_images/med_test_00049_01128.png	gm/dl	0.5000
+test_images/med_test_00049_01129.png	1.48	0.9200
+test_images/med_test_00049_01130.png	GAMMAT-GT	0.9200
+test_images/med_test_00049_01131.png	263H	0.9200
+test_images/med_test_00049_01132.png	WUFL	0.9200
+test_images/med_test_00049_01133.png	11,00 - 50.00	0.9200
+test_images/med_test_00049_01134.png	END OF REPORT	0.9200
+test_images/med_test_00049_01135.png	NOT VAILD FOR	0.9200
+test_images/med_test_00049_01136.png	LEGAL PURPOSE	0.9200

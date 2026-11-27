@@ -1,0 +1,1135 @@
+train_images/med_train_00000_00000.png	Meadowview Health
+train_images/med_train_00000_00001.png	45 Oak Ave.
+train_images/med_train_00000_00002.png	Dr. A. Smith
+train_images/med_train_00001_00003.png	9437 Mahlet
+train_images/med_train_00001_00004.png	91/1
+train_images/med_train_00001_00005.png	8422
+train_images/med_train_00001_00006.png	Subtotal
+train_images/med_train_00001_00007.png	BV CABERNET
+train_images/med_train_00001_00008.png	SODA BAR 14
+train_images/med_train_00001_00009.png	8.00
+train_images/med_train_00001_00010.png	MUSHROON SWISS
+train_images/med_train_00001_00011.png	2.99
+train_images/med_train_00001_00012.png	WELL
+train_images/med_train_00001_00013.png	13.69
+train_images/med_train_00001_00014.png	1 CL CHZ
+train_images/med_train_00001_00015.png	BURGER
+train_images/med_train_00001_00016.png	WELL
+train_images/med_train_00001_00017.png	15.19
+train_images/med_train_00001_00018.png	CHEDDAR
+train_images/med_train_00001_00019.png	SUB CAESAR
+train_images/med_train_00001_00020.png	SAUCE ON SIDE
+train_images/med_train_00001_00021.png	CHEESE ON THE SIDE
+train_images/med_train_00001_00022.png	SEE SERVER
+train_images/med_train_00001_00023.png	SUBTOTAL
+train_images/med_train_00001_00024.png	39.87
+train_images/med_train_00001_00025.png	TAX
+train_images/med_train_00001_00026.png	2.39
+train_images/med_train_00001_00027.png	42.26
+train_images/med_train_00001_00028.png	SUBTOTAL
+train_images/med_train_00001_00029.png	39.87
+train_images/med_train_00001_00030.png	TAX
+train_images/med_train_00001_00031.png	2.39
+train_images/med_train_00001_00032.png	$42.26
+train_images/med_train_00002_00033.png	SADOPUR - AMBALA
+train_images/med_train_00002_00034.png	SADOPUR AMBALA
+train_images/med_train_00002_00035.png	Patient
+train_images/med_train_00002_00036.png	Bill
+train_images/med_train_00002_00037.png	No : SER932573 /
+train_images/med_train_00002_00038.png	Report Date
+train_images/med_train_00002_00039.png	16-Apr-2025 07:47 AM Ref
+train_images/med_train_00002_00040.png	Ward/Room/Bed :
+train_images/med_train_00002_00041.png	Ref By
+train_images/med_train_00002_00042.png	UNIT-I
+train_images/med_train_00002_00043.png	Specimen
+train_images/med_train_00002_00044.png	: Serum
+train_images/med_train_00002_00045.png	Department
+train_images/med_train_00002_00046.png	: PAEDIATRICS
+train_images/med_train_00002_00047.png	Parameter
+train_images/med_train_00002_00048.png	Results
+train_images/med_train_00002_00049.png	Biological Reference
+train_images/med_train_00002_00050.png	CRP QUANTITATIVE
+train_images/med_train_00002_00051.png	0.23 mg/dL
+train_images/med_train_00002_00052.png	< 0.50 mg/dL
+train_images/med_train_00002_00053.png	IONIC CALCIUM
+train_images/med_train_00002_00054.png	4.96 mg/dl
+train_images/med_train_00002_00055.png	4.4 - 5.2 mg/dl
+train_images/med_train_00002_00056.png	Test Notes :
+train_images/med_train_00002_00057.png	discuss
+train_images/med_train_00002_00058.png	Verified By :
+train_images/med_train_00002_00059.png	Assistant Professor
+train_images/med_train_00002_00060.png	MMCMSR, SADOPUR AMBALA
+train_images/med_train_00003_00061.png	Check:327881
+train_images/med_train_00003_00062.png	Cover:3
+train_images/med_train_00003_00063.png	29 Apr 12 18:33:22
+train_images/med_train_00003_00064.png	229,000
+train_images/med_train_00003_00065.png	1/2 PL_MEATLOVERS I
+train_images/med_train_00003_00066.png	149,000
+train_images/med_train_00003_00067.png	1/2 PR_SUPREME I
+train_images/med_train_00003_00068.png	I 2 GARLIC BREAD I @30000
+train_images/med_train_00003_00069.png	60,000
+train_images/med_train_00003_00070.png	DASANI I
+train_images/med_train_00003_00071.png	19,000
+train_images/med_train_00003_00072.png	3 NONLOCAL CUST I
+train_images/med_train_00003_00073.png	50000 3 SPITE I@21,000
+train_images/med_train_00003_00074.png	63,000
+train_images/med_train_00003_00075.png	Thank You
+train_images/med_train_00004_00076.png	Invoice no: 71177260
+train_images/med_train_00004_00077.png	Date of issue:
+train_images/med_train_00004_00078.png	06/11/2014
+train_images/med_train_00004_00079.png	Seller:
+train_images/med_train_00004_00080.png	Client:
+train_images/med_train_00004_00081.png	Henry Inc
+train_images/med_train_00004_00082.png	Gay, Wilson and Green
+train_images/med_train_00004_00083.png	PSC 1897, Box 7430
+train_images/med_train_00004_00084.png	Port Peggy, VT 29244
+train_images/med_train_00004_00085.png	APO AP 37043
+train_images/med_train_00004_00086.png	Tax Id: 911-74-1248
+train_images/med_train_00004_00087.png	Tax Id: 979-73-7202
+train_images/med_train_00004_00088.png	ITEMS
+train_images/med_train_00004_00089.png	No.
+train_images/med_train_00004_00090.png	Description
+train_images/med_train_00004_00091.png	Qty
+train_images/med_train_00004_00092.png	UM
+train_images/med_train_00004_00093.png	Net price
+train_images/med_train_00004_00094.png	Net worth
+train_images/med_train_00004_00095.png	VAT [%]
+train_images/med_train_00004_00096.png	Gross
+train_images/med_train_00004_00097.png	worth
+train_images/med_train_00004_00098.png	3 Gal 12L Moonshine Still
+train_images/med_train_00004_00099.png	2,00
+train_images/med_train_00004_00100.png	each
+train_images/med_train_00004_00101.png	99,92
+train_images/med_train_00004_00102.png	199,84
+train_images/med_train_00004_00103.png	10%
+train_images/med_train_00004_00104.png	219,82
+train_images/med_train_00004_00105.png	2.
+train_images/med_train_00004_00106.png	1,00
+train_images/med_train_00004_00107.png	each
+train_images/med_train_00004_00108.png	35,27
+train_images/med_train_00004_00109.png	35,27
+train_images/med_train_00004_00110.png	10%
+train_images/med_train_00004_00111.png	38,80
+train_images/med_train_00004_00112.png	Automatic Kitchen Tool
+train_images/med_train_00004_00113.png	3.
+train_images/med_train_00004_00114.png	500g Active Dry Yeast for
+train_images/med_train_00004_00115.png	1,00
+train_images/med_train_00004_00116.png	each
+train_images/med_train_00004_00117.png	19,99
+train_images/med_train_00004_00118.png	19,99
+train_images/med_train_00004_00119.png	10%
+train_images/med_train_00004_00120.png	21,99
+train_images/med_train_00004_00121.png	Wine Brewing with sacchar
+train_images/med_train_00004_00122.png	2,00
+train_images/med_train_00004_00123.png	each
+train_images/med_train_00004_00124.png	21,56
+train_images/med_train_00004_00125.png	43,12
+train_images/med_train_00004_00126.png	10%
+train_images/med_train_00004_00127.png	47,43
+train_images/med_train_00004_00128.png	The Cabinet
+train_images/med_train_00004_00129.png	3,00
+train_images/med_train_00004_00130.png	each
+train_images/med_train_00004_00131.png	11,99
+train_images/med_train_00004_00132.png	35,97
+train_images/med_train_00004_00133.png	10%
+train_images/med_train_00004_00134.png	39,57
+train_images/med_train_00004_00135.png	Bottle Gift Bag Christmas
+train_images/med_train_00004_00136.png	Wedding Party Reusable
+train_images/med_train_00004_00137.png	Bottle tops lid reusable
+train_images/med_train_00004_00138.png	5,00
+train_images/med_train_00004_00139.png	each
+train_images/med_train_00004_00140.png	19,99
+train_images/med_train_00004_00141.png	49,95
+train_images/med_train_00004_00142.png	10%
+train_images/med_train_00004_00143.png	54,95
+train_images/med_train_00004_00144.png	cork wine beer
+train_images/med_train_00004_00145.png	SUMMARY
+train_images/med_train_00004_00146.png	VAT [%]
+train_images/med_train_00004_00147.png	Net worth
+train_images/med_train_00004_00148.png	VAT
+train_images/med_train_00004_00149.png	Gross worth
+train_images/med_train_00004_00150.png	10%
+train_images/med_train_00004_00151.png	384,14
+train_images/med_train_00004_00152.png	38,41
+train_images/med_train_00004_00153.png	422,55
+train_images/med_train_00004_00154.png	Total
+train_images/med_train_00004_00155.png	$ 384,14
+train_images/med_train_00004_00156.png	$ 38,41
+train_images/med_train_00004_00157.png	$ 422,55
+train_images/med_train_00005_00158.png	15.00
+train_images/med_train_00005_00159.png	RESTORAN
+train_images/med_train_00005_00160.png	WEI KEE
+train_images/med_train_00005_00161.png	50.LORONG YAP HIN,
+train_images/med_train_00005_00162.png	OFF JLN PASAR PUDU,
+train_images/med_train_00005_00163.png	TEL:03-92218482
+train_images/med_train_00005_00164.png	21/05/200911:25 01
+train_images/med_train_00005_00165.png	01
+train_images/med_train_00005_00166.png	000000 8442 CLERK 01
+train_images/med_train_00005_00167.png	DUCK
+train_images/med_train_00005_00168.png	RM
+train_images/med_train_00005_00169.png	15.00
+train_images/med_train_00005_00170.png	RICE
+train_images/med_train_00005_00171.png	RM
+train_images/med_train_00005_00172.png	1.60
+train_images/med_train_00005_00173.png	DRINKS
+train_images/med_train_00005_00174.png	RM
+train_images/med_train_00005_00175.png	3.00
+train_images/med_train_00005_00176.png	ITEMS
+train_images/med_train_00005_00177.png	3Q
+train_images/med_train_00005_00178.png	CASH
+train_images/med_train_00005_00179.png	RM
+train_images/med_train_00005_00180.png	19.60
+train_images/med_train_00006_00181.png	Riverside Clinic
+train_images/med_train_00006_00182.png	123 Main St.
+train_images/med_train_00006_00183.png	signature:
+train_images/med_train_00006_00184.png	Dr. F. Gomez
+train_images/med_train_00007_00185.png	Greenwood Medical Center
+train_images/med_train_00007_00186.png	678 Orchard Ln.
+train_images/med_train_00008_00187.png	JBR
+train_images/med_train_00008_00188.png	TEL04-7059680 JBR
+train_images/med_train_00008_00189.png	1050 Home De1
+train_images/med_train_00008_00190.png	De1 Tb11014/1
+train_images/med_train_00008_00191.png	Gst 0
+train_images/med_train_00008_00192.png	Home Delivry
+train_images/med_train_00008_00193.png	1 Ts Guac
+train_images/med_train_00008_00194.png	1 Grande Chicken
+train_images/med_train_00008_00195.png	48.00
+train_images/med_train_00008_00196.png	64.00
+train_images/med_train_00008_00197.png	Buritto
+train_images/med_train_00008_00198.png	1Delivery Charge 5.00
+train_images/med_train_00008_00199.png	5.00
+train_images/med_train_00008_00200.png	Amount Due
+train_images/med_train_00008_00201.png	117.00
+train_images/med_train_00009_00202.png	Oakview Hospital
+train_images/med_train_00009_00203.png	678 Orchard Ln.
+train_images/med_train_00009_00204.png	signature:
+train_images/med_train_00009_00205.png	Dr. C. Rossi
+train_images/med_train_00010_00206.png	City Health Clinic
+train_images/med_train_00010_00207.png	123 Main St.
+train_images/med_train_00010_00208.png	Dr. A. Smith
+train_images/med_train_00010_00209.png	signature:
+train_images/med_train_00011_00210.png	Applebee's
+train_images/med_train_00011_00211.png	APPLEBEE'S
+train_images/med_train_00011_00212.png	NEIGHBORHOOD GRILL & BAR
+train_images/med_train_00011_00213.png	195 Soscol Ave.
+train_images/med_train_00011_00214.png	707-224-0502
+train_images/med_train_00011_00215.png	Check :9724-508874 1
+train_images/med_train_00011_00216.png	PERF MARG
+train_images/med_train_00011_00217.png	9.00
+train_images/med_train_00011_00218.png	-1
+train_images/med_train_00011_00219.png	DBL WHSKY STK
+train_images/med_train_00011_00220.png	-14.99
+train_images/med_train_00011_00221.png	-1
+train_images/med_train_00011_00222.png	DBL WHSKY STK
+train_images/med_train_00011_00223.png	-14.99
+train_images/med_train_00011_00224.png	TRKY STACKER
+train_images/med_train_00011_00225.png	10.99
+train_images/med_train_00011_00226.png	PERF MARG
+train_images/med_train_00011_00227.png	9.00
+train_images/med_train_00011_00228.png	CHURRO SMORE
+train_images/med_train_00011_00229.png	4.50
+train_images/med_train_00011_00230.png	0.00
+train_images/med_train_00011_00231.png	-1
+train_images/med_train_00011_00232.png	NA STRW SHAKE
+train_images/med_train_00011_00233.png	-3.99
+train_images/med_train_00011_00234.png	-1
+train_images/med_train_00011_00235.png	NON ALCOHOLIC
+train_images/med_train_00011_00236.png	0.00
+train_images/med_train_00011_00237.png	33.49
+train_images/med_train_00011_00238.png	TAX:
+train_images/med_train_00011_00239.png	2.68
+train_images/med_train_00011_00240.png	Total Due:
+train_images/med_train_00011_00241.png	36.17
+train_images/med_train_00011_00242.png	Gratuity Examples
+train_images/med_train_00011_00243.png	Short on time?
+train_images/med_train_00012_00244.png	800004206 Beletsha
+train_images/med_train_00012_00245.png	134/1
+train_images/med_train_00012_00246.png	GST 1
+train_images/med_train_00012_00247.png	201
+train_images/med_train_00012_00248.png	3:50PM
+train_images/med_train_00012_00249.png	DINE IN
+train_images/med_train_00012_00250.png	9.59
+train_images/med_train_00012_00251.png	1 BURG BBQ BAC
+train_images/med_train_00012_00252.png	13.00
+train_images/med_train_00012_00253.png	CHEDDAR
+train_images/med_train_00012_00254.png	FRIES
+train_images/med_train_00012_00255.png	9.59
+train_images/med_train_00012_00256.png	TAX
+train_images/med_train_00012_00257.png	3.71
+train_images/med_train_00012_00258.png	SUBTOTAL
+train_images/med_train_00012_00259.png	32.18
+train_images/med_train_00012_00260.png	TAX
+train_images/med_train_00012_00261.png	3.71
+train_images/med_train_00012_00262.png	AMOUNT DUE
+train_images/med_train_00012_00263.png	$35.89
+train_images/med_train_00013_00264.png	Greenwood Medical Center
+train_images/med_train_00013_00265.png	789 Pine Rd.
+train_images/med_train_00013_00266.png	signature:
+train_images/med_train_00013_00267.png	Dr. A. Smith
+train_images/med_train_00014_00268.png	Win 1 of5 prizes of200
+train_images/med_train_00014_00269.png	in Morrisons vouchers!
+train_images/med_train_00014_00270.png	Morrisons
+train_images/med_train_00014_00271.png	Hadleigh-01473827021
+train_images/med_train_00014_00272.png	VAT No.343475355
+train_images/med_train_00014_00273.png	QTY DESCRIPTION
+train_images/med_train_00014_00274.png	PRICE
+train_images/med_train_00014_00275.png	AMOUNT
+train_images/med_train_00014_00276.png	1M WHOLEMEAL LOAF 0.50
+train_images/med_train_00014_00277.png	BALANCE DUE
+train_images/med_train_00014_00278.png	Card
+train_images/med_train_00014_00279.png	nber
+train_images/med_train_00014_00280.png	Issue Nunber
+train_images/med_train_00014_00281.png	Data Source
+train_images/med_train_00014_00282.png	Merchant Nunber
+train_images/med_train_00014_00283.png	Terminel ID
+train_images/med_train_00014_00284.png	ID 27868524
+train_images/med_train_00014_00285.png	Transaction ID
+train_images/med_train_00014_00286.png	Authorisation
+train_images/med_train_00014_00287.png	Verified by PIN
+train_images/med_train_00014_00288.png	CHANGE
+train_images/med_train_00014_00289.png	Number of itens:
+train_images/med_train_00014_00290.png	0041
+train_images/med_train_00014_00291.png	THANK YOU FOR
+train_images/med_train_00014_00292.png	SHOPPING
+train_images/med_train_00014_00293.png	VAT
+train_images/med_train_00014_00294.png	MORRISONS
+train_images/med_train_00015_00295.png	Patient
+train_images/med_train_00016_00296.png	06:38PM
+train_images/med_train_00016_00297.png	09:35AM
+train_images/med_train_00016_00298.png	GASTROENTEROLOGY
+train_images/med_train_00016_00299.png	Department:
+train_images/med_train_00016_00300.png	SURGICAL
+train_images/med_train_00016_00301.png	Private:
+train_images/med_train_00016_00302.png	Platelet Count
+train_images/med_train_00016_00303.png	197000
+train_images/med_train_00016_00304.png	/ cu.mm
+train_images/med_train_00016_00305.png	150000 - 400000
+train_images/med_train_00016_00306.png	Neutrophils
+train_images/med_train_00016_00307.png	68.8
+train_images/med_train_00016_00308.png	Lymphocytes
+train_images/med_train_00016_00309.png	16.0
+train_images/med_train_00016_00310.png	20.0 - 45.0
+train_images/med_train_00016_00311.png	Eosinophils
+train_images/med_train_00016_00312.png	8.1
+train_images/med_train_00016_00313.png	0.0 - 7.0
+train_images/med_train_00016_00314.png	Basophils
+train_images/med_train_00016_00315.png	0.4
+train_images/med_train_00016_00316.png	0.0 - 1.0
+train_images/med_train_00016_00317.png	Monocytes
+train_images/med_train_00016_00318.png	6.7
+train_images/med_train_00016_00319.png	2.0 - 10.0
+train_images/med_train_00016_00320.png	RDW
+train_images/med_train_00016_00321.png	13.9
+train_images/med_train_00016_00322.png	11.6 - 14.0
+train_images/med_train_00016_00323.png	IPF
+train_images/med_train_00016_00324.png	20.10
+train_images/med_train_00016_00325.png	0.70 - 9.10
+train_images/med_train_00016_00326.png	Neutrophil Absolute
+train_images/med_train_00016_00327.png	6288.3
+train_images/med_train_00016_00328.png	/cu mm
+train_images/med_train_00016_00329.png	2000.0 - 7000.0
+train_images/med_train_00016_00330.png	Lymphocyte Absolute
+train_images/med_train_00016_00331.png	1462.4
+train_images/med_train_00016_00332.png	/cu mm
+train_images/med_train_00016_00333.png	1000.0 - 3000.0
+train_images/med_train_00016_00334.png	Monocyte Absolute
+train_images/med_train_00016_00335.png	612.4
+train_images/med_train_00016_00336.png	/cu mm
+train_images/med_train_00016_00337.png	200.0 - 1000.0
+train_images/med_train_00016_00338.png	Eosinophil Absolute
+train_images/med_train_00016_00339.png	740.3
+train_images/med_train_00016_00340.png	/cu mm
+train_images/med_train_00016_00341.png	40.0 - 440.0
+train_images/med_train_00016_00342.png	Basophil Absolute
+train_images/med_train_00016_00343.png	36.6
+train_images/med_train_00016_00344.png	/cu mm
+train_images/med_train_00016_00345.png	20.0 - 100.0
+train_images/med_train_00016_00346.png	Renal Panel - I - Random
+train_images/med_train_00016_00347.png	Result Date & Time:
+train_images/med_train_00016_00348.png	07:51
+train_images/med_train_00016_00349.png	Parameters:
+train_images/med_train_00016_00350.png	Value
+train_images/med_train_00016_00351.png	Units
+train_images/med_train_00016_00352.png	Reference Range
+train_images/med_train_00016_00353.png	23.0
+train_images/med_train_00016_00354.png	mmol/L
+train_images/med_train_00016_00355.png	22.0 - 29.0
+train_images/med_train_00016_00356.png	143.0
+train_images/med_train_00016_00357.png	mmol/l
+train_images/med_train_00016_00358.png	135.0 - 145.0
+train_images/med_train_00016_00359.png	3.48
+train_images/med_train_00016_00360.png	mmol/l
+train_images/med_train_00016_00361.png	3.50 - 5.10
+train_images/med_train_00016_00362.png	103.2
+train_images/med_train_00016_00363.png	mmol/L
+train_images/med_train_00016_00364.png	98.0 - 107.0
+train_images/med_train_00016_00365.png	9.10
+train_images/med_train_00016_00366.png	mg/dl
+train_images/med_train_00016_00367.png	6.00 - 20.00
+train_images/med_train_00016_00368.png	0.72
+train_images/med_train_00016_00369.png	mg/dl
+train_images/med_train_00016_00370.png	0.60 - 1.40
+train_images/med_train_00016_00371.png	131
+train_images/med_train_00016_00372.png	mg/dl
+train_images/med_train_00016_00373.png	70 - 140
+train_images/med_train_00016_00374.png	eGFR
+train_images/med_train_00016_00375.png	92.0
+train_images/med_train_00016_00376.png	ml/min/1.73sq.m >60.0
+train_images/med_train_00016_00377.png	Result Date & Time:
+train_images/med_train_00016_00378.png	23:27
+train_images/med_train_00016_00379.png	Parameters:
+train_images/med_train_00016_00380.png	Value
+train_images/med_train_00016_00381.png	Units
+train_images/med_train_00016_00382.png	Reference Range
+train_images/med_train_00016_00383.png	INR
+train_images/med_train_00016_00384.png	0.94
+train_images/med_train_00016_00385.png	Prothrombin Time Test
+train_images/med_train_00016_00386.png	12.2
+train_images/med_train_00016_00387.png	sec
+train_images/med_train_00016_00388.png	PT CONTROL
+train_images/med_train_00016_00389.png	13.9
+train_images/med_train_00016_00390.png	sec
+train_images/med_train_00016_00391.png	ISI Value
+train_images/med_train_00016_00392.png	1.08
+train_images/med_train_00016_00393.png	sec
+train_images/med_train_00016_00394.png	HBsAG (Rapid Test)
+train_images/med_train_00016_00395.png	Result Date & Time:
+train_images/med_train_00016_00396.png	09:18
+train_images/med_train_00016_00397.png	Parameters:
+train_images/med_train_00016_00398.png	Value
+train_images/med_train_00016_00399.png	Units
+train_images/med_train_00016_00400.png	Reference Range
+train_images/med_train_00016_00401.png	TEST RESULT
+train_images/med_train_00016_00402.png	Negative
+train_images/med_train_00016_00403.png	Result Date & Time:
+train_images/med_train_00016_00404.png	09:18
+train_images/med_train_00016_00405.png	Parameters:
+train_images/med_train_00016_00406.png	Value
+train_images/med_train_00016_00407.png	Units
+train_images/med_train_00016_00408.png	Reference Range
+train_images/med_train_00016_00409.png	TEST RESULT
+train_images/med_train_00016_00410.png	Negative
+train_images/med_train_00017_00411.png	CHETHANA
+train_images/med_train_00017_00412.png	HOSPITALS
+train_images/med_train_00017_00413.png	Never Ending Care.....
+train_images/med_train_00017_00414.png	Name:
+train_images/med_train_00017_00415.png	IPNO:
+train_images/med_train_00017_00416.png	Age:
+train_images/med_train_00017_00417.png	Age: 25/Years/Male
+train_images/med_train_00017_00418.png	Doctor:
+train_images/med_train_00017_00419.png	Time:
+train_images/med_train_00017_00420.png	09:08:25
+train_images/med_train_00017_00421.png	Bill No:
+train_images/med_train_00017_00422.png	Reporting Time:
+train_images/med_train_00017_00423.png	10:08:02
+train_images/med_train_00017_00424.png	INVESTIGATION:
+train_images/med_train_00017_00425.png	RESULT:
+train_images/med_train_00017_00426.png	NORMAL RANGE:
+train_images/med_train_00017_00427.png	At the end of 1st hr
+train_images/med_train_00017_00428.png	29 mm
+train_images/med_train_00017_00429.png	METHOD: WESTERNGRENS
+train_images/med_train_00017_00430.png	LAB INCHARGE
+train_images/med_train_00017_00431.png	Dr. D. SHANTHI KIRAN
+train_images/med_train_00017_00432.png	MD. PATHOLOGY
+train_images/med_train_00017_00433.png	Regd. No. 58455
+train_images/med_train_00017_00434.png	Scanned with OKEN Scanner
+train_images/med_train_00018_00435.png	DUPLICATE
+train_images/med_train_00018_00436.png	FRANCO MANCA
+train_images/med_train_00018_00437.png	LONDON
+train_images/med_train_00018_00438.png	S409
+train_images/med_train_00018_00439.png	HANDSET:1
+train_images/med_train_00018_00440.png	AMERICAN EXPRESS
+train_images/med_train_00018_00441.png	AMERICAN EXPRESS
+train_images/med_train_00018_00442.png	CONTACTLESS
+train_images/med_train_00018_00443.png	SALE
+train_images/med_train_00018_00444.png	AMOUNT
+train_images/med_train_00018_00445.png	TOTAL
+train_images/med_train_00018_00446.png	NO CARDHOLDER
+train_images/med_train_00018_00447.png	VERIFICATION
+train_images/med_train_00018_00448.png	Thank You
+train_images/med_train_00018_00449.png	You 11/03/1622:23
+train_images/med_train_00018_00450.png	AUTH CODE:47
+train_images/med_train_00018_00451.png	TXN 0734
+train_images/med_train_00018_00452.png	CUSTOMER COPY
+train_images/med_train_00018_00453.png	PLEASE RETAIN RECEIPT
+train_images/med_train_00019_00454.png	Browns Covent Gardens
+train_images/med_train_00019_00455.png	St Martin's Lane
+train_images/med_train_00019_00456.png	ZA174785-P0S-10
+train_images/med_train_00019_00457.png	20 May 2017 18:20
+train_images/med_train_00019_00458.png	RHIAN SLIPPER
+train_images/med_train_00019_00459.png	Afternoon Tea 2
+train_images/med_train_00019_00460.png	28.00
+train_images/med_train_00019_00461.png	125MercierBIcdeN
+train_images/med_train_00019_00462.png	5.95
+train_images/med_train_00019_00463.png	125MercierBIcdeN
+train_images/med_train_00019_00464.png	5.95
+train_images/med_train_00019_00465.png	RhuCCollins
+train_images/med_train_00019_00466.png	7.50
+train_images/med_train_00019_00467.png	British Royale
+train_images/med_train_00019_00468.png	7.50
+train_images/med_train_00019_00469.png	MontRochViognier
+train_images/med_train_00019_00470.png	17.70
+train_images/med_train_00019_00471.png	Subtotal
+train_images/med_train_00019_00472.png	72.60
+train_images/med_train_00019_00473.png	Service
+train_images/med_train_00019_00474.png	7.26
+train_images/med_train_00019_00475.png	Product Group Summary
+train_images/med_train_00019_00476.png	Food And Drink
+train_images/med_train_00019_00477.png	79.86
+train_images/med_train_00020_00478.png	Oakview Hospital
+train_images/med_train_00020_00479.png	45 Oak Ave.
+train_images/med_train_00020_00480.png	Dr. F. Gomez
+train_images/med_train_00021_00481.png	City Health Clinic
+train_images/med_train_00021_00482.png	678 Orchard Ln.
+train_images/med_train_00021_00483.png	Dr. F. Gomez
+train_images/med_train_00021_00484.png	signature:
+train_images/med_train_00022_00485.png	UHID: AHJN.0000311592
+train_images/med_train_00022_00486.png	24-Apr-2025 01:28 PM
+train_images/med_train_00022_00487.png	Hemoglobin
+train_images/med_train_00022_00488.png	11.3 g/dL
+train_images/med_train_00022_00489.png	(Photometry)
+train_images/med_train_00022_00490.png	Basophils
+train_images/med_train_00022_00491.png	00 %
+train_images/med_train_00022_00492.png	0-1
+train_images/med_train_00022_00493.png	Platelet Count
+train_images/med_train_00022_00494.png	266 10³/mm³
+train_images/med_train_00022_00495.png	150-450
+train_images/med_train_00022_00496.png	(IMPEDENCE)
+train_images/med_train_00022_00497.png	RBC COUNT
+train_images/med_train_00022_00498.png	4.2 Million/ul
+train_images/med_train_00022_00499.png	3.8-4.8
+train_images/med_train_00022_00500.png	METHOD: (AUTOMATED
+train_images/med_train_00022_00501.png	:IMPEDANCE)
+train_images/med_train_00022_00502.png	Packed cell volume
+train_images/med_train_00022_00503.png	34.5 %
+train_images/med_train_00022_00504.png	30 - 46
+train_images/med_train_00022_00505.png	(METHOD:CALCULATED)
+train_images/med_train_00022_00506.png	WBC count
+train_images/med_train_00022_00507.png	14.2 10⁹/mm³
+train_images/med_train_00022_00508.png	4-11
+train_images/med_train_00022_00509.png	(METHOD:AUTOMATED
+train_images/med_train_00022_00510.png	:IMPEDANCE)
+train_images/med_train_00022_00511.png	Neutrophils
+train_images/med_train_00022_00512.png	93 %
+train_images/med_train_00022_00513.png	40 - 75
+train_images/med_train_00022_00514.png	Lymphocytes
+train_images/med_train_00022_00515.png	05 %
+train_images/med_train_00022_00516.png	20-40
+train_images/med_train_00022_00517.png	Monocytes
+train_images/med_train_00022_00518.png	01 %
+train_images/med_train_00022_00519.png	0 - 10
+train_images/med_train_00022_00520.png	Eosinophils
+train_images/med_train_00022_00521.png	01 %
+train_images/med_train_00022_00522.png	HEMOGLOBIN (AUTOMATION)
+train_images/med_train_00022_00523.png	25-Apr-2025 03:43 AM
+train_images/med_train_00022_00524.png	Hemoglobin
+train_images/med_train_00022_00525.png	9.7 g/dL
+train_images/med_train_00022_00526.png	11.5 - 14.5
+train_images/med_train_00022_00527.png	(Photometry)
+train_images/med_train_00022_00528.png	PCV- PACKED CELL VOLUME
+train_images/med_train_00022_00529.png	25-Apr-2025 03:43 AM
+train_images/med_train_00022_00530.png	Packed cell volume
+train_images/med_train_00022_00531.png	28.6 %
+train_images/med_train_00022_00532.png	30 - 46
+train_images/med_train_00022_00533.png	(METHOD:CALCULATED)
+train_images/med_train_00022_00534.png	Microbiology
+train_images/med_train_00022_00535.png	HBS ANTIGEN
+train_images/med_train_00022_00536.png	23-Apr-2025 10:50 AM
+train_images/med_train_00022_00537.png	HCV - HEPATITIS C VIRUS
+train_images/med_train_00022_00538.png	23-Apr-2025 10:50 AM
+train_images/med_train_00022_00539.png	HIV I AND II RAPID
+train_images/med_train_00022_00540.png	23-Apr-2025 10:49 AM
+train_images/med_train_00023_00541.png	Oakview Hospital
+train_images/med_train_00023_00542.png	789 Pine Rd.
+train_images/med_train_00023_00543.png	Dr. H. Johnson
+train_images/med_train_00023_00544.png	signature:
+train_images/med_train_00024_00545.png	CAFFETORINO
+train_images/med_train_00024_00546.png	DI CAPOZZO DOHENICA
+train_images/med_train_00024_00547.png	PIAZZA CADORNA N.23
+train_images/med_train_00024_00548.png	N.23 TEL.0323.30652
+train_images/med_train_00024_00549.png	EURO
+train_images/med_train_00024_00550.png	COPERTO
+train_images/med_train_00024_00551.png	2X0.00
+train_images/med_train_00024_00552.png	IL GAS
+train_images/med_train_00024_00553.png	BIRRAP
+train_images/med_train_00024_00554.png	6,00
+train_images/med_train_00024_00555.png	COTTO DI MONTAG
+train_images/med_train_00024_00556.png	SENZA FORMAGGI
+train_images/med_train_00024_00557.png	2X0.00
+train_images/med_train_00024_00558.png	2X0.00
+train_images/med_train_00024_00559.png	MILANESE CON PA
+train_images/med_train_00024_00560.png	13.00
+train_images/med_train_00024_00561.png	CRESPELLE SPINA
+train_images/med_train_00024_00562.png	CAFFE LUNGO
+train_images/med_train_00024_00563.png	TOTALE EURO
+train_images/med_train_00024_00564.png	45,00
+train_images/med_train_00024_00565.png	CONTANTE
+train_images/med_train_00024_00566.png	45,00
+train_images/med_train_00024_00567.png	RESTO
+train_images/med_train_00024_00568.png	0,00
+train_images/med_train_00024_00569.png	CASSA:
+train_images/med_train_00024_00570.png	07-10-2018
+train_images/med_train_00024_00571.png	14:31
+train_images/med_train_00024_00572.png	17
+train_images/med_train_00025_00573.png	Riverside Clinic
+train_images/med_train_00025_00574.png	45 Oak Ave.
+train_images/med_train_00025_00575.png	signature:
+train_images/med_train_00025_00576.png	Dr. F. Gomez
+train_images/med_train_00026_00577.png	Fish Farmi Restaurant
+train_images/med_train_00026_00578.png	eg
+train_images/med_train_00026_00579.png	928627-V
+train_images/med_train_00026_00580.png	Hulu Langat. 68000 Ampang
+train_images/med_train_00026_00581.png	Selangor.
+train_images/med_train_00026_00582.png	SIMPLIFIED TAX INVOICE
+train_images/med_train_00026_00583.png	Cashicr:nok
+train_images/med_train_00026_00584.png	Datc31/8/2016 215219 62
+train_images/med_train_00026_00585.png	Pax:8
+train_images/med_train_00026_00586.png	QTY
+train_images/med_train_00026_00587.png	wa3
+train_images/med_train_00026_00588.png	65.00
+train_images/med_train_00026_00589.png	0+0
+train_images/med_train_00026_00590.png	620.10
+train_images/med_train_00026_00591.png	C4
+train_images/med_train_00026_00592.png	45.00
+train_images/med_train_00026_00593.png	0+0
+train_images/med_train_00026_00594.png	S ketam butter
+train_images/med_train_00026_00595.png	95.40
+train_images/med_train_00026_00596.png	c6
+train_images/med_train_00026_00597.png	45.00
+train_images/med_train_00026_00598.png	0+0
+train_images/med_train_00026_00599.png	95.40
+train_images/med_train_00026_00600.png	S4
+train_images/med_train_00026_00601.png	S Nasi Putih
+train_images/med_train_00026_00602.png	18.00
+train_images/med_train_00026_00603.png	0+0
+train_images/med_train_00026_00604.png	38.16
+train_images/med_train_00027_00605.png	City Health Clinic
+train_images/med_train_00027_00606.png	678 Orchard Ln.
+train_images/med_train_00027_00607.png	signature:
+train_images/med_train_00027_00608.png	Dr. H. Johnson
+train_images/med_train_00028_00609.png	BJS SAN RAFAEL
+train_images/med_train_00028_00610.png	CECILIA L
+train_images/med_train_00028_00611.png	Pay as soon as you are
+train_images/med_train_00028_00612.png	finished ordering.
+train_images/med_train_00028_00613.png	Ask your server for more
+train_images/med_train_00028_00614.png	details today.
+train_images/med_train_00028_00615.png	BJS FRITOS NACHOS
+train_images/med_train_00028_00616.png	7.50
+train_images/med_train_00028_00617.png	BH DBL DELUXE BURGER
+train_images/med_train_00028_00618.png	10.95
+train_images/med_train_00028_00619.png	18.45
+train_images/med_train_00028_00620.png	Tax:
+train_images/med_train_00028_00621.png	1.71
+train_images/med_train_00028_00622.png	20.16
+train_images/med_train_00029_00623.png	Fortis
+train_images/med_train_00029_00624.png	Fortis Hospital
+train_images/med_train_00029_00625.png	A Block, Shalimar Bagh,
+train_images/med_train_00029_00626.png	New Delhi - 110088
+train_images/med_train_00029_00627.png	Tel:
+train_images/med_train_00029_00628.png	Tel: +91 11 4530 2222
+train_images/med_train_00029_00629.png	Fax:
+train_images/med_train_00029_00630.png	Discharge Summary
+train_images/med_train_00029_00631.png	Emergency:
+train_images/med_train_00029_00632.png	+91 11 4788 4788
+train_images/med_train_00029_00633.png	Ambulance:
+train_images/med_train_00029_00634.png	Patient
+train_images/med_train_00029_00635.png	Parameter Name
+train_images/med_train_00029_00636.png	PH
+train_images/med_train_00029_00637.png	7.0
+train_images/med_train_00029_00638.png	SPECIFIC GRAVITY
+train_images/med_train_00029_00639.png	1.020
+train_images/med_train_00029_00640.png	PROTEIN
+train_images/med_train_00029_00641.png	NOT DETECTED
+train_images/med_train_00029_00642.png	GLUCOSE
+train_images/med_train_00029_00643.png	NOT DETECTED
+train_images/med_train_00029_00644.png	KETONES
+train_images/med_train_00029_00645.png	NOT DETECTED
+train_images/med_train_00029_00646.png	BLOOD
+train_images/med_train_00029_00647.png	NOT DETECTED
+train_images/med_train_00029_00648.png	BILIRUBIN,
+train_images/med_train_00029_00649.png	NOT DETECTED
+train_images/med_train_00029_00650.png	UROBILINOGEN
+train_images/med_train_00029_00651.png	NORMAL
+train_images/med_train_00029_00652.png	NITRITE
+train_images/med_train_00029_00653.png	NOT DETECTED
+train_images/med_train_00029_00654.png	LEUKOCYTE ESTERASE
+train_images/med_train_00029_00655.png	NEGATIVE
+train_images/med_train_00029_00656.png	RED BLOOD CELLS
+train_images/med_train_00029_00657.png	NOT DETECTED
+train_images/med_train_00029_00658.png	BLOOD UREA NITROGEN
+train_images/med_train_00029_00659.png	CREATININE
+train_images/med_train_00029_00660.png	0.61
+train_images/med_train_00029_00661.png	BUN/CREAT RATIO
+train_images/med_train_00029_00662.png	13.11
+train_images/med_train_00029_00663.png	SODIUM
+train_images/med_train_00029_00664.png	138
+train_images/med_train_00029_00665.png	POTASSIUM
+train_images/med_train_00029_00666.png	3.92
+train_images/med_train_00029_00667.png	CHLORIDE
+train_images/med_train_00029_00668.png	103
+train_images/med_train_00029_00669.png	URIC ACID
+train_images/med_train_00029_00670.png	5.3
+train_images/med_train_00029_00671.png	28
+train_images/med_train_00029_00672.png	4530
+train_images/med_train_00029_00673.png	ALKALINE PHOSPHATASE
+train_images/med_train_00029_00674.png	263
+train_images/med_train_00029_00675.png	BILIRUBIN, TOTAL
+train_images/med_train_00029_00676.png	0.61
+train_images/med_train_00029_00677.png	BILIRUBIN, DIRECT
+train_images/med_train_00029_00678.png	0.10
+train_images/med_train_00029_00679.png	BILIRUBIN, INDIRECT
+train_images/med_train_00029_00680.png	0.51
+train_images/med_train_00029_00681.png	2682
+train_images/med_train_00029_00682.png	LACTATE DEHYDROGENASE
+train_images/med_train_00029_00683.png	219
+train_images/med_train_00029_00684.png	FORTIS HEALTHCARE LIMITED
+train_images/med_train_00030_00685.png	TESCO
+train_images/med_train_00030_00686.png	0.62
+train_images/med_train_00030_00687.png	VALUE JUICE
+train_images/med_train_00030_00688.png	1.29
+train_images/med_train_00030_00689.png	CEREALS
+train_images/med_train_00030_00690.png	0.48
+train_images/med_train_00030_00691.png	HOT CHOC
+train_images/med_train_00030_00692.png	0.26
+train_images/med_train_00030_00693.png	BAKED BEANS
+train_images/med_train_00030_00694.png	1.00
+train_images/med_train_00030_00695.png	TESCO LAGER
+train_images/med_train_00030_00696.png	0.26
+train_images/med_train_00030_00697.png	BAKED BEANS
+train_images/med_train_00030_00698.png	0.62
+train_images/med_train_00030_00699.png	VALUE JUICE
+train_images/med_train_00030_00700.png	0.26
+train_images/med_train_00030_00701.png	BAKED BEANS
+train_images/med_train_00030_00702.png	0.26
+train_images/med_train_00030_00703.png	BAKED BEANS
+train_images/med_train_00030_00704.png	0.47
+train_images/med_train_00030_00705.png	VALUE THK BRD
+train_images/med_train_00030_00706.png	5.52
+train_images/med_train_00030_00707.png	TOTAL
+train_images/med_train_00030_00708.png	5.60
+train_images/med_train_00030_00709.png	CASH
+train_images/med_train_00030_00710.png	0.08
+train_images/med_train_00030_00711.png	CHANGE DUE
+train_images/med_train_00030_00712.png	CLUBCARD STATEMENT
+train_images/med_train_00031_00713.png	Oakview Hospital
+train_images/med_train_00031_00714.png	234 Maple Blvd.
+train_images/med_train_00031_00715.png	signature:
+train_images/med_train_00032_00716.png	Riverside Clinic
+train_images/med_train_00032_00717.png	234 Maple Blvd.
+train_images/med_train_00032_00718.png	signature:
+train_images/med_train_00033_00719.png	Milano
+train_images/med_train_00033_00720.png	Restaurant
+train_images/med_train_00033_00721.png	NUWARA ELIYA.
+train_images/med_train_00033_00722.png	Date
+train_images/med_train_00033_00723.png	28/11/2016
+train_images/med_train_00033_00724.png	Unit
+train_images/med_train_00033_00725.png	Product
+train_images/med_train_00033_00726.png	Price
+train_images/med_train_00033_00727.png	Amount
+train_images/med_train_00033_00728.png	451 ESPRESSO SINGLE ML
+train_images/med_train_00033_00729.png	900.00
+train_images/med_train_00033_00730.png	SUB TOTAL
+train_images/med_train_00033_00731.png	900.00
+train_images/med_train_00033_00732.png	Service Charge 10%
+train_images/med_train_00033_00733.png	990.00
+train_images/med_train_00033_00734.png	SUB TOTAL
+train_images/med_train_00033_00735.png	990.00
+train_images/med_train_00033_00736.png	CASH
+train_images/med_train_00033_00737.png	990.00
+train_images/med_train_00033_00738.png	BALANCE
+train_images/med_train_00033_00739.png	900.00
+train_images/med_train_00033_00740.png	THANK YOU COME AGAIN
+train_images/med_train_00033_00741.png	Systes By onimta IT
+train_images/med_train_00033_00742.png	www.onistait.com
+train_images/med_train_00034_00743.png	Riverside Clinic
+train_images/med_train_00034_00744.png	234 Maple Blvd.
+train_images/med_train_00034_00745.png	Dr. M. Lee
+train_images/med_train_00035_00746.png	Invoice no: 82869381
+train_images/med_train_00035_00747.png	Date of issue:
+train_images/med_train_00035_00748.png	09/16/2016
+train_images/med_train_00035_00749.png	Seller:
+train_images/med_train_00035_00750.png	Client:
+train_images/med_train_00035_00751.png	King-Lawrence
+train_images/med_train_00035_00752.png	James-Jones
+train_images/med_train_00035_00753.png	90829 Jill Plain
+train_images/med_train_00035_00754.png	Margaretton, WA 58752
+train_images/med_train_00035_00755.png	East Stacy, PA 48537
+train_images/med_train_00035_00756.png	Tax Id: 979-79-5668
+train_images/med_train_00035_00757.png	Tax Id: 902-99-4991
+train_images/med_train_00035_00758.png	ITEMS
+train_images/med_train_00035_00759.png	No.
+train_images/med_train_00035_00760.png	Description
+train_images/med_train_00035_00761.png	Qty
+train_images/med_train_00035_00762.png	UM
+train_images/med_train_00035_00763.png	Net price
+train_images/med_train_00035_00764.png	Net worth
+train_images/med_train_00035_00765.png	VAT [%]
+train_images/med_train_00035_00766.png	Gross
+train_images/med_train_00035_00767.png	worth
+train_images/med_train_00035_00768.png	195,00
+train_images/med_train_00035_00769.png	each
+train_images/med_train_00035_00770.png	22,77
+train_images/med_train_00035_00771.png	113,85
+train_images/med_train_00035_00772.png	10%
+train_images/med_train_00035_00773.png	125,23
+train_images/med_train_00035_00774.png	Color Princess Dresses
+train_images/med_train_00035_00775.png	2.
+train_images/med_train_00035_00776.png	4,00
+train_images/med_train_00035_00777.png	each
+train_images/med_train_00035_00778.png	14,95
+train_images/med_train_00035_00779.png	59,80
+train_images/med_train_00035_00780.png	10%
+train_images/med_train_00035_00781.png	65,78
+train_images/med_train_00035_00782.png	Dress NEW
+train_images/med_train_00035_00783.png	3.
+train_images/med_train_00035_00784.png	195,00
+train_images/med_train_00035_00785.png	each
+train_images/med_train_00035_00786.png	39,00
+train_images/med_train_00035_00787.png	195,00
+train_images/med_train_00035_00788.png	10%
+train_images/med_train_00035_00789.png	214,50
+train_images/med_train_00035_00790.png	Pockets & Floral Sleeves
+train_images/med_train_00035_00791.png	HoneyMe Size L NWT
+train_images/med_train_00035_00792.png	1,00
+train_images/med_train_00035_00793.png	each
+train_images/med_train_00035_00794.png	8,99
+train_images/med_train_00035_00795.png	8,99
+train_images/med_train_00035_00796.png	10%
+train_images/med_train_00035_00797.png	9,89
+train_images/med_train_00035_00798.png	Evening Formal Dresses
+train_images/med_train_00035_00799.png	1,00
+train_images/med_train_00035_00800.png	each
+train_images/med_train_00035_00801.png	35,00
+train_images/med_train_00035_00802.png	35,00
+train_images/med_train_00035_00803.png	10%
+train_images/med_train_00035_00804.png	38,50
+train_images/med_train_00035_00805.png	Sweater Fall Dress
+train_images/med_train_00035_00806.png	14 Colors Women Spaghetti
+train_images/med_train_00035_00807.png	4,00
+train_images/med_train_00035_00808.png	each
+train_images/med_train_00035_00809.png	4,71
+train_images/med_train_00035_00810.png	18,84
+train_images/med_train_00035_00811.png	10%
+train_images/med_train_00035_00812.png	20,72
+train_images/med_train_00035_00813.png	Party Club Wear Dresses
+train_images/med_train_00035_00814.png	7.
+train_images/med_train_00035_00815.png	1,00
+train_images/med_train_00035_00816.png	each
+train_images/med_train_00035_00817.png	21,23
+train_images/med_train_00035_00818.png	21,23
+train_images/med_train_00035_00819.png	10%
+train_images/med_train_00035_00820.png	23,35
+train_images/med_train_00035_00821.png	SUMMARY
+train_images/med_train_00035_00822.png	VAT [%]
+train_images/med_train_00035_00823.png	Net worth
+train_images/med_train_00035_00824.png	VAT
+train_images/med_train_00035_00825.png	Gross worth
+train_images/med_train_00035_00826.png	10%
+train_images/med_train_00035_00827.png	452,71
+train_images/med_train_00035_00828.png	45,27
+train_images/med_train_00035_00829.png	497,98
+train_images/med_train_00035_00830.png	Total
+train_images/med_train_00035_00831.png	$ 452,71
+train_images/med_train_00035_00832.png	$ 45,27
+train_images/med_train_00035_00833.png	$ 497,98
+train_images/med_train_00036_00834.png	BERGDORF
+train_images/med_train_00036_00835.png	GOODMAN
+train_images/med_train_00036_00836.png	754 FIFTH AVENUE
+train_images/med_train_00036_00837.png	212-753-7300
+train_images/med_train_00036_00838.png	TAKE MDSE
+train_images/med_train_00036_00839.png	FACIAL
+train_images/med_train_00036_00840.png	45.00
+train_images/med_train_00036_00841.png	858-704
+train_images/med_train_00036_00842.png	80887108
+train_images/med_train_00036_00843.png	45.00EA
+train_images/med_train_00036_00844.png	TAKE SUBTOTAL
+train_images/med_train_00036_00845.png	45.00
+train_images/med_train_00036_00846.png	TOTAL TAX
+train_images/med_train_00036_00847.png	1.80
+train_images/med_train_00036_00848.png	3306120100
+train_images/med_train_00036_00849.png	TOTAL.
+train_images/med_train_00036_00850.png	46.80
+train_images/med_train_00036_00851.png	CASH
+train_images/med_train_00036_00852.png	60.00
+train_images/med_train_00036_00853.png	CASH CHANGE
+train_images/med_train_00036_00854.png	-13.20
+train_images/med_train_00036_00855.png	THANK YOU FOR SHOPPING AT
+train_images/med_train_00036_00856.png	BERGDORF GOODMAN
+train_images/med_train_00036_00857.png	visit
+train_images/med_train_00036_00858.png	www.bergdorfgoodman.com
+train_images/med_train_00037_00859.png	Invoice no: 59336079
+train_images/med_train_00037_00860.png	Date of issue:
+train_images/med_train_00037_00861.png	01/09/2012
+train_images/med_train_00037_00862.png	Seller:
+train_images/med_train_00037_00863.png	Client:
+train_images/med_train_00037_00864.png	Perry, Brown and Hudson.
+train_images/med_train_00037_00865.png	Rogers-Brown
+train_images/med_train_00037_00866.png	2180 Huffman Curve
+train_images/med_train_00037_00867.png	uSS Kaufman
+train_images/med_train_00037_00868.png	Jackville, ND 19375
+train_images/med_train_00037_00869.png	FPO AP 23378
+train_images/med_train_00037_00870.png	Tax Id: 914-78-6724
+train_images/med_train_00037_00871.png	Tax Id: 955-90-1162
+train_images/med_train_00037_00872.png	ITEMS
+train_images/med_train_00037_00873.png	No.
+train_images/med_train_00037_00874.png	Description
+train_images/med_train_00037_00875.png	Qty
+train_images/med_train_00037_00876.png	UM
+train_images/med_train_00037_00877.png	Net price
+train_images/med_train_00037_00878.png	Net worth
+train_images/med_train_00037_00879.png	VAT [%]
+train_images/med_train_00037_00880.png	Gross
+train_images/med_train_00037_00881.png	worth
+train_images/med_train_00037_00882.png	1,00
+train_images/med_train_00037_00883.png	each
+train_images/med_train_00037_00884.png	1,99
+train_images/med_train_00037_00885.png	1,99
+train_images/med_train_00037_00886.png	10%
+train_images/med_train_00037_00887.png	2,19
+train_images/med_train_00037_00888.png	E-books + More
+train_images/med_train_00037_00889.png	SUMMARY
+train_images/med_train_00037_00890.png	VAT [%]
+train_images/med_train_00037_00891.png	Net worth
+train_images/med_train_00037_00892.png	VAT
+train_images/med_train_00037_00893.png	Gross worth
+train_images/med_train_00037_00894.png	10%
+train_images/med_train_00037_00895.png	1,99
+train_images/med_train_00037_00896.png	0,20
+train_images/med_train_00037_00897.png	2,19
+train_images/med_train_00037_00898.png	Total
+train_images/med_train_00037_00899.png	$ 1,99
+train_images/med_train_00037_00900.png	$ 0,20
+train_images/med_train_00037_00901.png	2,19
+train_images/med_train_00038_00902.png	Meadowview Health
+train_images/med_train_00038_00903.png	678 Orchard Ln.
+train_images/med_train_00038_00904.png	Dr. M. Lee
+train_images/med_train_00038_00905.png	signature:
+train_images/med_train_00039_00906.png	COLES GIVING
+train_images/med_train_00039_00907.png	REDKITEA
+train_images/med_train_00039_00908.png	HELPING HAND
+train_images/med_train_00039_00909.png	Donote at any register
+train_images/med_train_00039_00910.png	CBD
+train_images/med_train_00039_00911.png	CBD Store:0671
+train_images/med_train_00039_00912.png	Open 6am ti11 1am
+train_images/med_train_00039_00913.png	7 days a week
+train_images/med_train_00039_00914.png	Time:21:33 Reg
+train_images/med_train_00039_00915.png	WHITE CHOC SAUCE 1EACH
+train_images/med_train_00039_00916.png	2.00
+train_images/med_train_00039_00917.png	SAUCE CARAMEL DIP 130GRAM
+train_images/med_train_00039_00918.png	2.00
+train_images/med_train_00039_00919.png	-1.00
+train_images/med_train_00039_00920.png	0.50
+train_images/med_train_00039_00921.png	8.43
+train_images/med_train_00039_00922.png	3.90
+train_images/med_train_00039_00923.png	2.92
+train_images/med_train_00039_00924.png	4.98
+train_images/med_train_00039_00925.png	%DARE ESPRESSO MILK 50OML
+train_images/med_train_00039_00926.png	3.20
+train_images/med_train_00039_00927.png	3.20
+train_images/med_train_00039_00928.png	0.61
+train_images/med_train_00039_00929.png	KIWI BERRY 125GRAM
+train_images/med_train_00039_00930.png	6.55
+train_images/med_train_00039_00931.png	0.78
+train_images/med_train_00039_00932.png	HON&BAL DRESSING 125ML
+train_images/med_train_00039_00933.png	2.50
+train_images/med_train_00039_00934.png	RASPBERRIES 125GRAM
+train_images/med_train_00039_00935.png	4.98
+train_images/med_train_00039_00936.png	5.50
+train_images/med_train_00039_00937.png	NATURAL MACADAMIAS PERKG
+train_images/med_train_00039_00938.png	1.60
+train_images/med_train_00039_00939.png	7.56
+train_images/med_train_00039_00940.png	6.00
+train_images/med_train_00039_00941.png	Sub Total
+train_images/med_train_00039_00942.png	$70.19
+train_images/med_train_00039_00943.png	Rounding
+train_images/med_train_00039_00944.png	0.01
+train_images/med_train_00039_00945.png	Total for 22 items
+train_images/med_train_00039_00946.png	$70.20
+train_images/med_train_00039_00947.png	Cash
+train_images/med_train_00039_00948.png	70.20
+train_images/med_train_00039_00949.png	GST INCLUDED IN TOTAL
+train_images/med_train_00039_00950.png	$2.08
+train_images/med_train_00039_00951.png	Total Savings
+train_images/med_train_00040_00952.png	IP No: IP496459 -
+train_images/med_train_00040_00953.png	- Bill No: INT1823780
+train_images/med_train_00040_00954.png	331,545.00
+train_images/med_train_00040_00955.png	S.No
+train_images/med_train_00040_00956.png	Service
+train_images/med_train_00040_00957.png	C B C
+train_images/med_train_00040_00958.png	Haematology
+train_images/med_train_00040_00959.png	COAGULATION PROFILE
+train_images/med_train_00040_00960.png	Haematology
+train_images/med_train_00040_00961.png	FACTOR XIII - SCREENING
+train_images/med_train_00040_00962.png	Haematology
+train_images/med_train_00040_00963.png	PLATELET COUNT
+train_images/med_train_00040_00964.png	Haematology
+train_images/med_train_00040_00965.png	PROTHROMBIN TIME
+train_images/med_train_00040_00966.png	Haematology
+train_images/med_train_00040_00967.png	THROMBIN TIME
+train_images/med_train_00040_00968.png	Haematology
+train_images/med_train_00040_00969.png	Lab Others
+train_images/med_train_00040_00970.png	Lab Others
+train_images/med_train_00040_00971.png	Lab Others
+train_images/med_train_00040_00972.png	AMYLASE - SERUM/PLASMA
+train_images/med_train_00040_00973.png	Lab Others
+train_images/med_train_00040_00974.png	BILIRUBIN, TOTAL - SERUM
+train_images/med_train_00040_00975.png	Lab Others
+train_images/med_train_00040_00976.png	CALCIUM - SERUM
+train_images/med_train_00040_00977.png	Lab Others
+train_images/med_train_00040_00978.png	Lab Others
+train_images/med_train_00040_00979.png	Lab Others
+train_images/med_train_00040_00980.png	CHLORIDE - SERUM / PLASMA
+train_images/med_train_00040_00981.png	Lab Others
+train_images/med_train_00040_00982.png	Lab Others
+train_images/med_train_00040_00983.png	Lab Others
+train_images/med_train_00040_00984.png	Lab Others
+train_images/med_train_00040_00985.png	MAGNESIUM - SERUM
+train_images/med_train_00040_00986.png	Lab Others
+train_images/med_train_00040_00987.png	Lab Others
+train_images/med_train_00040_00988.png	Lab Others
+train_images/med_train_00040_00989.png	PREALBUMIN SERUM
+train_images/med_train_00040_00990.png	Lab Others
+train_images/med_train_00040_00991.png	Lab Others
+train_images/med_train_00040_00992.png	SODIUM - SERUM / PLASMA
+train_images/med_train_00040_00993.png	Lab Others
+train_images/med_train_00040_00994.png	UREA - SERUM / PLASMA
+train_images/med_train_00040_00995.png	Lab Others
+train_images/med_train_00040_00996.png	URIC ACID - SERUM
+train_images/med_train_00040_00997.png	Lab Others
+train_images/med_train_00040_00998.png	URINE ROUTINE (CUE)
+train_images/med_train_00040_00999.png	Lab Others
+train_images/med_train_00040_01000.png	- SERUM/PLASMA
+train_images/med_train_00040_01001.png	Lab Others
+train_images/med_train_00040_01002.png	CHLORIDE - SERUM / PLASMA
+train_images/med_train_00040_01003.png	Lab Others
+train_images/med_train_00040_01004.png	Lab Others
+train_images/med_train_00040_01005.png	Lab Others
+train_images/med_train_00040_01006.png	Lab Others
+train_images/med_train_00040_01007.png	PREALBUMIN SERUM
+train_images/med_train_00040_01008.png	Lab Others
+train_images/med_train_00040_01009.png	SODIUM - SERUM / PLASMA
+train_images/med_train_00040_01010.png	Lab Others
+train_images/med_train_00040_01011.png	UREA - SERUM / PLASMA
+train_images/med_train_00040_01012.png	Lab Others
+train_images/med_train_00040_01013.png	ANTI HCV ELISA
+train_images/med_train_00040_01014.png	Lab Others
+train_images/med_train_00040_01015.png	HBsAg
+train_images/med_train_00040_01016.png	Lab Others
+train_images/med_train_00040_01017.png	Lab Others
+train_images/med_train_00040_01018.png	Lab Others
+train_images/med_train_00041_01019.png	ADVANTA
+train_images/med_train_00041_01020.png	HOSPITAL
+train_images/med_train_00041_01021.png	Ph.: 01251-252128,
+train_images/med_train_00041_01022.png	Date:
+train_images/med_train_00041_01023.png	Srl No.: 31
+train_images/med_train_00041_01024.png	Patient Id:
+train_images/med_train_00041_01025.png	Dr. MRINAL VERMA
+train_images/med_train_00041_01026.png	No.: 14921
+train_images/med_train_00041_01027.png	No.:
+train_images/med_train_00041_01028.png	12356
+train_images/med_train_00041_01029.png	Test:
+train_images/med_train_00041_01030.png	BIOCHEMISTRY
+train_images/med_train_00041_01031.png	SODIUM
+train_images/med_train_00041_01032.png	132.4
+train_images/med_train_00041_01033.png	mmol/L
+train_images/med_train_00041_01034.png	POTASSIUM
+train_images/med_train_00041_01035.png	3.2
+train_images/med_train_00041_01036.png	mmol/L
+train_images/med_train_00041_01037.png	CALCIUM
+train_images/med_train_00041_01038.png	8.21
+train_images/med_train_00041_01039.png	8.0 - 10.5
+train_images/med_train_00041_01040.png	ProCalcitonin
+train_images/med_train_00041_01041.png	1.5
+train_images/med_train_00041_01042.png	ng/mL
+train_images/med_train_00041_01043.png	<0.5 ng/mL
+train_images/med_train_00041_01044.png	Comment:
+train_images/med_train_00041_01045.png	infectious inflammations.
+train_images/med_train_00041_01046.png	Procalcitonin level
+train_images/med_train_00041_01047.png	Inferences
+train_images/med_train_00041_01048.png	< 0.25 ng/mL
+train_images/med_train_00041_01049.png	(sepsis) is not likely
+train_images/med_train_00041_01050.png	0.25 - < 2 ng/mL
+train_images/med_train_00041_01051.png	definitive diagnosis
+train_images/med_train_00041_01052.png	2.0 - <10 ng/mL
+train_images/med_train_00041_01053.png	>10 ng/mL
+train_images/med_train_00041_01054.png	drugs stimulating the
+train_images/med_train_00041_01055.png	hrs.
+train_images/med_train_00042_01056.png	15.25
+train_images/med_train_00042_01057.png	Mitcheldean Garage
+train_images/med_train_00042_01058.png	New Road
+train_images/med_train_00042_01059.png	Mitcheldean
+train_images/med_train_00042_01060.png	Glos
+train_images/med_train_00042_01061.png	This is not UAT receipt
+train_images/med_train_00042_01062.png	AID:A0000000031010
+train_images/med_train_00042_01063.png	ICC SALE
+train_images/med_train_00042_01064.png	TOTAL
+train_images/med_train_00042_01065.png	Customer PIN verified
+train_images/med_train_00042_01066.png	Please retain receipt
+train_images/med_train_00042_01067.png	for your records
+train_images/med_train_00042_01068.png	T019082
+train_images/med_train_00042_01069.png	13/06/15
+train_images/med_train_00042_01070.png	Thank You.
+train_images/med_train_00043_01071.png	LIFE'S ON
+train_images/med_train_00043_01072.png	WADHAVKAR
+train_images/med_train_00043_01073.png	No
+train_images/med_train_00043_01074.png	Reporting Date: 26
+train_images/med_train_00043_01075.png	26 Apr 2025 16:19
+train_images/med_train_00043_01076.png	Referred By:
+train_images/med_train_00043_01077.png	PRIYANKA
+train_images/med_train_00043_01078.png	Receiving Date:
+train_images/med_train_00043_01079.png	26 Apr 2025 15:15
+train_images/med_train_00043_01080.png	BIOCHEMISTRY
+train_images/med_train_00043_01081.png	TEST
+train_images/med_train_00043_01082.png	RESULT
+train_images/med_train_00043_01083.png	UNIT
+train_images/med_train_00043_01084.png	RENAL PANEL - I
+train_images/med_train_00043_01085.png	Specimen: Serum/ Plasma
+train_images/med_train_00043_01086.png	BUN (Urease/GLDH)
+train_images/med_train_00043_01087.png	11.60
+train_images/med_train_00043_01088.png	mg/dl
+train_images/med_train_00043_01089.png	[8.00-23.00]
+train_images/med_train_00043_01090.png	0.64
+train_images/med_train_00043_01091.png	mg/dl
+train_images/med_train_00043_01092.png	[0.50-0.90]
+train_images/med_train_00043_01093.png	eGFR(Calculated) 94.6
+train_images/med_train_00043_01094.png	94.6
+train_images/med_train_00043_01095.png	ml/min/1.73sq.m
+train_images/med_train_00043_01096.png	[>60.0]
+train_images/med_train_00043_01097.png	139.5
+train_images/med_train_00043_01098.png	[136.0-145.0]
+train_images/med_train_00043_01099.png	4.06
+train_images/med_train_00043_01100.png	[3.50-5.10]
+train_images/med_train_00043_01101.png	102.5
+train_images/med_train_00043_01102.png	mmol/L
+train_images/med_train_00043_01103.png	[98.0-107.0]
+train_images/med_train_00043_01104.png	23.4
+train_images/med_train_00043_01105.png	mmol/L
+train_images/med_train_00043_01106.png	[21.0-31.0]
+train_images/med_train_00043_01107.png	UREA
+train_images/med_train_00043_01108.png	24.8
+train_images/med_train_00043_01109.png	mg/dl
+train_images/med_train_00043_01110.png	[17.0-43.0]
+train_images/med_train_00043_01111.png	Disclaimer
+train_images/med_train_00043_01112.png	Icterus / Lipemia.
+train_images/med_train_00043_01113.png	CIN:U85110KA2003PTC033055
+train_images/med_train_00043_01114.png	P +91 80 4936 0300 E
+train_images/med_train_00044_01115.png	Meadowview Health
+train_images/med_train_00044_01116.png	45 Oak Ave.
+train_images/med_train_00044_01117.png	Dr. F. Gomez
+train_images/med_train_00045_01118.png	Meadowview Health
+train_images/med_train_00045_01119.png	789 Pine Rd.
+train_images/med_train_00045_01120.png	signature:
+train_images/med_train_00045_01121.png	Dr. C. Rossi
+train_images/med_train_00046_01122.png	Oakview Hospital
+train_images/med_train_00046_01123.png	234 Maple Blvd.
+train_images/med_train_00046_01124.png	Dr. H. Johnson
+train_images/med_train_00047_01125.png	City Health Clinic
+train_images/med_train_00047_01126.png	678 Orchard Ln.
+train_images/med_train_00047_01127.png	Dr. M. Lee
+train_images/med_train_00047_01128.png	signature:
+train_images/med_train_00048_01129.png	Meadowview Health
+train_images/med_train_00048_01130.png	234 Maple Blvd.
+train_images/med_train_00048_01131.png	Dr. H. Johnson
+train_images/med_train_00048_01132.png	signature:
+train_images/med_train_00049_01133.png	Greenwood Medical Center
+train_images/med_train_00049_01134.png	234 Maple Blvd.

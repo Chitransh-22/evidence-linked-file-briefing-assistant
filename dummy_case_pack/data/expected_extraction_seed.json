@@ -187,7 +187,9 @@
         "unit_rate_inr": 1250,
         "total_inr": 600000,
         "date": "2026-08-12"
-      }
+      },
+      "translated_text": "Approved quantity: 480 kits. Unit rate: INR 1,250. Total order value: INR 600,000 (Rupees Six Lakh only), before any separately approved adjustment.",
+      "detected_language": "en"
     },
     {
       "evidence_id": "EVD-002",
@@ -199,7 +201,9 @@
         "recorded_received_quantity": 480,
         "recorded_receipt_datetime": "2026-08-15T14:00:00",
         "reference": "BRL/NDV/88"
-      }
+      },
+      "translated_text": "15-08-2026 14:00 | BlueRiver Relief Logistics; Challan 88 | Inward Receipt: 480 kits recorded in stock register",
+      "detected_language": "gu"
     },
     {
       "evidence_id": "EVD-003",
@@ -211,7 +215,9 @@
         "unloaded_quantity": 360,
         "gate_datetime": "2026-08-16T17:30:00",
         "vehicle": "GJ-00-AB-0000"
-      }
+      },
+      "translated_text": "16-08-2026 17:30 | Vehicle GJ-00-AB-0000 | Consignment BRL/NDV/88 | 360 kits unloaded and recorded at gate",
+      "detected_language": "en"
     },
     {
       "evidence_id": "EVD-004",
@@ -222,7 +228,9 @@
       "facts": {
         "returned_quantity": 120,
         "departure_datetime": "2026-08-16T19:10:00"
-      }
+      },
+      "translated_text": "16-08-2026 19:10 | Vehicle GJ-00-AB-0000 | Consignment BRL/NDV/88 | 120 kits departed with vehicle, returned to vendor depot pending brake inspection",
+      "detected_language": "en"
     },
     {
       "evidence_id": "EVD-005",
@@ -235,7 +243,9 @@
         "unit_rate_inr": 1250,
         "invoice_total_inr": 600000,
         "invoice_date": "2026-08-18"
-      }
+      },
+      "translated_text": "Supplier Tax Invoice BRL/INV/2026/119: Billed 480 water purification kits at INR 1,250 each, total INR 600,000",
+      "detected_language": "en"
     },
     {
       "evidence_id": "EVD-006",
@@ -249,7 +259,9 @@
         "ward4_reported_quantity": 60,
         "ward5_reported_quantity": 0,
         "as_of": "2026-08-18"
-      }
+      },
+      "translated_text": "Citizen Complaint (Ward 3 & 4): Official beneficiary list contains only 240 households despite 300 kits reported distributed in Ward 3. Ward 4 received 60 kits, while Ward 5 received zero kits as of 18-08-2026.",
+      "detected_language": "gu"
     },
     {
       "evidence_id": "EVD-007",
@@ -262,7 +274,9 @@
         "ward3_quantity": 250,
         "ward4_quantity": 80,
         "as_of": "2026-08-18"
-      }
+      },
+      "translated_text": "Joint Inspection Memo: Distribution summary up to 18-08-2026 records 330 kits issued (250 in Ward 3 and 80 in Ward 4).",
+      "detected_language": "hi"
     },
     {
       "evidence_id": "EVD-008",
@@ -274,7 +288,9 @@
         "physical_stock": 24,
         "sample_issue_quantity": 6,
         "inspection_date": "2026-08-19"
-      }
+      },
+      "translated_text": "Physical Verification: 24 kits physically present in store; store in-charge reported 6 kits were issued on 18-08-2026 for sampling and testing.",
+      "detected_language": "hi"
     },
     {
       "evidence_id": "EVD-009",
@@ -284,7 +300,9 @@
       "excerpt": "निरीक्षण के समय मूल हस्ताक्षरित आपूर्ति चालान उपलब्ध नहीं कराया गया।",
       "facts": {
         "signed_delivery_challan_available": false
-      }
+      },
+      "translated_text": "Vigilance Inspection Finding: Original signed delivery challan was not produced during the physical store inspection.",
+      "detected_language": "hi"
     },
     {
       "evidence_id": "EVD-010",
@@ -297,7 +315,9 @@
         "reported_received_quantity": 1,
         "reported_date": "2026-08-16",
         "ward": "Ward 4"
-      }
+      },
+      "translated_text": "Beneficiary Statement (W4-HH-011): Confirmed receipt of 1 water purification kit on the evening of 16-08-2026 against signature roster.",
+      "detected_language": "hi"
     },
     {
       "evidence_id": "EVD-011",
@@ -310,7 +330,9 @@
         "reported_received_quantity": 1,
         "reported_date": "2026-08-17",
         "ward": "Ward 4"
-      }
+      },
+      "translated_text": "Beneficiary Statement (W4-HH-024): Confirmed receipt of 1 kit on the morning of 17-08-2026 after name verification on official roster.",
+      "detected_language": "hi"
     },
     {
       "evidence_id": "EVD-012",
@@ -323,7 +345,9 @@
         "reported_received_quantity": 0,
         "reported_date": "2026-08-17",
         "ward": "Ward 4"
-      }
+      },
+      "translated_text": "Beneficiary Statement (W4-HH-031): Household did not receive kit on 16-08-2026; visited center on 17-08-2026 and was turned away due to exhausted stock.",
+      "detected_language": "hi"
     },
     {
       "evidence_id": "EVD-013",
@@ -335,7 +359,9 @@
         "sample_issue_quantity": 6,
         "recorded_closing_balance": 144,
         "date": "2026-08-18"
-      }
+      },
+      "translated_text": "Stock Register Entry: 18-08-2026 | Sample & Quality Testing | Inward: 0 | Outward: 6 | Closing Balance: 144 kits",
+      "detected_language": "gu"
     }
   ],
   "events": [

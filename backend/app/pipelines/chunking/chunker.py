@@ -23,8 +23,17 @@ class DocumentChunker:
 
         for page in pages:
             page_num = page.get("page_number", 1)
-            text = page.get("normalized_text") or page.get("original_text") or ""
-            words = text.split()
+            norm_text = page.get("normalized_text") or page.get("original_text") or ""
+            trans_text = page.get("translated_text") or ""
+
+            # When translating Gujarati or Hindi documents, combine English translation with original script
+            # so that both semantic vector search in English and lexical grounded search match accurately
+            if detected_language in ["guj", "hin"] and trans_text and trans_text != norm_text:
+                text_to_chunk = f"{trans_text}\n[Original {detected_language.upper()} Script]: {norm_text}"
+            else:
+                text_to_chunk = norm_text
+
+            words = text_to_chunk.split()
 
             if not words:
                 continue
@@ -47,8 +56,9 @@ class DocumentChunker:
                     "page_start": page_num,
                     "page_end": page_num,
                     "source_paragraphs": [1],
-                    "original_text": chunk_text,
+                    "original_text": norm_text,
                     "normalized_text": chunk_text,
+                    "translated_text": trans_text,
                     "language": detected_language,
                     "token_count": len(chunk_words),
                     "vector_id": chunk_id,

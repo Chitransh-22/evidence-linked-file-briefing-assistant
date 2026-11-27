@@ -64,3 +64,9 @@ backend/models/**/*.onnx
 !backend/models/**/README.md
 !backend/models/**/.gitkeep
 
+# OCR Virtual Environments & Generated Training Image Crops
+venv_ocr/
+**/venv_ocr/
+**/train_images/
+**/test_images/
+

@@ -77,6 +77,16 @@ describe("Centralized RBAC Matrix & Default-Deny", () => {
     expect(canPerformAction(ROLES.SYSTEM_ADMINISTRATOR, ACTIONS.MANAGE_USERS)).toBe(true);
     expect(canPerformAction(ROLES.SYSTEM_ADMINISTRATOR, ACTIONS.APPROVE_BRIEFING)).toBe(true);
     expect(canPerformAction(ROLES.SYSTEM_ADMINISTRATOR, ACTIONS.VIEW_SYSTEM_DIAGNOSTICS)).toBe(true);
+    expect(canPerformAction(ROLES.SYSTEM_ADMINISTRATOR, ACTIONS.DELETE_CASE)).toBe(true);
+    expect(canPerformAction(ROLES.SYSTEM_ADMINISTRATOR, ACTIONS.DELETE_DOCUMENT)).toBe(true);
+    expect(canPerformAction(ROLES.INVESTIGATING_OFFICER, ACTIONS.DELETE_CASE)).toBe(false);
+    expect(canPerformAction(ROLES.INVESTIGATING_OFFICER, ACTIONS.DELETE_DOCUMENT)).toBe(false);
+    expect(canPerformAction(ROLES.SUPERVISORY_REVIEWER, ACTIONS.DELETE_CASE)).toBe(false);
+    expect(canPerformAction(ROLES.SUPERVISORY_REVIEWER, ACTIONS.DELETE_DOCUMENT)).toBe(false);
+    expect(canPerformAction(ROLES.INTAKE_OFFICER, ACTIONS.DELETE_CASE)).toBe(false);
+    expect(canPerformAction(ROLES.INTAKE_OFFICER, ACTIONS.DELETE_DOCUMENT)).toBe(false);
+    expect(canPerformAction(ROLES.AUDITOR, ACTIONS.DELETE_CASE)).toBe(false);
+    expect(canPerformAction(ROLES.AUDITOR, ACTIONS.DELETE_DOCUMENT)).toBe(false);
   });
 });
 

@@ -1,0 +1,8 @@
+{
+  "boxes": 3671,
+  "train_rec_crops": 1135,
+  "ignored_boxes": 1399,
+  "train_pages": 50,
+  "test_rec_crops": 1137,
+  "test_pages": 50
+}

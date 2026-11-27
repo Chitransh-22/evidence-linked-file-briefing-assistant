@@ -234,7 +234,12 @@ export function ContradictionsPage() {
                       color: "var(--color-text-primary)",
                     }}
                   >
-                    "{selectedContra.evidence_a?.source_excerpt}"
+                    "{selectedContra.evidence_a?.translated_text || selectedContra.evidence_a?.source_excerpt}"
+                    {selectedContra.evidence_a?.translated_text && selectedContra.evidence_a?.source_excerpt && selectedContra.evidence_a?.translated_text !== selectedContra.evidence_a?.source_excerpt && (
+                      <div style={{ marginTop: "6px", fontSize: "11px", color: "var(--color-text-secondary)", fontStyle: "italic" }}>
+                        Original: {selectedContra.evidence_a?.source_excerpt}
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -266,7 +271,12 @@ export function ContradictionsPage() {
                       color: "var(--color-text-primary)",
                     }}
                   >
-                    "{selectedContra.evidence_b?.source_excerpt}"
+                    "{selectedContra.evidence_b?.translated_text || selectedContra.evidence_b?.source_excerpt}"
+                    {selectedContra.evidence_b?.translated_text && selectedContra.evidence_b?.source_excerpt && selectedContra.evidence_b?.translated_text !== selectedContra.evidence_b?.source_excerpt && (
+                      <div style={{ marginTop: "6px", fontSize: "11px", color: "var(--color-text-secondary)", fontStyle: "italic" }}>
+                        Original: {selectedContra.evidence_b?.source_excerpt}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

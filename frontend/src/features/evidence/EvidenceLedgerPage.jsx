@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, Download, X, ExternalLink } from "lucide-react";
+import { Search, Download, X, ExternalLink, Languages, Filter } from "lucide-react";
 import { apiClient, downloadFile } from "../../services/api/client";
 import { DataTable } from "../../components/tables/DataTable";
 import { StatusBadge } from "../../components/common/StatusBadge";
@@ -17,14 +17,28 @@ export function EvidenceLedgerPage() {
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState(1);
   const [search, setSearch] = useState("");
+  const [caseFilter, setCaseFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
+  const [cases, setCases] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const [selectedEvidence, setSelectedEvidence] = useState(null);
   const [verifyStatus, setVerifyStatus] = useState("verified");
   const [verifyNotes, setVerifyNotes] = useState("");
   const [isVerifying, setIsVerifying] = useState(false);
+
+  useEffect(() => {
+    async function loadCases() {
+      try {
+        const res = await apiClient.get("/cases?limit=50");
+        setCases(res.data.items || []);
+      } catch (err) {
+        console.error("Failed to load cases:", err);
+      }
+    }
+    loadCases();
+  }, []);
 
   const loadEvidence = async () => {
     setIsLoading(true);
@@ -34,6 +48,7 @@ export function EvidenceLedgerPage() {
         limit: "15",
       });
       if (search) params.append("search", search);
+      if (caseFilter) params.append("case_id", caseFilter);
       if (categoryFilter) params.append("category", categoryFilter);
       if (statusFilter) params.append("verification_status", statusFilter);
 
@@ -50,7 +65,7 @@ export function EvidenceLedgerPage() {
 
   useEffect(() => {
     loadEvidence();
-  }, [page, categoryFilter, statusFilter]);
+  }, [page, caseFilter, categoryFilter, statusFilter]);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -108,22 +123,46 @@ export function EvidenceLedgerPage() {
       width: "160px",
     },
     {
-      header: "Extracted Statement / Fact",
-      accessor: "source_excerpt",
-      render: (r) => (
-        <div style={{ fontSize: "13px", lineHeight: "1.4" }}>
-          {r.source_excerpt}
-          {r.associated_entities?.length > 0 && (
-            <div style={{ marginTop: "4px", display: "flex", gap: "4px", flexWrap: "wrap" }}>
-              {r.associated_entities.map((e, idx) => (
-                <span key={idx} className="badge badge-neutral" style={{ fontSize: "10px", padding: "1px 5px" }}>
-                  {e}
-                </span>
-              ))}
+      header: "Verified Statement & Source Excerpt",
+      accessor: "translated_text",
+      render: (r) => {
+        const primaryText = r.translated_text || r.source_excerpt;
+        const hasTranslation = r.translated_text && r.source_excerpt && r.translated_text !== r.source_excerpt;
+        return (
+          <div style={{ fontSize: "13px", lineHeight: "1.45" }}>
+            <div style={{ fontWeight: 500, color: "var(--color-text-primary)" }}>
+              {primaryText}
             </div>
-          )}
-        </div>
-      ),
+            {hasTranslation && (
+              <div
+                style={{
+                  marginTop: "6px",
+                  fontSize: "12px",
+                  color: "var(--color-text-secondary)",
+                  backgroundColor: "var(--color-hover)",
+                  padding: "5px 8px",
+                  borderRadius: "4px",
+                  borderLeft: "3px solid var(--color-primary)",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: "4px", fontWeight: 600, fontSize: "11px", color: "var(--color-primary)", marginBottom: "2px" }}>
+                  <Languages size={11} /> Grounded Original Script ({r.detected_language ? r.detected_language.toUpperCase() : "Regional"}):
+                </div>
+                <div>{r.source_excerpt}</div>
+              </div>
+            )}
+            {r.associated_entities?.length > 0 && (
+              <div style={{ marginTop: "6px", display: "flex", gap: "4px", flexWrap: "wrap" }}>
+                {r.associated_entities.map((e, idx) => (
+                  <span key={idx} className="badge badge-neutral" style={{ fontSize: "10px", padding: "1px 5px" }}>
+                    {e}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      },
     },
     {
       header: "Confidence",
@@ -201,6 +240,23 @@ export function EvidenceLedgerPage() {
             Search
           </button>
         </form>
+
+        <select
+          className="form-select"
+          style={{ width: "240px" }}
+          value={caseFilter}
+          onChange={(e) => {
+            setCaseFilter(e.target.value);
+            setPage(1);
+          }}
+        >
+          <option value="">All Case Files</option>
+          {cases.map((c) => (
+            <option key={c.id || c.case_id} value={c.id || c.case_id}>
+              {c.case_reference || c.case_id} - {c.title?.slice(0, 30)}...
+            </option>
+          ))}
+        </select>
 
         <select
           className="form-select"
@@ -290,15 +346,37 @@ export function EvidenceLedgerPage() {
                 <div><b>Current Status:</b> <StatusBadge status={selectedEvidence.verification_status} /></div>
               </div>
 
+              {selectedEvidence.translated_text && selectedEvidence.source_excerpt && selectedEvidence.translated_text !== selectedEvidence.source_excerpt && (
+                <div className="form-group" style={{ marginBottom: "12px" }}>
+                  <label className="form-label" style={{ fontWeight: 600 }}>Human-Readable English Translation / Fact:</label>
+                  <div
+                    style={{
+                      padding: "12px",
+                      backgroundColor: "var(--color-surface)",
+                      border: "1px solid var(--color-border)",
+                      borderRadius: "4px",
+                      fontSize: "13.5px",
+                      lineHeight: "1.5",
+                      color: "var(--color-text-primary)",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {selectedEvidence.translated_text}
+                  </div>
+                </div>
+              )}
+
               <div className="form-group">
-                <label className="form-label">Original Grounded Source Excerpt:</label>
+                <label className="form-label" style={{ fontWeight: 600, display: "flex", alignItems: "center", gap: "6px" }}>
+                  <Languages size={13} color="var(--color-primary)" /> Original Grounded Source Excerpt:
+                </label>
                 <div
                   style={{
                     padding: "12px",
-                    backgroundColor: "var(--color-surface)",
+                    backgroundColor: "var(--color-hover)",
                     border: "1px solid var(--color-border)",
                     borderRadius: "4px",
-                    fontSize: "13.5px",
+                    fontSize: "13px",
                     lineHeight: "1.5",
                     color: "var(--color-text-primary)",
                   }}

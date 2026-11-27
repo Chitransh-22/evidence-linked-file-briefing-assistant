@@ -47,7 +47,9 @@ export const ACTIONS = Object.freeze({
   UPDATE_CASE: "action:case:update",
   ASSIGN_OFFICERS: "action:case:assign",
   ARCHIVE_CASE: "action:case:archive",
+  DELETE_CASE: "action:case:delete",
   UPLOAD_DOCUMENT: "action:document:upload",
+  DELETE_DOCUMENT: "action:document:delete",
   RETRY_PROCESSING: "action:processing:retry",
   CANCEL_PROCESSING: "action:processing:cancel",
   EDIT_EVIDENCE: "action:evidence:edit",
@@ -147,10 +149,16 @@ export const ACTION_PERMISSIONS = Object.freeze({
     ROLES.SUPERVISORY_REVIEWER,
     ROLES.SYSTEM_ADMINISTRATOR,
   ],
+  [ACTIONS.DELETE_CASE]: [
+    ROLES.SYSTEM_ADMINISTRATOR,
+  ],
   [ACTIONS.UPLOAD_DOCUMENT]: [
     ROLES.INVESTIGATING_OFFICER,
     ROLES.SYSTEM_ADMINISTRATOR,
     ROLES.INTAKE_OFFICER,
+  ],
+  [ACTIONS.DELETE_DOCUMENT]: [
+    ROLES.SYSTEM_ADMINISTRATOR,
   ],
   [ACTIONS.RETRY_PROCESSING]: [
     ROLES.INVESTIGATING_OFFICER,
