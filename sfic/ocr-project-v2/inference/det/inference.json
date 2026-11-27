@@ -1,0 +1,11 @@
+{
+  "model_type": "det",
+  "algorithm": "DB",
+  "backbone": "PPLCNetV3",
+  "neck": "RSEFPN",
+  "limit_side_len": 960,
+  "box_thresh": 0.6,
+  "unclip_ratio": 1.5,
+  "export_time": "2026-11-27 10:57:43",
+  "target": "Evidence-Linked-File-Briefing-Assistant"
+}

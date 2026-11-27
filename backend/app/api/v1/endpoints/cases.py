@@ -3,9 +3,12 @@ from datetime import datetime, timezone
 from typing import Optional, List
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel, Field
+from app.core.logging import logger
 from app.db.mongodb import get_database
 from app.core.permissions import get_current_user, require_roles, check_case_access, UserRole
 from app.services.audit_service import AuditService
+from app.integrations.object_storage.adapter import get_storage_adapter
+from app.integrations.vector_database.qdrant import get_qdrant_service
 
 router = APIRouter()
 
@@ -273,3 +276,130 @@ async def archive_case(
         outcome="SUCCESS"
     )
     return {"message": "Case archived successfully"}
+
+
+@router.delete("/{case_id}")
+async def delete_case(
+    case_id: str,
+    current_user: dict = Depends(require_roles([UserRole.SYSTEM_ADMINISTRATOR.value]))
+):
+    """
+    Cascading permanent deletion of an entire case file and all associated downstream artifacts.
+    Accessible strictly by System Administrator role.
+    Purges:
+      - Case metadata record
+      - All ingested documents belonging to the case
+      - All document pages, sections, and chunks
+      - All vector embeddings in Qdrant (case & document scoped)
+      - All physical PDF and intermediate storage files
+      - All structured evidence records and chronology events
+      - All contradiction records
+      - All briefing drafts and claim verifications
+      - All entity associations and processing jobs
+      - Cleans user assigned_cases associations
+    """
+    db = get_database()
+    case = await db.cases.find_one({
+        "$or": [{"_id": case_id}, {"case_id": case_id}, {"case_reference": case_id}]
+    })
+    if not case:
+        raise HTTPException(status_code=404, detail="Case not found")
+
+    actual_case_id = str(case["_id"])
+    case_keys = list(set(filter(None, [actual_case_id, case.get("case_id"), case.get("case_reference"), case_id])))
+
+    # 1. Find all documents belonging to this case to purge files and embeddings
+    docs_cursor = db.documents.find({"case_id": {"$in": case_keys}})
+    docs = await docs_cursor.to_list(1000)
+    doc_ids = [d["_id"] for d in docs]
+
+    storage = get_storage_adapter()
+    qdrant = get_qdrant_service()
+
+    # Purge physical files and vector points for each document
+    for d in docs:
+        try:
+            storage.delete_document_files(d["_id"], d.get("storage_key"))
+        except Exception as e:
+            logger.warning(f"Error purging files for doc {d['_id']}: {e}")
+        try:
+            qdrant.delete_by_document(d["_id"])
+        except Exception as e:
+            logger.warning(f"Error purging vector points for doc {d['_id']}: {e}")
+
+    # Purge any remaining case-scoped vector points
+    for k in case_keys:
+        try:
+            qdrant.delete_by_case(k)
+        except Exception as e:
+            logger.warning(f"Error purging vector points for case {k}: {e}")
+
+    # 2. Find briefings and purge claims
+    briefings_cursor = db.briefings.find({"case_id": {"$in": case_keys}}, {"_id": 1})
+    briefings = await briefings_cursor.to_list(500)
+    briefing_ids = [str(b["_id"]) for b in briefings]
+
+    del_claims = await db.claims.delete_many({
+        "$or": [
+            {"briefing_id": {"$in": briefing_ids}},
+            {"case_id": {"$in": case_keys}}
+        ]
+    })
+    del_briefings = await db.briefings.delete_many({"case_id": {"$in": case_keys}})
+
+    # 3. Purge all related collections in cascade
+    del_docs = await db.documents.delete_many({"case_id": {"$in": case_keys}})
+    del_pages = await db.document_pages.delete_many({"$or": [{"case_id": {"$in": case_keys}}, {"document_id": {"$in": doc_ids}}]})
+    del_sections = await db.document_sections.delete_many({"$or": [{"case_id": {"$in": case_keys}}, {"document_id": {"$in": doc_ids}}]})
+    del_chunks = await db.document_chunks.delete_many({"$or": [{"case_id": {"$in": case_keys}}, {"document_id": {"$in": doc_ids}}]})
+    del_evidence = await db.evidence_records.delete_many({"$or": [{"case_id": {"$in": case_keys}}, {"document_id": {"$in": doc_ids}}]})
+    del_events = await db.events.delete_many({"$or": [{"case_id": {"$in": case_keys}}, {"document_id": {"$in": doc_ids}}]})
+    del_contradictions = await db.contradictions.delete_many({"case_id": {"$in": case_keys}})
+    del_entities = await db.entities.delete_many({"case_id": {"$in": case_keys}})
+    del_jobs = await db.processing_jobs.delete_many({"$or": [{"case_id": {"$in": case_keys}}, {"document_id": {"$in": doc_ids}}]})
+
+    # Clean user assigned_cases
+    await db.users.update_many({}, {"$pull": {"assigned_cases": {"$in": case_keys}}})
+
+    # 4. Delete the case record
+    await db.cases.delete_many({"_id": actual_case_id})
+
+    # 5. Tamper-evident audit logging
+    await AuditService.log_event(
+        user_id=current_user["username"],
+        action="CASE_DELETED",
+        resource_type="case",
+        resource_id=actual_case_id,
+        outcome="SUCCESS",
+        metadata={
+            "case_reference": case.get("case_reference"),
+            "case_title": case.get("title"),
+            "deleted_documents": len(docs),
+            "deleted_pages": del_pages.deleted_count,
+            "deleted_chunks": del_chunks.deleted_count,
+            "deleted_evidence": del_evidence.deleted_count,
+            "deleted_events": del_events.deleted_count,
+            "deleted_briefings": del_briefings.deleted_count,
+            "deleted_claims": del_claims.deleted_count,
+            "deleted_by": current_user["username"],
+            "role": current_user.get("role"),
+        }
+    )
+
+    return {
+        "message": f"Case '{case.get('case_reference', actual_case_id)} - {case.get('title', '')}' and all associated evidentiary artifacts permanently purged.",
+        "case_id": actual_case_id,
+        "purged": {
+            "documents": del_docs.deleted_count,
+            "pages": del_pages.deleted_count,
+            "sections": del_sections.deleted_count,
+            "chunks": del_chunks.deleted_count,
+            "evidence": del_evidence.deleted_count,
+            "events": del_events.deleted_count,
+            "briefings": del_briefings.deleted_count,
+            "claims": del_claims.deleted_count,
+            "contradictions": del_contradictions.deleted_count,
+            "entities": del_entities.deleted_count,
+            "jobs": del_jobs.deleted_count,
+        }
+    }

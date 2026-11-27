@@ -1,7 +1,8 @@
+import asyncio
 import hashlib
 import json
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from typing import Optional, Dict, Any, List
 from app.db.mongodb import get_database
 from app.core.logging import logger, sanitize_log_dict
@@ -14,6 +15,7 @@ def compute_event_hash(previous_hash: str, payload_str: str) -> str:
 
 class AuditService:
     COLLECTION_NAME = "audit_logs"
+    _lock = asyncio.Lock()
 
     @classmethod
     async def log_event(
@@ -26,53 +28,64 @@ class AuditService:
         metadata: Optional[Dict[str, Any]] = None,
         request_id: Optional[str] = None,
     ) -> str:
-        """Append an audit record to the tamper-evident hash chain."""
-        db = get_database()
-        event_id = str(uuid.uuid4())
-        timestamp = datetime.now(timezone.utc).isoformat()
-        clean_metadata = sanitize_log_dict(metadata or {})
+        """Append an audit record to the tamper-evident hash chain with atomic concurrency serialization."""
+        async with cls._lock:
+            db = get_database()
+            event_id = str(uuid.uuid4())
+            now_dt = datetime.now(timezone.utc)
+            clean_metadata = sanitize_log_dict(metadata or {})
 
-        # Fetch latest audit log to obtain previous_hash
-        last_log = await db[cls.COLLECTION_NAME].find_one(sort=[("timestamp", -1)])
-        previous_hash = last_log.get("event_hash", "0" * 64) if last_log else "0" * 64
+            # Fetch latest audit log deterministically to obtain previous_hash
+            last_log = await db[cls.COLLECTION_NAME].find_one(sort=[("timestamp", -1), ("_id", -1)])
+            previous_hash = last_log.get("event_hash", "0" * 64) if last_log else "0" * 64
 
-        payload_content = {
-            "event_id": event_id,
-            "user_id": user_id,
-            "action": action,
-            "resource_type": resource_type,
-            "resource_id": resource_id,
-            "timestamp": timestamp,
-            "outcome": outcome,
-            "request_id": request_id or "",
-            "metadata": clean_metadata,
-        }
-        canonical_str = json.dumps(payload_content, sort_keys=True)
-        event_hash = compute_event_hash(previous_hash, canonical_str)
+            # Guarantee strict monotonic timestamp ordering even under high concurrency
+            if last_log and last_log.get("timestamp"):
+                try:
+                    last_dt = datetime.fromisoformat(last_log["timestamp"])
+                    if now_dt <= last_dt:
+                        now_dt = last_dt + timedelta(microseconds=1)
+                except Exception:
+                    pass
+            timestamp = now_dt.isoformat()
 
-        audit_record = {
-            "_id": event_id,
-            "event_id": event_id,
-            "user_id": user_id,
-            "action": action,
-            "resource_type": resource_type,
-            "resource_id": resource_id,
-            "timestamp": timestamp,
-            "outcome": outcome,
-            "request_id": request_id or "",
-            "metadata": clean_metadata,
-            "previous_hash": previous_hash,
-            "event_hash": event_hash,
-        }
+            payload_content = {
+                "event_id": event_id,
+                "user_id": user_id,
+                "action": action,
+                "resource_type": resource_type,
+                "resource_id": resource_id,
+                "timestamp": timestamp,
+                "outcome": outcome,
+                "request_id": request_id or "",
+                "metadata": clean_metadata,
+            }
+            canonical_str = json.dumps(payload_content, sort_keys=True)
+            event_hash = compute_event_hash(previous_hash, canonical_str)
 
-        await db[cls.COLLECTION_NAME].insert_one(audit_record)
-        return event_id
+            audit_record = {
+                "_id": event_id,
+                "event_id": event_id,
+                "user_id": user_id,
+                "action": action,
+                "resource_type": resource_type,
+                "resource_id": resource_id,
+                "timestamp": timestamp,
+                "outcome": outcome,
+                "request_id": request_id or "",
+                "metadata": clean_metadata,
+                "previous_hash": previous_hash,
+                "event_hash": event_hash,
+            }
+
+            await db[cls.COLLECTION_NAME].insert_one(audit_record)
+            return event_id
 
     @classmethod
     async def verify_chain_integrity(cls) -> Dict[str, Any]:
         """Verify the cryptographic integrity of the entire audit trail."""
         db = get_database()
-        cursor = db[cls.COLLECTION_NAME].find().sort("timestamp", 1)
+        cursor = db[cls.COLLECTION_NAME].find().sort([("timestamp", 1), ("_id", 1)])
         logs = await cursor.to_list(length=10000)
 
         if not logs:

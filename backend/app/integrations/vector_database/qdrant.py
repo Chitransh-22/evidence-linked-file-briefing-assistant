@@ -200,6 +200,38 @@ class QdrantVectorService:
         scored.sort(key=lambda x: x["score"], reverse=True)
         return scored[:limit]
 
+    def delete_by_document(self, document_id: str):
+        """Delete all vector points belonging to a specific document."""
+        if self.is_connected and self.client and qmodels:
+            try:
+                self.client.delete(
+                    collection_name=self.collection,
+                    points_selector=qmodels.FilterSelector(
+                        filter=qmodels.Filter(
+                            must=[qmodels.FieldCondition(key="document_id", match=qmodels.MatchValue(value=document_id))]
+                        )
+                    ),
+                )
+            except Exception as e:
+                logger.warning(f"Error deleting points from Qdrant for document {document_id}: {e}")
+        self._local_points = [p for p in self._local_points if p["payload"].get("document_id") != document_id]
+
+    def delete_by_case(self, case_id: str):
+        """Delete all vector points belonging to a specific case."""
+        if self.is_connected and self.client and qmodels:
+            try:
+                self.client.delete(
+                    collection_name=self.collection,
+                    points_selector=qmodels.FilterSelector(
+                        filter=qmodels.Filter(
+                            must=[qmodels.FieldCondition(key="case_id", match=qmodels.MatchValue(value=case_id))]
+                        )
+                    ),
+                )
+            except Exception as e:
+                logger.warning(f"Error deleting points from Qdrant for case {case_id}: {e}")
+        self._local_points = [p for p in self._local_points if p["payload"].get("case_id") != case_id]
+
     def _cosine_similarity(self, v1: List[float], v2: List[float]) -> float:
         dot = sum(a * b for a, b in zip(v1, v2))
         norm1 = math.sqrt(sum(a * a for a in v1))

@@ -243,7 +243,14 @@ export function EntityRegisterPage() {
                         <div style={{ fontWeight: 600, color: "var(--color-text-primary)", marginBottom: "4px" }}>
                           {ev._id} • Page {ev.page_number}
                         </div>
-                        <div>{ev.source_excerpt}</div>
+                        <div style={{ color: "var(--color-text-primary)", fontWeight: 500 }}>
+                          {ev.translated_text || ev.source_excerpt}
+                        </div>
+                        {ev.translated_text && ev.source_excerpt && ev.translated_text !== ev.source_excerpt && (
+                          <div style={{ marginTop: "4px", fontSize: "11px", color: "var(--color-text-secondary)" }}>
+                            Original: {ev.source_excerpt}
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>

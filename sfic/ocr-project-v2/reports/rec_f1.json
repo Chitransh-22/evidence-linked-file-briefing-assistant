@@ -1,0 +1,8 @@
+{
+  "samples": 1137,
+  "exact_acc": 0.555,
+  "char_precision": 0.9293,
+  "char_recall": 0.9144,
+  "char_f1": 0.9218,
+  "time": "2026-11-27 10:57:09"
+}

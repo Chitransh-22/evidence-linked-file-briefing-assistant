@@ -37,6 +37,11 @@ class BaseStorageAdapter(ABC):
         """Check connection health."""
         pass
 
+    @abstractmethod
+    def delete_document_files(self, doc_id: str, storage_key: Optional[str] = None):
+        """Delete all original and intermediate files associated with a document."""
+        pass
+
 
 class LocalStorageAdapter(BaseStorageAdapter):
     def __init__(self, base_path: str = "./storage"):
@@ -121,6 +126,30 @@ class LocalStorageAdapter(BaseStorageAdapter):
             "accessible": writable,
         }
 
+    def delete_document_files(self, doc_id: str, storage_key: Optional[str] = None):
+        """Purge all storage artifacts for a document."""
+        if storage_key:
+            target = os.path.join(self.originals_dir, os.path.basename(storage_key))
+            if os.path.exists(target):
+                try:
+                    os.remove(target)
+                except Exception as e:
+                    logger.warning(f"Error deleting original {target}: {e}")
+        if os.path.exists(self.originals_dir):
+            for fname in os.listdir(self.originals_dir):
+                if fname.startswith(f"{doc_id}_") or fname == doc_id:
+                    try:
+                        os.remove(os.path.join(self.originals_dir, fname))
+                    except Exception as e:
+                        logger.warning(f"Error deleting {fname}: {e}")
+        if os.path.exists(self.intermediate_dir):
+            for fname in os.listdir(self.intermediate_dir):
+                if fname.startswith(f"{doc_id}_") or fname == doc_id:
+                    try:
+                        os.remove(os.path.join(self.intermediate_dir, fname))
+                    except Exception as e:
+                        logger.warning(f"Error deleting intermediate {fname}: {e}")
+
 
 class MinioStorageAdapter(BaseStorageAdapter):
     def __init__(self):
@@ -200,6 +229,22 @@ class MinioStorageAdapter(BaseStorageAdapter):
                 "error": str(e),
                 "accessible": False,
             }
+
+    def delete_document_files(self, doc_id: str, storage_key: Optional[str] = None):
+        """Purge all storage artifacts for a document in MinIO."""
+        try:
+            for bucket in [self.bucket_orig, self.bucket_inter]:
+                if self.client.bucket_exists(bucket):
+                    objects = self.client.list_objects(bucket, prefix=f"{doc_id}/", recursive=True)
+                    for obj in objects:
+                        self.client.remove_object(bucket, obj.object_name)
+                    if storage_key:
+                        try:
+                            self.client.remove_object(bucket, storage_key)
+                        except Exception:
+                            pass
+        except Exception as e:
+            logger.warning(f"Error deleting MinIO files for {doc_id}: {e}")
 
 
 _storage_adapter: Optional[BaseStorageAdapter] = None

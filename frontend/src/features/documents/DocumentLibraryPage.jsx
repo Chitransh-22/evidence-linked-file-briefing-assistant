@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, Download, RotateCcw, ExternalLink } from "lucide-react";
+import { Search, Download, RotateCcw, ExternalLink, Trash2, AlertTriangle, X } from "lucide-react";
 import { apiClient, downloadFile } from "../../services/api/client";
 import { DataTable } from "../../components/tables/DataTable";
 import { StatusBadge } from "../../components/common/StatusBadge";
@@ -12,6 +12,7 @@ export function DocumentLibraryPage() {
   const user = useAuthStore((state) => state.user);
   const canUploadDocument = canPerformAction(user?.role, ACTIONS.UPLOAD_DOCUMENT);
   const canRetryProcessing = canPerformAction(user?.role, ACTIONS.RETRY_PROCESSING);
+  const canDeleteDocument = canPerformAction(user?.role, ACTIONS.DELETE_DOCUMENT);
 
   const [documents, setDocuments] = useState([]);
   const [total, setTotal] = useState(0);
@@ -21,6 +22,10 @@ export function DocumentLibraryPage() {
   const [languageFilter, setLanguageFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+
+  const [docToDelete, setDocToDelete] = useState(null);
+  const [isDeletingDoc, setIsDeletingDoc] = useState(false);
+  const [docDeleteError, setDocDeleteError] = useState("");
 
   const loadDocuments = async () => {
     setIsLoading(true);
@@ -68,6 +73,21 @@ export function DocumentLibraryPage() {
   const handleDownloadOriginal = (docId, filename, e) => {
     e.stopPropagation();
     downloadFile(`/documents/${docId}/original`, filename || `document_${docId}.pdf`);
+  };
+
+  const handleDeleteDoc = async () => {
+    if (!canDeleteDocument || !docToDelete) return;
+    setIsDeletingDoc(true);
+    setDocDeleteError("");
+    try {
+      await apiClient.delete(`/documents/${docToDelete._id}`);
+      setDocToDelete(null);
+      loadDocuments();
+    } catch (err) {
+      setDocDeleteError(err.response?.data?.detail || "Failed to delete document.");
+    } finally {
+      setIsDeletingDoc(false);
+    }
   };
 
   const columns = [
@@ -156,6 +176,20 @@ export function DocumentLibraryPage() {
               title="Retry Processing Pipeline"
             >
               <RotateCcw size={13} />
+            </button>
+          )}
+          {canDeleteDocument && (
+            <button
+              className="btn btn-secondary btn-sm"
+              onClick={(e) => {
+                e.stopPropagation();
+                setDocToDelete(row);
+                setDocDeleteError("");
+              }}
+              style={{ color: "var(--color-red-alert)", borderColor: "var(--color-red-alert)" }}
+              title="Permanently Delete Document (Admin Only)"
+            >
+              <Trash2 size={13} />
             </button>
           )}
         </div>
@@ -252,6 +286,78 @@ export function DocumentLibraryPage() {
           onPageChange: (p) => setPage(p),
         }}
       />
+
+      {/* Delete Document Confirmation Modal */}
+      {docToDelete && canDeleteDocument && (
+        <div className="modal-backdrop">
+          <div className="gov-card" style={{ width: "100%", maxWidth: "480px", borderTop: "4px solid var(--color-red-alert)" }}>
+            <div className="gov-card-header">
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <AlertTriangle size={18} color="var(--color-red-alert)" />
+                <h3 style={{ fontSize: "15px", fontWeight: 700, color: "var(--color-red-alert)" }}>
+                  Delete Document Artifacts (Admin Only)
+                </h3>
+              </div>
+              <button
+                onClick={() => setDocToDelete(null)}
+                style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-secondary)" }}
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <div style={{ padding: "20px" }}>
+              <p style={{ fontSize: "13px", color: "var(--color-text-primary)", marginBottom: "14px" }}>
+                Are you sure you want to permanently delete document: <br />
+                <b>{docToDelete.document_title || docToDelete._id}</b>?
+              </p>
+              <div
+                style={{
+                  backgroundColor: "var(--color-hover)",
+                  border: "1px solid var(--color-border)",
+                  borderRadius: "4px",
+                  padding: "10px",
+                  fontSize: "12px",
+                  color: "var(--color-text-secondary)",
+                  lineHeight: "1.5",
+                  marginBottom: "16px",
+                }}
+              >
+                <b style={{ color: "var(--color-red-alert)" }}>Cascading Purge:</b>
+                <ul style={{ margin: "6px 0 0 16px", padding: 0 }}>
+                  <li>All extracted pages, sections, and chunks</li>
+                  <li>All Qdrant vector embeddings associated with this document</li>
+                  <li>All extracted evidence records & dependent chronology events</li>
+                  <li>Physical PDF file and intermediate artifacts on disk</li>
+                </ul>
+              </div>
+              {docDeleteError && (
+                <div style={{ color: "var(--color-red-alert)", fontSize: "12px", marginBottom: "10px" }}>
+                  {docDeleteError}
+                </div>
+              )}
+              <div style={{ display: "flex", justifyContent: "flex-end", gap: "10px" }}>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setDocToDelete(null)}
+                  disabled={isDeletingDoc}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  style={{ backgroundColor: "var(--color-red-alert)", borderColor: "var(--color-red-alert)" }}
+                  onClick={handleDeleteDoc}
+                  disabled={isDeletingDoc}
+                >
+                  {isDeletingDoc ? "Purging Document..." : "Permanently Delete Document"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

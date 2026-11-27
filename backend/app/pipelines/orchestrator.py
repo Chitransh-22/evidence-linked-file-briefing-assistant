@@ -254,8 +254,8 @@ class DocumentPipelineOrchestrator:
                     page_text=text_for_llm,
                     entities=p["entities"],
                 )
-                all_facts.extend([(f, p["page_number"]) for f in res.facts])
-                all_events.extend([(e, p["page_number"]) for e in res.events])
+                all_facts.extend([(f, p["page_number"], p) for f in res.facts])
+                all_events.extend([(e, p["page_number"], p) for e in res.events])
 
             # 15. Chunking
             await update_stage("Chunking", 82)
@@ -278,19 +278,52 @@ class DocumentPipelineOrchestrator:
 
             # 18. Evidence Ledger Synthesis
             await update_stage("Evidence Ledger", 95)
+            doc_meta = await db.documents.find_one({"_id": document_id})
+            doc_title = doc_meta.get("document_title", "") if doc_meta else ""
+
             evidence_records = []
-            for fact, page_no in all_facts:
+            trans_svc = get_translation_service()
+
+            for fact, page_no, page_dict in all_facts:
                 ev_id = f"EV-{uuid.uuid4().hex[:10].upper()}"
+                page_lang = page_dict.get("detected_language", doc_lang)
+
+                statement = fact.statement
+                source_excerpt = fact.exact_source_excerpt or statement
+                translated_text = ""
+
+                if page_lang in ["guj", "hin"]:
+                    # If statement or excerpt contains non-ASCII Indic characters, translate to English
+                    has_indic = any(ord(c) >= 0x0900 for c in statement) or any(ord(c) >= 0x0900 for c in source_excerpt)
+                    if has_indic:
+                        t_statement, _, _ = trans_svc.translate_to_english(statement, page_lang)
+                        translated_text = t_statement if t_statement else statement
+                    else:
+                        # Statement is already in English (extracted from translated page text)
+                        translated_text = statement
+                        # Try aligning with the original regional script from the source page
+                        norm_lines = [l.strip() for l in page_dict.get("normalized_text", "").splitlines() if l.strip()]
+                        trans_lines = [l.strip() for l in page_dict.get("translated_text", "").splitlines() if l.strip()]
+                        if len(norm_lines) == len(trans_lines) and len(norm_lines) > 0:
+                            for o_line, t_line in zip(norm_lines, trans_lines):
+                                if (statement.strip().lower() in t_line.lower() or t_line.lower() in statement.strip().lower()) and any(ord(c) >= 0x0900 for c in o_line):
+                                    source_excerpt = o_line
+                                    break
+                else:
+                    translated_text = statement
+
                 rec = {
                     "_id": ev_id,
                     "evidence_id": ev_id,
                     "case_id": case_id,
                     "document_id": document_id,
+                    "document_title": doc_title,
                     "page_number": page_no,
                     "paragraph_reference": 1,
-                    "source_excerpt": fact.exact_source_excerpt,
-                    "normalized_text": fact.statement,
-                    "translated_text": "",
+                    "source_excerpt": source_excerpt,
+                    "normalized_text": statement,
+                    "translated_text": translated_text,
+                    "detected_language": "gu" if page_lang == "guj" else ("hi" if page_lang == "hin" else "en"),
                     "evidence_category": fact.evidence_category,
                     "associated_entities": fact.associated_entities,
                     "chunk_ids": [],
@@ -306,15 +339,32 @@ class DocumentPipelineOrchestrator:
                 await db.evidence_records.insert_many(evidence_records)
 
             # Persist Chronology Events
-            for event, page_no in all_events:
+            for event, page_no, page_dict in all_events:
                 ev_id = f"EVT-{uuid.uuid4().hex[:8].upper()}"
+                page_lang = page_dict.get("detected_language", doc_lang)
+
+                event_title = event.event_title
+                event_desc = event.description
+
+                # Translate title and description if they are in Gujarati/Hindi
+                if page_lang in ["guj", "hin"]:
+                    if any(ord(c) >= 0x0900 for c in event_title):
+                        t_title, _, _ = trans_svc.translate_to_english(event_title, page_lang)
+                        if t_title:
+                            event_title = t_title
+                    if any(ord(c) >= 0x0900 for c in event_desc):
+                        t_desc, _, _ = trans_svc.translate_to_english(event_desc, page_lang)
+                        if t_desc:
+                            event_desc = t_desc
+
                 await db.events.insert_one({
                     "_id": ev_id,
                     "event_id": ev_id,
                     "case_id": case_id,
                     "document_id": document_id,
-                    "event_title": event.event_title,
-                    "description": event.description,
+                    "document_title": doc_title,
+                    "event_title": event_title,
+                    "description": event_desc,
                     "event_date": event.event_date,
                     "original_date_expression": event.original_date_expression,
                     "date_precision": event.date_precision,
@@ -323,6 +373,7 @@ class DocumentPipelineOrchestrator:
                     "source_page": page_no,
                     "confidence": event.confidence,
                     "review_status": "pending_review",
+                    "detected_language": "gu" if page_lang == "guj" else ("hi" if page_lang == "hin" else "en"),
                     "created_at": datetime.now(timezone.utc).isoformat(),
                 })
 

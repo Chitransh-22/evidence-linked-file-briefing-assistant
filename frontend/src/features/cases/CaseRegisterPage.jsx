@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Plus, Search, FolderOpen, X, AlertCircle } from "lucide-react";
+import { Plus, Search, FolderOpen, X, AlertCircle, Trash2, AlertTriangle } from "lucide-react";
 import { apiClient } from "../../services/api/client";
 import { DataTable } from "../../components/tables/DataTable";
 import { StatusBadge } from "../../components/common/StatusBadge";
@@ -11,6 +11,7 @@ export function CaseRegisterPage() {
   const navigate = useNavigate();
   const { user } = useAuthStore();
   const canCreateCase = canPerformAction(user?.role, ACTIONS.CREATE_CASE);
+  const canDeleteCase = canPerformAction(user?.role, ACTIONS.DELETE_CASE);
 
   const [cases, setCases] = useState([]);
   const [total, setTotal] = useState(0);
@@ -31,6 +32,11 @@ export function CaseRegisterPage() {
     assigned_officers: user ? [user.username] : [],
     tags: "",
   });
+
+  const [caseToDelete, setCaseToDelete] = useState(null);
+  const [deleteConfirmText, setDeleteConfirmText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState("");
 
   const loadCases = async () => {
     setIsLoading(true);
@@ -94,6 +100,27 @@ export function CaseRegisterPage() {
     }
   };
 
+  const handleConfirmDelete = async () => {
+    if (!caseToDelete || !canDeleteCase) return;
+    const inputClean = deleteConfirmText.trim();
+    if (inputClean.toUpperCase() !== "DELETE" && inputClean !== caseToDelete.case_reference) {
+      setDeleteError(`Please type DELETE or "${caseToDelete.case_reference}" to confirm.`);
+      return;
+    }
+    setIsDeleting(true);
+    setDeleteError("");
+    try {
+      await apiClient.delete(`/cases/${caseToDelete.id}`);
+      setCaseToDelete(null);
+      setDeleteConfirmText("");
+      loadCases();
+    } catch (err) {
+      setDeleteError(err.response?.data?.detail || "Failed to delete case.");
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
   const columns = [
     {
       header: "Case Reference",
@@ -151,7 +178,7 @@ export function CaseRegisterPage() {
     },
     {
       header: "Actions",
-      width: "130px",
+      width: "160px",
       align: "right",
       render: (row) => (
         <div style={{ display: "flex", gap: "6px", justifyContent: "flex-end" }}>
@@ -162,6 +189,21 @@ export function CaseRegisterPage() {
           >
             <FolderOpen size={14} /> Open
           </button>
+          {canDeleteCase && (
+            <button
+              className="btn btn-secondary btn-sm"
+              onClick={(e) => {
+                e.stopPropagation();
+                setCaseToDelete(row);
+                setDeleteConfirmText("");
+                setDeleteError("");
+              }}
+              style={{ color: "var(--color-red-alert)", borderColor: "var(--color-red-alert)" }}
+              title="Permanently Delete Case (System Admin Only)"
+            >
+              <Trash2 size={13} />
+            </button>
+          )}
         </div>
       ),
     },
@@ -365,6 +407,90 @@ export function CaseRegisterPage() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {caseToDelete && canDeleteCase && (
+        <div className="modal-backdrop">
+          <div className="gov-card" style={{ width: "100%", maxWidth: "520px", borderTop: "4px solid var(--color-red-alert)" }}>
+            <div className="gov-card-header">
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <AlertTriangle size={18} color="var(--color-red-alert)" />
+                <h3 style={{ fontSize: "15px", fontWeight: 700, color: "var(--color-red-alert)" }}>
+                  Permanent Case Purge (Admin Only)
+                </h3>
+              </div>
+              <button
+                onClick={() => setCaseToDelete(null)}
+                style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-secondary)" }}
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <div style={{ padding: "20px" }}>
+              <div style={{ fontSize: "13px", lineHeight: "1.5", color: "var(--color-text-primary)", marginBottom: "14px" }}>
+                You are about to permanently delete <b>{caseToDelete.case_reference}</b> (<i>{caseToDelete.title}</i>).
+              </div>
+              <div
+                style={{
+                  backgroundColor: "var(--color-hover)",
+                  border: "1px solid var(--color-border)",
+                  borderRadius: "4px",
+                  padding: "12px",
+                  fontSize: "12px",
+                  lineHeight: "1.5",
+                  marginBottom: "16px",
+                  color: "var(--color-text-secondary)",
+                }}
+              >
+                <b style={{ color: "var(--color-red-alert)" }}>Cascading Purge Impact:</b>
+                <ul style={{ margin: "6px 0 0 18px", padding: 0 }}>
+                  <li>All documents, pages, sections, and chunks</li>
+                  <li>All vector embeddings in Qdrant (case & document vectors)</li>
+                  <li>All extracted structured evidence records and chronology events</li>
+                  <li>All briefings, draft sections, claims, and contradiction records</li>
+                  <li>All original PDF files and intermediate files on disk</li>
+                </ul>
+              </div>
+              <div className="form-group">
+                <label className="form-label" style={{ fontWeight: 600 }}>
+                  Type <code>DELETE</code> or <code>{caseToDelete.case_reference}</code> to confirm:
+                </label>
+                <input
+                  type="text"
+                  className="form-input"
+                  placeholder="Type DELETE to confirm"
+                  value={deleteConfirmText}
+                  onChange={(e) => setDeleteConfirmText(e.target.value)}
+                  autoFocus
+                />
+              </div>
+              {deleteError && (
+                <div style={{ color: "var(--color-red-alert)", fontSize: "12px", marginTop: "8px" }}>
+                  {deleteError}
+                </div>
+              )}
+              <div style={{ display: "flex", justifyContent: "flex-end", gap: "10px", marginTop: "20px" }}>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setCaseToDelete(null)}
+                  disabled={isDeleting}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  style={{ backgroundColor: "var(--color-red-alert)", borderColor: "var(--color-red-alert)" }}
+                  onClick={handleConfirmDelete}
+                  disabled={isDeleting || (deleteConfirmText.trim().toUpperCase() !== "DELETE" && deleteConfirmText.trim() !== caseToDelete.case_reference)}
+                >
+                  {isDeleting ? "Purging Case..." : "Permanently Delete Case"}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}

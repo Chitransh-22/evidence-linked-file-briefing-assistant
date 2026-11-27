@@ -1,0 +1,11 @@
+# GPU PC (CUDA 11.8/12.x): pick the matching wheel from https://www.paddlepaddle.org.cn/install/quick
+paddlepaddle-gpu
+# CPU only? use: paddlepaddle
+paddleocr
+opencv-python
+pyyaml
+numpy
+torch          # only needed for the .pt export
+visualdl       # training curves
+datasets       # Hugging Face datasets
+rapidfuzz      # fuzzy matching of OCR output to ground truth

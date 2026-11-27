@@ -31,11 +31,11 @@ class LanguageDetector:
             "eng": round(eng_count / total, 3),
         }
 
-        # If Gujarati characters make up > 15%, classify as Gujarati
-        if dist["guj"] >= 0.15 and dist["guj"] >= dist["hin"]:
+        # Robust Indian regional language detection
+        # Even if a document has English tables/headers, presence of regional Indic script indicates regional language content
+        if (guj_count >= 5 and guj_count >= hin_count) or (dist["guj"] >= 0.08 and dist["guj"] >= dist["hin"]):
             return "guj", dist
-        # If Hindi characters make up > 15%
-        if dist["hin"] >= 0.15 and dist["hin"] > dist["guj"]:
+        if (hin_count >= 5 and hin_count > guj_count) or (dist["hin"] >= 0.08 and dist["hin"] > dist["guj"]):
             return "hin", dist
 
         return "eng", dist

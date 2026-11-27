@@ -11,6 +11,9 @@ import {
   ArrowLeft,
   CheckCircle,
   ExternalLink,
+  Languages,
+  Trash2,
+  X,
 } from "lucide-react";
 import { apiClient } from "../../services/api/client";
 import { StatusBadge } from "../../components/common/StatusBadge";
@@ -27,6 +30,8 @@ export function CaseDetailPage() {
   const canGenerateBriefing = canPerformAction(user?.role, ACTIONS.GENERATE_BRIEFING);
   const canViewBriefings = canPerformAction(user?.role, ACTIONS.VIEW_BRIEFINGS);
   const canVerifyClaims = canPerformAction(user?.role, ACTIONS.VERIFY_CLAIMS);
+  const canDeleteCase = canPerformAction(user?.role, ACTIONS.DELETE_CASE);
+  const canDeleteDocument = canPerformAction(user?.role, ACTIONS.DELETE_DOCUMENT);
 
   const [activeTab, setActiveTab] = useState("overview");
   const [caseData, setCaseData] = useState(null);
@@ -37,6 +42,15 @@ export function CaseDetailPage() {
   const [contradictions, setContradictions] = useState([]);
   const [briefings, setBriefings] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const [showDeleteCaseModal, setShowDeleteCaseModal] = useState(false);
+  const [caseDeleteConfirmText, setCaseDeleteConfirmText] = useState("");
+  const [isDeletingCase, setIsDeletingCase] = useState(false);
+  const [caseDeleteError, setCaseDeleteError] = useState("");
+
+  const [docToDelete, setDocToDelete] = useState(null);
+  const [isDeletingDoc, setIsDeletingDoc] = useState(false);
+  const [docDeleteError, setDocDeleteError] = useState("");
 
   useEffect(() => {
     async function loadCaseWorkspace() {
@@ -67,6 +81,45 @@ export function CaseDetailPage() {
 
     loadCaseWorkspace();
   }, [caseId, canViewBriefings]);
+
+  const handleDeleteCase = async () => {
+    if (!canDeleteCase || !caseData) return;
+    const inputClean = caseDeleteConfirmText.trim();
+    if (inputClean.toUpperCase() !== "DELETE" && inputClean !== caseData.case_reference) {
+      setCaseDeleteError(`Please type DELETE or "${caseData.case_reference}" to confirm.`);
+      return;
+    }
+    setIsDeletingCase(true);
+    setCaseDeleteError("");
+    try {
+      await apiClient.delete(`/cases/${caseId}`);
+      navigate("/cases");
+    } catch (err) {
+      setCaseDeleteError(err.response?.data?.detail || "Failed to delete case.");
+      setIsDeletingCase(false);
+    }
+  };
+
+  const handleDeleteDoc = async () => {
+    if (!canDeleteDocument || !docToDelete) return;
+    setIsDeletingDoc(true);
+    setDocDeleteError("");
+    try {
+      await apiClient.delete(`/documents/${docToDelete._id}`);
+      setDocToDelete(null);
+      // Reload documents and statistics
+      const [docsRes, caseRes] = await Promise.all([
+        apiClient.get(`/documents?case_id=${caseId}&limit=50`),
+        apiClient.get(`/cases/${caseId}`),
+      ]);
+      setDocuments(docsRes.data.items || []);
+      setStats(caseRes.data.statistics);
+    } catch (err) {
+      setDocDeleteError(err.response?.data?.detail || "Failed to delete document.");
+    } finally {
+      setIsDeletingDoc(false);
+    }
+  };
 
   if (isLoading) {
     return <div style={{ padding: "40px", color: "var(--color-text-secondary)" }}>Loading case workspace...</div>;
@@ -115,8 +168,8 @@ export function CaseDetailPage() {
               </div>
             </div>
 
-            {(canUploadDocument || canGenerateBriefing) && (
-              <div style={{ display: "flex", gap: "8px" }}>
+            {(canUploadDocument || canGenerateBriefing || canDeleteCase) && (
+              <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                 {canUploadDocument && (
                   <button
                     className="btn btn-secondary"
@@ -131,6 +184,20 @@ export function CaseDetailPage() {
                     onClick={() => navigate(`/briefings/generate/${caseId}`)}
                   >
                     <FileSignature size={16} /> Generate Briefing
+                  </button>
+                )}
+                {canDeleteCase && (
+                  <button
+                    className="btn btn-secondary"
+                    style={{ color: "var(--color-red-alert)", borderColor: "var(--color-red-alert)" }}
+                    onClick={() => {
+                      setShowDeleteCaseModal(true);
+                      setCaseDeleteConfirmText("");
+                      setCaseDeleteError("");
+                    }}
+                    title="Permanently Delete Case (Admin Only)"
+                  >
+                    <Trash2 size={16} /> Delete Case
                   </button>
                 )}
               </div>
@@ -268,12 +335,27 @@ export function CaseDetailPage() {
             {
               header: "Action",
               render: (r) => (
-                <button
-                  className="btn btn-secondary btn-sm"
-                  onClick={() => navigate(`/documents/${r._id}`)}
-                >
-                  <ExternalLink size={14} /> Open Inspector
-                </button>
+                <div style={{ display: "flex", gap: "6px" }}>
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    onClick={() => navigate(`/documents/${r._id}`)}
+                  >
+                    <ExternalLink size={14} /> Open Inspector
+                  </button>
+                  {canDeleteDocument && (
+                    <button
+                      className="btn btn-secondary btn-sm"
+                      style={{ color: "var(--color-red-alert)", borderColor: "var(--color-red-alert)" }}
+                      onClick={() => {
+                        setDocToDelete(r);
+                        setDocDeleteError("");
+                      }}
+                      title="Permanently Delete Document (Admin Only)"
+                    >
+                      <Trash2 size={13} />
+                    </button>
+                  )}
+                </div>
               ),
             },
           ]}
@@ -286,7 +368,48 @@ export function CaseDetailPage() {
           columns={[
             { header: "Evidence ID", accessor: "_id", width: "130px", render: (r) => <span style={{ fontWeight: 600 }}>{r._id}</span> },
             { header: "Category", accessor: "evidence_category", width: "160px" },
-            { header: "Statement / Excerpt", accessor: "source_excerpt", render: (r) => <span style={{ fontSize: "13px" }}>{r.source_excerpt}</span> },
+            {
+              header: "Verified Statement & Grounded Source Excerpt",
+              accessor: "translated_text",
+              render: (r) => {
+                const primaryText = r.translated_text || r.source_excerpt;
+                const hasTranslation = r.translated_text && r.source_excerpt && r.translated_text !== r.source_excerpt;
+                return (
+                  <div style={{ fontSize: "13px", lineHeight: "1.45" }}>
+                    <div style={{ color: "var(--color-text-primary)", fontWeight: 500 }}>
+                      {primaryText}
+                    </div>
+                    {hasTranslation && (
+                      <div
+                        style={{
+                          marginTop: "6px",
+                          fontSize: "12px",
+                          color: "var(--color-text-secondary)",
+                          backgroundColor: "var(--color-hover)",
+                          padding: "5px 8px",
+                          borderRadius: "4px",
+                          borderLeft: "3px solid var(--color-primary)",
+                        }}
+                      >
+                        <div style={{ display: "flex", alignItems: "center", gap: "4px", fontWeight: 600, fontSize: "11px", color: "var(--color-primary)", marginBottom: "2px" }}>
+                          <Languages size={12} /> Original Source ({r.detected_language ? r.detected_language.toUpperCase() : "Regional Script"}):
+                        </div>
+                        <div style={{ fontStyle: "normal" }}>{r.source_excerpt}</div>
+                      </div>
+                    )}
+                    {r.associated_entities?.length > 0 && (
+                      <div style={{ marginTop: "6px", display: "flex", gap: "4px", flexWrap: "wrap" }}>
+                        {r.associated_entities.map((e, idx) => (
+                          <span key={idx} className="badge badge-neutral" style={{ fontSize: "10px", padding: "1px 5px" }}>
+                            {e}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              },
+            },
             { header: "Page", accessor: "page_number", width: "70px", align: "center" },
             { header: "Confidence", accessor: "confidence", width: "90px", align: "center", render: (r) => `${Math.round((r.confidence || 0) * 100)}%` },
             { header: "Status", accessor: "verification_status", width: "120px", render: (r) => <StatusBadge status={r.verification_status} /> },
@@ -298,10 +421,56 @@ export function CaseDetailPage() {
       {activeTab === "chronology" && (
         <DataTable
           columns={[
-            { header: "Date", accessor: "event_date", width: "130px", render: (r) => <b>{r.event_date || r.original_date_expression}</b> },
-            { header: "Event Title", accessor: "event_title", render: (r) => <span style={{ fontWeight: 600 }}>{r.event_title}</span> },
-            { header: "Description", accessor: "description" },
-            { header: "Entities", accessor: "associated_entities", render: (r) => r.associated_entities?.join(", ") || "-" },
+            {
+              header: "Date",
+              accessor: "event_date",
+              width: "140px",
+              render: (r) => (
+                <div>
+                  <b style={{ color: "var(--color-text-primary)" }}>{r.event_date || r.original_date_expression}</b>
+                  {r.original_date_expression && r.event_date && r.original_date_expression !== r.event_date && (
+                    <div style={{ fontSize: "11px", color: "var(--color-text-secondary)" }}>
+                      {r.original_date_expression}
+                    </div>
+                  )}
+                </div>
+              ),
+            },
+            {
+              header: "Event Title",
+              accessor: "event_title",
+              width: "220px",
+              render: (r) => (
+                <span style={{ fontWeight: 600, color: "var(--color-text-primary)" }}>
+                  {r.event_title || r.title || "Chronological Milestone"}
+                </span>
+              ),
+            },
+            {
+              header: "Description",
+              accessor: "description",
+              render: (r) => (
+                <div style={{ fontSize: "13px", lineHeight: "1.45", color: "var(--color-text-primary)" }}>
+                  {r.description || r.translated_description}
+                </div>
+              ),
+            },
+            {
+              header: "Entities",
+              accessor: "associated_entities",
+              width: "180px",
+              render: (r) => (
+                <div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>
+                  {r.associated_entities?.length > 0
+                    ? r.associated_entities.map((ent, idx) => (
+                        <span key={idx} className="badge badge-neutral" style={{ fontSize: "11px" }}>
+                          {ent}
+                        </span>
+                      ))
+                    : "-"}
+                </div>
+              ),
+            },
             { header: "Status", accessor: "review_status", width: "120px", render: (r) => <StatusBadge status={r.review_status} /> },
           ]}
           data={events}
@@ -363,6 +532,154 @@ export function CaseDetailPage() {
           ]}
           data={briefings}
         />
+      )}
+      {/* Delete Case Confirmation Modal */}
+      {showDeleteCaseModal && canDeleteCase && (
+        <div className="modal-backdrop">
+          <div className="gov-card" style={{ width: "100%", maxWidth: "520px", borderTop: "4px solid var(--color-red-alert)" }}>
+            <div className="gov-card-header">
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <AlertTriangle size={18} color="var(--color-red-alert)" />
+                <h3 style={{ fontSize: "15px", fontWeight: 700, color: "var(--color-red-alert)" }}>
+                  Permanent Case Purge (Admin Only)
+                </h3>
+              </div>
+              <button
+                onClick={() => setShowDeleteCaseModal(false)}
+                style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-secondary)" }}
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <div style={{ padding: "20px" }}>
+              <div style={{ fontSize: "13px", lineHeight: "1.5", color: "var(--color-text-primary)", marginBottom: "14px" }}>
+                You are about to permanently delete <b>{caseData.case_reference}</b> (<i>{caseData.title}</i>).
+              </div>
+              <div
+                style={{
+                  backgroundColor: "var(--color-hover)",
+                  border: "1px solid var(--color-border)",
+                  borderRadius: "4px",
+                  padding: "12px",
+                  fontSize: "12px",
+                  lineHeight: "1.5",
+                  marginBottom: "16px",
+                  color: "var(--color-text-secondary)",
+                }}
+              >
+                <b style={{ color: "var(--color-red-alert)" }}>Cascading Purge Impact:</b>
+                <ul style={{ margin: "6px 0 0 18px", padding: 0 }}>
+                  <li>All {documents.length} ingested documents and their pages/chunks</li>
+                  <li>All vector embeddings in Qdrant</li>
+                  <li>All {evidence.length} structured evidence records & {events.length} chronology events</li>
+                  <li>All {briefings.length} briefings, claims, and {contradictions.length} contradictions</li>
+                  <li>All original PDF documents and intermediate files on disk</li>
+                </ul>
+              </div>
+              <div className="form-group">
+                <label className="form-label" style={{ fontWeight: 600 }}>
+                  Type <code>DELETE</code> or <code>{caseData.case_reference}</code> to confirm:
+                </label>
+                <input
+                  type="text"
+                  className="form-input"
+                  placeholder="Type DELETE to confirm"
+                  value={caseDeleteConfirmText}
+                  onChange={(e) => setCaseDeleteConfirmText(e.target.value)}
+                  autoFocus
+                />
+              </div>
+              {caseDeleteError && (
+                <div style={{ color: "var(--color-red-alert)", fontSize: "12px", marginTop: "8px" }}>
+                  {caseDeleteError}
+                </div>
+              )}
+              <div style={{ display: "flex", justifyContent: "flex-end", gap: "10px", marginTop: "20px" }}>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setShowDeleteCaseModal(false)}
+                  disabled={isDeletingCase}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  style={{ backgroundColor: "var(--color-red-alert)", borderColor: "var(--color-red-alert)" }}
+                  onClick={handleDeleteCase}
+                  disabled={isDeletingCase || (caseDeleteConfirmText.trim().toUpperCase() !== "DELETE" && caseDeleteConfirmText.trim() !== caseData.case_reference)}
+                >
+                  {isDeletingCase ? "Purging Case..." : "Permanently Delete Case"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Document Confirmation Modal */}
+      {docToDelete && canDeleteDocument && (
+        <div className="modal-backdrop">
+          <div className="gov-card" style={{ width: "100%", maxWidth: "480px", borderTop: "4px solid var(--color-red-alert)" }}>
+            <div className="gov-card-header">
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <AlertTriangle size={18} color="var(--color-red-alert)" />
+                <h3 style={{ fontSize: "15px", fontWeight: 700, color: "var(--color-red-alert)" }}>
+                  Delete Document Artifacts
+                </h3>
+              </div>
+              <button
+                onClick={() => setDocToDelete(null)}
+                style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-secondary)" }}
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <div style={{ padding: "20px" }}>
+              <p style={{ fontSize: "13px", color: "var(--color-text-primary)", marginBottom: "14px" }}>
+                Permanently purge <b>{docToDelete.document_title || docToDelete._id}</b>?
+              </p>
+              <div
+                style={{
+                  backgroundColor: "var(--color-hover)",
+                  border: "1px solid var(--color-border)",
+                  borderRadius: "4px",
+                  padding: "10px",
+                  fontSize: "12px",
+                  color: "var(--color-text-secondary)",
+                  marginBottom: "16px",
+                }}
+              >
+                This will delete its pages, chunks, Qdrant vector embeddings, extracted evidence records, and storage files on disk.
+              </div>
+              {docDeleteError && (
+                <div style={{ color: "var(--color-red-alert)", fontSize: "12px", marginBottom: "10px" }}>
+                  {docDeleteError}
+                </div>
+              )}
+              <div style={{ display: "flex", justifyContent: "flex-end", gap: "10px" }}>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setDocToDelete(null)}
+                  disabled={isDeletingDoc}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  style={{ backgroundColor: "var(--color-red-alert)", borderColor: "var(--color-red-alert)" }}
+                  onClick={handleDeleteDoc}
+                  disabled={isDeletingDoc}
+                >
+                  {isDeletingDoc ? "Deleting..." : "Delete Document"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

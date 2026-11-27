@@ -1,0 +1,13 @@
+{
+  "model_type": "rec",
+  "algorithm": "SVTR_LCNet",
+  "vocab_size": 85,
+  "max_text_length": 25,
+  "input_shape": [
+    3,
+    48,
+    320
+  ],
+  "export_time": "2026-11-27 10:57:43",
+  "target": "Evidence-Linked-File-Briefing-Assistant"
+}

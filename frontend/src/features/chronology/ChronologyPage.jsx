@@ -16,6 +16,7 @@ export function ChronologyPage() {
   const [page] = useState(1);
   const [viewMode, setViewMode] = useState("timeline");
   const [search, setSearch] = useState("");
+  const [caseFilter, setCaseFilter] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   const [showAddModal, setShowAddModal] = useState(false);
@@ -35,6 +36,7 @@ export function ChronologyPage() {
     try {
       const params = new URLSearchParams({ page: page.toString(), limit: "30" });
       if (search) params.append("search", search);
+      if (caseFilter) params.append("case_id", caseFilter);
 
       const [res, casesRes] = await Promise.all([
         apiClient.get(`/events?${params.toString()}`),
@@ -54,7 +56,7 @@ export function ChronologyPage() {
 
   useEffect(() => {
     loadEvents();
-  }, [page]);
+  }, [page, caseFilter]);
 
   const handleAddEvent = async (e) => {
     e.preventDefault();
@@ -131,15 +133,31 @@ export function ChronologyPage() {
           </button>
         </div>
 
-        <div style={{ display: "flex", gap: "8px", flex: 1, maxWidth: "340px" }}>
-          <input
-            type="text"
-            className="form-input"
-            placeholder="Filter events..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <button className="btn btn-secondary btn-sm" onClick={loadEvents}>Filter</button>
+        <div style={{ display: "flex", gap: "12px", alignItems: "center", flex: 1, maxWidth: "600px", justifyContent: "flex-end" }}>
+          <select
+            className="form-select"
+            style={{ width: "220px" }}
+            value={caseFilter}
+            onChange={(e) => setCaseFilter(e.target.value)}
+          >
+            <option value="">All Case Files</option>
+            {cases.map((c) => (
+              <option key={c.id || c.case_id} value={c.id || c.case_id}>
+                {c.case_reference || c.case_id} - {c.title?.slice(0, 26)}...
+              </option>
+            ))}
+          </select>
+
+          <div style={{ display: "flex", gap: "8px", flex: 1 }}>
+            <input
+              type="text"
+              className="form-input"
+              placeholder="Filter events..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <button className="btn btn-secondary btn-sm" onClick={loadEvents}>Filter</button>
+          </div>
         </div>
       </div>
 
@@ -197,11 +215,16 @@ export function ChronologyPage() {
                             <span style={{ fontWeight: 700, fontSize: "14px", color: "var(--color-text-primary)" }}>
                               {ev.event_date || ev.original_date_expression}
                             </span>
+                            {ev.original_date_expression && ev.event_date && ev.original_date_expression !== ev.event_date && (
+                              <span style={{ fontSize: "11px", color: "var(--color-text-secondary)" }}>
+                                ({ev.original_date_expression})
+                              </span>
+                            )}
                             <span className="badge badge-neutral">Precision: {ev.date_precision || "exact"}</span>
                             <StatusBadge status={ev.review_status} />
                           </div>
-                          <h4 style={{ fontSize: "14px", fontWeight: 600, color: "var(--color-text-primary)", marginTop: "4px" }}>
-                            {ev.event_title}
+                          <h4 style={{ fontSize: "14.5px", fontWeight: 600, color: "var(--color-text-primary)", marginTop: "4px" }}>
+                            {ev.event_title || ev.title || "Timeline Milestone"}
                           </h4>
                         </div>
                         {ev.document_id && (
@@ -215,7 +238,7 @@ export function ChronologyPage() {
                       </div>
 
                       <div style={{ fontSize: "13px", color: "var(--color-text-primary)", marginTop: "8px", lineHeight: "1.5" }}>
-                        {ev.description}
+                        {ev.description || ev.translated_description}
                       </div>
 
                       {ev.associated_entities?.length > 0 && (
@@ -238,10 +261,37 @@ export function ChronologyPage() {
       ) : (
         <DataTable
           columns={[
-            { header: "Date", accessor: "event_date", width: "130px", render: (r) => <b>{r.event_date || r.original_date_expression}</b> },
+            {
+              header: "Date",
+              accessor: "event_date",
+              width: "140px",
+              render: (r) => (
+                <div>
+                  <b style={{ color: "var(--color-text-primary)" }}>{r.event_date || r.original_date_expression}</b>
+                  {r.original_date_expression && r.event_date && r.original_date_expression !== r.event_date && (
+                    <div style={{ fontSize: "11px", color: "var(--color-text-secondary)" }}>
+                      {r.original_date_expression}
+                    </div>
+                  )}
+                </div>
+              ),
+            },
             { header: "Precision", accessor: "date_precision", width: "100px" },
-            { header: "Event Title", accessor: "event_title", render: (r) => <span style={{ fontWeight: 600 }}>{r.event_title}</span> },
-            { header: "Description", accessor: "description" },
+            {
+              header: "Event Title",
+              accessor: "event_title",
+              width: "220px",
+              render: (r) => <span style={{ fontWeight: 600, color: "var(--color-text-primary)" }}>{r.event_title || r.title || "Chronological Milestone"}</span>,
+            },
+            {
+              header: "Description",
+              accessor: "description",
+              render: (r) => (
+                <div style={{ fontSize: "13px", lineHeight: "1.45", color: "var(--color-text-primary)" }}>
+                  {r.description || r.translated_description}
+                </div>
+              ),
+            },
             { header: "Entities", accessor: "associated_entities", render: (r) => r.associated_entities?.join(", ") || "-" },
             { header: "Review Status", accessor: "review_status", width: "130px", render: (r) => <StatusBadge status={r.review_status} /> },
           ]}
